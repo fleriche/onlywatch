@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/tlbSearch"
+        android:title="@string/strSearch"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_search"/>
+
+    <item
+        android:id="@+id/tlbSettings"
+        android:title="@string/strSettings"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_settings"/>
+
+    <item
+        android:id="@+id/tlbHelp"
+        android:title="@string/strHelp"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_help"/>
+</menu>

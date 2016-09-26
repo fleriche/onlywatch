@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Onlywatch</string>
+
+    <string name="strSearch">Recherche</string>
+    <string name="strSettings">Paramètres</string>
+    <string name="strHelp">Aide</string>
+    <string name="strProfile">Profil</string>
+
+    <string-array name="strArrDrawerList">
+        <item>Jeu</item>
+        <item>Héros</item>
+        <item>Sons</item>
+        <item>Médias</item>
+        <item>Profil</item>
+        <item>Favoris</item>
+        <item>Paramètres</item>
+        <item>Langues</item>
+    </string-array>
+
+    <array name="arrDrawerListIcon">
+        <item>@drawable/ic_game</item>
+        <item>@drawable/ic_heroes</item>
+        <item>@drawable/ic_sound</item>
+        <item>@drawable/ic_medias</item>
+        <item>@drawable/ic_profile</item>
+        <item>@drawable/ic_favorite</item>
+        <item>@drawable/ic_settings</item>
+        <item>@drawable/ic_language</item>
+    </array>
+</resources>

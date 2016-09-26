@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.onlywatch.fleriche.onlywatch.HomeActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drwLyDrawerLayout"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/connard">
+
+        <!-- Peut pas donner d'id à l'include sinon la toolbar est vide #wtf
+         du coup on met l'include dans un layout et on place la frame dessous
+         (obligé de la placer dessous sinon elle se place au-dessus/en-dessous de la toolbar)-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tlbToolbar">
+
+            <include
+                layout="@layout/toolbar"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/frame"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tlbToolbar">
+        </FrameLayout>
+    </RelativeLayout>
+
+    <ListView
+        android:layout_width="304dp"
+        android:layout_height="match_parent"
+        android:id="@+id/drwLvDrawerList"
+        android:layout_gravity="start"
+        android:background="@color/blueOverwatch"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
+        />
+
+</android.support.v4.widget.DrawerLayout>
+
