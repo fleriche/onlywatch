@@ -19,8 +19,6 @@ import android.widget.Toast;
 import com.onlywatch.fleriche.onlywatch.drawer.DrawerAdapter;
 import com.onlywatch.fleriche.onlywatch.drawer.NavigationDrawer;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroesListFragment;
-import com.onlywatch.fleriche.onlywatch.test.HeroesActivity;
-import com.onlywatch.fleriche.onlywatch.test.HeroesFragment;
 
 import java.util.ArrayList;
 
@@ -118,7 +116,6 @@ public class HomeActivity extends AppCompatActivity {
 
         private void selectItem(int position){
             HeroesListFragment fragment = null;
-            HeroesFragment fragmentHeroes = null;
 
             switch (position) {
                 case 1:
@@ -128,10 +125,7 @@ public class HomeActivity extends AppCompatActivity {
                     fragment = new HeroesListFragment();
                     break;
                 case 3:
-                    fragmentHeroes = new HeroesFragment();
-                    //Intent intent = new Intent(HomeActivity.this, HeroesActivity.class);
-                    //startActivity(intent);
-                    //Toast.makeText(getApplicationContext(), "Sons", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Sons", Toast.LENGTH_SHORT).show();
                     break;
                 case 4:
                     Toast.makeText(getApplicationContext(), "Medias", Toast.LENGTH_SHORT).show();
@@ -156,14 +150,6 @@ public class HomeActivity extends AppCompatActivity {
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frame, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-
-            if (fragmentHeroes != null) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frame, fragmentHeroes);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
