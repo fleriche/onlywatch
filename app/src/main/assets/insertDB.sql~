@@ -1,0 +1,26 @@
+--Attaque
+INSERT INTO heroes (nom, difficulty) VALUES ('Faucheur', 1);
+INSERT INTO heroes (nom, difficulty) VALUES ('Genji', 3);
+INSERT INTO heroes (nom, difficulty) VALUES ('McCree', 2);
+INSERT INTO heroes (nom, difficulty) VALUES ('Pharah', 1);
+INSERT INTO heroes (nom, difficulty) VALUES ('Soldat76', 1);
+INSERT INTO heroes (nom, difficulty) VALUES ('Tracer', 2);
+--Defense
+INSERT INTO heroes (nom, difficulty) VALUES ('Bastion', 1);
+INSERT INTO heroes (nom, difficulty) VALUES ('Hanzo', 3);
+INSERT INTO heroes (nom, difficulty) VALUES ('Junkrat', 2);
+INSERT INTO heroes (nom, difficulty) VALUES ('Mei', 3);
+INSERT INTO heroes (nom, difficulty) VALUES ('Tobjörn', 2);
+INSERT INTO heroes (nom, difficulty) VALUES ('Fatale', 2);
+--Tank
+INSERT INTO heroes (nom, difficulty) VALUES ('D.Va', 2);
+INSERT INTO heroes (nom, difficulty) VALUES ('Reinhardt', 1);
+INSERT INTO heroes (nom, difficulty) VALUES ('Roadhog', 1);
+INSERT INTO heroes (nom, difficulty) VALUES ('Winston', 2);
+INSERT INTO heroes (nom, difficulty) VALUES ('Zarya', 3);
+--Support
+INSERT INTO heroes (nom, difficulty) VALUES ('Ana', 3);
+INSERT INTO heroes (nom, difficulty) VALUES ('Lúcio', 2);
+INSERT INTO heroes (nom, difficulty) VALUES ('Mercy', 1);
+INSERT INTO heroes (nom, difficulty) VALUES ('Symmetra', 2);
+INSERT INTO heroes (nom, difficulty) VALUES ('Zenyatta', 3);
