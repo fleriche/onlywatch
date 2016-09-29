@@ -116,6 +116,7 @@ public class HomeActivity extends AppCompatActivity {
 
         private void selectItem(int position){
             HeroesListFragment fragment = null;
+            BlankFragment testFragment = null;
 
             switch (position) {
                 case 1:
@@ -125,7 +126,8 @@ public class HomeActivity extends AppCompatActivity {
                     fragment = new HeroesListFragment();
                     break;
                 case 3:
-                    Toast.makeText(getApplicationContext(), "Sons", Toast.LENGTH_SHORT).show();
+                    testFragment = new BlankFragment();
+                    //Toast.makeText(getApplicationContext(), "Sons", Toast.LENGTH_SHORT).show();
                     break;
                 case 4:
                     Toast.makeText(getApplicationContext(), "Medias", Toast.LENGTH_SHORT).show();
@@ -150,6 +152,14 @@ public class HomeActivity extends AppCompatActivity {
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frame, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+
+            if (testFragment != null) {
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frame, testFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }

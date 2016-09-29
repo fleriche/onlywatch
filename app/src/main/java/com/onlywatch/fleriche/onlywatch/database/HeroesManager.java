@@ -20,7 +20,7 @@ public class HeroesManager {
             " (" +
             " "+KEY_ID_HEROES+" INTEGER primary key," +
             " "+NOM_HEROES+" TEXT," +
-            " "+DIFFICULTY_HEROES+" TEXT" +
+            " "+DIFFICULTY_HEROES+" INTEGER" +
             ");";
     private DatabaseHandler mDatabaseHandler;
     private SQLiteDatabase mDatabase;
