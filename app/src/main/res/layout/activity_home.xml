@@ -1,50 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.onlywatch.fleriche.onlywatch.HomeActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drwLyDrawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drwLyDrawerLayout"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    tools:context="com.onlywatch.fleriche.onlywatch.HomeActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/connard">
-
-        <!-- Peut pas donner d'id à l'include sinon la toolbar est vide #wtf
-         du coup on met l'include dans un layout et on place la frame dessous
-         (obligé de la placer dessous sinon elle se place au-dessus/en-dessous de la toolbar)-->
-        <FrameLayout
+        <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tlbToolbar">
+            android:fitsSystemWindows="true">
 
-            <include
-                layout="@layout/toolbar"/>
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/app_bar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        </FrameLayout>
+                <android.support.design.widget.CollapsingToolbarLayout
+                    android:id="@+id/collapsing_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fitsSystemWindows="true"
+                    app:contentScrim="?attr/colorPrimary"
+                    app:expandedTitleMarginEnd="64dp"
+                    app:expandedTitleMarginStart="48dp"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/frame"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/tlbToolbar">
-        </FrameLayout>
-    </RelativeLayout>
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fitsSystemWindows="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/dva"
+                        app:layout_collapseMode="parallax"
+                        android:visibility="visible"/>
+
+                    <include
+                        layout="@layout/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        app:layout_collapseMode="pin"/>
+
+                </android.support.design.widget.CollapsingToolbarLayout>
+
+            </android.support.design.widget.AppBarLayout>
+
+            <FrameLayout
+                android:id="@+id/frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        </android.support.design.widget.CoordinatorLayout>
 
     <ListView
+        android:id="@+id/drwLvDrawerList"
         android:layout_width="304dp"
         android:layout_height="match_parent"
-        android:id="@+id/drwLvDrawerList"
         android:layout_gravity="start"
         android:background="@color/blueOverwatch"
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
-        android:dividerHeight="0dp"
-        />
+        android:dividerHeight="0dp" />
 
 </android.support.v4.widget.DrawerLayout>
 

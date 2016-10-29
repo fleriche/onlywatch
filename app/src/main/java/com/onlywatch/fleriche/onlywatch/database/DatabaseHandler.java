@@ -21,14 +21,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "onlywatch.db";
     private static final int DATABASE_VERSION = 1;
     private static DatabaseHandler sInstance;
-
     private String DATABASE_PATH;
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.mContext = context;
-        String filesDir = context.getFilesDir().getPath(); // /data/data/com.package.nom/files/
-        DATABASE_PATH = filesDir.substring(0, filesDir.lastIndexOf("/")) + "/databases/"; // /data/data/com.package.nom/databases/
+        String filesDir = context.getFilesDir().getPath(); // /data/data/com.onlywatch.fleriche.onlywatch/files/
+        DATABASE_PATH = filesDir.substring(0, filesDir.lastIndexOf("/")) + "/databases/"; // /data/data/com.onlywatch.fleriche.onlywatch/databases/
 
         // Si la db n'existe pas dans le dossier de l'app
         if (!checkDatabaseExist()) {

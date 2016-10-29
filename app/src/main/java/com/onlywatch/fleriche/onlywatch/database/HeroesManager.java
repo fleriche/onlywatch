@@ -13,15 +13,9 @@ import com.onlywatch.fleriche.onlywatch.Entity.Heroes;
 
 public class HeroesManager {
     private static final String TABLE_NAME = "heroes";
-    public static final String KEY_ID_HEROES = "id";
-    public static final String NOM_HEROES = "nom";
-    public static final String DIFFICULTY_HEROES = "difficulty";
-    public static final String CREATE_TABLE_HEROES = "CREATE TABLE "+TABLE_NAME+
-            " (" +
-            " "+KEY_ID_HEROES+" INTEGER primary key," +
-            " "+NOM_HEROES+" TEXT," +
-            " "+DIFFICULTY_HEROES+" INTEGER" +
-            ");";
+    private static final String KEY_ID_HEROES = "id";
+    private static final String NOM_HEROES = "nom";
+    private static final String DIFFICULTY_HEROES = "difficulty";
     private DatabaseHandler mDatabaseHandler;
     private SQLiteDatabase mDatabase;
 
@@ -57,7 +51,6 @@ public class HeroesManager {
     }
 
     public int deleteHeroes(Heroes heroes) {
-
         String where = KEY_ID_HEROES+" = ?";
         String[] whereArgs = {heroes.getId()+""};
 

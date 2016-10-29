@@ -87,26 +87,6 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    private void flipCard() {
-        if (mShowingBack) {
-            getFragmentManager().popBackStack();
-            return;
-        }
-
-        mShowingBack = true;
-
-        getFragmentManager()
-                .beginTransaction()
-                .setCustomAnimations(
-                        R.animator.card_flip_right_in,
-                        R.animator.card_flip_right_out,
-                        R.animator.card_flip_left_in,
-                        R.animator.card_flip_left_out)
-                .replace(R.id.frame, new HeroesListFragment())
-                .addToBackStack(null)
-                .commit();
-    }
-
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
 
         @Override

@@ -1,6 +1,5 @@
 --Attaque
 INSERT INTO heroes (name, health, armor, shield, real_name, height, occupation, base_of_operation, affiliation, summary, quote, difficulty, id_role) VALUES ('Faucheur', 250, 0, 0, 'Gabriel Reyes', 1);
-
 INSERT INTO heroes (name, difficulty) VALUES ('Genji', 3);
 INSERT INTO heroes (name, difficulty) VALUES ('McCree', 2);
 INSERT INTO heroes (name, difficulty) VALUES ('Pharah', 1);
