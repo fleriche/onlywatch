@@ -5,10 +5,11 @@ package com.onlywatch.fleriche.onlywatch.Entity;
  */
 
 public class Heroes {
-
     private int id;
     private String nom;
     private int difficulty;
+
+    public Heroes() {}
 
     public Heroes(int id, String nom, int difficulty) {
         this.id = id;

@@ -20,7 +20,8 @@
             android:name=".test.HeroesActivity"
             android:label="@string/title_activity_heroes"
             android:theme="@style/AppTheme" />
-        <activity android:name=".test.HeroesFlipActivity"></activity>
+        <activity android:name=".test.HeroesFlipActivity" />
+        <activity android:name=".heroes.HeroesActivity"></activity>
     </application>
 
 </manifest>

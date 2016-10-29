@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.onlywatch.fleriche.onlywatch.Entity.Heroes;
 
+import java.util.ArrayList;
+
 /**
  * Created by florian on 28/09/16
  */
@@ -71,7 +73,19 @@ public class HeroesManager {
         return heroes;
     }
 
-    public Cursor getHeroes() {
-        return mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME, null);
+    public ArrayList<Heroes> getHeroes() {
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME, null);
+        ArrayList<Heroes> heroesList = new ArrayList<>();
+
+        for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            Heroes heroes = new Heroes(0, "", 0);
+            heroes.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID_HEROES)));
+            heroes.setNom(cursor.getString(cursor.getColumnIndex(NOM_HEROES)));
+            heroes.setDifficulty(cursor.getInt(cursor.getColumnIndex(DIFFICULTY_HEROES)));
+            heroesList.add(heroes);
+        }
+
+        cursor.close();
+        return heroesList;
     }
 }

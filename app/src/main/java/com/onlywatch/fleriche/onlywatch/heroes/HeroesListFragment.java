@@ -8,12 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.onlywatch.fleriche.onlywatch.Entity.Heroes;
 import com.onlywatch.fleriche.onlywatch.R;
+import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HeroesListFragment extends Fragment {
+    private static final Integer HEROES_NUMBER = 22;
+    private HeroesManager mHeroesManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,29 +27,20 @@ public class HeroesListFragment extends Fragment {
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.cardList);
         recyclerView.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
-
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        HeroesRecyclerAdapter hra = new HeroesRecyclerAdapter(createList(30), getActivity());
+        mHeroesManager = new HeroesManager(getActivity());
+        mHeroesManager.open();
+
+        HeroesRecyclerAdapter hra = new HeroesRecyclerAdapter(mHeroesManager.getHeroes(), getActivity());
         recyclerView.setAdapter(hra);
 
+        mHeroesManager.close();
         return view;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-    }
-
-    private List createList(int size) {
-
-        List result = new ArrayList();
-        for (int i=1; i <= size; i++) {
-            HeroesCardInfo heroesCardInfo = new HeroesCardInfo();
-            heroesCardInfo.setName(HeroesCardInfo.NAME_PREFIX + i);
-            result.add(heroesCardInfo);
-        }
-
-        return result;
     }
 }

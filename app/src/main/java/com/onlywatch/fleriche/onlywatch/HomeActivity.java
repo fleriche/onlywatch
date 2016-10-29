@@ -2,7 +2,6 @@ package com.onlywatch.fleriche.onlywatch;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.content.res.TypedArray;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,7 +14,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.onlywatch.fleriche.onlywatch.drawer.DrawerAdapter;
 import com.onlywatch.fleriche.onlywatch.drawer.NavigationDrawer;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroesListFragment;
@@ -24,9 +22,16 @@ import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     private ActionBarDrawerToggle mDrwDrawerToggle;
-    public DrawerLayout mDrwDrawerLayout;
+    private DrawerLayout mDrwDrawerLayout;
     private ListView mDrwDrawerList;
-    private Boolean mShowingBack = false;
+    private static final int MENU_GAME = 1;
+    private static final int MENU_HEROES = 2;
+    private static final int MENU_SOUND = 3;
+    private static final int MENU_MEDIAS = 4;
+    private static final int MENU_PROFILE = 6;
+    private static final int MENU_FAVORITES = 7;
+    private static final int MENU_PARAMETERS = 9;
+    private static final int MENU_LANGUAGES = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,32 +101,30 @@ public class HomeActivity extends AppCompatActivity {
 
         private void selectItem(int position){
             HeroesListFragment fragment = null;
-            BlankFragment testFragment = null;
 
             switch (position) {
-                case 1:
+                case MENU_GAME:
                     Toast.makeText(getApplicationContext(), "Jeu", Toast.LENGTH_SHORT).show();
                     break;
-                case 2:
+                case MENU_HEROES:
                     fragment = new HeroesListFragment();
                     break;
-                case 3:
-                    testFragment = new BlankFragment();
-                    //Toast.makeText(getApplicationContext(), "Sons", Toast.LENGTH_SHORT).show();
+                case MENU_SOUND:
+                    Toast.makeText(getApplicationContext(), "Sons", Toast.LENGTH_SHORT).show();
                     break;
-                case 4:
+                case MENU_MEDIAS:
                     Toast.makeText(getApplicationContext(), "Medias", Toast.LENGTH_SHORT).show();
                     break;
-                case 6:
+                case MENU_PROFILE:
                     Toast.makeText(getApplicationContext(), "Profil", Toast.LENGTH_SHORT).show();
                     break;
-                case 7:
+                case MENU_FAVORITES:
                     Toast.makeText(getApplicationContext(), "Favoris", Toast.LENGTH_SHORT).show();
                     break;
-                case 9:
+                case MENU_PARAMETERS:
                     Toast.makeText(getApplicationContext(), "Paramètres", Toast.LENGTH_SHORT).show();
                     break;
-                case 10:
+                case MENU_LANGUAGES:
                     Toast.makeText(getApplicationContext(), "Langues", Toast.LENGTH_SHORT).show();
                     break;
                 default:
@@ -132,14 +135,6 @@ public class HomeActivity extends AppCompatActivity {
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frame, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-
-            if (testFragment != null) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frame, testFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
