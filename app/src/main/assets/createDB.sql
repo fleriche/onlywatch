@@ -13,13 +13,13 @@ CREATE TABLE IF NOT EXISTS heroes (
 	shield INTEGER NOT NULL,
 	real_name TEXT,
 	age INT,
-	height TEXT,
+	nationality TEXT,
 	occupation TEXT,
 	base_of_operation TEXT,
 	affiliation TEXT,
 	summary TEXT,
 	quote TEXT,
-	difficulty INTEGER NOT NULL
+	difficulty INTEGER NOT NULL,
 	id_role INTEGER,
 	FOREIGN KEY(id_role) REFERENCES role(id) 
 );
@@ -37,9 +37,9 @@ CREATE TABLE IF NOT EXISTS ability (
 
 CREATE TABLE IF NOT EXISTS map (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	name TEXT NOT NULL,
-	location TEXT NOT NULL,
-	summary TEXT NOT NULL,
+    name TEXT NOT NULL,
+    location TEXT NOT NULL,
+    summary TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS gamemode (

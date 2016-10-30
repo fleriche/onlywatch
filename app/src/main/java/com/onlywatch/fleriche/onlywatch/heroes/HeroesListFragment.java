@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HeroesListFragment extends Fragment {
-    private static final Integer HEROES_NUMBER = 22;
     private HeroesManager mHeroesManager;
 
     @Override

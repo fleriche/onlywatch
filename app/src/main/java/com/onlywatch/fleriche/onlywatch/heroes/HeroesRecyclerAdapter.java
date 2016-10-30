@@ -1,7 +1,5 @@
 package com.onlywatch.fleriche.onlywatch.heroes;
 
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
@@ -9,17 +7,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.onlywatch.fleriche.onlywatch.Entity.Heroes;
-import com.onlywatch.fleriche.onlywatch.HomeActivity;
 import com.onlywatch.fleriche.onlywatch.R;
 
 import java.util.List;
 
 class HeroesRecyclerAdapter extends RecyclerView.Adapter<HeroesRecyclerAdapter.HeroesViewHolder> {
+    public static final String HEROES_ID_EXTRA = "id";
     private List<Heroes> mHeroesList;
     private Context mContext;
 
@@ -41,6 +38,7 @@ class HeroesRecyclerAdapter extends RecyclerView.Adapter<HeroesRecyclerAdapter.H
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, HeroesActivity.class);
+                intent.putExtra(HEROES_ID_EXTRA, heroes.getId());
                 mContext.startActivity(intent);
             }
         });

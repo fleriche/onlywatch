@@ -125,6 +125,7 @@ public class HomeActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Paramètres", Toast.LENGTH_SHORT).show();
                     break;
                 case MENU_LANGUAGES:
+                    getApplicationContext().deleteDatabase("onlywatch.db");
                     Toast.makeText(getApplicationContext(), "Langues", Toast.LENGTH_SHORT).show();
                     break;
                 default:
