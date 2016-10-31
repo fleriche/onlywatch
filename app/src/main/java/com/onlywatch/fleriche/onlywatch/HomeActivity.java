@@ -2,11 +2,13 @@ package com.onlywatch.fleriche.onlywatch;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -78,9 +80,6 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         Toast toast;
         switch (menuItem.getItemId()) {
-            case R.id.tlbSearch:
-                toast = Toast.makeText(getApplicationContext(), "Search", Toast.LENGTH_SHORT);
-                toast.show();
             case R.id.tlbSettings:
                 toast = Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT);
                 toast.show();
@@ -99,12 +98,14 @@ public class HomeActivity extends AppCompatActivity {
             selectItem(position);
         }
 
-        private void selectItem(int position){
+        private void selectItem(int position) {
             HeroesListFragment fragment = null;
 
             switch (position) {
                 case MENU_GAME:
-                    Toast.makeText(getApplicationContext(), "Jeu", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
                     break;
                 case MENU_HEROES:
                     fragment = new HeroesListFragment();

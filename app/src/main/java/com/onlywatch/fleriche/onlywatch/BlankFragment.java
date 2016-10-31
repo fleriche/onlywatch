@@ -22,7 +22,7 @@ import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BlankFragment extends Fragment {
+public class BlankFragment extends android.support.v4.app.Fragment {
     public BlankFragment() {
         // Required empty public constructor
     }

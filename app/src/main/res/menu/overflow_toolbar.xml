@@ -5,6 +5,8 @@
         android:id="@+id/tlbSearch"
         android:title="@string/strSearch"
         app:showAsAction="always"
+        android:visible="false"
+        app:actionViewClass="android.support.v7.widget.SearchView"
         android:icon="@drawable/ic_search"/>
 
     <item

@@ -7,6 +7,7 @@ package com.onlywatch.fleriche.onlywatch.Entity;
 public class Heroes {
     private int id;
     private String nom;
+    private String canonical_name;
     private int health;
     private int armor;
     private int shield;
@@ -29,8 +30,9 @@ public class Heroes {
         this.difficulty = difficulty;
     }
 
-    public Heroes(String nom, int id, int health, int difficulty, String id_role, String quote, int armor, int shield, String real_name, String age, String nationality, String occupation, String base_of_operation, String affiliation, String summary) {
+    public Heroes(String nom, String canonical_name, int id, int health, int difficulty, String id_role, String quote, int armor, int shield, String real_name, String age, String nationality, String occupation, String base_of_operation, String affiliation, String summary) {
         this.nom = nom;
+        this.canonical_name = canonical_name;
         this.id = id;
         this.health = health;
         this.difficulty = difficulty;
@@ -165,5 +167,13 @@ public class Heroes {
 
     public void setId_role(String id_role) {
         this.id_role = id_role;
+    }
+
+    public String getCanonical_name() {
+        return canonical_name;
+    }
+
+    public void setCanonical_name(String canonical_name) {
+        this.canonical_name = canonical_name;
     }
 }

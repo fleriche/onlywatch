@@ -19,7 +19,6 @@
                 android:id="@+id/layoutHeader"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/blueOverwatch"
                 android:orientation="vertical">
 
                 <TextView

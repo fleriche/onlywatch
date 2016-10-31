@@ -17,6 +17,7 @@ public class HeroesManager {
     private static final String TABLE_NAME = "heroes";
     private static final String KEY_ID_HEROES = "id";
     private static final String NOM_HEROES = "name";
+    private static final String CANONICAL_NAME_HEROES = "canonical_name";
     private static final String HEALTH_HEROES = "health";
     private static final String ARMOR_HEROES = "armor";
     private static final String SHIELD_HEROES = "shield";
@@ -48,6 +49,7 @@ public class HeroesManager {
     public long addHeroes(Heroes heroes) {
         ContentValues values = new ContentValues();
         values.put(NOM_HEROES, heroes.getNom());
+        values.put(CANONICAL_NAME_HEROES, heroes.getCanonical_name());
         values.put(HEALTH_HEROES, heroes.getHealth());
         values.put(ARMOR_HEROES, heroes.getArmor());
         values.put(SHIELD_HEROES, heroes.getShield());
@@ -68,6 +70,7 @@ public class HeroesManager {
     public int updateHeroes(Heroes heroes) {
         ContentValues values = new ContentValues();
         values.put(NOM_HEROES, heroes.getNom());
+        values.put(CANONICAL_NAME_HEROES, heroes.getCanonical_name());
         values.put(HEALTH_HEROES, heroes.getHealth());
         values.put(ARMOR_HEROES, heroes.getArmor());
         values.put(SHIELD_HEROES, heroes.getShield());
@@ -102,6 +105,7 @@ public class HeroesManager {
         if (cursor.moveToFirst()) {
             heroes.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID_HEROES)));
             heroes.setNom(cursor.getString(cursor.getColumnIndex(NOM_HEROES)));
+            heroes.setCanonical_name(cursor.getString(cursor.getColumnIndex(CANONICAL_NAME_HEROES)));
             heroes.setHealth(cursor.getInt(cursor.getColumnIndex(HEALTH_HEROES)));
             heroes.setArmor(cursor.getInt(cursor.getColumnIndex(ARMOR_HEROES)));
             heroes.setShield(cursor.getInt(cursor.getColumnIndex(SHIELD_HEROES)));
@@ -120,14 +124,14 @@ public class HeroesManager {
         return heroes;
     }
 
-    public ArrayList<Heroes> getHeroes() {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME, null);
+    public ArrayList<Heroes> getHeroes(Cursor cursor) {
         ArrayList<Heroes> heroesList = new ArrayList<>();
 
         for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             Heroes heroes = new Heroes(0, "", 0);
             heroes.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID_HEROES)));
             heroes.setNom(cursor.getString(cursor.getColumnIndex(NOM_HEROES)));
+            heroes.setCanonical_name(cursor.getString(cursor.getColumnIndex(CANONICAL_NAME_HEROES)));
             heroes.setHealth(cursor.getInt(cursor.getColumnIndex(HEALTH_HEROES)));
             heroes.setArmor(cursor.getInt(cursor.getColumnIndex(ARMOR_HEROES)));
             heroes.setShield(cursor.getInt(cursor.getColumnIndex(SHIELD_HEROES)));
@@ -145,5 +149,15 @@ public class HeroesManager {
 
         cursor.close();
         return heroesList;
+    }
+
+    public ArrayList<Heroes> getHeroes() {
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " ORDER BY name", null);
+        return getHeroes(cursor);
+    }
+
+    public ArrayList<Heroes> getHeroes(String name) {
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%'", null);
+        return getHeroes(cursor);
     }
 }
