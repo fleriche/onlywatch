@@ -36,7 +36,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:textSize="35sp" />
+                    android:textSize="30sp"
+                    android:paddingTop="5dp"/>
 
             </LinearLayout>
 
@@ -55,12 +56,69 @@
                     android:textColor="@color/lightblueOverwatch"
                     android:textSize="25sp"/>
 
-                <TextView
-                    android:id="@+id/difficulty"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:textSize="40sp"/>
+                    android:orientation="horizontal">
+
+                    <ViewFlipper
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/viewFlipperDifficulty1">
+
+                        <ImageView
+                            android:id="@+id/difficultystar_full1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_full"/>
+
+                        <ImageView
+                            android:id="@+id/difficultystar_empty1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_empty"/>
+
+                    </ViewFlipper>
+
+                    <ViewFlipper
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/viewFlipperDifficulty2">
+
+                        <ImageView
+                            android:id="@+id/difficultystar_full2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_full"/>
+
+                        <ImageView
+                            android:id="@+id/difficultystar_empty2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_empty"/>
+
+                    </ViewFlipper>
+
+                    <ViewFlipper
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/viewFlipperDifficulty3">
+
+                        <ImageView
+                            android:id="@+id/difficultystar_full3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_full"/>
+
+                        <ImageView
+                            android:id="@+id/difficultystar_empty3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_empty"/>
+
+                    </ViewFlipper>
+
+                </LinearLayout>
 
             </LinearLayout>
 
