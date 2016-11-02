@@ -13,7 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import com.onlywatch.fleriche.onlywatch.BlankFragment;
+import com.onlywatch.fleriche.onlywatch.HeroesGeneralityFragment;
 import com.onlywatch.fleriche.onlywatch.Entity.Heroes;
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HeroesActivity extends AppCompatActivity {
+    public int heroesId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class HeroesActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbar);
         Intent intent = getIntent();
-        int heroesId = intent.getIntExtra(HeroesRecyclerAdapter.HEROES_ID_EXTRA, 0);
+        heroesId = intent.getIntExtra(HeroesRecyclerAdapter.HEROES_ID_EXTRA, 0);
         HeroesManager heroesManager = new HeroesManager(getApplicationContext());
         Heroes heroes;
 
@@ -66,8 +67,8 @@ public class HeroesActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         TabLayoutAdapter tabLayoutAdapter = new TabLayoutAdapter(getSupportFragmentManager());
-        tabLayoutAdapter.addTab(new BlankFragment(), "Généralités");
-        tabLayoutAdapter.addTab(new BlankFragment(), "Histoire");
+        tabLayoutAdapter.addTab(HeroesGeneralityFragment.newInstance(heroesId), "Généralités");
+        tabLayoutAdapter.addTab(HeroesGeneralityFragment.newInstance(heroesId), "Histoire");
         viewPager.setAdapter(tabLayoutAdapter);
     }
 

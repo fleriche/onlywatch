@@ -29,7 +29,7 @@ public class HeroesManager {
     private static final String AFFILIATION_HEROES = "affiliation";
     private static final String SUMMARY_HEROES = "summary";
     private static final String QUOTE_HEROES = "quote";
-    private static final String ID_ROLE_HEROES = "id_role";
+    private static final String ROLE_HEROES = "role";
     private static final String DIFFICULTY_HEROES = "difficulty";
     private DatabaseHandler mDatabaseHandler;
     private SQLiteDatabase mDatabase;
@@ -61,7 +61,7 @@ public class HeroesManager {
         values.put(AFFILIATION_HEROES, heroes.getAffiliation());
         values.put(SUMMARY_HEROES, heroes.getSummary());
         values.put(QUOTE_HEROES, heroes.getQuote());
-        values.put(ID_ROLE_HEROES, heroes.getId_role());
+        values.put(ROLE_HEROES, heroes.getRole());
         values.put(DIFFICULTY_HEROES, heroes.getDifficulty());
 
         return mDatabase.insert(TABLE_NAME, null, values);
@@ -82,7 +82,7 @@ public class HeroesManager {
         values.put(AFFILIATION_HEROES, heroes.getAffiliation());
         values.put(SUMMARY_HEROES, heroes.getSummary());
         values.put(QUOTE_HEROES, heroes.getQuote());
-        values.put(ID_ROLE_HEROES, heroes.getId_role());
+        values.put(ROLE_HEROES, heroes.getRole());
         values.put(DIFFICULTY_HEROES, heroes.getDifficulty());
 
         String where = KEY_ID_HEROES+" = ?";
@@ -117,6 +117,7 @@ public class HeroesManager {
             heroes.setAffiliation(cursor.getString(cursor.getColumnIndex(AFFILIATION_HEROES)));
             heroes.setSummary(cursor.getString(cursor.getColumnIndex(SUMMARY_HEROES)));
             heroes.setQuote(cursor.getString(cursor.getColumnIndex(QUOTE_HEROES)));
+            heroes.setRole(cursor.getString(cursor.getColumnIndex(ROLE_HEROES)));
             heroes.setDifficulty(cursor.getInt(cursor.getColumnIndex(DIFFICULTY_HEROES)));
             cursor.close();
         }
@@ -143,6 +144,7 @@ public class HeroesManager {
             heroes.setAffiliation(cursor.getString(cursor.getColumnIndex(AFFILIATION_HEROES)));
             heroes.setSummary(cursor.getString(cursor.getColumnIndex(SUMMARY_HEROES)));
             heroes.setQuote(cursor.getString(cursor.getColumnIndex(QUOTE_HEROES)));
+            heroes.setRole(cursor.getString(cursor.getColumnIndex(ROLE_HEROES)));
             heroes.setDifficulty(cursor.getInt(cursor.getColumnIndex(DIFFICULTY_HEROES)));
             heroesList.add(heroes);
         }

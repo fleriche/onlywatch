@@ -19,7 +19,7 @@ public class Heroes {
     private String affiliation;
     private String summary;
     private String quote;
-    private String id_role;
+    private String role;
     private int difficulty;
 
     public Heroes() {}
@@ -30,13 +30,13 @@ public class Heroes {
         this.difficulty = difficulty;
     }
 
-    public Heroes(String nom, String canonical_name, int id, int health, int difficulty, String id_role, String quote, int armor, int shield, String real_name, String age, String nationality, String occupation, String base_of_operation, String affiliation, String summary) {
+    public Heroes(String nom, String canonical_name, int id, int health, int difficulty, String role, String quote, int armor, int shield, String real_name, String age, String nationality, String occupation, String base_of_operation, String affiliation, String summary) {
         this.nom = nom;
         this.canonical_name = canonical_name;
         this.id = id;
         this.health = health;
         this.difficulty = difficulty;
-        this.id_role = id_role;
+        this.role = role;
         this.quote = quote;
         this.armor = armor;
         this.shield = shield;
@@ -161,12 +161,12 @@ public class Heroes {
         this.quote = quote;
     }
 
-    public String getId_role() {
-        return id_role;
+    public String getRole() {
+        return role;
     }
 
-    public void setId_role(String id_role) {
-        this.id_role = id_role;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getCanonical_name() {

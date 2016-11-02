@@ -31,7 +31,14 @@
     <string name="strOpenDrawer">Open Drawer</string>
     <string name="strCloseDrawer">Close Drawer</string>
     <string name="title_activity_heroes">HeroesActivity</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="strRole">Role</string>
+    <string name="strDifficulty">Difficulty</string>
+    <string name="strSkills">Skills</string>
+
+    <string name="offense">Offense</string>
+    <string name="defense">Defense</string>
+    <string name="tank">Tank</string>
+    <string name="support">Support</string>
 </resources>

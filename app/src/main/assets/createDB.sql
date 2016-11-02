@@ -1,10 +1,3 @@
-CREATE TABLE IF NOT EXISTS role (
-	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	name TEXT NOT NULL,
-	description TEXT NOT NULL,
-	symbole_path TEXT NOT NULL
-);
-
 CREATE TABLE IF NOT EXISTS heroes (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	name TEXT NOT NULL,
@@ -21,8 +14,7 @@ CREATE TABLE IF NOT EXISTS heroes (
 	summary TEXT,
 	quote TEXT,
 	difficulty INTEGER NOT NULL,
-	id_role INTEGER,
-	FOREIGN KEY(id_role) REFERENCES role(id) 
+	role TEXT NOT NULL
 );
 
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Onlywatch</string>
-
     <string name="strSearch">Recherche</string>
     <string name="strSettings">Paramètres</string>
     <string name="strHelp">Aide</string>
@@ -28,4 +27,15 @@
         <item>@drawable/ic_settings</item>
         <item>@drawable/ic_language</item>
     </array>
+
+    <string name="strRole">Rôle</string>
+    <string name="strDifficulty">Difficulté</string>
+    <string name="strSkills">Capacités</string>
+
+    <string name="offense">Attaque</string>
+    <string name="defense">Defense</string>
+    <string name="tank">Tank</string>
+    <string name="support">Support</string>
+
+    <string name="toast">Le méca de D.Va est aussi agile que puissant : ses fusio-canons jumelés tirent en continu à courte portée, et elle peut activer ses turboréacteurs pour bondir par-dessus ennemis et obstacles, ou abattre les projectiles en plein air avec sa matrice défensive.</string>
 </resources>

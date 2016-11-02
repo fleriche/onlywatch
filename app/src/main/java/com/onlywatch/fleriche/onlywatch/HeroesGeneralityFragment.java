@@ -22,9 +22,15 @@ import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BlankFragment extends android.support.v4.app.Fragment {
-    public BlankFragment() {
-        // Required empty public constructor
+public class HeroesGeneralityFragment extends android.support.v4.app.Fragment {
+    public HeroesGeneralityFragment() {}
+
+    public static HeroesGeneralityFragment newInstance(int heroesid) {
+        HeroesGeneralityFragment fragment = new HeroesGeneralityFragment();
+        Bundle args = new Bundle();
+        args.putInt("heroesId", heroesid);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
@@ -32,12 +38,16 @@ public class BlankFragment extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_blank, container, false);
 
-        TextView tv = (TextView) view.findViewById(R.id.singe);
-        //getActivity().deleteDatabase("onlywatch.db");
+        TextView tvRole = (TextView) view.findViewById(R.id.role);
+        TextView tvDifficulty = (TextView) view.findViewById(R.id.difficulty);
+        int heroesId = getArguments().getInt("heroesId");
         HeroesManager hm = new HeroesManager(getActivity());
+        Heroes heroes;
+
         hm.open();
-        Heroes heroes = hm.getHeroe(19);
-        tv.setText(heroes.getNom());
+        heroes = hm.getHeroe(heroesId);
+        tvRole.setText(heroes.getRole().toUpperCase());
+        tvDifficulty.setText(""+heroes.getDifficulty());
         hm.close();
         return view;
     }
