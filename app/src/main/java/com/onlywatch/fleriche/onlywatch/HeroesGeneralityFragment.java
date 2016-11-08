@@ -88,9 +88,16 @@ public class HeroesGeneralityFragment extends android.support.v4.app.Fragment {
             skillsLayout.addView(tvSkill);
 
             ImageView ivSkill = new ImageView(getActivity());
-
             ivSkill.setImageResource(getDrawableIdentifier(getActivity(), hero.getCanonical_name()+"_skill_"+skillsCounter));
             skillsLayout.addView(ivSkill);
+
+            TextView tvSkillSummary = new TextView(getActivity());
+            tvSkillSummary.setText(skill.getDescription());
+            tvSkillSummary.setTextSize(15);
+            tvSkillSummary.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+            tvSkillSummary.setGravity(Gravity.CENTER_HORIZONTAL);
+            tvSkillSummary.setLayoutParams(skillsLayoutParams);
+            skillsLayout.addView(tvSkillSummary);
         }
         return view;
     }
