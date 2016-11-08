@@ -17,13 +17,11 @@ CREATE TABLE IF NOT EXISTS heroes (
 	role TEXT NOT NULL
 );
 
-
-CREATE TABLE IF NOT EXISTS ability (
+CREATE TABLE IF NOT EXISTS skill (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	name TEXT NOT NULL,
 	description TEXT NOT NULL,
 	features TEXT NOT NULL,
-	symbole_path TEXT NOT NULL,
 	id_heroes NOT NULL,
 	FOREIGN KEY(id_heroes) REFERENCES heroes(id) 
 );

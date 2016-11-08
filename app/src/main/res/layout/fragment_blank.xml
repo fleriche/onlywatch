@@ -138,11 +138,11 @@
                     android:layout_marginRight="10dp"/>
 
                 <TextView
+                    android:id="@+id/heroSummary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:text="@string/toast"/>
+                    android:textSize="15sp"/>
 
             </LinearLayout>
 
@@ -157,16 +157,25 @@
 
         </RelativeLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="400dp" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/strSkills"
             android:textColor="@color/lightblueOverwatch"
-            android:textSize="32sp" />
+            android:layout_marginLeft="25dp"
+            android:textSize="25sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/skillsLayout"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="400dp" />
 
         <Space
             android:layout_width="match_parent"

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.onlywatch.fleriche.onlywatch.Entity.Heroes;
+import com.onlywatch.fleriche.onlywatch.Entity.Skill;
 
 import java.util.ArrayList;
 
@@ -98,7 +99,7 @@ public class HeroesManager {
         return mDatabase.delete(TABLE_NAME, where, whereArgs);
     }
 
-    public Heroes getHeroe(int id) {
+    public Heroes getHero(int id) {
         Heroes heroes = new Heroes(0, "", 0);
 
         Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY_ID_HEROES+"="+id, null);
@@ -125,7 +126,7 @@ public class HeroesManager {
         return heroes;
     }
 
-    public ArrayList<Heroes> getHeroes(Cursor cursor) {
+    private ArrayList<Heroes> getHeroes(Cursor cursor) {
         ArrayList<Heroes> heroesList = new ArrayList<>();
 
         for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
@@ -161,5 +162,22 @@ public class HeroesManager {
     public ArrayList<Heroes> getHeroes(String name) {
         Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%'", null);
         return getHeroes(cursor);
+    }
+
+    public ArrayList<Skill> getHeroSkills(int id_heroes) {
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+SkillManager.TABLE_NAME+ " WHERE "+SkillManager.KEY_ID_HEROES_SKILL+" = "+id_heroes, null);
+        ArrayList<Skill> skillsList = new ArrayList<>();
+
+        for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            Skill skill = new Skill();
+            skill.setId(cursor.getInt(cursor.getColumnIndex(SkillManager.KEY_ID_SKILL)));
+            skill.setNom(cursor.getString(cursor.getColumnIndex(SkillManager.NOM_SKILL)));
+            skill.setDescription(cursor.getString(cursor.getColumnIndex(SkillManager.DESCRIPTION_SKILL)));
+            skill.setFeatures(cursor.getString(cursor.getColumnIndex(SkillManager.FEATURES_SKILL)));
+            skill.setId_heroes(cursor.getInt(cursor.getColumnIndex(SkillManager.KEY_ID_HEROES_SKILL)));
+            skillsList.add(skill);
+        }
+
+        return skillsList;
     }
 }

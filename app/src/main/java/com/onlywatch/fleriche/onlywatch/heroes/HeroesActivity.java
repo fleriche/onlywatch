@@ -30,7 +30,7 @@ public class HeroesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_heroes);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.tlbLyToolbar);
-        ImageView imgToolbar = (ImageView) findViewById(R.id.imgToolbar);
+        ImageView imgToolbarCollapsing = (ImageView) findViewById(R.id.imgToolbarCollapsing);
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbar);
@@ -40,7 +40,7 @@ public class HeroesActivity extends AppCompatActivity {
         Heroes heroes;
 
         heroesManager.open();
-        heroes = heroesManager.getHeroe(heroesId);
+        heroes = heroesManager.getHero(heroesId);
 
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null){
@@ -53,8 +53,8 @@ public class HeroesActivity extends AppCompatActivity {
         if(collapsingToolbar != null)
             collapsingToolbar.setTitleEnabled(false);
 
-        if(imgToolbar != null)
-            imgToolbar.setImageResource(R.drawable.dva);
+        if(imgToolbarCollapsing != null)
+            imgToolbarCollapsing.setImageResource(R.drawable.dva);
 
         heroesManager.close();
 
