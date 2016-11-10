@@ -1,5 +1,6 @@
 package com.onlywatch.fleriche.onlywatch.heroes;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -13,7 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import com.onlywatch.fleriche.onlywatch.HeroesGeneralityFragment;
+
 import com.onlywatch.fleriche.onlywatch.Entity.Heroes;
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
@@ -54,7 +55,7 @@ public class HeroesActivity extends AppCompatActivity {
             collapsingToolbar.setTitleEnabled(false);
 
         if(imgToolbarCollapsing != null)
-            imgToolbarCollapsing.setImageResource(R.drawable.dva);
+            imgToolbarCollapsing.setImageResource(getDrawableIdentifier(getApplicationContext(), heroes.getCanonical_name()));
 
         heroesManager.close();
 
@@ -67,8 +68,8 @@ public class HeroesActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         TabLayoutAdapter tabLayoutAdapter = new TabLayoutAdapter(getSupportFragmentManager());
-        tabLayoutAdapter.addTab(HeroesGeneralityFragment.newInstance(heroesId), "Généralités");
-        tabLayoutAdapter.addTab(HeroesGeneralityFragment.newInstance(heroesId), "Histoire");
+        tabLayoutAdapter.addTab(HeroGeneralityFragment.newInstance(heroesId), "Généralités");
+        tabLayoutAdapter.addTab(HeroHistoryFragment.newInstance(heroesId), "Histoire");
         viewPager.setAdapter(tabLayoutAdapter);
     }
 
@@ -83,6 +84,10 @@ public class HeroesActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home)
             finish();
         return super.onOptionsItemSelected(item);
+    }
+
+    private static int getDrawableIdentifier(Context context, String name) {
+        return context.getResources().getIdentifier(name, "drawable", context.getPackageName());
     }
 
     private static class TabLayoutAdapter extends FragmentPagerAdapter {

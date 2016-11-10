@@ -1,9 +1,8 @@
-package com.onlywatch.fleriche.onlywatch;
+package com.onlywatch.fleriche.onlywatch.heroes;
 
 
 import android.app.Fragment;
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
@@ -17,6 +16,7 @@ import android.widget.ViewFlipper;
 
 import com.onlywatch.fleriche.onlywatch.Entity.Heroes;
 import com.onlywatch.fleriche.onlywatch.Entity.Skill;
+import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
 
 import java.util.ArrayList;
@@ -25,14 +25,14 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HeroesGeneralityFragment extends android.support.v4.app.Fragment {
+public class HeroGeneralityFragment extends android.support.v4.app.Fragment {
     private static final int EASY = 1;
     private static final int MEDIUM = 2;
 
-    public HeroesGeneralityFragment() {}
+    public HeroGeneralityFragment() {}
 
-    public static HeroesGeneralityFragment newInstance(int heroesid) {
-        HeroesGeneralityFragment fragment = new HeroesGeneralityFragment();
+    public static HeroGeneralityFragment newInstance(int heroesid) {
+        HeroGeneralityFragment fragment = new HeroGeneralityFragment();
         Bundle args = new Bundle();
         args.putInt("heroesId", heroesid);
         fragment.setArguments(args);
@@ -42,7 +42,7 @@ public class HeroesGeneralityFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_blank, container, false);
+        View view = inflater.inflate(R.layout.fragment_generality_hero, container, false);
 
         TextView tvRole = (TextView) view.findViewById(R.id.role);
         ViewFlipper viewFlipperDifficulty2 = (ViewFlipper) view.findViewById(R.id.viewFlipperDifficulty2);

@@ -15,6 +15,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.onlywatch.fleriche.onlywatch.Entity.Heroes;
@@ -22,6 +24,7 @@ import com.onlywatch.fleriche.onlywatch.HomeActivity;
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,10 +62,21 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        MenuItem searchItem = menu.findItem(R.id.tlbSearch);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        searchItem.setVisible(true);
-        searchView.setOnQueryTextListener(this);
+        try {
+            MenuItem searchItem = menu.findItem(R.id.tlbSearch);
+            SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+
+            // Customiser le curseur
+            AutoCompleteTextView searchTextView = (AutoCompleteTextView) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+            Field cursorDrawableRes = TextView.class.getDeclaredField("mCursorDrawableRes");
+            cursorDrawableRes.setAccessible(true);
+            cursorDrawableRes.set(searchTextView, R.drawable.cursor);
+
+            searchItem.setVisible(true);
+            searchView.setOnQueryTextListener(this);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     @Override

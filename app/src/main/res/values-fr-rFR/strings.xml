@@ -31,6 +31,12 @@
     <string name="strRole">Rôle</string>
     <string name="strDifficulty">Difficulté</string>
     <string name="strSkills">Capacités</string>
+    <string name="strBiography">Biographie</string>
+
+    <string name="strRealName">Identité : &#160;</string>
+    <string name="strOccupation">Profession : &#160;</string>
+    <string name="strBaseOperation">Base d\'opération : &#160;</string>
+    <string name="strAffiliation">Affiliation : &#160;</string>
 
     <string name="offense">Attaque</string>
     <string name="defense">Defense</string>
@@ -61,18 +67,4 @@
     <string name="ange_summary">L’armure Valkyrie d’Ange lui permet de veiller sur ses coéquipiers tel un ange gardien. Grâce aux rayons de son Caducée, elle peut les soigner, les ressusciter ou les renforcer.</string>
     <string name="symmetra_summary">Symmetra utilise son projecteur de rayons pour éliminer ses adversaires, protéger ses alliés, placer des téléporteurs et déployer des tourelles sentinelles à particules.</string>
     <string name="zenyatta_summary">Zenyatta invoque des orbes d’harmonie et de discorde pour soigner ses coéquipiers et affaiblir ses ennemis, tout en maintenant un état de transcendance qui le rend insensible aux dégâts.</string>
-
-    <!-- Skills -->
-    <string name="dva_skills_1">Fusio-canons</string>
-    <string name="dva_skills_2">Pistolaser</string>
-    <string name="dva_skills_3">Turboréacteurs</string>
-    <string name="dva_skills_4">Matrice défensive</string>
-    <string name="dva_skills_5">Autodestruction</string>
-    <string name="dva_skills_6">Appel du méca</string>
-    <string name="dva_skills_summary_1">Le méca de D.VA est équipé de canons rotatifs jumelés à courte portée. Activés, ils infligent d’importants dégâts continus sans avoir besoin d’être rechargés, mais ils ralentissent les déplacements de D.Va.</string>
-    <string name="dva_skills_summary_2">Lorsqu’elle est hors de son méca, D.Va peut continuer le combat avec une arme automatique à moyenne portée.</string>
-    <string name="dva_skills_summary_3">Le méca se projette dans les airs et D.Va est propulsée en avant par l’inertie. Elle peut tourner et changer de direction ou foncer sur ses ennemis, les projetant en arrière.</string>
-    <string name="dva_skills_summary_4">D.Va peut activer son système de ciblage avant pour abattre en l’air les projectiles qui se dirigent vers elle.</string>
-    <string name="dva_skills_summary_5">D.Va s’éjecte de son méca et fait sauter son réacteur. L’explosion inflige des dégâts considérables aux adversaires proches.</string>
-    <string name="dva_skills_summary_6">Si son armure de combat blindée est détruite, D.Va peut appeler un nouveau méca et reprendre le combat</string>
 </resources>

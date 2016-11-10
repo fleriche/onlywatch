@@ -2,8 +2,8 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <gradient
-        android:startColor="@color/greyOverwatch"
-        android:centerColor="#FF8C00"
-        android:endColor="@color/greyOverwatch"
+        android:startColor="@color/blueOverwatch"
+        android:centerColor="@color/colorAccent"
+        android:endColor="@color/blueOverwatch"
         android:angle="90" />
 </shape>

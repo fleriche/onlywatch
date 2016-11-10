@@ -42,6 +42,7 @@ class HeroesRecyclerAdapter extends RecyclerView.Adapter<HeroesRecyclerAdapter.H
                 mContext.startActivity(intent);
             }
         });
+        heroesViewHolder.mImageView.setImageResource(mContext.getResources().getIdentifier(heroes.getCanonical_name(), "drawable", mContext.getPackageName()));
     }
 
     @Override

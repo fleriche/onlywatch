@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.onlywatch.fleriche.onlywatch.R;
@@ -63,18 +64,11 @@ public class DrawerAdapter extends BaseAdapter {
         if(type == ITEM_VIEW_TYPE_DRAWER) {
             ImageView imgIcon = (ImageView) convertView.findViewById(R.id.drwIcon);
             TextView txtTitle = (TextView) convertView.findViewById(R.id.drwTitle);
-            TextView txtCount = (TextView) convertView.findViewById(R.id.drwCounter);
 
             NavigationDrawer navigationDrawer = (NavigationDrawer) mNavigationDrawers.get(position);
 
             imgIcon.setImageResource(navigationDrawer.getIcon());
             txtTitle.setText(navigationDrawer.getTitle());
-
-            if(navigationDrawer.getCounterVisibility()){
-                txtCount.setText(navigationDrawer.getCount());
-            }else{
-                txtCount.setVisibility(View.GONE);
-            }
         }
 
         return convertView;
