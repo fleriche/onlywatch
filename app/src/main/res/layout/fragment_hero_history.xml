@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="20"
+        android:paddingTop="10dp"
         android:background="@color/blueTransparentOverwatch"
         android:orientation="vertical">
 
@@ -23,19 +24,27 @@
                 android:layout_height="wrap_content"
                 android:text="@string/strBiography"
                 android:textColor="@color/lightblueOverwatch"
-                android:textSize="25sp" />
+                android:textSize="25sp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_profile"
+                    android:gravity="top"
+                    android:layout_marginRight="5dp"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/strRealName"
                     android:textColor="@color/white"
-                    android:textSize="17sp" />
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/strRealName"
@@ -51,12 +60,20 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_occupation"
+                    android:gravity="top"
+                    android:layout_marginRight="5dp"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/strOccupation"
                     android:textColor="@color/white"
-                    android:textSize="17sp" />
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/strOccupation"
@@ -72,12 +89,20 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top"
+                    android:src="@drawable/ic_language"
+                    android:layout_marginRight="5dp"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/strBaseOperation"
                     android:textColor="@color/white"
-                    android:textSize="17sp" />
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/strBaseOperation"
@@ -93,12 +118,20 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_affiliation"
+                    android:gravity="top"
+                    android:layout_marginRight="5dp"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/strAffiliation"
                     android:textColor="@color/white"
-                    android:textSize="17sp" />
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/strAffiliation"
@@ -109,15 +142,26 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/quote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/lightblueOverwatch"
-                android:textSize="25sp"
-                android:textStyle="italic"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/greyOverwatch"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"/>
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/quote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/lightblueOverwatch"
+            android:textSize="25sp"
+            android:textStyle="italic"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center"/>
 
         <WebView
             android:id="@+id/webViewHistory"

@@ -43,10 +43,9 @@ public class HeroHistoryFragment extends Fragment {
         HeroesManager hm = new HeroesManager(getActivity());
         Heroes hero;
 
-        webViewHistory.loadUrl("file:///android_asset/dva.html");
-
         hm.open();
         hero = hm.getHero(heroesId);
+        webViewHistory.loadUrl("file:///android_asset/"+hero.getCanonical_name()+".html");
         tvRealName.setText(hero.getReal_name());
         tvOccupation.setText(hero.getOccupation());
         tvBaseOperation.setText(hero.getBase_of_operation());
