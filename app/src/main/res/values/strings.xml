@@ -9,7 +9,7 @@
     <string-array name="strArrDrawerList">
         <item>Game</item>
         <item>Heroes</item>
-        <item>Sounds</item>
+        <item>Maps</item>
         <item>Medias</item>
         <item>Profile</item>
         <item>Favorites</item>
@@ -20,7 +20,7 @@
     <array name="arrDrawerListIcon">
         <item>@drawable/ic_game</item>
         <item>@drawable/ic_heroes</item>
-        <item>@drawable/ic_sound</item>
+        <item>@drawable/ic_map</item>
         <item>@drawable/ic_medias</item>
         <item>@drawable/ic_profile</item>
         <item>@drawable/ic_favorite</item>
@@ -33,12 +33,43 @@
     <string name="title_activity_heroes">HeroesActivity</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="strRole">Role</string>
-    <string name="strDifficulty">Difficulty</string>
-    <string name="strSkills">Skills</string>
+    <string name="strRole">Rôle</string>
+    <string name="strDifficulty">Difficulté</string>
+    <string name="strSkills">Capacités</string>
+    <string name="strBiography">Biographie</string>
 
-    <string name="offense">Offense</string>
+    <string name="strRealName">Identité : &#160;</string>
+    <string name="strOccupation">Profession : &#160;</string>
+    <string name="strBaseOperation">Base d\'opération : &#160;</string>
+    <string name="strAffiliation">Affiliation : &#160;</string>
+
+    <string name="offense">Attaque</string>
     <string name="defense">Defense</string>
     <string name="tank">Tank</string>
     <string name="support">Support</string>
+
+    <!-- Summary -->
+    <string name="genji_summary">Genji lance des shurikens précis et mortels sur ses cibles, et utilise son katana à la pointe de la technologie pour dévier les projectiles ou exécuter une Frappe du vent qui blesse sérieusement ses ennemis.</string>
+    <string name="mccree_summary">Armé de son Pacificateur, McCree abat ses cibles avec une précision redoutable et se met à couvert plus vite que son ombre.</string>
+    <string name="pharah_summary">Fendant les airs dans son armure de combat et armée d’un lance-roquettes tirant des projectiles incapacitants ou dévastateurs, Pharah jouera assurément un rôle crucial dans chaque bataille.</string>
+    <string name="faucheur_summary">Avec Pompes funèbres, sa capacité spectrale lui permettant d’éviter tout dégât et son pouvoir à se déplacer dans les ombres, Faucheur est l’un des êtres les plus redoutables de la planète.</string>
+    <string name="soldat76_summary">Équipé d’armes ultra avancées, dont un fusil à impulsions expérimental également capable de tirer plusieurs roquettes LX à la fois, soldat : 76 est un guerrier rapide et expérimenté qui sait soutenir ses alliés.</string>
+    <string name="sombra_summary">Ses talents de camouflage et ses attaques affaiblissantes font de Sombra une experte en infiltration. En piratant ses ennemis pour les déstabiliser, elle en fait des cibles faciles à éliminer tandis que son IEM peut conférer un avantage de poids contre des groupes entiers d’adversaires. Les capacités de transduction et de camouflage de Sombra en font une cible quasi insaisissable.</string>
+    <string name="tracer_summary">Armées de deux pulseurs, de bombes à retardement énergétiques et d’une langue bien pendue, Tracer est capable de passer immédiatement d’un endroit à un autre et de remonter dans le temps pour mieux combattre les injustices à travers le monde.</string>
+    <string name="bastion_summary">Avec son protocole de réparation et sa capacité à alterner entre configuration d’assaut stationnaire, de reconnaissance ou de tank, les chances de victoire de Bastion sont très élevées.</string>
+    <string name="hanzo_summary">Les flèches polyvalentes de Hanzo peuvent révéler ses ennemis, ou se fragmenter pour toucher plusieurs cibles. Il peut également grimper aux murs pour tirer depuis une position élevée, et invoquer un gigantesque esprit dragon.</string>
+    <string name="chacal_summary">Chacal a tout ce qu’il faut dans son arsenal pour interdire l’accès d’une zone à ses adversaires : un lance-grenades qui tire des projectiles rebondissants, des mines incapacitantes qui envoient valser ses ennemis et des pièges d’acier pour les immobiliser.</string>
+    <string name="mei_summary">Mei manipule le climat pour ralentir ses ennemis et protéger les endroits importants. Son canon endothermique projette de redoutables pointes de glace ou libère un flux de givre, et elle peut entrer en cryostase pour survivre aux contre-attaques, ou bloquer le chemin de l’équipe adverse avec un mur de glace.</string>
+    <string name="torbjorn_summary">L’incroyable arsenal de Torbjörn comprend un pistolet à rivets et un marteau, ainsi qu’une forge personnelle servant à construire ou améliorer des tourelles et à distribuer des modules d’armure.</string>
+    <string name="fatale_summary">Fatale emploie tous les moyens à sa disposition pour éliminer ses cibles : des mines qui diffusent un gaz toxique, une visière qui confère une vision infrarouge à son équipe et un puissant fusil à lunette qui peut tirer en mode automatique.</string>
+    <string name="dva_summary">Le méca de D.Va est aussi agile que puissant : ses fusio-canons jumelés tirent en continu à courte portée, et elle peut activer ses turboréacteurs pour bondir par-dessus ennemis et obstacles, ou abattre les projectiles en plein air avec sa matrice défensive.</string>
+    <string name="reinhardt_summary">Protégé par une armure motorisée, armé d’un marteau et propulsé par un réacteur, Reinhardt charge ses ennemis et défend ses alliés à l’aide d’une large écran énergétique.</string>
+    <string name="chopper_summary">Avec son emblématique traquelard, Chopper attrape et attire ses ennemis avant de les réduire en miettes d’un coup de déferrailleur. Il est assez robuste pour survivre à de lourds dégâts, et peut récupérer ses points de vie grâce à son inhalateur.</string>
+    <string name="winston_summary">Winston manie d’impressionnantes inventions (des propulseurs, un canon Tesla dévastateur et un générateur d’écran portable, entre autres) avec une force littéralement surhumaine.</string>
+    <string name="zarya_summary">Avec ses robustes écrans convertissant les dégâts subis en énergie pour son énorme canon à particules, Zarya représente un atout de choix pour tenir les premières lignes du champ de bataille.</string>
+    <string name="ana_summary">L’arsenal polyvalent d’Ana lui permet de soigner et de renforcer ses alliés à distance, tandis que son fusil biotique, ses fléchettes tranquillisantes et ses grenades biotiques neutralisent quiconque menace ses camarades.</string>
+    <string name="lucio_summary">Sur le champ de bataille, l’ampli high-tech de Lúcio envoie des projectiles soniques sur ses ennemis et les repousse avec des ondes de choc. Ses chansons soignent ses alliés ou augmentent leur vitesse de déplacement, et il peut changer de morceau à la volée.</string>
+    <string name="ange_summary">L’armure Valkyrie d’Ange lui permet de veiller sur ses coéquipiers tel un ange gardien. Grâce aux rayons de son Caducée, elle peut les soigner, les ressusciter ou les renforcer.</string>
+    <string name="symmetra_summary">Symmetra utilise son projecteur de rayons pour éliminer ses adversaires, protéger ses alliés, placer des téléporteurs et déployer des tourelles sentinelles à particules.</string>
+    <string name="zenyatta_summary">Zenyatta invoque des orbes d’harmonie et de discorde pour soigner ses coéquipiers et affaiblir ses ennemis, tout en maintenant un état de transcendance qui le rend insensible aux dégâts.</string>
 </resources>

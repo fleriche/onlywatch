@@ -42,12 +42,14 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        /*Déclarations*/
         Toolbar toolbar = (Toolbar)findViewById(R.id.tlbLyToolbar);
         String[] drwMenuTitles = getResources().getStringArray(R.array.strArrDrawerList);
         TypedArray drwMenuIcons = getResources().obtainTypedArray(R.array.arrDrawerListIcon);
         ArrayList<Object> drwDrawerItems = new ArrayList<>();
         View header = getLayoutInflater().inflate(R.layout.drawer_header, null);
         DrawerAdapter drwDrawerAdapter;
+        GameFragment fragment = new GameFragment();
 
         setSupportActionBar(toolbar);
 
@@ -70,6 +72,13 @@ public class HomeActivity extends AppCompatActivity {
         mDrwDrawerToggle = new ActionBarDrawerToggle(this, mDrwDrawerLayout, toolbar, R.string.strOpenDrawer , R.string.strCloseDrawer);
         mDrwDrawerLayout.addDrawerListener(mDrwDrawerToggle);
         mDrwDrawerToggle.syncState();
+
+        /*On charge le fragment game en premier pour l'accueil*/
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -102,12 +111,14 @@ public class HomeActivity extends AppCompatActivity {
 
         private void selectItem(int position) {
             HeroesListFragment fragment = null;
+            GameFragment gameFragment = null;
 
             switch (position) {
                 case MENU_GAME:
-                    Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
+                    /*Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+                    startActivity(intent);*/
+                    gameFragment = new GameFragment();
                     break;
                 case MENU_HEROES:
                     fragment = new HeroesListFragment();
@@ -139,6 +150,14 @@ public class HomeActivity extends AppCompatActivity {
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frame, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+
+            if (gameFragment != null) {
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frame, gameFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }

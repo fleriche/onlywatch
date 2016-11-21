@@ -9,7 +9,7 @@
     <string-array name="strArrDrawerList">
         <item>Jeu</item>
         <item>Héros</item>
-        <item>Sons</item>
+        <item>Cartes</item>
         <item>Médias</item>
         <item>Profil</item>
         <item>Favoris</item>
@@ -20,7 +20,7 @@
     <array name="arrDrawerListIcon">
         <item>@drawable/ic_game</item>
         <item>@drawable/ic_heroes</item>
-        <item>@drawable/ic_sound</item>
+        <item>@drawable/ic_map</item>
         <item>@drawable/ic_medias</item>
         <item>@drawable/ic_profile</item>
         <item>@drawable/ic_favorite</item>
