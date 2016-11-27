@@ -29,7 +29,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/strRole"
-                    android:textColor="@color/lightblueOverwatch"
+                    android:textColor="@color/colorAccent"
                     android:textSize="25sp"/>
 
                 <TextView
@@ -54,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/strDifficulty"
-                    android:textColor="@color/lightblueOverwatch"
+                    android:textColor="@color/colorAccent"
                     android:textSize="25sp"/>
 
                 <LinearLayout
@@ -135,7 +135,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@color/lightblueOverwatch"
+                    android:background="@color/colorAccent"
                     android:layout_marginRight="10dp"/>
 
                 <TextView
@@ -162,17 +162,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/strSkills"
-            android:textColor="@color/lightblueOverwatch"
+            android:textColor="@color/colorAccent"
             android:layout_marginLeft="25dp"
             android:textSize="25sp"/>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/skillsLayout"
-            android:orientation="vertical">
+            android:id="@+id/skillsRelativeLayout">
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
 

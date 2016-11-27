@@ -5,12 +5,14 @@ import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -44,21 +46,23 @@ public class HeroGeneralityFragment extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_generality_hero, container, false);
 
+        // Déclaration
         TextView tvRole = (TextView) view.findViewById(R.id.role);
         ViewFlipper viewFlipperDifficulty2 = (ViewFlipper) view.findViewById(R.id.viewFlipperDifficulty2);
         ViewFlipper viewFlipperDifficulty3 = (ViewFlipper) view.findViewById(R.id.viewFlipperDifficulty3);
         TextView tvHeroSummary = (TextView) view.findViewById(R.id.heroSummary);
-        LinearLayout skillsLayout = (LinearLayout) view.findViewById(R.id.skillsLayout);
+        RelativeLayout skillsLayout = (RelativeLayout) view.findViewById(R.id.skillsRelativeLayout);
         int heroesId = getArguments().getInt("heroesId");
         HeroesManager hm = new HeroesManager(getActivity());
         Heroes hero;
         int skillsCounter = 0;
 
         hm.open();
-        hero = hm.getHero(heroesId);
+        hero = hm.getHero(heroesId); // on récup le héro souhaité
         tvRole.setText(hero.getRole().toUpperCase());
         tvHeroSummary.setText(getStringIdentifier(getActivity(), hero.getCanonical_name()+"_summary"));
 
+        // Affichage du nombre d'étoile en fonction de la difficulté
         switch (hero.getDifficulty()) {
             case EASY:
                 viewFlipperDifficulty2.showNext();
@@ -71,11 +75,30 @@ public class HeroGeneralityFragment extends android.support.v4.app.Fragment {
                 break;
         }
 
-        ArrayList<Skill> skillsList = hm.getHeroSkills(hero.getId());
+        ArrayList<Skill> skillsList = hm.getHeroSkills(hero.getId()); // Liste des skills du héro
         hm.close();
 
         for (Skill skill : skillsList) {
             skillsCounter++;
+
+            // Params
+            RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            if(skillsCounter != 0) {
+                rlp.addRule(RelativeLayout.BELOW, skillsCounter - 1);
+            }
+
+            // Linear parent
+            LinearLayout parentLayout = new LinearLayout(getActivity());
+            parentLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            parentLayout.setOrientation(LinearLayout.HORIZONTAL);
+            parentLayout.setId(skillsCounter);
+
+            // Linear qui prendra toutes les infos du skill
+            LinearLayout skillLayout = new LinearLayout(getActivity());
+            skillLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            skillLayout.setOrientation(LinearLayout.VERTICAL);
+
+            // Nom du skill
             TextView tvSkill = new TextView(getActivity());
             tvSkill.setText(skill.getNom());
             tvSkill.setTextSize(30);
@@ -85,19 +108,31 @@ public class HeroGeneralityFragment extends android.support.v4.app.Fragment {
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT);
             tvSkill.setLayoutParams(skillsLayoutParams);
-            skillsLayout.addView(tvSkill);
+            skillLayout.addView(tvSkill);
 
+            // Image du skill
             ImageView ivSkill = new ImageView(getActivity());
             ivSkill.setImageResource(getDrawableIdentifier(getActivity(), hero.getCanonical_name()+"_skill_"+skillsCounter));
-            skillsLayout.addView(ivSkill);
+            skillLayout.addView(ivSkill);
 
-            TextView tvSkillSummary = new TextView(getActivity());
-            tvSkillSummary.setText(skill.getDescription());
-            tvSkillSummary.setTextSize(15);
-            tvSkillSummary.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-            tvSkillSummary.setGravity(Gravity.CENTER_HORIZONTAL);
-            tvSkillSummary.setLayoutParams(skillsLayoutParams);
-            skillsLayout.addView(tvSkillSummary);
+            // Résumé du skill
+            TextView tvSummarySkill = new TextView(getActivity());
+            tvSummarySkill.setText(skill.getDescription());
+            tvSummarySkill.setTextSize(15);
+            tvSummarySkill.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+            tvSummarySkill.setGravity(Gravity.CENTER_HORIZONTAL);
+            tvSummarySkill.setLayoutParams(skillsLayoutParams);
+            skillLayout.addView(tvSummarySkill);
+
+            // Barre orange sur le côté
+            View viewSkill = new View(getActivity());
+            viewSkill.setLayoutParams(new ViewGroup.LayoutParams(5, ViewGroup.LayoutParams.MATCH_PARENT));
+            viewSkill.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorAccent));
+
+            parentLayout.setLayoutParams(rlp);
+            parentLayout.addView(viewSkill);
+            parentLayout.addView(skillLayout);
+            skillsLayout.addView(parentLayout);
         }
         return view;
     }
