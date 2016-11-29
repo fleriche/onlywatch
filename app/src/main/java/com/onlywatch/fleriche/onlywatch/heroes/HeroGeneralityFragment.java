@@ -5,7 +5,6 @@ import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +29,7 @@ import java.util.ArrayList;
 public class HeroGeneralityFragment extends android.support.v4.app.Fragment {
     private static final int EASY = 1;
     private static final int MEDIUM = 2;
+    private LinearLayout skillsLayout;
 
     public HeroGeneralityFragment() {}
 
@@ -51,11 +51,9 @@ public class HeroGeneralityFragment extends android.support.v4.app.Fragment {
         ViewFlipper viewFlipperDifficulty2 = (ViewFlipper) view.findViewById(R.id.viewFlipperDifficulty2);
         ViewFlipper viewFlipperDifficulty3 = (ViewFlipper) view.findViewById(R.id.viewFlipperDifficulty3);
         TextView tvHeroSummary = (TextView) view.findViewById(R.id.heroSummary);
-        RelativeLayout skillsLayout = (RelativeLayout) view.findViewById(R.id.skillsRelativeLayout);
         int heroesId = getArguments().getInt("heroesId");
         HeroesManager hm = new HeroesManager(getActivity());
         Heroes hero;
-        int skillsCounter = 0;
 
         hm.open();
         hero = hm.getHero(heroesId); // on récup le héro souhaité
@@ -75,28 +73,25 @@ public class HeroGeneralityFragment extends android.support.v4.app.Fragment {
                 break;
         }
 
-        ArrayList<Skill> skillsList = hm.getHeroSkills(hero.getId()); // Liste des skills du héro
+        skillsLayout = (LinearLayout) view.findViewById(R.id.skillsRelativeLayout);
+        buildSkills(hm.getHeroSkills(hero.getId()), hero);
+
         hm.close();
 
+        return view;
+    }
+
+    private void buildSkills(ArrayList<Skill> skillsList, Heroes hero) {
+        int skillsCounter = 0;
         for (Skill skill : skillsList) {
             skillsCounter++;
 
-            // Params
-            RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            if(skillsCounter != 0) {
-                rlp.addRule(RelativeLayout.BELOW, skillsCounter - 1);
-            }
-
-            // Linear parent
+            // Linear parent Barre + Summary
             LinearLayout parentLayout = new LinearLayout(getActivity());
-            parentLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            LinearLayout.LayoutParams parentParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            parentParams.setMargins(0, 0, 0, dpsToPixels(10));
+            parentLayout.setLayoutParams(parentParams);
             parentLayout.setOrientation(LinearLayout.HORIZONTAL);
-            parentLayout.setId(skillsCounter);
-
-            // Linear qui prendra toutes les infos du skill
-            LinearLayout skillLayout = new LinearLayout(getActivity());
-            skillLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            skillLayout.setOrientation(LinearLayout.VERTICAL);
 
             // Nom du skill
             TextView tvSkill = new TextView(getActivity());
@@ -107,34 +102,39 @@ public class HeroGeneralityFragment extends android.support.v4.app.Fragment {
             LinearLayout.LayoutParams skillsLayoutParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT);
+            skillsLayoutParams.setMargins(0, 0, 0, dpsToPixels(10));
             tvSkill.setLayoutParams(skillsLayoutParams);
-            skillLayout.addView(tvSkill);
 
             // Image du skill
             ImageView ivSkill = new ImageView(getActivity());
+            LinearLayout.LayoutParams ivSkillLayout = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            ivSkillLayout.setMargins(0, 0, 0, dpsToPixels(10));
+            ivSkillLayout.gravity = Gravity.CENTER;
+            ivSkill.setLayoutParams(ivSkillLayout);
             ivSkill.setImageResource(getDrawableIdentifier(getActivity(), hero.getCanonical_name()+"_skill_"+skillsCounter));
-            skillLayout.addView(ivSkill);
 
             // Résumé du skill
             TextView tvSummarySkill = new TextView(getActivity());
             tvSummarySkill.setText(skill.getDescription());
             tvSummarySkill.setTextSize(15);
             tvSummarySkill.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-            tvSummarySkill.setGravity(Gravity.CENTER_HORIZONTAL);
+            tvSummarySkill.setGravity(Gravity.LEFT);
             tvSummarySkill.setLayoutParams(skillsLayoutParams);
-            skillLayout.addView(tvSummarySkill);
 
             // Barre orange sur le côté
             View viewSkill = new View(getActivity());
-            viewSkill.setLayoutParams(new ViewGroup.LayoutParams(5, ViewGroup.LayoutParams.MATCH_PARENT));
+            LinearLayout.LayoutParams viewSkillParams = new LinearLayout.LayoutParams(dpsToPixels(5), ViewGroup.LayoutParams.MATCH_PARENT);
+            viewSkillParams.setMargins(0, 0, dpsToPixels(10), 0);
+            viewSkill.setLayoutParams(viewSkillParams);
             viewSkill.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorAccent));
 
-            parentLayout.setLayoutParams(rlp);
+            //parentLayout.setLayoutParams(rlp);
             parentLayout.addView(viewSkill);
-            parentLayout.addView(skillLayout);
+            parentLayout.addView(tvSummarySkill);
+            skillsLayout.addView(tvSkill);
+            skillsLayout.addView(ivSkill);
             skillsLayout.addView(parentLayout);
         }
-        return view;
     }
 
     private static int getStringIdentifier(Context context, String name) {
@@ -143,6 +143,11 @@ public class HeroGeneralityFragment extends android.support.v4.app.Fragment {
 
     private static int getDrawableIdentifier(Context context, String name) {
         return context.getResources().getIdentifier(name, "drawable", context.getPackageName());
+    }
+
+    private int dpsToPixels(int dps) {
+        final float SCALE = getContext().getResources().getDisplayMetrics().density;
+        return (int)(dps * SCALE + 0.5f);
     }
 }
 

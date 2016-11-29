@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/strBiography"
-                android:textColor="@color/lightblueOverwatch"
+                android:textColor="@color/colorAccent"
                 android:textSize="25sp"/>
 
             <LinearLayout
@@ -156,7 +156,7 @@
             android:id="@+id/quote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/lightblueOverwatch"
+            android:textColor="@color/colorAccent"
             android:textSize="25sp"
             android:textStyle="italic"
             android:layout_marginRight="20dp"
@@ -166,7 +166,7 @@
         <WebView
             android:id="@+id/webViewHistory"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></WebView>
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
