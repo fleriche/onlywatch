@@ -1,4 +1,4 @@
-package com.onlywatch.fleriche.onlywatch.Entity;
+package com.onlywatch.fleriche.onlywatch.entity;
 
 /**
  * Created by florian on 28/09/16

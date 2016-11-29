@@ -1,8 +1,6 @@
 package com.onlywatch.fleriche.onlywatch.heroes;
 
 import android.app.Fragment;
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
@@ -17,16 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.onlywatch.fleriche.onlywatch.Entity.Heroes;
-import com.onlywatch.fleriche.onlywatch.HomeActivity;
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
 
 public class HeroesListFragment extends Fragment implements SearchView.OnQueryTextListener {
     private HeroesManager mHeroesManager;

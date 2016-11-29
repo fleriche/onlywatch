@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.onlywatch.fleriche.onlywatch.Entity.Skill;
+import com.onlywatch.fleriche.onlywatch.entity.Skill;
 
 /**
  * Created by florian on 08/11/16

@@ -5,8 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.onlywatch.fleriche.onlywatch.Entity.Heroes;
-import com.onlywatch.fleriche.onlywatch.Entity.Skill;
+import com.onlywatch.fleriche.onlywatch.entity.Heroes;
+import com.onlywatch.fleriche.onlywatch.entity.Skill;
 
 import java.util.ArrayList;
 

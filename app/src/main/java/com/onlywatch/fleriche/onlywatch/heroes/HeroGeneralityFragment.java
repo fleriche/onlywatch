@@ -11,12 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
-import com.onlywatch.fleriche.onlywatch.Entity.Heroes;
-import com.onlywatch.fleriche.onlywatch.Entity.Skill;
+import com.onlywatch.fleriche.onlywatch.entity.Heroes;
+import com.onlywatch.fleriche.onlywatch.entity.Skill;
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
 
