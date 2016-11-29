@@ -2,25 +2,22 @@ package com.onlywatch.fleriche.onlywatch;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.content.res.TypedArray;
-import android.graphics.drawable.TransitionDrawable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 import com.onlywatch.fleriche.onlywatch.drawer.DrawerAdapter;
 import com.onlywatch.fleriche.onlywatch.drawer.NavigationDrawer;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroesListFragment;
+import com.onlywatch.fleriche.onlywatch.maps.MapsListFragment;
 
 import java.util.ArrayList;
 
@@ -30,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
     private ListView mDrwDrawerList;
     private static final int MENU_GAME = 1;
     private static final int MENU_HEROES = 2;
-    private static final int MENU_SOUND = 3;
+    private static final int MENU_MAPS = 3;
     private static final int MENU_MEDIAS = 4;
     private static final int MENU_PROFILE = 6;
     private static final int MENU_FAVORITES = 7;
@@ -111,20 +108,18 @@ public class HomeActivity extends AppCompatActivity {
 
         private void selectItem(int position) {
             HeroesListFragment fragment = null;
+            MapsListFragment mapFragment = null;
             GameFragment gameFragment = null;
 
             switch (position) {
                 case MENU_GAME:
-                    /*Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);*/
                     gameFragment = new GameFragment();
                     break;
                 case MENU_HEROES:
                     fragment = new HeroesListFragment();
                     break;
-                case MENU_SOUND:
-                    Toast.makeText(getApplicationContext(), "Sons", Toast.LENGTH_SHORT).show();
+                case MENU_MAPS:
+                    mapFragment = new MapsListFragment();
                     break;
                 case MENU_MEDIAS:
                     Toast.makeText(getApplicationContext(), "Medias", Toast.LENGTH_SHORT).show();
@@ -146,21 +141,20 @@ public class HomeActivity extends AppCompatActivity {
                     break;
             }
 
-            if (fragment != null) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frame, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-            if (gameFragment != null) {
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            if (fragment != null)
+                fragmentTransaction.replace(R.id.frame, fragment);
+
+            if (gameFragment != null)
                 fragmentTransaction.replace(R.id.frame, gameFragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
+
+            if (mapFragment != null)
+                fragmentTransaction.replace(R.id.frame, mapFragment);
+
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
 
             mDrwDrawerList.setItemChecked(position, true);
             mDrwDrawerLayout.closeDrawer(mDrwDrawerList);

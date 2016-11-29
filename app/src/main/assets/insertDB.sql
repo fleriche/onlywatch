@@ -156,3 +156,16 @@ INSERT INTO skill (name, description, features, id_heroes) VALUES ('Orbe d''harm
 INSERT INTO skill (name, description, features, id_heroes) VALUES ('Orbe de discorde', 'Lancer un orbe de discorde sur un ennemi amplifie la quantité de dégâts que celui-ci reçoit tant que Zenyatta est en vie. Ne peut être utilisé que sur un adversaire à la fois.', '', 23);
 INSERT INTO skill (name, description, features, id_heroes) VALUES ('Transcendance', 'Zenyatta parvient à accéder à un stade d’existence supérieur pendant un court moment. Tant qu’il se transcende, Zenyatta ne peut pas utiliser ses capacités ou ses armes, mais il est immunisé aux dégâts et restaure automatiquement ses points de vie et ceux des alliés proches.', '', 23);
 
+--Maps
+INSERT INTO map (name, canonical_name, location, summary) VALUES ('Dorado', 'dorado', 'lol', 'lel');
+INSERT INTO map (name, canonical_name, location, summary) VALUES ('Gilbraltar', 'gilbraltar', 'lol', 'lel');
+INSERT INTO map (name, canonical_name, location, summary) VALUES ('Hollywood', 'hollywood', 'lol', 'lel');
+INSERT INTO map (name, canonical_name, location, summary) VALUES ('King''s Row', 'kingsrow', 'lol', 'lel');
+INSERT INTO map (name, canonical_name, location, summary) VALUES ('Numbani', 'numbani', 'lol', 'lel');
+INSERT INTO map (name, canonical_name, location, summary) VALUES ('Route 66', 'route66', 'lol', 'lel');
+INSERT INTO map (name, canonical_name, location, summary) VALUES ('Hanamura', 'hanamura', 'lol', 'lel');
+INSERT INTO map (name, canonical_name, location, summary) VALUES ('Temple d''Anubis', 'templedanubis', 'lol', 'lel');
+INSERT INTO map (name, canonical_name, location, summary) VALUES ('Usine Volskaya', 'usinevolskaya', 'lol', 'lel');
+INSERT INTO map (name, canonical_name, location, summary) VALUES ('Ilios', 'ilios', 'lol', 'lel');
+INSERT INTO map (name, canonical_name, location, summary) VALUES ('Népal', 'nepal', 'lol', 'lel');
+INSERT INTO map (name, canonical_name, location, summary) VALUES ('Tour de Lijiang', 'tourdelijiang', 'lol', 'lel');
