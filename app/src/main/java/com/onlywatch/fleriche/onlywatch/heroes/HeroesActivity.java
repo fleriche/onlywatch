@@ -29,8 +29,9 @@ public class HeroesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_heroes);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.tlbLyToolbar);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.heroToolbar);
         ImageView imgToolbarCollapsing = (ImageView) findViewById(R.id.imgToolbarCollapsing);
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
@@ -81,8 +82,10 @@ public class HeroesActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home)
+        if (item.getItemId() == android.R.id.home) {
             finish();
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -117,5 +120,11 @@ public class HeroesActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return mTabTitles.get(position);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 }

@@ -1,8 +1,10 @@
 package com.onlywatch.fleriche.onlywatch.heroes;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 
+import com.onlywatch.fleriche.onlywatch.HeroesFilterActivity;
+import com.onlywatch.fleriche.onlywatch.HomeActivity;
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
 
@@ -32,6 +36,7 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
         mRecyclerView = (RecyclerView) view.findViewById(R.id.cardList);
         GridLayoutManager gridLayoutManager;
         mHeroesManager = new HeroesManager(getActivity());
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fabHeroesList);
 
         setHasOptionsMenu(true);
 
@@ -45,6 +50,15 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
         HeroesRecyclerAdapter hra = new HeroesRecyclerAdapter(mHeroesManager.getHeroes(), getActivity());
         mRecyclerView.setAdapter(hra);
         mHeroesManager.close();
+
+        // Floating Action Button
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), HeroesFilterActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 

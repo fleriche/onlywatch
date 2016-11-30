@@ -40,7 +40,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         /*Déclarations*/
-        Toolbar toolbar = (Toolbar)findViewById(R.id.tlbLyToolbar);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.heroToolbar);
         String[] drwMenuTitles = getResources().getStringArray(R.array.strArrDrawerList);
         TypedArray drwMenuIcons = getResources().obtainTypedArray(R.array.arrDrawerListIcon);
         ArrayList<Object> drwDrawerItems = new ArrayList<>();
