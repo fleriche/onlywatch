@@ -19,13 +19,13 @@ import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 
 import com.onlywatch.fleriche.onlywatch.HeroesFilterActivity;
-import com.onlywatch.fleriche.onlywatch.HomeActivity;
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
 
 import java.lang.reflect.Field;
 
 public class HeroesListFragment extends Fragment implements SearchView.OnQueryTextListener {
+    private static final int REQUEST_CODE_HEROES_FILTER = 1;
     private HeroesManager mHeroesManager;
     private RecyclerView mRecyclerView;
 
@@ -56,10 +56,40 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), HeroesFilterActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE_HEROES_FILTER);
             }
         });
         return view;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)  {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == REQUEST_CODE_HEROES_FILTER) {
+            if(resultCode == HeroesFilterActivity.RESULT_HEROES_FILTER_OK) {
+                int progress = data.getIntExtra(HeroesFilterActivity.DIFFICULTY_FILTER, 0);
+                int offense = data.getIntExtra(HeroesFilterActivity.OFFENSE_FILTER, 0);
+                int tank = data.getIntExtra(HeroesFilterActivity.TANK_FILTER, 0);
+                int defense = data.getIntExtra(HeroesFilterActivity.DEFENSE_FILTER, 0);
+                int support = data.getIntExtra(HeroesFilterActivity.SUPPORT_FILTER, 0);
+                HeroesManager heroesManager = new HeroesManager(getActivity());
+                heroesManager.open();
+                HeroesRecyclerAdapter hra;
+
+                if (progress == 0) {
+                    hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByRoles(offense == 1, tank == 1, defense == 1, support == 1), getActivity());
+                } else if(progress > 0 && progress < 20) {
+                    hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByDifficultyAndRoles(1, offense == 1, tank == 1, defense == 1, support == 1), getActivity());
+                } else if(progress >= 20 && progress < 40) {
+                    hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByDifficultyAndRoles(2, offense == 1, tank == 1, defense == 1, support == 1), getActivity());
+                } else {
+                    hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByDifficultyAndRoles(3, offense == 1, tank == 1, defense == 1, support == 1), getActivity());
+                }
+                mRecyclerView.setAdapter(hra);
+                heroesManager.close();
+            }
+        }
     }
 
     @Override

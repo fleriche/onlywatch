@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HeroesActivity extends AppCompatActivity {
-    public int heroesId;
+    private int heroesId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

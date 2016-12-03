@@ -60,8 +60,10 @@ public class HomeActivity extends AppCompatActivity {
         drwDrawerAdapter = new DrawerAdapter(getApplicationContext(), drwDrawerItems);
 
         mDrwDrawerList = (ListView) findViewById(R.id.drwLvDrawerList);
-        mDrwDrawerList.addHeaderView(header); //Ajout d'un Header dans le Menu Drawer
-        mDrwDrawerList.setAdapter(drwDrawerAdapter);
+        if(mDrwDrawerList != null) {
+            mDrwDrawerList.addHeaderView(header); //Ajout d'un Header dans le Menu Drawer
+            mDrwDrawerList.setAdapter(drwDrawerAdapter);
+        }
         mDrwDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         /*Toggle pour le bouton hamburger de la toolbar*/

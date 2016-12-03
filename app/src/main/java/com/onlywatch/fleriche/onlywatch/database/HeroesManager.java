@@ -180,4 +180,47 @@ public class HeroesManager {
 
         return skillsList;
     }
+
+    public ArrayList<Heroes> getHeroesByDifficulty(int difficulty) {
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE difficulty = "+difficulty+" ORDER BY name", null);
+        return getHeroes(cursor);
+    }
+
+    public ArrayList<Heroes> getHeroesByDifficultyAndRoles(int difficulty, boolean offense, boolean tank, boolean defense, boolean support) {
+        String role = "";
+        if (offense)
+            role += "role = 'offense' OR ";
+        if (tank)
+            role += "role = 'tank' OR ";
+        if (defense)
+            role += "role = 'defense' OR ";
+        if (support)
+            role += "role = 'support' OR ";
+        if(role.length() != 0) {
+            role = role.substring(0, role.length()-4);
+            role = " AND ( "+role+" )";
+        }
+
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE difficulty = "+difficulty+role+" ORDER BY name", null);
+        return getHeroes(cursor);
+    }
+
+    public ArrayList<Heroes> getHeroesByRoles(boolean offense, boolean tank, boolean defense, boolean support) {
+        String role = "";
+        if (offense)
+            role += "role = 'offense' OR ";
+        if (tank)
+            role += "role = 'tank' OR ";
+        if (defense)
+            role += "role = 'defense' OR ";
+        if (support)
+            role += "role = 'support' OR ";
+        if(role.length() != 0) {
+            role = role.substring(0, role.length()-4);
+            role = " WHERE "+role;
+        }
+
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+role+" ORDER BY name", null);
+        return getHeroes(cursor);
+    }
 }

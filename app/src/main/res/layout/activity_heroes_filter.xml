@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_heroes_filter"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.onlywatch.fleriche.onlywatch.HeroesFilterActivity"
     android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
@@ -16,8 +14,180 @@
         <include
             layout="@layout/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"/>
+            android:layout_height="?attr/actionBarSize"
+            app:layout_collapseMode="pin" />
 
     </android.support.design.widget.AppBarLayout>
 
-</RelativeLayout>
+    <!-- WARNING : Layouts in a CoordinatorLayout need to define a layout_behavior -->
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ViewFlipper
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="30dp"
+                android:id="@+id/viewFlipperDifficulty1">
+
+                <ImageView
+                    android:id="@+id/difficultystar_empty1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_empty"/>
+
+                <ImageView
+                    android:id="@+id/difficultystar_full1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_full"/>
+
+            </ViewFlipper>
+
+            <ViewFlipper
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/viewFlipperDifficulty2">
+
+                <ImageView
+                    android:id="@+id/difficultystar_empty2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_empty"/>
+
+                <ImageView
+                    android:id="@+id/difficultystar_full2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_full"/>
+
+            </ViewFlipper>
+
+            <ViewFlipper
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
+                android:id="@+id/viewFlipperDifficulty3">
+
+                <ImageView
+                    android:id="@+id/difficultystar_empty3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_empty"/>
+
+                <ImageView
+                    android:id="@+id/difficultystar_full3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_full"/>
+
+            </ViewFlipper>
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.AppCompatSeekBar
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBarHeroFilter"
+            android:max="60"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnHeroFilter"
+            android:text="Submit"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ViewFlipper
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/viewFlipperOffense">
+
+                <ImageView
+                    android:id="@+id/ivOffenseDisabled"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_empty"/>
+
+                <ImageView
+                    android:id="@+id/ivOffenseFocused"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_full"/>
+
+            </ViewFlipper>
+
+            <ViewFlipper
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/viewFlipperTank">
+
+                <ImageView
+                    android:id="@+id/ivTankDisabled"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_empty"/>
+
+                <ImageView
+                    android:id="@+id/ivTankFocused"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_full"/>
+
+            </ViewFlipper>
+
+            <ViewFlipper
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/viewFlipperDefense">
+
+                <ImageView
+                    android:id="@+id/ivDefenseDisabled"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_empty"/>
+
+                <ImageView
+                    android:id="@+id/ivDefenseFocused"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_full"/>
+
+            </ViewFlipper>
+
+            <ViewFlipper
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/viewFlipperSupport">
+
+                <ImageView
+                    android:id="@+id/ivSupportDisabled"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_empty"/>
+
+                <ImageView
+                    android:id="@+id/ivSupportFocused"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star_full"/>
+
+            </ViewFlipper>
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
