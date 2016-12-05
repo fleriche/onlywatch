@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
+import com.onlywatch.fleriche.onlywatch.HelpActivity;
+import com.onlywatch.fleriche.onlywatch.SettingsActivity;
 import com.onlywatch.fleriche.onlywatch.entity.Heroes;
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
@@ -81,12 +83,25 @@ public class HeroesActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case android.R.id.home:
+                finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                return true;
+            case R.id.tlbSettings:
+                Intent settingsIntent = new Intent(HeroesActivity.this, SettingsActivity.class);
+                startActivity(settingsIntent);
+                overridePendingTransition(R.anim.slide_up, R.anim.stay); //Animation transition slide down
+                return true;
+            case R.id.tlbHelp:
+                Intent helpIntent = new Intent(HeroesActivity.this, HelpActivity.class);
+                startActivity(helpIntent);
+                overridePendingTransition(R.anim.slide_up, R.anim.stay); //Animation transition slide down
+                return true;
+            default:
+                return super.onOptionsItemSelected(menuItem);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     private static int getDrawableIdentifier(Context context, String name) {

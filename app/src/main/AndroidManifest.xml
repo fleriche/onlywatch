@@ -24,7 +24,9 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".test.HeroesFlipActivity" />
         <activity android:name=".heroes.HeroesActivity" />
-        <activity android:name=".HeroesFilterActivity"></activity>
+        <activity android:name=".HeroesFilterActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".HelpActivity"></activity>
     </application>
 
 </manifest>

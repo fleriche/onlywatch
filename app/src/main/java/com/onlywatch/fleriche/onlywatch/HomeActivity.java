@@ -2,6 +2,7 @@ package com.onlywatch.fleriche.onlywatch;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -88,14 +89,17 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
-        Toast toast;
         switch (menuItem.getItemId()) {
             case R.id.tlbSettings:
-                toast = Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT);
-                toast.show();
+                Intent settingsIntent = new Intent(HomeActivity.this, SettingsActivity.class);
+                startActivity(settingsIntent);
+                overridePendingTransition(R.anim.slide_up, R.anim.stay); //Animation transition slide down
+                return true;
             case R.id.tlbHelp:
-                toast = Toast.makeText(getApplicationContext(), "Help", Toast.LENGTH_SHORT);
-                toast.show();
+                Intent helpIntent = new Intent(HomeActivity.this, HelpActivity.class);
+                startActivity(helpIntent);
+                overridePendingTransition(R.anim.slide_up, R.anim.stay); //Animation transition slide down
+                return true;
             default:
                 return super.onOptionsItemSelected(menuItem);
         }

@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:background="@color/blueTransparentOverwatch"
+    android:fitsSystemWindows="true"
+    android:id="@+id/kaki">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
@@ -19,175 +21,281 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <!-- WARNING : Layouts in a CoordinatorLayout need to define a layout_behavior -->
-    <LinearLayout
-        android:layout_width="300dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <RelativeLayout
+        <!-- WARNING : Layouts in a CoordinatorLayout need to define a layout_behavior -->
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollViewHeroFilter"
+            android:paddingBottom="?attr/actionBarSize">
 
-            <ViewFlipper
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strDifficulty"
+                    android:layout_marginTop="20dp"
+                    android:textSize="30sp"
+                    android:textColor="@color/colorAccent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ViewFlipper
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/viewFlipperDifficulty2"
+                        android:layout_marginRight="30dp"
+                        android:id="@+id/viewFlipperDifficulty1">
+
+                        <ImageView
+                            android:id="@+id/difficultystar_empty1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_empty"/>
+
+                        <ImageView
+                            android:id="@+id/difficultystar_full1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_full"/>
+
+                    </ViewFlipper>
+
+                    <ViewFlipper
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/viewFlipperDifficulty2">
+
+                        <ImageView
+                            android:id="@+id/difficultystar_empty2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_empty"/>
+
+                        <ImageView
+                            android:id="@+id/difficultystar_full2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_full"/>
+
+                    </ViewFlipper>
+
+                    <ViewFlipper
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/viewFlipperDifficulty2"
+                        android:layout_marginLeft="30dp"
+                        android:id="@+id/viewFlipperDifficulty3">
+
+                        <ImageView
+                            android:id="@+id/difficultystar_empty3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_empty"/>
+
+                        <ImageView
+                            android:id="@+id/difficultystar_full3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_full"/>
+
+                    </ViewFlipper>
+
+                </RelativeLayout>
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/seekBarHeroFilter"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:max="60"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="20dp"
+                    android:background="@color/greyOverwatch"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strRole"
+                    android:textSize="30sp"
+                    android:textColor="@color/colorAccent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal">
+
+                    <ViewFlipper
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/viewFlipperOffense">
+
+                        <ImageView
+                            android:id="@+id/ivOffenseDisabled"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_empty"/>
+
+                        <ImageView
+                            android:id="@+id/ivOffenseFocused"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_full"/>
+
+                    </ViewFlipper>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/viewFlipperOffense"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:layout_alignLeft="@id/viewFlipperOffense"
+                        android:text="@string/offense"/>
+
+                    <ViewFlipper
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/viewFlipperOffense"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/viewFlipperTank">
+
+                        <ImageView
+                            android:id="@+id/ivTankDisabled"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_empty"/>
+
+                        <ImageView
+                            android:id="@+id/ivTankFocused"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_full"/>
+
+                    </ViewFlipper>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/viewFlipperTank"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:layout_alignLeft="@id/viewFlipperTank"
+                        android:text="@string/tank"/>
+
+                    <ViewFlipper
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/viewFlipperTank"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/viewFlipperDefense">
+
+                        <ImageView
+                            android:id="@+id/ivDefenseDisabled"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_empty"/>
+
+                        <ImageView
+                            android:id="@+id/ivDefenseFocused"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_full"/>
+
+                    </ViewFlipper>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/viewFlipperDefense"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:layout_alignLeft="@id/viewFlipperDefense"
+                        android:text="@string/defense"/>
+
+                    <ViewFlipper
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/viewFlipperDefense"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/viewFlipperSupport">
+
+                        <ImageView
+                            android:id="@+id/ivSupportDisabled"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_empty"/>
+
+                        <ImageView
+                            android:id="@+id/ivSupportFocused"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_full"/>
+
+                    </ViewFlipper>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/viewFlipperSupport"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:layout_alignLeft="@id/viewFlipperSupport"
+                        android:text="@string/support"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="20dp"
+                    android:background="@color/greyOverwatch"/>
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+        <RelativeLayout
+            android:id="@+id/footerHeroFilter"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:elevation="4dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/blueOverwatch">
+
+            <Button
+                android:id="@+id/btnHeroFilter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="30dp"
-                android:id="@+id/viewFlipperDifficulty1">
-
-                <ImageView
-                    android:id="@+id/difficultystar_empty1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/star_empty"/>
-
-                <ImageView
-                    android:id="@+id/difficultystar_full1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/star_full"/>
-
-            </ViewFlipper>
-
-            <ViewFlipper
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/viewFlipperDifficulty2">
-
-                <ImageView
-                    android:id="@+id/difficultystar_empty2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/star_empty"/>
-
-                <ImageView
-                    android:id="@+id/difficultystar_full2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/star_full"/>
-
-            </ViewFlipper>
-
-            <ViewFlipper
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="30dp"
-                android:id="@+id/viewFlipperDifficulty3">
-
-                <ImageView
-                    android:id="@+id/difficultystar_empty3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/star_empty"/>
-
-                <ImageView
-                    android:id="@+id/difficultystar_full3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/star_full"/>
-
-            </ViewFlipper>
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:background="@drawable/filter_button"
+                android:layout_centerInParent="true"
+                android:text="@string/strFilterHero" />
 
         </RelativeLayout>
 
-        <android.support.v7.widget.AppCompatSeekBar
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/seekBarHeroFilter"
-            android:max="60"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnHeroFilter"
-            android:text="Submit"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ViewFlipper
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/viewFlipperOffense">
-
-                <ImageView
-                    android:id="@+id/ivOffenseDisabled"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/star_empty"/>
-
-                <ImageView
-                    android:id="@+id/ivOffenseFocused"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/star_full"/>
-
-            </ViewFlipper>
-
-            <ViewFlipper
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/viewFlipperTank">
-
-                <ImageView
-                    android:id="@+id/ivTankDisabled"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/star_empty"/>
-
-                <ImageView
-                    android:id="@+id/ivTankFocused"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/star_full"/>
-
-            </ViewFlipper>
-
-            <ViewFlipper
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/viewFlipperDefense">
-
-                <ImageView
-                    android:id="@+id/ivDefenseDisabled"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/star_empty"/>
-
-                <ImageView
-                    android:id="@+id/ivDefenseFocused"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/star_full"/>
-
-            </ViewFlipper>
-
-            <ViewFlipper
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/viewFlipperSupport">
-
-                <ImageView
-                    android:id="@+id/ivSupportDisabled"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/star_empty"/>
-
-                <ImageView
-                    android:id="@+id/ivSupportFocused"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/star_full"/>
-
-            </ViewFlipper>
-        </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

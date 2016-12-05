@@ -5,13 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.ViewFlipper;
 
-public class HeroesFilterActivity extends AppCompatActivity implements View.OnTouchListener {
+public class HeroesFilterActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String DIFFICULTY_FILTER = "difficulty_filter";
     public static final String OFFENSE_FILTER = "offense_filter";
     public static final String TANK_FILTER = "tank_filter";
@@ -55,18 +54,18 @@ public class HeroesFilterActivity extends AppCompatActivity implements View.OnTo
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     progressValue = progress;
 
-                    if (progress == 0) {
+                    if (progress >= 0 && progress < 10) {
                         viewFlipperEasy.setDisplayedChild(0);
                         viewFlipperMedium.setDisplayedChild(0);
                         viewFlipperHard.setDisplayedChild(0);
-                    } else if (progress > 0 && progress < 20) {
+                    } else if (progress >= 10 && progress < 30) {
                         if (viewFlipperEasy.getDisplayedChild() == 0)
                             viewFlipperEasy.showNext();
                         if (viewFlipperMedium.getDisplayedChild() == 1)
                             viewFlipperMedium.showNext();
                         if (viewFlipperHard.getDisplayedChild() == 1)
                             viewFlipperHard.showNext();
-                    } else if (progress >= 20 && progress < 40) {
+                    } else if (progress >= 30 && progress < 50) {
                         if (viewFlipperEasy.getDisplayedChild() == 0)
                             viewFlipperEasy.showNext();
                         if (viewFlipperMedium.getDisplayedChild() == 0)
@@ -114,19 +113,18 @@ public class HeroesFilterActivity extends AppCompatActivity implements View.OnTo
         vfDefense = (ViewFlipper) findViewById(R.id.viewFlipperDefense);
         vfSupport = (ViewFlipper) findViewById(R.id.viewFlipperSupport);
         if(vfOffense != null)
-            vfOffense.setOnTouchListener(this);
+            vfOffense.setOnClickListener(this);
         if(vfTank != null)
-            vfTank.setOnTouchListener(this);
+            vfTank.setOnClickListener(this);
         if(vfDefense != null)
-            vfDefense.setOnTouchListener(this);
+            vfDefense.setOnClickListener(this);
         if(vfSupport != null)
-            vfSupport.setOnTouchListener(this);
+            vfSupport.setOnClickListener(this);
     }
 
     @Override
-    public boolean onTouch(View v, MotionEvent event) {
+    public void onClick(View v) {
         ((ViewFlipper) v).showNext();
-        return true;
     }
 
     @Override
