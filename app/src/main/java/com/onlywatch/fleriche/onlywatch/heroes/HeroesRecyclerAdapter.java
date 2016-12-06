@@ -10,13 +10,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.onlywatch.fleriche.onlywatch.general.ConsultActivity;
 import com.onlywatch.fleriche.onlywatch.entity.Heroes;
 import com.onlywatch.fleriche.onlywatch.R;
 
 import java.util.List;
 
-class HeroesRecyclerAdapter extends RecyclerView.Adapter<HeroesRecyclerAdapter.HeroesViewHolder> {
+public class HeroesRecyclerAdapter extends RecyclerView.Adapter<HeroesRecyclerAdapter.HeroesViewHolder> {
     public static final String HEROES_ID_EXTRA = "id";
+    public static final String TYPE_ACTIVITY_EXTRA = "type";
     private List<Heroes> mHeroesList;
     private Context mContext;
 
@@ -37,8 +39,9 @@ class HeroesRecyclerAdapter extends RecyclerView.Adapter<HeroesRecyclerAdapter.H
         heroesViewHolder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, HeroesActivity.class);
+                Intent intent = new Intent(mContext, ConsultActivity.class);
                 intent.putExtra(HEROES_ID_EXTRA, heroes.getId());
+                intent.putExtra(TYPE_ACTIVITY_EXTRA, "hero");
                 mContext.startActivity(intent);
             }
         });

@@ -21,7 +21,11 @@ public class MapManager {
     public static final String NOM_MAP = "name";
     public static final String CANONICAL_NAME_MAP = "canonical_name";
     public static final String LOCATION_MAP = "location";
-    public static final String SUMMARY_MAP = "summary";
+    public static final String TERRAIN_MAP = "terrain";
+    public static final String DESCRIPTION_MAP = "description";
+    public static final String BACKGROUND_MAP = "background";
+    public static final String STRATEGY_MAP = "strategy";
+    public static final String EASTER_EGGS_MAP = "easter_eggs";
     private DatabaseHandler mDatabaseHandler;
     private SQLiteDatabase mDatabase;
 
@@ -46,7 +50,11 @@ public class MapManager {
             map.setNom(cursor.getString(cursor.getColumnIndex(NOM_MAP)));
             map.setCanonical_name(cursor.getString(cursor.getColumnIndex(CANONICAL_NAME_MAP)));
             map.setLocation(cursor.getString(cursor.getColumnIndex(LOCATION_MAP)));
-            map.setSummary(cursor.getString(cursor.getColumnIndex(SUMMARY_MAP)));
+            map.setTerrain(cursor.getString(cursor.getColumnIndex(TERRAIN_MAP)));
+            map.setDescription(cursor.getString(cursor.getColumnIndex(DESCRIPTION_MAP)));
+            map.setBackground(cursor.getString(cursor.getColumnIndex(BACKGROUND_MAP)));
+            map.setStrategy(cursor.getString(cursor.getColumnIndex(STRATEGY_MAP)));
+            map.setEaster_eggs(cursor.getString(cursor.getColumnIndex(EASTER_EGGS_MAP)));
         }
         cursor.close();
 
@@ -62,7 +70,11 @@ public class MapManager {
             map.setNom(cursor.getString(cursor.getColumnIndex(NOM_MAP)));
             map.setCanonical_name(cursor.getString(cursor.getColumnIndex(CANONICAL_NAME_MAP)));
             map.setLocation(cursor.getString(cursor.getColumnIndex(LOCATION_MAP)));
-            map.setSummary(cursor.getString(cursor.getColumnIndex(SUMMARY_MAP)));
+            map.setTerrain(cursor.getString(cursor.getColumnIndex(TERRAIN_MAP)));
+            map.setDescription(cursor.getString(cursor.getColumnIndex(DESCRIPTION_MAP)));
+            map.setBackground(cursor.getString(cursor.getColumnIndex(BACKGROUND_MAP)));
+            map.setStrategy(cursor.getString(cursor.getColumnIndex(STRATEGY_MAP)));
+            map.setEaster_eggs(cursor.getString(cursor.getColumnIndex(EASTER_EGGS_MAP)));
             mapList.add(map);
         }
 

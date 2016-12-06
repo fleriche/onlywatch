@@ -1,6 +1,7 @@
 package com.onlywatch.fleriche.onlywatch.maps;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.entity.Map;
+import com.onlywatch.fleriche.onlywatch.general.ConsultActivity;
 
 import java.util.List;
 
@@ -18,6 +20,8 @@ import java.util.List;
  */
 
 public class MapRecyclerAdapter extends RecyclerView.Adapter<MapRecyclerAdapter.MapViewHolder> {
+    public static final String MAP_ID_EXTRA = "id";
+    public static final String TYPE_ACTIVITY_EXTRA = "type";
     private List<Map> mMapList;
     private Context mContext;
 
@@ -42,7 +46,16 @@ public class MapRecyclerAdapter extends RecyclerView.Adapter<MapRecyclerAdapter.
     public void onBindViewHolder(MapRecyclerAdapter.MapViewHolder mapViewHolder, int position) {
         final Map map = mMapList.get(position);
         mapViewHolder.mTitle.setText(map.getNom());
-        mapViewHolder.mImageView.setImageResource(mContext.getResources().getIdentifier("dva", "drawable", mContext.getPackageName()));
+        mapViewHolder.mCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, ConsultActivity.class);
+                intent.putExtra(MAP_ID_EXTRA, map.getId());
+                intent.putExtra(TYPE_ACTIVITY_EXTRA, "map");
+                mContext.startActivity(intent);
+            }
+        });
+        mapViewHolder.mImageView.setImageResource(mContext.getResources().getIdentifier(map.getCanonical_name(), "drawable", mContext.getPackageName()));
     }
 
     @Override

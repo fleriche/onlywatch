@@ -1,4 +1,4 @@
-package com.onlywatch.fleriche.onlywatch;
+package com.onlywatch.fleriche.onlywatch.tools;
 
 import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;

@@ -1,4 +1,4 @@
-package com.onlywatch.fleriche.onlywatch;
+package com.onlywatch.fleriche.onlywatch.general;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.VideoView;
 
+import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroesListFragment;
 
 public class GameFragment extends Fragment {

@@ -22,6 +22,6 @@
         android:src="@drawable/ic_account_search"
         app:layout_anchor="@id/cardList"
         app:layout_anchorGravity="bottom|right|end"
-        app:layout_behavior="com.onlywatch.fleriche.onlywatch.ScrollAwareFABBehavior"/>
+        app:layout_behavior="com.onlywatch.fleriche.onlywatch.tools.ScrollAwareFABBehavior"/>
 
 </android.support.design.widget.CoordinatorLayout>

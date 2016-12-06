@@ -1,4 +1,4 @@
-package com.onlywatch.fleriche.onlywatch;
+package com.onlywatch.fleriche.onlywatch.general;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.drawer.DrawerAdapter;
 import com.onlywatch.fleriche.onlywatch.drawer.NavigationDrawer;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroesListFragment;
@@ -73,12 +75,14 @@ public class HomeActivity extends AppCompatActivity {
         mDrwDrawerLayout.addDrawerListener(mDrwDrawerToggle);
         mDrwDrawerToggle.syncState();
 
-        /*On charge le fragment game en premier pour l'accueil*/
+        /*Si on est entrain de recréer l'activité (genre après changement orientation) on garde le fragment actuel sinon on charge Game pour l'accueil*/
         FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        if (savedInstanceState == null) {
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frame, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        }
     }
 
     @Override

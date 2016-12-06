@@ -30,8 +30,12 @@ CREATE TABLE IF NOT EXISTS map (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     canonical_name TEXT NOT NULL,
-    location TEXT NOT NULL,
-    summary TEXT NOT NULL
+    location TEXT,
+    terrain TEXT,
+    description TEXT,
+    background TEXT,
+    easter_eggs TEXT,
+    strategy TEXT
 );
 
 CREATE TABLE IF NOT EXISTS gamemode (

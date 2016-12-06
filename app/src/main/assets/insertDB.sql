@@ -157,15 +157,15 @@ INSERT INTO skill (name, description, features, id_heroes) VALUES ('Orbe de disc
 INSERT INTO skill (name, description, features, id_heroes) VALUES ('Transcendance', 'Zenyatta parvient à accéder à un stade d’existence supérieur pendant un court moment. Tant qu’il se transcende, Zenyatta ne peut pas utiliser ses capacités ou ses armes, mais il est immunisé aux dégâts et restaure automatiquement ses points de vie et ceux des alliés proches.', '', 23);
 
 --Maps
-INSERT INTO map (name, canonical_name, location, summary) VALUES ('Dorado', 'dorado', 'lol', 'lel');
-INSERT INTO map (name, canonical_name, location, summary) VALUES ('Gilbraltar', 'gilbraltar', 'lol', 'lel');
-INSERT INTO map (name, canonical_name, location, summary) VALUES ('Hollywood', 'hollywood', 'lol', 'lel');
-INSERT INTO map (name, canonical_name, location, summary) VALUES ('King''s Row', 'kingsrow', 'lol', 'lel');
-INSERT INTO map (name, canonical_name, location, summary) VALUES ('Numbani', 'numbani', 'lol', 'lel');
-INSERT INTO map (name, canonical_name, location, summary) VALUES ('Route 66', 'route66', 'lol', 'lel');
-INSERT INTO map (name, canonical_name, location, summary) VALUES ('Hanamura', 'hanamura', 'lol', 'lel');
-INSERT INTO map (name, canonical_name, location, summary) VALUES ('Temple d''Anubis', 'templedanubis', 'lol', 'lel');
-INSERT INTO map (name, canonical_name, location, summary) VALUES ('Usine Volskaya', 'usinevolskaya', 'lol', 'lel');
-INSERT INTO map (name, canonical_name, location, summary) VALUES ('Ilios', 'ilios', 'lol', 'lel');
-INSERT INTO map (name, canonical_name, location, summary) VALUES ('Népal', 'nepal', 'lol', 'lel');
-INSERT INTO map (name, canonical_name, location, summary) VALUES ('Tour de Lijiang', 'tourdelijiang', 'lol', 'lel');
+INSERT INTO map (name, canonical_name, location, terrain, description, background, easter_eggs, strategy) VALUES ('Dorado', 'dorado', 'lol', 'lel', 'lel', 'lel', 'lel', 'lel');
+INSERT INTO map (name, canonical_name, location, terrain, description, background, easter_eggs, strategy) VALUES ('Gilbraltar', 'gilbraltar', 'lol', 'lel', 'lel', 'lel', 'lel', 'lel');
+INSERT INTO map (name, canonical_name, location, terrain, description, background, easter_eggs, strategy) VALUES ('Hollywood', 'hollywood', 'lol', 'lel', 'lel', 'lel', 'lel', 'lel');
+INSERT INTO map (name, canonical_name, location, terrain, description, background, easter_eggs, strategy) VALUES ('King''s Row', 'kingsrow', 'lol', 'lel', 'lel', 'lel', 'lel', 'lel');
+INSERT INTO map (name, canonical_name, location, terrain, description, background, easter_eggs, strategy) VALUES ('Numbani', 'numbani', 'lol', 'lel', 'lel', 'lel', 'lel', 'lel');
+INSERT INTO map (name, canonical_name, location, terrain, description, background, easter_eggs, strategy) VALUES ('Route 66', 'route66', 'lol', 'lel', 'lel', 'lel', 'lel', 'lel');
+INSERT INTO map (name, canonical_name, location, terrain, description, background, easter_eggs, strategy) VALUES ('Hanamura', 'hanamura', 'lol', 'lel', 'lel', 'lel', 'lel', 'lel');
+INSERT INTO map (name, canonical_name, location, terrain, description, background, easter_eggs, strategy) VALUES ('Temple d''Anubis', 'templedanubis', 'lol', 'lel', 'lel', 'lel', 'lel', 'lel');
+INSERT INTO map (name, canonical_name, location, terrain, description, background, easter_eggs, strategy) VALUES ('Usine Volskaya', 'usinevolskaya', 'lol', 'lel', 'lel', 'lel', 'lel', 'lel');
+INSERT INTO map (name, canonical_name, location, terrain, description, background, easter_eggs, strategy) VALUES ('Ilios', 'ilios', 'lol', 'lel', 'lel', 'lel', 'lel', 'lel');
+INSERT INTO map (name, canonical_name, location, terrain, description, background, easter_eggs, strategy) VALUES ('Népal', 'nepal', 'lol', 'lel', 'lel', 'lel', 'lel', 'lel');
+INSERT INTO map (name, canonical_name, location, terrain, description, background, easter_eggs, strategy) VALUES ('Tour de Lijiang', 'tourdelijiang', 'lol', 'lel', 'lel', 'lel', 'lel', 'lel');

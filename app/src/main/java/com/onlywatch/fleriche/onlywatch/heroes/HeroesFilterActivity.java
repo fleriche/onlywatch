@@ -1,4 +1,4 @@
-package com.onlywatch.fleriche.onlywatch;
+package com.onlywatch.fleriche.onlywatch.heroes;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.ViewFlipper;
+
+import com.onlywatch.fleriche.onlywatch.R;
 
 public class HeroesFilterActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String DIFFICULTY_FILTER = "difficulty_filter";
