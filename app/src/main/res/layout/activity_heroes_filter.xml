@@ -172,7 +172,7 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:layout_alignLeft="@id/viewFlipperOffense"
-                        android:text="@string/offense"/>
+                        android:text="@string/strOffense"/>
 
                     <ViewFlipper
                         android:layout_width="wrap_content"
@@ -202,7 +202,7 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:layout_alignLeft="@id/viewFlipperTank"
-                        android:text="@string/tank"/>
+                        android:text="@string/strTank"/>
 
                     <ViewFlipper
                         android:layout_width="wrap_content"
@@ -232,7 +232,7 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:layout_alignLeft="@id/viewFlipperDefense"
-                        android:text="@string/defense"/>
+                        android:text="@string/strDefense"/>
 
                     <ViewFlipper
                         android:layout_width="wrap_content"
@@ -262,7 +262,7 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:layout_alignLeft="@id/viewFlipperSupport"
-                        android:text="@string/support"/>
+                        android:text="@string/strSupport"/>
 
                 </RelativeLayout>
 

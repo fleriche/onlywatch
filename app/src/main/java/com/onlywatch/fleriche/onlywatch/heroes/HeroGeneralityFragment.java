@@ -28,16 +28,26 @@ import java.util.ArrayList;
 public class HeroGeneralityFragment extends android.support.v4.app.Fragment {
     private static final int EASY = 1;
     private static final int MEDIUM = 2;
+    private static final String HERO_ID_ARG = "hero_id";
     private LinearLayout skillsLayout;
+    private int mHeroesId;
 
     public HeroGeneralityFragment() {}
 
-    public static HeroGeneralityFragment newInstance(int heroesid) {
+    public static HeroGeneralityFragment newInstance(int heroId) {
         HeroGeneralityFragment fragment = new HeroGeneralityFragment();
         Bundle args = new Bundle();
-        args.putInt("heroesId", heroesid);
+        args.putInt(HERO_ID_ARG, heroId);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mHeroesId = getArguments().getInt(HERO_ID_ARG);
+        }
     }
 
     @Override
@@ -50,12 +60,11 @@ public class HeroGeneralityFragment extends android.support.v4.app.Fragment {
         ViewFlipper viewFlipperDifficulty2 = (ViewFlipper) view.findViewById(R.id.viewFlipperDifficulty2);
         ViewFlipper viewFlipperDifficulty3 = (ViewFlipper) view.findViewById(R.id.viewFlipperDifficulty3);
         TextView tvHeroSummary = (TextView) view.findViewById(R.id.heroSummary);
-        int heroesId = getArguments().getInt("heroesId");
         HeroesManager hm = new HeroesManager(getActivity());
         Heroes hero;
 
         hm.open();
-        hero = hm.getHero(heroesId); // on récup le héro souhaité
+        hero = hm.getHero(mHeroesId); // on récup le héro souhaité
         tvRole.setText(hero.getRole().toUpperCase());
         tvHeroSummary.setText(getStringIdentifier(getActivity(), hero.getCanonical_name()+"_summary"));
 

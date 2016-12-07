@@ -23,6 +23,7 @@ import com.onlywatch.fleriche.onlywatch.entity.Map;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroGeneralityFragment;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroHistoryFragment;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroesRecyclerAdapter;
+import com.onlywatch.fleriche.onlywatch.maps.MapGeneralityFragment;
 import com.onlywatch.fleriche.onlywatch.maps.MapRecyclerAdapter;
 
 import java.util.ArrayList;
@@ -119,8 +120,7 @@ public class ConsultActivity extends AppCompatActivity {
 
     private void setupMapViewPager(ViewPager viewPager) {
         TabLayoutAdapter tabLayoutAdapter = new TabLayoutAdapter(getSupportFragmentManager());
-        tabLayoutAdapter.addTab(HeroGeneralityFragment.newInstance(mMapId), "Généralités");
-        tabLayoutAdapter.addTab(HeroHistoryFragment.newInstance(mMapId), "Histoire");
+        tabLayoutAdapter.addTab(MapGeneralityFragment.newInstance(mMapId), "Généralités");
         viewPager.setAdapter(tabLayoutAdapter);
     }
 
