@@ -49,7 +49,8 @@
     <string name="strSupport">Support</string>
 
     <string name="strFilterHero">Look for heroes !</string>
-
+    <string name="strHeroes">Heroes</string>
+    <string name="strMaps">Maps</string>
     <string name="strDescription">Description</string>
 
     <!-- Summary -->

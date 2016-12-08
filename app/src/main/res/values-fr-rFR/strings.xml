@@ -44,7 +44,8 @@
     <string name="strSupport">Support</string>
 
     <string name="strFilterHero">Voir les héros !</string>
-
+    <string name="strHeroes">Héros</string>
+    <string name="strMaps">Cartes</string>
     <string name="strDescription">Description</string>
 
     <!-- Summary -->
