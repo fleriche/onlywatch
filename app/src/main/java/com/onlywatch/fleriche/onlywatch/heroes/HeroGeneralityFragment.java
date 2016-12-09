@@ -62,10 +62,12 @@ public class HeroGeneralityFragment extends android.support.v4.app.Fragment {
         TextView tvHeroSummary = (TextView) view.findViewById(R.id.heroSummary);
         HeroesManager hm = new HeroesManager(getActivity());
         Heroes hero;
+        String heroRole;
 
         hm.open();
         hero = hm.getHero(mHeroesId); // on récup le héro souhaité
-        tvRole.setText(hero.getRole().toUpperCase());
+        heroRole = "str" + hero.getRole().substring(0, 1).toUpperCase() + hero.getRole().substring(1);
+        tvRole.setText(getString(getStringIdentifier(getActivity(), heroRole)).toUpperCase());
         tvHeroSummary.setText(getStringIdentifier(getActivity(), hero.getCanonical_name()+"_summary"));
 
         // Affichage du nombre d'étoile en fonction de la difficulté

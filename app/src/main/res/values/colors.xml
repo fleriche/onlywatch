@@ -9,4 +9,7 @@
     <color name="darkBlueOverwatch">#222d44</color>
     <color name="greyOverwatch">#CECECE</color>
     <color name="white">#FFFFFF</color>
+    <color name="whiteGame">#C7DAED</color>
+    <color name="backgroundGame">#BFD4DB</color>
+    <color name="accentGame">#32567A</color>
 </resources>
