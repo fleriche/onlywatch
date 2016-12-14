@@ -27,7 +27,8 @@
         <activity android:name=".heroes.HeroesFilterActivity" />
         <activity android:name=".general.SettingsActivity" />
         <activity android:name=".general.HelpActivity" />
-        <activity android:name=".maps.MapActivity"></activity>
+        <activity android:name=".maps.MapActivity" />
+        <activity android:name=".favorite.FavoriteActivity"></activity>
     </application>
 
 </manifest>

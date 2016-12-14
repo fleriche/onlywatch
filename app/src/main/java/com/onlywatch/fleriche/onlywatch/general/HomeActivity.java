@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.drawer.DrawerAdapter;
 import com.onlywatch.fleriche.onlywatch.drawer.NavigationDrawer;
+import com.onlywatch.fleriche.onlywatch.favorite.FavoriteFragment;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroesListFragment;
 import com.onlywatch.fleriche.onlywatch.maps.MapsListFragment;
 
@@ -119,6 +120,7 @@ public class HomeActivity extends AppCompatActivity {
             HeroesListFragment fragment = null;
             MapsListFragment mapFragment = null;
             GameFragment gameFragment = null;
+            FavoriteFragment favoriteFragment = null;
 
             switch (position) {
                 case MENU_GAME:
@@ -137,7 +139,7 @@ public class HomeActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Profil", Toast.LENGTH_SHORT).show();
                     break;
                 case MENU_FAVORITES:
-                    Toast.makeText(getApplicationContext(), "Favoris", Toast.LENGTH_SHORT).show();
+                    favoriteFragment = new FavoriteFragment();
                     break;
                 case MENU_PARAMETERS:
                     Toast.makeText(getApplicationContext(), "Paramètres", Toast.LENGTH_SHORT).show();
@@ -161,6 +163,9 @@ public class HomeActivity extends AppCompatActivity {
 
             if (mapFragment != null)
                 fragmentTransaction.replace(R.id.frame, mapFragment);
+
+            if (favoriteFragment != null)
+                fragmentTransaction.replace(R.id.frame, favoriteFragment);
 
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
