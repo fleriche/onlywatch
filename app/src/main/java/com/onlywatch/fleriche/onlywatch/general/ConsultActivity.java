@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,8 +12,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.onlywatch.fleriche.onlywatch.R;
@@ -35,6 +38,8 @@ public class ConsultActivity extends AppCompatActivity {
     private int mMapId;
     private ImageView mImgToolbarCollapsing;
     private ViewPager mViewPager;
+    private FloatingActionButton mFabFavorite;
+    private boolean mIsFavorite = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,7 @@ public class ConsultActivity extends AppCompatActivity {
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbar);
         Intent intent = getIntent();
         String typeActivity = intent.getStringExtra(TYPE_ACTIVITY_EXTRA);
+        mFabFavorite = (FloatingActionButton) findViewById(R.id.fabFavorite);
         mImgToolbarCollapsing = (ImageView) findViewById(R.id.imgToolbarCollapsing);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
 
@@ -69,22 +75,47 @@ public class ConsultActivity extends AppCompatActivity {
                 break;
         }
 
+        if(mIsFavorite)
+            mFabFavorite.setImageResource(R.drawable.ic_favorite);
+        else
+            mFabFavorite.setImageResource(R.drawable.ic_favorite_border);
+
         if(tabLayout != null)
             tabLayout.setupWithViewPager(mViewPager);
     }
 
     private void setupHero(Intent intent) {
-        Heroes heroes;
-        HeroesManager heroesManager = new HeroesManager(getApplicationContext());
+        final Heroes heroes;
+        final HeroesManager heroesManager = new HeroesManager(getApplicationContext());
         mHeroesId = intent.getIntExtra(HeroesRecyclerAdapter.HEROES_ID_EXTRA, 0);
         heroesManager.open();
         heroes = heroesManager.getHero(mHeroesId);
+        mIsFavorite = heroes.isFavorite();
 
         if (getSupportActionBar() != null)
             getSupportActionBar().setTitle(heroes.getNom());
 
         if(mImgToolbarCollapsing != null)
             mImgToolbarCollapsing.setImageResource(getDrawableIdentifier(getApplicationContext(), heroes.getCanonical_name()));
+
+        mFabFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mIsFavorite) {
+                    ((FloatingActionButton) v).setImageResource(R.drawable.ic_favorite_border);
+                    mIsFavorite = false;
+                    heroes.setIs_favorite(0);
+                } else {
+                    ((FloatingActionButton) v).setImageResource(R.drawable.ic_favorite);
+                    mIsFavorite = true;
+                    heroes.setIs_favorite(1);
+                }
+                final HeroesManager heroesManagerFab = new HeroesManager(getApplicationContext());
+                heroesManagerFab.open();
+                heroesManagerFab.updateHeroes(heroes);
+                heroesManagerFab.close();
+            }
+        });
 
         heroesManager.close();
 
@@ -93,17 +124,38 @@ public class ConsultActivity extends AppCompatActivity {
     }
 
     private void setupMap(Intent intent) {
-        Map map;
-        MapManager mapManager = new MapManager(getApplicationContext());
+        final Map map;
+        final MapManager mapManager = new MapManager(getApplicationContext());
         mMapId = intent.getIntExtra(MapRecyclerAdapter.MAP_ID_EXTRA, 0);
         mapManager.open();
         map = mapManager.getMap(mMapId);
+        mIsFavorite = map.isFavorite();
 
         if (getSupportActionBar() != null)
             getSupportActionBar().setTitle(map.getNom());
 
         if(mImgToolbarCollapsing != null)
             mImgToolbarCollapsing.setImageResource(getDrawableIdentifier(getApplicationContext(), map.getCanonical_name()));
+
+        mFabFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mIsFavorite) {
+                    ((FloatingActionButton) v).setImageResource(R.drawable.ic_favorite_border);
+                    mIsFavorite = false;
+                    map.setIs_favorite(0);
+                } else {
+                    ((FloatingActionButton) v).setImageResource(R.drawable.ic_favorite);
+                    mIsFavorite = true;
+                    map.setIs_favorite(1);
+                }
+                final MapManager mapManagerFab = new MapManager(getApplicationContext());
+                mapManagerFab.open();
+                mapManagerFab.updateMap(map);
+                mapManagerFab.close();
+                Log.i("After", "onClick: "+map.getIs_favorite());
+            }
+        });
 
         mapManager.close();
 

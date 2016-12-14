@@ -20,13 +20,14 @@ public class HeroesFilterActivity extends AppCompatActivity implements View.OnCl
     public static final String SUPPORT_FILTER = "support_filter";
     public static final int RESULT_HEROES_FILTER_OK = 1;
     private static final int RESULT_HEROES_FILTER_CANCELED = 2;
-    private ViewFlipper viewFlipperEasy;
-    private ViewFlipper viewFlipperMedium;
-    private ViewFlipper viewFlipperHard;
-    private ViewFlipper vfOffense;
-    private ViewFlipper vfTank;
-    private ViewFlipper vfDefense;
-    private ViewFlipper vfSupport;
+    private ViewFlipper mViewFlipperEasy;
+    private ViewFlipper mViewFlipperMedium;
+    private ViewFlipper mViewFlipperHard;
+    private ViewFlipper mVfOffense;
+    private ViewFlipper mVfTank;
+    private ViewFlipper mVfDefense;
+    private ViewFlipper mVfSupport;
+    private SeekBar mSeekBar;
     private int mProgressValue;
 
     @Override
@@ -36,11 +37,15 @@ public class HeroesFilterActivity extends AppCompatActivity implements View.OnCl
         overridePendingTransition(R.anim.slide_up, R.anim.stay); //Animation transition slide up
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.heroToolbar);
-        SeekBar seekBar = (SeekBar) findViewById(R.id.seekBarHeroFilter);
-        viewFlipperEasy = (ViewFlipper) findViewById(R.id.viewFlipperDifficulty1);
-        viewFlipperMedium = (ViewFlipper) findViewById(R.id.viewFlipperDifficulty2);
-        viewFlipperHard = (ViewFlipper) findViewById(R.id.viewFlipperDifficulty3);
+        mSeekBar = (SeekBar) findViewById(R.id.seekBarHeroFilter);
+        mViewFlipperEasy = (ViewFlipper) findViewById(R.id.viewFlipperDifficulty1);
+        mViewFlipperMedium = (ViewFlipper) findViewById(R.id.viewFlipperDifficulty2);
+        mViewFlipperHard = (ViewFlipper) findViewById(R.id.viewFlipperDifficulty3);
         final Button heroFilter = (Button) findViewById(R.id.btnHeroFilter);
+
+        mViewFlipperEasy.setOnClickListener(this);
+        mViewFlipperMedium.setOnClickListener(this);
+        mViewFlipperHard.setOnClickListener(this);
 
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
@@ -48,8 +53,8 @@ public class HeroesFilterActivity extends AppCompatActivity implements View.OnCl
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
         }
 
-        if (seekBar != null)
-            seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        if (mSeekBar != null)
+            mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 int progressValue = 0;
 
                 @Override
@@ -57,30 +62,30 @@ public class HeroesFilterActivity extends AppCompatActivity implements View.OnCl
                     progressValue = progress;
 
                     if (progress >= 0 && progress < 10) {
-                        viewFlipperEasy.setDisplayedChild(0);
-                        viewFlipperMedium.setDisplayedChild(0);
-                        viewFlipperHard.setDisplayedChild(0);
+                        mViewFlipperEasy.setDisplayedChild(0);
+                        mViewFlipperMedium.setDisplayedChild(0);
+                        mViewFlipperHard.setDisplayedChild(0);
                     } else if (progress >= 10 && progress < 30) {
-                        if (viewFlipperEasy.getDisplayedChild() == 0)
-                            viewFlipperEasy.showNext();
-                        if (viewFlipperMedium.getDisplayedChild() == 1)
-                            viewFlipperMedium.showNext();
-                        if (viewFlipperHard.getDisplayedChild() == 1)
-                            viewFlipperHard.showNext();
+                        if (mViewFlipperEasy.getDisplayedChild() == 0)
+                            mViewFlipperEasy.showNext();
+                        if (mViewFlipperMedium.getDisplayedChild() == 1)
+                            mViewFlipperMedium.showNext();
+                        if (mViewFlipperHard.getDisplayedChild() == 1)
+                            mViewFlipperHard.showNext();
                     } else if (progress >= 30 && progress < 50) {
-                        if (viewFlipperEasy.getDisplayedChild() == 0)
-                            viewFlipperEasy.showNext();
-                        if (viewFlipperMedium.getDisplayedChild() == 0)
-                            viewFlipperMedium.showNext();
-                        if (viewFlipperHard.getDisplayedChild() == 1)
-                            viewFlipperHard.showNext();
+                        if (mViewFlipperEasy.getDisplayedChild() == 0)
+                            mViewFlipperEasy.showNext();
+                        if (mViewFlipperMedium.getDisplayedChild() == 0)
+                            mViewFlipperMedium.showNext();
+                        if (mViewFlipperHard.getDisplayedChild() == 1)
+                            mViewFlipperHard.showNext();
                     } else {
-                        if (viewFlipperEasy.getDisplayedChild() == 0)
-                            viewFlipperEasy.showNext();
-                        if (viewFlipperMedium.getDisplayedChild() == 0)
-                            viewFlipperMedium.showNext();
-                        if (viewFlipperHard.getDisplayedChild() == 0)
-                            viewFlipperHard.showNext();
+                        if (mViewFlipperEasy.getDisplayedChild() == 0)
+                            mViewFlipperEasy.showNext();
+                        if (mViewFlipperMedium.getDisplayedChild() == 0)
+                            mViewFlipperMedium.showNext();
+                        if (mViewFlipperHard.getDisplayedChild() == 0)
+                            mViewFlipperHard.showNext();
                     }
                 }
 
@@ -100,33 +105,46 @@ public class HeroesFilterActivity extends AppCompatActivity implements View.OnCl
                 public void onClick(View v) {
                     Intent intent = new Intent();
                     intent.putExtra(DIFFICULTY_FILTER, mProgressValue);
-                    intent.putExtra(OFFENSE_FILTER, vfOffense.getDisplayedChild());
-                    intent.putExtra(TANK_FILTER, vfTank.getDisplayedChild());
-                    intent.putExtra(DEFENSE_FILTER, vfDefense.getDisplayedChild());
-                    intent.putExtra(SUPPORT_FILTER, vfSupport.getDisplayedChild());
+                    intent.putExtra(OFFENSE_FILTER, mVfOffense.getDisplayedChild());
+                    intent.putExtra(TANK_FILTER, mVfTank.getDisplayedChild());
+                    intent.putExtra(DEFENSE_FILTER, mVfDefense.getDisplayedChild());
+                    intent.putExtra(SUPPORT_FILTER, mVfSupport.getDisplayedChild());
                     setResult(RESULT_HEROES_FILTER_OK, intent);
                     finish();
                     overridePendingTransition(R.anim.stay, R.anim.slide_down); //Animation transition slide down
                 }
             });
 
-        vfOffense = (ViewFlipper) findViewById(R.id.viewFlipperOffense);
-        vfTank = (ViewFlipper) findViewById(R.id.viewFlipperTank);
-        vfDefense = (ViewFlipper) findViewById(R.id.viewFlipperDefense);
-        vfSupport = (ViewFlipper) findViewById(R.id.viewFlipperSupport);
-        if(vfOffense != null)
-            vfOffense.setOnClickListener(this);
-        if(vfTank != null)
-            vfTank.setOnClickListener(this);
-        if(vfDefense != null)
-            vfDefense.setOnClickListener(this);
-        if(vfSupport != null)
-            vfSupport.setOnClickListener(this);
+        mVfOffense = (ViewFlipper) findViewById(R.id.viewFlipperOffense);
+        mVfTank = (ViewFlipper) findViewById(R.id.viewFlipperTank);
+        mVfDefense = (ViewFlipper) findViewById(R.id.viewFlipperDefense);
+        mVfSupport = (ViewFlipper) findViewById(R.id.viewFlipperSupport);
+        if(mVfOffense != null)
+            mVfOffense.setOnClickListener(this);
+        if(mVfTank != null)
+            mVfTank.setOnClickListener(this);
+        if(mVfDefense != null)
+            mVfDefense.setOnClickListener(this);
+        if(mVfSupport != null)
+            mVfSupport.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         ((ViewFlipper) v).showNext();
+        if(v == mViewFlipperEasy) {
+            mProgressValue = 20;
+            mSeekBar.setProgress(mProgressValue);
+        } else if(v == mViewFlipperMedium) {
+            mViewFlipperEasy.showNext();
+            mProgressValue = 40;
+            mSeekBar.setProgress(mProgressValue);
+        } else if(v == mViewFlipperHard) {
+            mViewFlipperEasy.showNext();
+            mViewFlipperMedium.showNext();
+            mProgressValue = 60;
+            mSeekBar.setProgress(mProgressValue);
+        }
     }
 
     @Override

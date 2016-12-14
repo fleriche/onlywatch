@@ -1,8 +1,10 @@
 package com.onlywatch.fleriche.onlywatch.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.onlywatch.fleriche.onlywatch.entity.Heroes;
 import com.onlywatch.fleriche.onlywatch.entity.Map;
@@ -26,6 +28,7 @@ public class MapManager {
     public static final String BACKGROUND_MAP = "background";
     public static final String STRATEGY_MAP = "strategy";
     public static final String EASTER_EGGS_MAP = "easter_eggs";
+    public static final String IS_FAVORITE_MAP = "is_favorite";
     private DatabaseHandler mDatabaseHandler;
     private SQLiteDatabase mDatabase;
 
@@ -39,6 +42,24 @@ public class MapManager {
 
     public void close() {
         mDatabase.close();
+    }
+
+    public int updateMap(Map map) {
+        ContentValues values = new ContentValues();
+        values.put(NOM_MAP, map.getNom());
+        values.put(CANONICAL_NAME_MAP, map.getCanonical_name());
+        values.put(LOCATION_MAP, map.getLocation());
+        values.put(TERRAIN_MAP, map.getTerrain());
+        values.put(DESCRIPTION_MAP, map.getDescription());
+        values.put(BACKGROUND_MAP, map.getBackground());
+        values.put(STRATEGY_MAP, map.getStrategy());
+        values.put(EASTER_EGGS_MAP, map.getEaster_eggs());
+        values.put(IS_FAVORITE_MAP, map.getIs_favorite());
+
+        String where = KEY_ID_MAP+" = ?";
+        String[] whereArgs = {map.getId()+""};
+
+        return mDatabase.update(TABLE_NAME, values, where, whereArgs);
     }
 
     public Map getMap(int id) {
@@ -55,6 +76,7 @@ public class MapManager {
             map.setBackground(cursor.getString(cursor.getColumnIndex(BACKGROUND_MAP)));
             map.setStrategy(cursor.getString(cursor.getColumnIndex(STRATEGY_MAP)));
             map.setEaster_eggs(cursor.getString(cursor.getColumnIndex(EASTER_EGGS_MAP)));
+            map.setIs_favorite(cursor.getInt(cursor.getColumnIndex(IS_FAVORITE_MAP)));
         }
         cursor.close();
 
@@ -75,6 +97,7 @@ public class MapManager {
             map.setBackground(cursor.getString(cursor.getColumnIndex(BACKGROUND_MAP)));
             map.setStrategy(cursor.getString(cursor.getColumnIndex(STRATEGY_MAP)));
             map.setEaster_eggs(cursor.getString(cursor.getColumnIndex(EASTER_EGGS_MAP)));
+            map.setIs_favorite(cursor.getInt(cursor.getColumnIndex(IS_FAVORITE_MAP)));
             mapList.add(map);
         }
 

@@ -64,6 +64,14 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fabFavorite"
+        app:layout_anchor="@id/appBarLayout"
+        android:src="@drawable/ic_favorite"
+        app:layout_anchorGravity="bottom|right|end"/>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"

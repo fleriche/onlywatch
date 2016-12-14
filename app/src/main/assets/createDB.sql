@@ -14,7 +14,8 @@ CREATE TABLE IF NOT EXISTS heroes (
 	summary TEXT,
 	quote TEXT,
 	difficulty INTEGER NOT NULL,
-	role TEXT NOT NULL
+	role TEXT NOT NULL,
+	is_favorite INTEGER NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS skill (
@@ -35,7 +36,8 @@ CREATE TABLE IF NOT EXISTS map (
     description TEXT,
     background TEXT,
     easter_eggs TEXT,
-    strategy TEXT
+    strategy TEXT,
+    is_favorite INTEGER NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS gamemode (

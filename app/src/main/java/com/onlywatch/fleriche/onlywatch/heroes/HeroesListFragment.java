@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
@@ -25,6 +26,7 @@ import java.lang.reflect.Field;
 
 public class HeroesListFragment extends Fragment implements SearchView.OnQueryTextListener {
     private static final int REQUEST_CODE_HEROES_FILTER = 1;
+    private boolean mResearchPerformed = false;
     private HeroesManager mHeroesManager;
     private RecyclerView mRecyclerView;
 
@@ -58,8 +60,16 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
                 startActivityForResult(intent, REQUEST_CODE_HEROES_FILTER);
             }
         });
+
         return view;
     }
+
+    /*@Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putString("message", "test");
+        Toast.makeText(getActivity(), "singe", Toast.LENGTH_LONG).show();
+        super.onSaveInstanceState(outState);
+    }*/
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)  {
@@ -89,11 +99,6 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
                 heroesManager.close();
             }
         }
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
     }
 
     @Override

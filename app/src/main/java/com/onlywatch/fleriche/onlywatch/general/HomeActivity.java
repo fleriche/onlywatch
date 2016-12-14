@@ -80,7 +80,6 @@ public class HomeActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.frame, fragment);
-            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }
     }

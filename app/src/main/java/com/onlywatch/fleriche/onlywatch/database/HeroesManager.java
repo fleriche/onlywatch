@@ -32,6 +32,7 @@ public class HeroesManager {
     private static final String QUOTE_HEROES = "quote";
     private static final String ROLE_HEROES = "role";
     private static final String DIFFICULTY_HEROES = "difficulty";
+    private static final String IS_FAVORITE_HEROES = "is_favorite";
     private DatabaseHandler mDatabaseHandler;
     private SQLiteDatabase mDatabase;
 
@@ -64,6 +65,7 @@ public class HeroesManager {
         values.put(QUOTE_HEROES, heroes.getQuote());
         values.put(ROLE_HEROES, heroes.getRole());
         values.put(DIFFICULTY_HEROES, heroes.getDifficulty());
+        values.put(IS_FAVORITE_HEROES, heroes.getIs_favorite());
 
         return mDatabase.insert(TABLE_NAME, null, values);
     }
@@ -85,6 +87,7 @@ public class HeroesManager {
         values.put(QUOTE_HEROES, heroes.getQuote());
         values.put(ROLE_HEROES, heroes.getRole());
         values.put(DIFFICULTY_HEROES, heroes.getDifficulty());
+        values.put(IS_FAVORITE_HEROES, heroes.getIs_favorite());
 
         String where = KEY_ID_HEROES+" = ?";
         String[] whereArgs = {heroes.getId()+""};
@@ -120,6 +123,7 @@ public class HeroesManager {
             heroes.setQuote(cursor.getString(cursor.getColumnIndex(QUOTE_HEROES)));
             heroes.setRole(cursor.getString(cursor.getColumnIndex(ROLE_HEROES)));
             heroes.setDifficulty(cursor.getInt(cursor.getColumnIndex(DIFFICULTY_HEROES)));
+            heroes.setIs_favorite(cursor.getInt(cursor.getColumnIndex(IS_FAVORITE_HEROES)));
             cursor.close();
         }
 
@@ -147,6 +151,7 @@ public class HeroesManager {
             heroes.setQuote(cursor.getString(cursor.getColumnIndex(QUOTE_HEROES)));
             heroes.setRole(cursor.getString(cursor.getColumnIndex(ROLE_HEROES)));
             heroes.setDifficulty(cursor.getInt(cursor.getColumnIndex(DIFFICULTY_HEROES)));
+            heroes.setIs_favorite(cursor.getInt(cursor.getColumnIndex(IS_FAVORITE_HEROES)));
             heroesList.add(heroes);
         }
 

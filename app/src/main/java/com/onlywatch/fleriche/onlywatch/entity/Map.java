@@ -14,6 +14,7 @@ public class Map {
     private String background;
     private String strategy;
     private String easter_eggs;
+    private Integer is_favorite;
 
     public Map(){}
 
@@ -87,5 +88,17 @@ public class Map {
 
     public void setEaster_eggs(String easter_eggs) {
         this.easter_eggs = easter_eggs;
+    }
+
+    public Integer getIs_favorite() {
+        return is_favorite;
+    }
+
+    public void setIs_favorite(Integer is_favorite) {
+        this.is_favorite = is_favorite;
+    }
+
+    public boolean isFavorite() {
+        return getIs_favorite() == 1;
     }
 }

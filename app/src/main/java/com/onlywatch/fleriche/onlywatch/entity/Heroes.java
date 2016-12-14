@@ -21,6 +21,7 @@ public class Heroes {
     private String quote;
     private String role;
     private int difficulty;
+    private int is_favorite;
 
     public Heroes() {}
 
@@ -175,5 +176,17 @@ public class Heroes {
 
     public void setCanonical_name(String canonical_name) {
         this.canonical_name = canonical_name;
+    }
+
+    public int getIs_favorite() {
+        return is_favorite;
+    }
+
+    public void setIs_favorite(int is_favorite) {
+        this.is_favorite = is_favorite;
+    }
+
+    public boolean isFavorite() {
+        return getIs_favorite() == 1;
     }
 }
