@@ -82,11 +82,15 @@ public class HomeActivity extends AppCompatActivity {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.frame, fragment);
             fragmentTransaction.commit();
+            mDrwDrawerList.setItemChecked(MENU_GAME, true);
         }
 
+        /*Listener sur le backstack pour mettre à jour l'item selectionner dans le drawer
+        Quand un fragment est ajouté au backstack et donc que le backstack change, on met à jour l'item*/
         fragmentManager.addOnBackStackChangedListener(
                 new FragmentManager.OnBackStackChangedListener() {
                     public void onBackStackChanged() {
+                        //Si y'a encore qqch dans le backstack sinon ça veut dire qu'on est revenu sur l'accueil
                         if(getFragmentManager().getBackStackEntryCount() > 0) {
                             String position = getFragmentManager().getBackStackEntryAt(getFragmentManager().getBackStackEntryCount() - 1).getName();
                             if(position != null)
@@ -158,7 +162,6 @@ public class HomeActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Paramètres", Toast.LENGTH_SHORT).show();
                     break;
                 case MENU_LANGUAGES:
-                    getApplicationContext().deleteDatabase("onlywatch.db");
                     Toast.makeText(getApplicationContext(), "Langues", Toast.LENGTH_SHORT).show();
                     break;
                 default:
@@ -180,6 +183,7 @@ public class HomeActivity extends AppCompatActivity {
             if (favoriteFragment != null)
                 fragmentTransaction.replace(R.id.frame, favoriteFragment);
 
+            //on fait passer la position pour la récupérer dans le onBackStackChange pour mettre à jour l'item selectionné dans le drawer
             fragmentTransaction.addToBackStack(Integer.toString(position));
             fragmentTransaction.commit();
 
