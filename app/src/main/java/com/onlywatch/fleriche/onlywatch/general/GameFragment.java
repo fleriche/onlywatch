@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
@@ -25,6 +26,7 @@ import java.util.HashMap;
 
 public class GameFragment extends Fragment implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     private SliderLayout mSliderLayout;
+    private ListView mDrwDrawerList;
 
     public GameFragment() {
     }
@@ -41,6 +43,7 @@ public class GameFragment extends Fragment implements BaseSliderView.OnSliderCli
         View view = inflater.inflate(R.layout.fragment_game, container, false);
         HashMap<String, Integer> imgMap = new HashMap<>();
         Button btnBuy = (Button) view.findViewById(R.id.btnBuy);
+        mDrwDrawerList = (ListView) getActivity().findViewById(R.id.drwLvDrawerList);
 
         mSliderLayout = (SliderLayout)view.findViewById(R.id.slider);
 
@@ -81,17 +84,19 @@ public class GameFragment extends Fragment implements BaseSliderView.OnSliderCli
 
     @Override
     public void onSliderClick(BaseSliderView slider) {
-
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         Fragment fragment;
         if((slider.getBundle().get("extra")+"").equals(getString(R.string.strHeroes))) {
             fragment = new HeroesListFragment();
+            mDrwDrawerList.setItemChecked(HomeActivity.MENU_HEROES, true);
         } else if((slider.getBundle().get("extra")+"").equals(getString(R.string.strMaps))) {
             fragment = new MapsListFragment();
+            mDrwDrawerList.setItemChecked(HomeActivity.MENU_MAPS, true);
         } else {
             fragment = new HeroesListFragment();
+            mDrwDrawerList.setItemChecked(HomeActivity.MENU_HEROES, true);
         }
 
         fragmentTransaction.replace(R.id.frame, fragment);

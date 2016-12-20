@@ -26,12 +26,11 @@ import com.onlywatch.fleriche.onlywatch.maps.MapsListFragment;
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
-    private ActionBarDrawerToggle mDrwDrawerToggle;
     private DrawerLayout mDrwDrawerLayout;
     private ListView mDrwDrawerList;
     private static final int MENU_GAME = 1;
-    private static final int MENU_HEROES = 2;
-    private static final int MENU_MAPS = 3;
+    protected static final int MENU_HEROES = 2;
+    protected static final int MENU_MAPS = 3;
     private static final int MENU_MEDIAS = 4;
     private static final int MENU_PROFILE = 6;
     private static final int MENU_FAVORITES = 7;
@@ -51,6 +50,7 @@ public class HomeActivity extends AppCompatActivity {
         View header = getLayoutInflater().inflate(R.layout.drawer_header, null);
         DrawerAdapter drwDrawerAdapter;
         GameFragment fragment = new GameFragment();
+        ActionBarDrawerToggle mDrwDrawerToggle;
 
         setSupportActionBar(toolbar);
 
@@ -72,7 +72,7 @@ public class HomeActivity extends AppCompatActivity {
 
         /*Toggle pour le bouton hamburger de la toolbar*/
         mDrwDrawerLayout = (DrawerLayout) findViewById(R.id.drwLyDrawerLayout);
-        mDrwDrawerToggle = new ActionBarDrawerToggle(this, mDrwDrawerLayout, toolbar, R.string.strOpenDrawer , R.string.strCloseDrawer);
+        mDrwDrawerToggle = new ActionBarDrawerToggle(this, mDrwDrawerLayout, toolbar, R.string.strOpenDrawer, R.string.strCloseDrawer);
         mDrwDrawerLayout.addDrawerListener(mDrwDrawerToggle);
         mDrwDrawerToggle.syncState();
 
@@ -83,6 +83,19 @@ public class HomeActivity extends AppCompatActivity {
             fragmentTransaction.replace(R.id.frame, fragment);
             fragmentTransaction.commit();
         }
+
+        fragmentManager.addOnBackStackChangedListener(
+                new FragmentManager.OnBackStackChangedListener() {
+                    public void onBackStackChanged() {
+                        if(getFragmentManager().getBackStackEntryCount() > 0) {
+                            String position = getFragmentManager().getBackStackEntryAt(getFragmentManager().getBackStackEntryCount() - 1).getName();
+                            if(position != null)
+                                mDrwDrawerList.setItemChecked(Integer.parseInt(position), true);
+                        } else {
+                            mDrwDrawerList.setItemChecked(MENU_GAME, true);
+                        }
+                    }
+                });
     }
 
     @Override
@@ -167,7 +180,7 @@ public class HomeActivity extends AppCompatActivity {
             if (favoriteFragment != null)
                 fragmentTransaction.replace(R.id.frame, favoriteFragment);
 
-            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.addToBackStack(Integer.toString(position));
             fragmentTransaction.commit();
 
             mDrwDrawerList.setItemChecked(position, true);
