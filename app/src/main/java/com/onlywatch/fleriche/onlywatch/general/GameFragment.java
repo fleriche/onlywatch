@@ -4,14 +4,19 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
@@ -78,6 +83,13 @@ public class GameFragment extends Fragment implements BaseSliderView.OnSliderCli
                 startActivity(browserIntent);
             }
         });
+
+        //Si on est en Paysage on rend le slider scrollable en le déplaçant dans le linear qui est dans la scrollview
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.linearLayoutGameFragment);
+            ((LinearLayout)mSliderLayout.getParent()).removeView(mSliderLayout); //On supprime le slider de son parent
+            linearLayout.addView(mSliderLayout, 0); //Puis on l'ajoute au linear qui est dans la scrollview à la position 0 (top)
+        }
 
         return view;
     }
