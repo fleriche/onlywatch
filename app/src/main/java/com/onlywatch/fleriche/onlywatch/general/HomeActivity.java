@@ -113,6 +113,13 @@ public class HomeActivity extends AppCompatActivity {
                             if(getSupportActionBar() != null)
                                 getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                             mDrwDrawerToggle.syncState();
+                            if(toolbar != null)
+                                toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        mDrwDrawerLayout.openDrawer(mDrwDrawerList);
+                                    }
+                                });
                         }
                     }
                 });
