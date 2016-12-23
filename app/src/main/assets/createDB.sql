@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS map (
     name TEXT NOT NULL,
     canonical_name TEXT NOT NULL,
     location TEXT,
-    terrain TEXT,
+    gamemode TEXT,
     description TEXT,
     background TEXT,
     easter_eggs TEXT,

@@ -50,6 +50,9 @@
     <string name="strBuyNow">Acheter maintenant</string>
     <string name="urlBuy">https://playoverwatch.com/fr-fr/buy/</string>
 
+    <string name="strLocation">Localisation :</string>
+    <string name="strGameMode">Mode de jeu :</string>
+
     <string name="gameIntro">L’AVENIR N’ATTEND PAS\n\n
         Soldats. Scientifiques. Aventuriers. Marginaux.\n\n
 Dans une période de crise mondiale, des héros venus de tous les horizons ont composé une équipe d’intervention internationale pour ramener la paix dans un monde déchiré par la guerre : OVERWATCH.\n\n

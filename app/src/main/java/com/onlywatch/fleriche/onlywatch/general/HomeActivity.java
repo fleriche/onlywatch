@@ -43,14 +43,14 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         /*Déclarations*/
-        Toolbar toolbar = (Toolbar)findViewById(R.id.heroToolbar);
+        final Toolbar toolbar = (Toolbar)findViewById(R.id.heroToolbar);
         String[] drwMenuTitles = getResources().getStringArray(R.array.strArrDrawerList);
         TypedArray drwMenuIcons = getResources().obtainTypedArray(R.array.arrDrawerListIcon);
         ArrayList<Object> drwDrawerItems = new ArrayList<>();
         View header = getLayoutInflater().inflate(R.layout.drawer_header, null);
         DrawerAdapter drwDrawerAdapter;
         GameFragment fragment = new GameFragment();
-        ActionBarDrawerToggle mDrwDrawerToggle;
+        final ActionBarDrawerToggle mDrwDrawerToggle;
 
         setSupportActionBar(toolbar);
 
@@ -95,8 +95,26 @@ public class HomeActivity extends AppCompatActivity {
                             String position = getFragmentManager().getBackStackEntryAt(getFragmentManager().getBackStackEntryCount() - 1).getName();
                             if(position != null)
                                 mDrwDrawerList.setItemChecked(Integer.parseInt(position), true);
+
+                            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // show back button
+                            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    onBackPressed();
+                                }
+                            });
                         } else {
                             mDrwDrawerList.setItemChecked(MENU_GAME, true);
+                            Toast.makeText(getApplication(), "coucou", Toast.LENGTH_LONG).show();
+                            getSupportActionBar().setDisplayHomeAsUpEnabled(false); // show back button
+                            //mDrwDrawerLayout.addDrawerListener(mDrwDrawerToggle);
+                            mDrwDrawerToggle.syncState();
+                            /*toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    mDrwDrawerLayout.openDrawer(mDrwDrawerList);
+                                }
+                            });*/
                         }
                     }
                 });
@@ -159,7 +177,8 @@ public class HomeActivity extends AppCompatActivity {
                     favoriteFragment = new FavoriteFragment();
                     break;
                 case MENU_PARAMETERS:
-                    Toast.makeText(getApplicationContext(), "Paramètres", Toast.LENGTH_SHORT).show();
+                    Intent settingsIntent = new Intent(HomeActivity.this, SettingsActivity.class);
+                    startActivity(settingsIntent);
                     break;
                 case MENU_LANGUAGES:
                     Toast.makeText(getApplicationContext(), "Langues", Toast.LENGTH_SHORT).show();

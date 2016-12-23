@@ -7,8 +7,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.onlywatch.fleriche.onlywatch.R;
+import com.onlywatch.fleriche.onlywatch.database.MapManager;
+import com.onlywatch.fleriche.onlywatch.entity.Map;
 
 public class MapGeneralityFragment extends Fragment {
     private int mMapId;
@@ -37,6 +40,21 @@ public class MapGeneralityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_map_generality, container, false);
+        View view = inflater.inflate(R.layout.fragment_map_generality, container, false);
+
+        TextView tvMapName = (TextView) view.findViewById(R.id.mapNameMapGenerality);
+        TextView tvLocation = (TextView) view.findViewById(R.id.locationMapGenerality);
+        TextView tvGameMode = (TextView) view.findViewById(R.id.gameModeMapGenerality);
+        MapManager mapManager = new MapManager(getActivity());
+        Map map;
+
+        mapManager.open();
+        map = mapManager.getMap(mMapId);
+        tvMapName.setText(map.getNom());
+        tvLocation.setText(map.getLocation());
+        tvGameMode.setText(map.getGamemode());
+        mapManager.close();
+
+        return view;
     }
 }

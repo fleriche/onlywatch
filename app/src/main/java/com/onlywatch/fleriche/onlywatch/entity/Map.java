@@ -9,7 +9,7 @@ public class Map {
     private String nom;
     private String canonical_name;
     private String location;
-    private String terrain;
+    private String gamemode;
     private String description;
     private String background;
     private String strategy;
@@ -50,12 +50,12 @@ public class Map {
         this.canonical_name = canonical_name;
     }
 
-    public String getTerrain() {
-        return terrain;
+    public String getGamemode() {
+        return gamemode;
     }
 
-    public void setTerrain(String terrain) {
-        this.terrain = terrain;
+    public void setGamemode(String gamemode) {
+        this.gamemode = gamemode;
     }
 
     public String getDescription() {

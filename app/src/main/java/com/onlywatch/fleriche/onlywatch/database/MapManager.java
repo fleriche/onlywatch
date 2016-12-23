@@ -4,14 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
-import com.onlywatch.fleriche.onlywatch.entity.Heroes;
 import com.onlywatch.fleriche.onlywatch.entity.Map;
 
 import java.util.ArrayList;
-
-import static com.onlywatch.fleriche.onlywatch.R.drawable.cursor;
 
 /**
  * Created by florian on 29/11/16
@@ -49,7 +45,7 @@ public class MapManager {
         values.put(NOM_MAP, map.getNom());
         values.put(CANONICAL_NAME_MAP, map.getCanonical_name());
         values.put(LOCATION_MAP, map.getLocation());
-        values.put(TERRAIN_MAP, map.getTerrain());
+        values.put(TERRAIN_MAP, map.getGamemode());
         values.put(DESCRIPTION_MAP, map.getDescription());
         values.put(BACKGROUND_MAP, map.getBackground());
         values.put(STRATEGY_MAP, map.getStrategy());
@@ -71,7 +67,7 @@ public class MapManager {
             map.setNom(cursor.getString(cursor.getColumnIndex(NOM_MAP)));
             map.setCanonical_name(cursor.getString(cursor.getColumnIndex(CANONICAL_NAME_MAP)));
             map.setLocation(cursor.getString(cursor.getColumnIndex(LOCATION_MAP)));
-            map.setTerrain(cursor.getString(cursor.getColumnIndex(TERRAIN_MAP)));
+            map.setGamemode(cursor.getString(cursor.getColumnIndex(TERRAIN_MAP)));
             map.setDescription(cursor.getString(cursor.getColumnIndex(DESCRIPTION_MAP)));
             map.setBackground(cursor.getString(cursor.getColumnIndex(BACKGROUND_MAP)));
             map.setStrategy(cursor.getString(cursor.getColumnIndex(STRATEGY_MAP)));
@@ -92,7 +88,7 @@ public class MapManager {
             map.setNom(cursor.getString(cursor.getColumnIndex(NOM_MAP)));
             map.setCanonical_name(cursor.getString(cursor.getColumnIndex(CANONICAL_NAME_MAP)));
             map.setLocation(cursor.getString(cursor.getColumnIndex(LOCATION_MAP)));
-            map.setTerrain(cursor.getString(cursor.getColumnIndex(TERRAIN_MAP)));
+            map.setGamemode(cursor.getString(cursor.getColumnIndex(TERRAIN_MAP)));
             map.setDescription(cursor.getString(cursor.getColumnIndex(DESCRIPTION_MAP)));
             map.setBackground(cursor.getString(cursor.getColumnIndex(BACKGROUND_MAP)));
             map.setStrategy(cursor.getString(cursor.getColumnIndex(STRATEGY_MAP)));

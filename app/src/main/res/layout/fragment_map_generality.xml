@@ -19,10 +19,69 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_map"
+                android:id="@+id/labelMapGenerality"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/mapNameMapGenerality"
+                    android:textColor="@color/whiteGame"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/mapNameMapGenerality"
+                    android:id="@+id/locationLabelMapGenerality"
+                    android:textColor="@color/whiteGame"
+                    android:textSize="17sp"
+                    android:layout_marginRight="10dp"
+                    android:textStyle="italic"
+                    android:text="@string/strLocation"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/mapNameMapGenerality"
+                    android:layout_toRightOf="@id/locationLabelMapGenerality"
+                    android:textColor="@color/whiteGame"
+                    android:id="@+id/locationMapGenerality"
+                    android:textSize="17sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/locationLabelMapGenerality"
+                    android:textColor="@color/whiteGame"
+                    android:id="@+id/gameModeLabelMapGenerality"
+                    android:layout_marginRight="10dp"
+                    android:textSize="17sp"
+                    android:textStyle="italic"
+                    android:text="@string/strGameMode"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/locationLabelMapGenerality"
+                    android:id="@+id/gameModeMapGenerality"
+                    android:layout_toRightOf="@id/gameModeLabelMapGenerality"
+                    android:textColor="@color/whiteGame"
+                    android:textSize="17sp"/>
+
+            </RelativeLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvDescription"
+                android:layout_below="@id/labelMapGenerality"
                 android:text="@string/strDescription"
                 android:textColor="@color/colorAccent"
                 android:textSize="25sp"/>
