@@ -97,18 +97,21 @@ public class HomeActivity extends AppCompatActivity {
                                 mDrwDrawerList.setItemChecked(Integer.parseInt(position), true);
 
                             //Pour avoir la fleche back
-                            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // show back button
-                            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    onBackPressed();
-                                }
-                            });
+                            if(getSupportActionBar() != null)
+                                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                            if(toolbar != null)
+                                toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        onBackPressed();
+                                    }
+                                });
                         } else {
                             mDrwDrawerList.setItemChecked(MENU_GAME, true);
 
                             //Pour avoir le burger
-                            getSupportActionBar().setDisplayHomeAsUpEnabled(false); // show back button
+                            if(getSupportActionBar() != null)
+                                getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                             mDrwDrawerToggle.syncState();
                         }
                     }
