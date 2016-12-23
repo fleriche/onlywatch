@@ -96,6 +96,7 @@ public class HomeActivity extends AppCompatActivity {
                             if(position != null)
                                 mDrwDrawerList.setItemChecked(Integer.parseInt(position), true);
 
+                            //Pour avoir la fleche back
                             getSupportActionBar().setDisplayHomeAsUpEnabled(true); // show back button
                             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -105,16 +106,10 @@ public class HomeActivity extends AppCompatActivity {
                             });
                         } else {
                             mDrwDrawerList.setItemChecked(MENU_GAME, true);
-                            Toast.makeText(getApplication(), "coucou", Toast.LENGTH_LONG).show();
+
+                            //Pour avoir le burger
                             getSupportActionBar().setDisplayHomeAsUpEnabled(false); // show back button
-                            //mDrwDrawerLayout.addDrawerListener(mDrwDrawerToggle);
                             mDrwDrawerToggle.syncState();
-                            /*toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    mDrwDrawerLayout.openDrawer(mDrwDrawerList);
-                                }
-                            });*/
                         }
                     }
                 });
