@@ -43,14 +43,14 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         /*Déclarations*/
-        final Toolbar toolbar = (Toolbar)findViewById(R.id.heroToolbar);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.heroToolbar);
         String[] drwMenuTitles = getResources().getStringArray(R.array.strArrDrawerList);
         TypedArray drwMenuIcons = getResources().obtainTypedArray(R.array.arrDrawerListIcon);
         ArrayList<Object> drwDrawerItems = new ArrayList<>();
         View header = getLayoutInflater().inflate(R.layout.drawer_header, null);
         DrawerAdapter drwDrawerAdapter;
         GameFragment fragment = new GameFragment();
-        final ActionBarDrawerToggle mDrwDrawerToggle;
+        ActionBarDrawerToggle mDrwDrawerToggle;
 
         setSupportActionBar(toolbar);
 
@@ -95,31 +95,8 @@ public class HomeActivity extends AppCompatActivity {
                             String position = getFragmentManager().getBackStackEntryAt(getFragmentManager().getBackStackEntryCount() - 1).getName();
                             if(position != null)
                                 mDrwDrawerList.setItemChecked(Integer.parseInt(position), true);
-
-                            //Pour avoir la fleche back
-                            if(getSupportActionBar() != null)
-                                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                            if(toolbar != null)
-                                toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        onBackPressed();
-                                    }
-                                });
                         } else {
                             mDrwDrawerList.setItemChecked(MENU_GAME, true);
-
-                            //Pour avoir le burger
-                            if(getSupportActionBar() != null)
-                                getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-                            mDrwDrawerToggle.syncState();
-                            if(toolbar != null)
-                                toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        mDrwDrawerLayout.openDrawer(mDrwDrawerList);
-                                    }
-                                });
                         }
                     }
                 });
