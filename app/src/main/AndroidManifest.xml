@@ -25,11 +25,12 @@
         <activity android:name=".test.HeroesFlipActivity" />
         <activity android:name=".general.ConsultActivity" />
         <activity android:name=".heroes.HeroesFilterActivity" />
-        <activity android:name=".general.SettingsActivity" />
-        <activity android:name=".general.HelpActivity" />
+        <activity android:name=".settings.SettingsActivity" />
+        <activity android:name=".settings.HelpActivity" />
         <activity android:name=".maps.MapActivity" />
         <activity android:name=".favorite.FavoriteActivity" />
-        <activity android:name=".maps.MapsFilterActivity"></activity>
+        <activity android:name=".maps.MapsFilterActivity" />
+        <activity android:name=".settings.LanguageActivity"></activity>
     </application>
 
 </manifest>

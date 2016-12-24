@@ -5,6 +5,7 @@
     <string name="strSettings">Paramètres</string>
     <string name="strHelp">Aide</string>
     <string name="strProfile">Profil</string>
+    <string name="strLanguages">Langues</string>
 
     <string-array name="strArrDrawerList">
         <item>Jeu</item>

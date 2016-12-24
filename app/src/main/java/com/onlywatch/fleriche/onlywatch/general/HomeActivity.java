@@ -22,6 +22,9 @@ import com.onlywatch.fleriche.onlywatch.drawer.NavigationDrawer;
 import com.onlywatch.fleriche.onlywatch.favorite.FavoriteFragment;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroesListFragment;
 import com.onlywatch.fleriche.onlywatch.maps.MapsListFragment;
+import com.onlywatch.fleriche.onlywatch.settings.HelpActivity;
+import com.onlywatch.fleriche.onlywatch.settings.LanguageActivity;
+import com.onlywatch.fleriche.onlywatch.settings.SettingsActivity;
 
 import java.util.ArrayList;
 
@@ -161,9 +164,12 @@ public class HomeActivity extends AppCompatActivity {
                 case MENU_PARAMETERS:
                     Intent settingsIntent = new Intent(HomeActivity.this, SettingsActivity.class);
                     startActivity(settingsIntent);
+                    overridePendingTransition(R.anim.slide_up, R.anim.stay); //Animation transition slide down
                     break;
                 case MENU_LANGUAGES:
-                    Toast.makeText(getApplicationContext(), "Langues", Toast.LENGTH_SHORT).show();
+                    Intent languageIntent = new Intent(HomeActivity.this, LanguageActivity.class);
+                    startActivity(languageIntent);
+                    overridePendingTransition(R.anim.slide_up, R.anim.stay); //Animation transition slide down
                     break;
                 default:
                     break;

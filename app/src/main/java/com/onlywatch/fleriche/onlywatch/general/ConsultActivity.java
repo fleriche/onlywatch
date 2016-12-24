@@ -29,6 +29,8 @@ import com.onlywatch.fleriche.onlywatch.heroes.HeroesRecyclerAdapter;
 import com.onlywatch.fleriche.onlywatch.maps.MapEasterEggFragment;
 import com.onlywatch.fleriche.onlywatch.maps.MapGeneralityFragment;
 import com.onlywatch.fleriche.onlywatch.maps.MapRecyclerAdapter;
+import com.onlywatch.fleriche.onlywatch.settings.HelpActivity;
+import com.onlywatch.fleriche.onlywatch.settings.SettingsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
