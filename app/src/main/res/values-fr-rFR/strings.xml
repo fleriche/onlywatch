@@ -43,11 +43,21 @@
     <string name="strTank">Tank</string>
     <string name="strSupport">Support</string>
 
+    <string name="titleHeroesListFragment">Héros</string>
+    <string name="titleMapsListFragment">Cartes</string>
+    <string name="titleFavoritesListFragment">Favoris</string>
+
+    <string name="strAssault">Assaut</string>
+    <string name="strControl">Contrôle</string>
+    <string name="strEscort">Escorte</string>
+    <string name="strHybrid">Hybride</string>
+
     <string name="strGeneralities">Generalités</string>
     <string name="strStory">Histoire</string>
     <string name="strEasterEggs">Easter Eggs</string>
 
     <string name="strFilterHero">Voir les héros !</string>
+    <string name="strFilterMap">Voir les cartes !</string>
     <string name="strHeroes">Héros</string>
     <string name="strMaps">Cartes</string>
     <string name="strDescription">Description</string>

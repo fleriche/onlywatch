@@ -38,6 +38,15 @@
     <string name="strSkills">Capacités</string>
     <string name="strBiography">Biographie</string>
 
+    <string name="strAssault">Assault</string>
+    <string name="strControl">Control</string>
+    <string name="strEscort">Escort</string>
+    <string name="strHybrid">Hybrid</string>
+
+    <string name="titleHeroesListFragment">Heroes</string>
+    <string name="titleMapsListFragment">Maps</string>
+    <string name="titleFavoritesListFragment">Favorites</string>
+
     <string name="strRealName">Identité : &#160;</string>
     <string name="strOccupation">Profession : &#160;</string>
     <string name="strBaseOperation">Base d\'opération : &#160;</string>
@@ -53,6 +62,7 @@
     <string name="strEasterEggs">Easter Eggs</string>
 
     <string name="strFilterHero">Look for heroes !</string>
+    <string name="strFilterMap">Look for maps !</string>
     <string name="strHeroes">Heroes</string>
     <string name="strMaps">Maps</string>
     <string name="strDescription">Description</string>

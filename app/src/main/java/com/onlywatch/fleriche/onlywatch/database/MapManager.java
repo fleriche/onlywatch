@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.onlywatch.fleriche.onlywatch.entity.Heroes;
 import com.onlywatch.fleriche.onlywatch.entity.Map;
 
 import java.util.ArrayList;
@@ -105,8 +106,46 @@ public class MapManager {
         return getMaps(cursor);
     }
 
+    public ArrayList<Map> getMap(String name) {
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%'", null);
+        return getMaps(cursor);
+    }
+
+    public ArrayList<Map> getFavoriteMap(String name) {
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_MAP+"=1 AND (name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%')", null);
+        return getMaps(cursor);
+    }
+
     public ArrayList<Map> getFavoriteMaps() {
         Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_MAP+"=1 ORDER BY name", null);
+        return getMaps(cursor);
+    }
+
+    public ArrayList<Map> getMapsByGamemode(boolean assault, boolean control, boolean escort, boolean hybrid, boolean onlyFavorite) {
+        String gamemode = "";
+        String query;
+        if (assault)
+            gamemode += "gamemode = 'Assault' OR ";
+        if (control)
+            gamemode += "gamemode = 'Control' OR ";
+        if (escort)
+            gamemode += "gamemode = 'Escort' OR ";
+        if (hybrid)
+            gamemode += "gamemode = 'Hybrid' OR ";
+        if(gamemode.length() != 0) {
+            gamemode = gamemode.substring(0, gamemode.length()-4);
+            gamemode = " WHERE ( "+gamemode+" )";
+        }
+
+        query = "SELECT * FROM "+TABLE_NAME+gamemode;
+        if(onlyFavorite) {
+            if(gamemode.length() != 0)
+                query += " AND "+IS_FAVORITE_MAP+"=1";
+            else
+                query += " WHERE "+IS_FAVORITE_MAP+"=1";
+        }
+        query += " ORDER BY name";
+        Cursor cursor = mDatabase.rawQuery(query, null);
         return getMaps(cursor);
     }
 }

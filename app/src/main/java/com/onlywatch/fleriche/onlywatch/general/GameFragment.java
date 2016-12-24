@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,8 +46,9 @@ public class GameFragment extends Fragment implements BaseSliderView.OnSliderCli
         HashMap<String, Integer> imgMap = new HashMap<>();
         Button btnBuy = (Button) view.findViewById(R.id.btnBuy);
         mDrwDrawerList = (ListView) getActivity().findViewById(R.id.drwLvDrawerList);
-
         mSliderLayout = (SliderLayout)view.findViewById(R.id.slider);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.app_name));
 
         imgMap.put(getString(R.string.strSkills), R.drawable.skill);
         imgMap.put(getString(R.string.strMaps), R.drawable.cartes);

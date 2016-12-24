@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -26,7 +27,6 @@ import java.lang.reflect.Field;
 public class HeroesListFragment extends Fragment implements SearchView.OnQueryTextListener {
     private static final int REQUEST_CODE_HEROES_FILTER = 1;
     private static final String ONLY_FAVORITE = "only_favorite";
-    private boolean mResearchPerformed = false;
     private boolean mIsFavoriteList = false;
     private HeroesManager mHeroesManager;
     private RecyclerView mRecyclerView;
@@ -40,6 +40,11 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
         mHeroesManager = new HeroesManager(getActivity());
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fabHeroesList);
         HeroesRecyclerAdapter hra;
+
+        if(mIsFavoriteList)
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.titleFavoritesListFragment));
+        else
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.titleHeroesListFragment));
 
         setHasOptionsMenu(true);
 

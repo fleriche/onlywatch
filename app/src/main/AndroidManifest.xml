@@ -28,7 +28,8 @@
         <activity android:name=".general.SettingsActivity" />
         <activity android:name=".general.HelpActivity" />
         <activity android:name=".maps.MapActivity" />
-        <activity android:name=".favorite.FavoriteActivity"></activity>
+        <activity android:name=".favorite.FavoriteActivity" />
+        <activity android:name=".maps.MapsFilterActivity"></activity>
     </application>
 
 </manifest>
