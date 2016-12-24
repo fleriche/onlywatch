@@ -47,7 +47,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/shape_game_fragment"
+                android:background="@drawable/shape_text_left"
                 android:text="@string/gameIntro"
                 android:layout_marginBottom="20dp"/>
 

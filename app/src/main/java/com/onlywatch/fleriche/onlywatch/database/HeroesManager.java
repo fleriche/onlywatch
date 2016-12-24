@@ -164,8 +164,18 @@ public class HeroesManager {
         return getHeroes(cursor);
     }
 
+    public ArrayList<Heroes> getFavoriteHeroes() {
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_HEROES+"=1 ORDER BY name", null);
+        return getHeroes(cursor);
+    }
+
     public ArrayList<Heroes> getHeroes(String name) {
         Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%'", null);
+        return getHeroes(cursor);
+    }
+
+    public ArrayList<Heroes> getFavoriteHeroes(String name) {
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_HEROES+"=1 AND name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%'", null);
         return getHeroes(cursor);
     }
 
@@ -191,8 +201,9 @@ public class HeroesManager {
         return getHeroes(cursor);
     }
 
-    public ArrayList<Heroes> getHeroesByDifficultyAndRoles(int difficulty, boolean offense, boolean tank, boolean defense, boolean support) {
+    public ArrayList<Heroes> getHeroesByDifficultyAndRoles(int difficulty, boolean offense, boolean tank, boolean defense, boolean support, boolean onlyFavorite) {
         String role = "";
+        String query;
         if (offense)
             role += "role = 'offense' OR ";
         if (tank)
@@ -206,12 +217,21 @@ public class HeroesManager {
             role = " AND ( "+role+" )";
         }
 
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE difficulty = "+difficulty+role+" ORDER BY name", null);
+        query = "SELECT * FROM "+TABLE_NAME+" WHERE difficulty = "+difficulty+role;
+        if(onlyFavorite)
+            query += " AND "+IS_FAVORITE_HEROES+"=1 ";
+        query += " ORDER BY name";
+        Cursor cursor = mDatabase.rawQuery(query, null);
         return getHeroes(cursor);
     }
 
-    public ArrayList<Heroes> getHeroesByRoles(boolean offense, boolean tank, boolean defense, boolean support) {
+    public ArrayList<Heroes> getHeroesByDifficultyAndRoles(int difficulty, boolean offense, boolean tank, boolean defense, boolean support) {
+        return getHeroesByDifficultyAndRoles(difficulty, offense, tank, defense, support, false);
+    }
+
+    public ArrayList<Heroes> getHeroesByRoles(boolean offense, boolean tank, boolean defense, boolean support, boolean onlyFavorite) {
         String role = "";
+        String query;
         if (offense)
             role += "role = 'offense' OR ";
         if (tank)
@@ -225,7 +245,15 @@ public class HeroesManager {
             role = " WHERE "+role;
         }
 
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+role+" ORDER BY name", null);
+        query = "SELECT * FROM "+TABLE_NAME+role;
+        if(onlyFavorite)
+            query += " AND "+IS_FAVORITE_HEROES+"=1 ";
+        query += " ORDER BY name";
+        Cursor cursor = mDatabase.rawQuery(query, null);
         return getHeroes(cursor);
+    }
+
+    public ArrayList<Heroes> getHeroesByRoles(boolean offense, boolean tank, boolean defense, boolean support) {
+        return getHeroesByRoles(offense, tank, defense, support, false);
     }
 }

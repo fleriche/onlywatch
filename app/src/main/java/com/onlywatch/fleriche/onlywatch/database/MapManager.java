@@ -19,7 +19,7 @@ public class MapManager {
     public static final String NOM_MAP = "name";
     public static final String CANONICAL_NAME_MAP = "canonical_name";
     public static final String LOCATION_MAP = "location";
-    public static final String TERRAIN_MAP = "terrain";
+    public static final String GAMEMODE_MAP = "gamemode";
     public static final String DESCRIPTION_MAP = "description";
     public static final String BACKGROUND_MAP = "background";
     public static final String STRATEGY_MAP = "strategy";
@@ -45,7 +45,7 @@ public class MapManager {
         values.put(NOM_MAP, map.getNom());
         values.put(CANONICAL_NAME_MAP, map.getCanonical_name());
         values.put(LOCATION_MAP, map.getLocation());
-        values.put(TERRAIN_MAP, map.getGamemode());
+        values.put(GAMEMODE_MAP, map.getGamemode());
         values.put(DESCRIPTION_MAP, map.getDescription());
         values.put(BACKGROUND_MAP, map.getBackground());
         values.put(STRATEGY_MAP, map.getStrategy());
@@ -67,7 +67,7 @@ public class MapManager {
             map.setNom(cursor.getString(cursor.getColumnIndex(NOM_MAP)));
             map.setCanonical_name(cursor.getString(cursor.getColumnIndex(CANONICAL_NAME_MAP)));
             map.setLocation(cursor.getString(cursor.getColumnIndex(LOCATION_MAP)));
-            map.setGamemode(cursor.getString(cursor.getColumnIndex(TERRAIN_MAP)));
+            map.setGamemode(cursor.getString(cursor.getColumnIndex(GAMEMODE_MAP)));
             map.setDescription(cursor.getString(cursor.getColumnIndex(DESCRIPTION_MAP)));
             map.setBackground(cursor.getString(cursor.getColumnIndex(BACKGROUND_MAP)));
             map.setStrategy(cursor.getString(cursor.getColumnIndex(STRATEGY_MAP)));
@@ -88,7 +88,7 @@ public class MapManager {
             map.setNom(cursor.getString(cursor.getColumnIndex(NOM_MAP)));
             map.setCanonical_name(cursor.getString(cursor.getColumnIndex(CANONICAL_NAME_MAP)));
             map.setLocation(cursor.getString(cursor.getColumnIndex(LOCATION_MAP)));
-            map.setGamemode(cursor.getString(cursor.getColumnIndex(TERRAIN_MAP)));
+            map.setGamemode(cursor.getString(cursor.getColumnIndex(GAMEMODE_MAP)));
             map.setDescription(cursor.getString(cursor.getColumnIndex(DESCRIPTION_MAP)));
             map.setBackground(cursor.getString(cursor.getColumnIndex(BACKGROUND_MAP)));
             map.setStrategy(cursor.getString(cursor.getColumnIndex(STRATEGY_MAP)));

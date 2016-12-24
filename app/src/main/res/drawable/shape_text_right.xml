@@ -5,15 +5,15 @@
         android:width="3dip"
         android:color="@color/colorAccent"/>
     <corners
-        android:bottomLeftRadius="60dp"
-        android:bottomRightRadius="0dp"
-        android:topLeftRadius="0dp"
-        android:topRightRadius="60dp" />
+        android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="60dp"
+        android:topLeftRadius="60dp"
+        android:topRightRadius="0dp" />
     <padding
         android:bottom="20dp"
-        android:left="20dp"
-        android:right="10dp"
-        android:top="10dp" />
+        android:left="35dp"
+        android:right="30dp"
+        android:top="20dp" />
     <gradient
         android:angle="0"
         android:centerX="0.5"

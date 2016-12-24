@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="2dp"
-    android:paddingRight="2dp"
     android:paddingBottom="@dimen/activity_vertical_margin">
 
     <android.support.design.widget.TabLayout
-        android:id="@+id/tab_layout"
+        android:id="@+id/tabLayoutFavorite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        android:elevation="6dp"
-        android:fitsSystemWindows="true"
         android:minHeight="?attr/actionBarSize"
+        android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-</android.support.design.widget.CoordinatorLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPagerFavorite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tabLayoutFavorite"/>
+
+</RelativeLayout>

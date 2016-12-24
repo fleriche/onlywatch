@@ -1,7 +1,7 @@
 package com.onlywatch.fleriche.onlywatch.general;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.support.v4.widget.DrawerLayout;
@@ -77,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
         mDrwDrawerToggle.syncState();
 
         /*Si on est entrain de recréer l'activité (genre après changement orientation) on garde le fragment actuel sinon on charge Game pour l'accueil*/
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         if (savedInstanceState == null) {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.frame, fragment);
@@ -91,8 +91,8 @@ public class HomeActivity extends AppCompatActivity {
                 new FragmentManager.OnBackStackChangedListener() {
                     public void onBackStackChanged() {
                         //Si y'a encore qqch dans le backstack sinon ça veut dire qu'on est revenu sur l'accueil
-                        if(getFragmentManager().getBackStackEntryCount() > 0) {
-                            String position = getFragmentManager().getBackStackEntryAt(getFragmentManager().getBackStackEntryCount() - 1).getName();
+                        if(getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                            String position = getSupportFragmentManager().getBackStackEntryAt(getSupportFragmentManager().getBackStackEntryCount() - 1).getName();
                             if(position != null)
                                 mDrwDrawerList.setItemChecked(Integer.parseInt(position), true);
                         } else {
@@ -169,7 +169,7 @@ public class HomeActivity extends AppCompatActivity {
                     break;
             }
 
-            FragmentManager fragmentManager = getFragmentManager();
+            FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
             if (fragment != null)

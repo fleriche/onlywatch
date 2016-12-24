@@ -48,6 +48,10 @@
     <string name="strTank">Tank</string>
     <string name="strSupport">Support</string>
 
+    <string name="strGeneralities">Generalities</string>
+    <string name="strStory">Story</string>
+    <string name="strEasterEggs">Easter Eggs</string>
+
     <string name="strFilterHero">Look for heroes !</string>
     <string name="strHeroes">Heroes</string>
     <string name="strMaps">Maps</string>
@@ -57,6 +61,8 @@
 
     <string name="strLocation">Location :</string>
     <string name="strGameMode">Game mode :</string>
+
+    <string name="strBackground">Background</string>
 
     <string name="gameIntro">FIGHT FOR THE FUTURE\n\n
         Soldiers. Scientists. Adventurers. Oddities.\n\n

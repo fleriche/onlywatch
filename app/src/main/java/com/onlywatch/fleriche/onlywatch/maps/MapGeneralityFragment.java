@@ -45,6 +45,8 @@ public class MapGeneralityFragment extends Fragment {
         TextView tvMapName = (TextView) view.findViewById(R.id.mapNameMapGenerality);
         TextView tvLocation = (TextView) view.findViewById(R.id.locationMapGenerality);
         TextView tvGameMode = (TextView) view.findViewById(R.id.gameModeMapGenerality);
+        TextView tvDescription = (TextView) view.findViewById(R.id.tvDescriptionMapGenerality);
+        TextView tvBackground = (TextView) view.findViewById(R.id.tvBackgroundMapGenerality);
         MapManager mapManager = new MapManager(getActivity());
         Map map;
 
@@ -53,6 +55,8 @@ public class MapGeneralityFragment extends Fragment {
         tvMapName.setText(map.getNom());
         tvLocation.setText(map.getLocation());
         tvGameMode.setText(map.getGamemode());
+        tvDescription.setText(map.getDescription());
+        tvBackground.setText(map.getBackground());
         mapManager.close();
 
         return view;

@@ -26,6 +26,7 @@ import com.onlywatch.fleriche.onlywatch.entity.Map;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroGeneralityFragment;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroHistoryFragment;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroesRecyclerAdapter;
+import com.onlywatch.fleriche.onlywatch.maps.MapEasterEggFragment;
 import com.onlywatch.fleriche.onlywatch.maps.MapGeneralityFragment;
 import com.onlywatch.fleriche.onlywatch.maps.MapRecyclerAdapter;
 
@@ -165,14 +166,15 @@ public class ConsultActivity extends AppCompatActivity {
 
     private void setupHeroViewPager(ViewPager viewPager) {
         TabLayoutAdapter tabLayoutAdapter = new TabLayoutAdapter(getSupportFragmentManager());
-        tabLayoutAdapter.addTab(HeroGeneralityFragment.newInstance(mHeroesId), "Généralités");
-        tabLayoutAdapter.addTab(HeroHistoryFragment.newInstance(mHeroesId), "Histoire");
+        tabLayoutAdapter.addTab(HeroGeneralityFragment.newInstance(mHeroesId), getString(R.string.strGeneralities));
+        tabLayoutAdapter.addTab(HeroHistoryFragment.newInstance(mHeroesId), getString(R.string.strStory));
         viewPager.setAdapter(tabLayoutAdapter);
     }
 
     private void setupMapViewPager(ViewPager viewPager) {
         TabLayoutAdapter tabLayoutAdapter = new TabLayoutAdapter(getSupportFragmentManager());
-        tabLayoutAdapter.addTab(MapGeneralityFragment.newInstance(mMapId), "Généralités");
+        tabLayoutAdapter.addTab(MapGeneralityFragment.newInstance(mMapId), getString(R.string.strGeneralities));
+        tabLayoutAdapter.addTab(MapEasterEggFragment.newInstance(mMapId), getString(R.string.strEasterEggs));
         viewPager.setAdapter(tabLayoutAdapter);
     }
 
@@ -208,7 +210,7 @@ public class ConsultActivity extends AppCompatActivity {
         return context.getResources().getIdentifier(name, "drawable", context.getPackageName());
     }
 
-    private static class TabLayoutAdapter extends FragmentPagerAdapter {
+    public static class TabLayoutAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragments = new ArrayList<>();
         private final List<String> mTabTitles = new ArrayList<>();
 

@@ -1,6 +1,6 @@
 package com.onlywatch.fleriche.onlywatch.heroes;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -17,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
@@ -26,7 +25,9 @@ import java.lang.reflect.Field;
 
 public class HeroesListFragment extends Fragment implements SearchView.OnQueryTextListener {
     private static final int REQUEST_CODE_HEROES_FILTER = 1;
+    private static final String ONLY_FAVORITE = "only_favorite";
     private boolean mResearchPerformed = false;
+    private boolean mIsFavoriteList = false;
     private HeroesManager mHeroesManager;
     private RecyclerView mRecyclerView;
 
@@ -38,6 +39,7 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
         GridLayoutManager gridLayoutManager;
         mHeroesManager = new HeroesManager(getActivity());
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fabHeroesList);
+        HeroesRecyclerAdapter hra;
 
         setHasOptionsMenu(true);
 
@@ -48,7 +50,10 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
 
         // Liste contenant tous les héros
         mHeroesManager.open();
-        HeroesRecyclerAdapter hra = new HeroesRecyclerAdapter(mHeroesManager.getHeroes(), getActivity());
+        if(!mIsFavoriteList)
+            hra = new HeroesRecyclerAdapter(mHeroesManager.getHeroes(), getActivity());
+        else
+            hra = new HeroesRecyclerAdapter(mHeroesManager.getFavoriteHeroes(), getActivity());
         mRecyclerView.setAdapter(hra);
         mHeroesManager.close();
 
@@ -64,12 +69,21 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
         return view;
     }
 
-    /*@Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putString("message", "test");
-        Toast.makeText(getActivity(), "singe", Toast.LENGTH_LONG).show();
-        super.onSaveInstanceState(outState);
-    }*/
+    public static HeroesListFragment newInstance(boolean onlyFavoriteHeroes) {
+        HeroesListFragment fragment = new HeroesListFragment();
+        Bundle args = new Bundle();
+        args.putBoolean(ONLY_FAVORITE, onlyFavoriteHeroes);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mIsFavoriteList = getArguments().getBoolean(ONLY_FAVORITE);
+        }
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)  {
@@ -124,7 +138,10 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
     public boolean onQueryTextSubmit(String query) {
         mHeroesManager.open();
         HeroesRecyclerAdapter hra;
-        hra = !query.isEmpty() ? new HeroesRecyclerAdapter(mHeroesManager.getHeroes(query), getActivity()) : new HeroesRecyclerAdapter(mHeroesManager.getHeroes(), getActivity());
+        if(mIsFavoriteList)
+            hra = !query.isEmpty() ? new HeroesRecyclerAdapter(mHeroesManager.getFavoriteHeroes(query), getActivity()) : new HeroesRecyclerAdapter(mHeroesManager.getFavoriteHeroes(), getActivity());
+        else
+            hra = !query.isEmpty() ? new HeroesRecyclerAdapter(mHeroesManager.getHeroes(query), getActivity()) : new HeroesRecyclerAdapter(mHeroesManager.getHeroes(), getActivity());
         mRecyclerView.setAdapter(hra);
         mHeroesManager.close();
         return true;
