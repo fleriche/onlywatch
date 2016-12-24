@@ -25,6 +25,7 @@ import com.onlywatch.fleriche.onlywatch.maps.MapsListFragment;
 import com.onlywatch.fleriche.onlywatch.settings.HelpActivity;
 import com.onlywatch.fleriche.onlywatch.settings.LanguageActivity;
 import com.onlywatch.fleriche.onlywatch.settings.SettingsActivity;
+import com.onlywatch.fleriche.onlywatch.skills.SkillsListFragment;
 
 import java.util.ArrayList;
 
@@ -139,6 +140,7 @@ public class HomeActivity extends AppCompatActivity {
         private void selectItem(int position) {
             HeroesListFragment fragment = null;
             MapsListFragment mapFragment = null;
+            SkillsListFragment skillsFragment = null;
             GameFragment gameFragment = null;
             FavoriteFragment favoriteFragment = null;
 
@@ -153,7 +155,7 @@ public class HomeActivity extends AppCompatActivity {
                     mapFragment = new MapsListFragment();
                     break;
                 case MENU_MEDIAS:
-                    Toast.makeText(getApplicationContext(), "Medias", Toast.LENGTH_SHORT).show();
+                    skillsFragment = new SkillsListFragment();
                     break;
                 case MENU_PROFILE:
                     Toast.makeText(getApplicationContext(), "Profil", Toast.LENGTH_SHORT).show();
@@ -186,6 +188,9 @@ public class HomeActivity extends AppCompatActivity {
 
             if (mapFragment != null)
                 fragmentTransaction.replace(R.id.frame, mapFragment);
+
+            if (skillsFragment != null)
+                fragmentTransaction.replace(R.id.frame, skillsFragment);
 
             if (favoriteFragment != null)
                 fragmentTransaction.replace(R.id.frame, favoriteFragment);

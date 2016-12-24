@@ -187,6 +187,7 @@ public class HeroesManager {
             Skill skill = new Skill();
             skill.setId(cursor.getInt(cursor.getColumnIndex(SkillManager.KEY_ID_SKILL)));
             skill.setNom(cursor.getString(cursor.getColumnIndex(SkillManager.NOM_SKILL)));
+            skill.setCanonical_name(cursor.getString(cursor.getColumnIndex(SkillManager.CANONICAL_NAME_SKILL)));
             skill.setDescription(cursor.getString(cursor.getColumnIndex(SkillManager.DESCRIPTION_SKILL)));
             skill.setFeatures(cursor.getString(cursor.getColumnIndex(SkillManager.FEATURES_SKILL)));
             skill.setId_heroes(cursor.getInt(cursor.getColumnIndex(SkillManager.KEY_ID_HEROES_SKILL)));

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp"
+    android:paddingBottom="@dimen/activity_vertical_margin">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mapCardList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/strNoFavoritesHeroes"
+        android:id="@+id/tvNoFavoritesHeroes"
+        android:background="@drawable/shape_text_right"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fabSkillsList"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_account_search"
+        app:layout_anchor="@id/mapCardList"
+        app:layout_anchorGravity="bottom|right|end"
+        app:layout_behavior="com.onlywatch.fleriche.onlywatch.tools.ScrollAwareFABBehavior"/>
+
+</android.support.design.widget.CoordinatorLayout>

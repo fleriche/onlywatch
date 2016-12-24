@@ -121,7 +121,7 @@ public class HeroGeneralityFragment extends android.support.v4.app.Fragment {
             ivSkillLayout.setMargins(0, 0, 0, dpsToPixels(10));
             ivSkillLayout.gravity = Gravity.CENTER;
             ivSkill.setLayoutParams(ivSkillLayout);
-            ivSkill.setImageResource(getDrawableIdentifier(getActivity(), hero.getCanonical_name()+"_skill_"+skillsCounter));
+            ivSkill.setImageResource(getDrawableIdentifier(getActivity(), skill.getCanonical_name()));
 
             // Résumé du skill
             TextView tvSummarySkill = new TextView(getActivity());

@@ -7,6 +7,7 @@ package com.onlywatch.fleriche.onlywatch.entity;
 public class Skill {
     private int id;
     private String nom;
+    private String canonical_name;
     private String description;
     private String features;
     private int id_heroes;
@@ -59,5 +60,13 @@ public class Skill {
 
     public void setFeatures(String features) {
         this.features = features;
+    }
+
+    public String getCanonical_name() {
+        return canonical_name;
+    }
+
+    public void setCanonical_name(String canonical_name) {
+        this.canonical_name = canonical_name;
     }
 }
