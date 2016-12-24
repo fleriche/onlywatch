@@ -1,10 +1,10 @@
 package com.onlywatch.fleriche.onlywatch.heroes;
 
-import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -22,8 +22,6 @@ import android.widget.TextView;
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
 import com.onlywatch.fleriche.onlywatch.entity.Heroes;
-
-import org.w3c.dom.Text;
 
 import java.lang.reflect.Field;
 import java.util.List;

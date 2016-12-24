@@ -1,10 +1,10 @@
 package com.onlywatch.fleriche.onlywatch.maps;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -20,11 +20,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 
 import com.onlywatch.fleriche.onlywatch.R;
-import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
 import com.onlywatch.fleriche.onlywatch.database.MapManager;
 import com.onlywatch.fleriche.onlywatch.entity.Map;
-import com.onlywatch.fleriche.onlywatch.heroes.HeroesFilterActivity;
-import com.onlywatch.fleriche.onlywatch.heroes.HeroesRecyclerAdapter;
 
 import java.lang.reflect.Field;
 import java.util.List;
