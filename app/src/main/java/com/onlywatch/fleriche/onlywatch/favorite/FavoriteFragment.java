@@ -29,7 +29,7 @@ public class FavoriteFragment extends Fragment {
         tabLayoutAdapter.addTab(HeroesListFragment.newInstance(true), getString(R.string.strHeroes));
         tabLayoutAdapter.addTab(MapsListFragment.newInstance(true), getString(R.string.strMaps));
         mViewPager.setAdapter(tabLayoutAdapter);
-
+        setHasOptionsMenu(true);
         if(tabLayout != null)
             tabLayout.setupWithViewPager(mViewPager);
 
