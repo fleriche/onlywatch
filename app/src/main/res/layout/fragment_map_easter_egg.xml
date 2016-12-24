@@ -3,27 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/blueTransparentOverwatch"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="20"
-        android:background="@color/blueTransparentOverwatch"
-        android:orientation="vertical"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:orientation="vertical">
 
-        <RelativeLayout
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/strEasterEggs"
+            android:textSize="30sp"
+            android:textColor="@color/white"/>
+
+        <WebView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:background="@color/blueTransparentOverwatch"
+            android:id="@+id/webViewEasterEggs">
 
-        </RelativeLayout>
-
-        <android.support.v4.widget.Space
-            android:layout_width="match_parent"
-            android:layout_height="200dp" />
+        </WebView>
 
     </LinearLayout>
 

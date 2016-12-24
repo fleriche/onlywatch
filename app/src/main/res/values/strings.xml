@@ -74,6 +74,9 @@
 
     <string name="strBackground">Background</string>
 
+    <string name="strNoFavoritesHeroes">No favorites heroes !</string>
+    <string name="strNoFavoritesMaps">No favorites maps !</string>
+
     <string name="gameIntro">FIGHT FOR THE FUTURE\n\n
         Soldiers. Scientists. Adventurers. Oddities.\n\n
 In a time of global crisis, an international task force of heroes banded together to restore peace to a war-torn world: OVERWATCH.\n\n

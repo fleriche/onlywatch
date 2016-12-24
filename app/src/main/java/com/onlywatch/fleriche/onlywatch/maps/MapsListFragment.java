@@ -22,10 +22,12 @@ import android.widget.TextView;
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
 import com.onlywatch.fleriche.onlywatch.database.MapManager;
+import com.onlywatch.fleriche.onlywatch.entity.Map;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroesFilterActivity;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroesRecyclerAdapter;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 public class MapsListFragment extends Fragment implements SearchView.OnQueryTextListener {
     private static final int REQUEST_CODE_MAPS_FILTER = 1;
@@ -57,10 +59,12 @@ public class MapsListFragment extends Fragment implements SearchView.OnQueryText
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_maps_list, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.mapCardList);
+        TextView noFavorites = (TextView) view.findViewById(R.id.tvNoFavoritesMaps);
         GridLayoutManager gridLayoutManager;
         mMapManager = new MapManager(getActivity());
         MapRecyclerAdapter mapRecyclerAdapter;
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fabMapsList);
+        List<Map> mapList;
 
         setHasOptionsMenu(true);
         if(mIsFavoriteList)
@@ -75,11 +79,15 @@ public class MapsListFragment extends Fragment implements SearchView.OnQueryText
 
         mMapManager.open();
         if(!mIsFavoriteList)
-            mapRecyclerAdapter = new MapRecyclerAdapter(mMapManager.getMaps(), getActivity());
+            mapList = mMapManager.getMaps();
         else
-            mapRecyclerAdapter = new MapRecyclerAdapter(mMapManager.getFavoriteMaps(), getActivity());
+            mapList = mMapManager.getFavoriteMaps();
+        mapRecyclerAdapter = new MapRecyclerAdapter(mapList, getActivity());
         mRecyclerView.setAdapter(mapRecyclerAdapter);
         mMapManager.close();
+
+        if(mapList.isEmpty() && mIsFavoriteList)
+            noFavorites.setVisibility(View.VISIBLE);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

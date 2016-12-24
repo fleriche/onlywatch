@@ -21,8 +21,12 @@ import android.widget.TextView;
 
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
+import com.onlywatch.fleriche.onlywatch.entity.Heroes;
+
+import org.w3c.dom.Text;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 public class HeroesListFragment extends Fragment implements SearchView.OnQueryTextListener {
     private static final int REQUEST_CODE_HEROES_FILTER = 1;
@@ -39,7 +43,9 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
         GridLayoutManager gridLayoutManager;
         mHeroesManager = new HeroesManager(getActivity());
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fabHeroesList);
+        TextView noFavorites = (TextView) view.findViewById(R.id.tvNoFavoritesHeroes);
         HeroesRecyclerAdapter hra;
+        List<Heroes> heroesList;
 
         if(mIsFavoriteList)
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.titleFavoritesListFragment));
@@ -56,11 +62,15 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
         // Liste contenant tous les héros
         mHeroesManager.open();
         if(!mIsFavoriteList)
-            hra = new HeroesRecyclerAdapter(mHeroesManager.getHeroes(), getActivity());
+            heroesList = mHeroesManager.getHeroes();
         else
-            hra = new HeroesRecyclerAdapter(mHeroesManager.getFavoriteHeroes(), getActivity());
+            heroesList = mHeroesManager.getFavoriteHeroes();
+        hra = new HeroesRecyclerAdapter(heroesList, getActivity());
         mRecyclerView.setAdapter(hra);
         mHeroesManager.close();
+
+        if(heroesList.isEmpty() && mIsFavoriteList)
+            noFavorites.setVisibility(View.VISIBLE);
 
         // Floating Action Button
         fab.setOnClickListener(new View.OnClickListener() {
