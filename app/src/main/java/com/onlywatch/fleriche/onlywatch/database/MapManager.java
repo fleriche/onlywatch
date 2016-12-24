@@ -104,4 +104,9 @@ public class MapManager {
         Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " ORDER BY name", null);
         return getMaps(cursor);
     }
+
+    public ArrayList<Map> getFavoriteMaps() {
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_MAP+"=1 ORDER BY name", null);
+        return getMaps(cursor);
+    }
 }

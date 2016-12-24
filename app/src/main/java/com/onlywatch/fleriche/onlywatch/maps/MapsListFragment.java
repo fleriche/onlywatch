@@ -10,16 +10,31 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.database.MapManager;
+import com.onlywatch.fleriche.onlywatch.heroes.HeroesListFragment;
 
 public class MapsListFragment extends Fragment {
+    private static final String ONLY_FAVORITE = "only_favorite";
+    private boolean mIsFavoriteList = false;
     private MapManager mMapManager;
     private RecyclerView mRecyclerView;
 
     public MapsListFragment() {}
 
-    /*public static MapsListFragment newInstance(String param1, String param2) {
+    public static MapsListFragment newInstance(boolean onlyFavoriteHeroes) {
+        MapsListFragment fragment = new MapsListFragment();
+        Bundle args = new Bundle();
+        args.putBoolean(ONLY_FAVORITE, onlyFavoriteHeroes);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
-    }*/
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mIsFavoriteList = getArguments().getBoolean(ONLY_FAVORITE);
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,6 +43,7 @@ public class MapsListFragment extends Fragment {
         mRecyclerView = (RecyclerView) view.findViewById(R.id.mapCardList);
         GridLayoutManager gridLayoutManager;
         mMapManager = new MapManager(getActivity());
+        MapRecyclerAdapter mapRecyclerAdapter;
 
         setHasOptionsMenu(true);
 
@@ -37,7 +53,10 @@ public class MapsListFragment extends Fragment {
         mRecyclerView.setLayoutManager(gridLayoutManager);
 
         mMapManager.open();
-        MapRecyclerAdapter mapRecyclerAdapter = new MapRecyclerAdapter(mMapManager.getMaps(), getActivity());
+        if(!mIsFavoriteList)
+            mapRecyclerAdapter = new MapRecyclerAdapter(mMapManager.getMaps(), getActivity());
+        else
+            mapRecyclerAdapter = new MapRecyclerAdapter(mMapManager.getFavoriteMaps(), getActivity());
         mRecyclerView.setAdapter(mapRecyclerAdapter);
         mMapManager.close();
 

@@ -101,13 +101,13 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
                 HeroesRecyclerAdapter hra;
 
                 if (progress >= 0 && progress < 10) {
-                    hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByRoles(offense == 1, tank == 1, defense == 1, support == 1), getActivity());
+                    hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByRoles(offense == 1, tank == 1, defense == 1, support == 1, mIsFavoriteList), getActivity());
                 } else if(progress >= 10 && progress < 30) {
-                    hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByDifficultyAndRoles(1, offense == 1, tank == 1, defense == 1, support == 1), getActivity());
+                    hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByDifficultyAndRoles(1, offense == 1, tank == 1, defense == 1, support == 1, mIsFavoriteList), getActivity());
                 } else if(progress >= 30 && progress < 50) {
-                    hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByDifficultyAndRoles(2, offense == 1, tank == 1, defense == 1, support == 1), getActivity());
+                    hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByDifficultyAndRoles(2, offense == 1, tank == 1, defense == 1, support == 1, mIsFavoriteList), getActivity());
                 } else {
-                    hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByDifficultyAndRoles(3, offense == 1, tank == 1, defense == 1, support == 1), getActivity());
+                    hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByDifficultyAndRoles(3, offense == 1, tank == 1, defense == 1, support == 1, mIsFavoriteList), getActivity());
                 }
                 mRecyclerView.setAdapter(hra);
                 heroesManager.close();

@@ -175,7 +175,7 @@ public class HeroesManager {
     }
 
     public ArrayList<Heroes> getFavoriteHeroes(String name) {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_HEROES+"=1 AND name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%'", null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_HEROES+"=1 AND (name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%')", null);
         return getHeroes(cursor);
     }
 
