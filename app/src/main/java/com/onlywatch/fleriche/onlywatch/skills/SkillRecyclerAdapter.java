@@ -56,10 +56,10 @@ public class SkillRecyclerAdapter extends RecyclerView.Adapter<SkillRecyclerAdap
     public SkillViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View itemView = LayoutInflater.
                 from(viewGroup.getContext()).
-                inflate(R.layout.cardview_heroe_front, viewGroup, false);
+                inflate(R.layout.cardview_skill, viewGroup, false);
 
         ImageView imgHeroes = (ImageView)itemView.findViewById(R.id.imgHeroe);
-        imgHeroes.setScaleType(ImageView.ScaleType.FIT_XY);
+        imgHeroes.setScaleType(ImageView.ScaleType.FIT_CENTER);
 
         return new SkillViewHolder(itemView);
     }

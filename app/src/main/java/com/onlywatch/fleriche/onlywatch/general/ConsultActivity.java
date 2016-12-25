@@ -2,6 +2,7 @@ package com.onlywatch.fleriche.onlywatch.general;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -20,9 +21,11 @@ import android.widget.ImageView;
 
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.database.MapManager;
+import com.onlywatch.fleriche.onlywatch.database.SkillManager;
 import com.onlywatch.fleriche.onlywatch.entity.Heroes;
 import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
 import com.onlywatch.fleriche.onlywatch.entity.Map;
+import com.onlywatch.fleriche.onlywatch.entity.Skill;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroGeneralityFragment;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroHistoryFragment;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroesRecyclerAdapter;
@@ -31,6 +34,8 @@ import com.onlywatch.fleriche.onlywatch.maps.MapGeneralityFragment;
 import com.onlywatch.fleriche.onlywatch.maps.MapRecyclerAdapter;
 import com.onlywatch.fleriche.onlywatch.settings.HelpActivity;
 import com.onlywatch.fleriche.onlywatch.settings.SettingsActivity;
+import com.onlywatch.fleriche.onlywatch.skills.SkillGeneralityFragment;
+import com.onlywatch.fleriche.onlywatch.skills.SkillRecyclerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +44,7 @@ public class ConsultActivity extends AppCompatActivity {
     public static final String TYPE_ACTIVITY_EXTRA = "type";
     private int mHeroesId;
     private int mMapId;
+    private int mSkillId;
     private ImageView mImgToolbarCollapsing;
     private ViewPager mViewPager;
     private FloatingActionButton mFabFavorite;
@@ -75,6 +81,10 @@ public class ConsultActivity extends AppCompatActivity {
                 break;
             case "map":
                 setupMap(intent);
+                break;
+            case "skill":
+                setupSkill(intent);
+                mImgToolbarCollapsing.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 break;
         }
 
@@ -166,6 +176,44 @@ public class ConsultActivity extends AppCompatActivity {
             setupMapViewPager(mViewPager);
     }
 
+    private void setupSkill(Intent intent) {
+        final Skill skill;
+        final SkillManager skillManager = new SkillManager(getApplicationContext());
+        mSkillId = intent.getIntExtra(SkillRecyclerAdapter.SKILL_ID_EXTRA, 0);
+        skillManager.open();
+        skill = skillManager.getSkill(mSkillId);
+
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setTitle(skill.getNom());
+
+        if(mImgToolbarCollapsing != null)
+            mImgToolbarCollapsing.setImageResource(getDrawableIdentifier(getApplicationContext(), skill.getCanonical_name()));
+
+        mFabFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mIsFavorite) {
+                    ((FloatingActionButton) v).setImageResource(R.drawable.ic_favorite_border);
+                    mIsFavorite = false;
+                    //skill.setIs_favorite(0);
+                } else {
+                    ((FloatingActionButton) v).setImageResource(R.drawable.ic_favorite);
+                    mIsFavorite = true;
+                    //skill.setIs_favorite(1);
+                }
+                final SkillManager skillManagerFab = new SkillManager(getApplicationContext());
+                skillManagerFab.open();
+                skillManagerFab.updateSkill(skill);
+                skillManagerFab.close();
+            }
+        });
+
+        skillManager.close();
+
+        if (mViewPager != null)
+            setupSkillViewPager(mViewPager);
+    }
+
     private void setupHeroViewPager(ViewPager viewPager) {
         TabLayoutAdapter tabLayoutAdapter = new TabLayoutAdapter(getSupportFragmentManager());
         tabLayoutAdapter.addTab(HeroGeneralityFragment.newInstance(mHeroesId), getString(R.string.strGeneralities));
@@ -177,6 +225,12 @@ public class ConsultActivity extends AppCompatActivity {
         TabLayoutAdapter tabLayoutAdapter = new TabLayoutAdapter(getSupportFragmentManager());
         tabLayoutAdapter.addTab(MapGeneralityFragment.newInstance(mMapId), getString(R.string.strGeneralities));
         tabLayoutAdapter.addTab(MapEasterEggFragment.newInstance(mMapId), getString(R.string.strEasterEggs));
+        viewPager.setAdapter(tabLayoutAdapter);
+    }
+
+    private void setupSkillViewPager(ViewPager viewPager) {
+        TabLayoutAdapter tabLayoutAdapter = new TabLayoutAdapter(getSupportFragmentManager());
+        tabLayoutAdapter.addTab(new SkillGeneralityFragment(), getString(R.string.strGeneralities));
         viewPager.setAdapter(tabLayoutAdapter);
     }
 
