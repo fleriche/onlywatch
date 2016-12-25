@@ -29,10 +29,10 @@
         <item>@drawable/ic_language</item>
     </array>
 
+    <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+
     <string name="strOpenDrawer">Open Drawer</string>
     <string name="strCloseDrawer">Close Drawer</string>
-    <string name="title_activity_heroes">HeroesActivity</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="strRole">Rôle</string>
     <string name="strDifficulty">Difficulté</string>
@@ -108,4 +108,7 @@ Now, conflict is rising across the world again, and the call has gone out to her
     <string name="ange_summary">L’armure Valkyrie d’Ange lui permet de veiller sur ses coéquipiers tel un ange gardien. Grâce aux rayons de son Caducée, elle peut les soigner, les ressusciter ou les renforcer.</string>
     <string name="symmetra_summary">Symmetra utilise son projecteur de rayons pour éliminer ses adversaires, protéger ses alliés, placer des téléporteurs et déployer des tourelles sentinelles à particules.</string>
     <string name="zenyatta_summary">Zenyatta invoque des orbes d’harmonie et de discorde pour soigner ses coéquipiers et affaiblir ses ennemis, tout en maintenant un état de transcendance qui le rend insensible aux dégâts.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

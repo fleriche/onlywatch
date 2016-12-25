@@ -29,6 +29,9 @@
         <item>@drawable/ic_language</item>
     </array>
 
+    <string name="strOpenDrawer">Open Drawer</string>
+    <string name="strCloseDrawer">Close Drawer</string>
+
     <string name="strRole">Rôle</string>
     <string name="strDifficulty">Difficulté</string>
     <string name="strSkills">Capacités</string>

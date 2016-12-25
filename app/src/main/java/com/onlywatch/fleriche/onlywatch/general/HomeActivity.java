@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.drawer.DrawerAdapter;
@@ -22,6 +21,7 @@ import com.onlywatch.fleriche.onlywatch.drawer.NavigationDrawer;
 import com.onlywatch.fleriche.onlywatch.favorite.FavoriteFragment;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroesListFragment;
 import com.onlywatch.fleriche.onlywatch.maps.MapsListFragment;
+import com.onlywatch.fleriche.onlywatch.medias.MediasActivity;
 import com.onlywatch.fleriche.onlywatch.settings.HelpActivity;
 import com.onlywatch.fleriche.onlywatch.settings.LanguageActivity;
 import com.onlywatch.fleriche.onlywatch.settings.SettingsActivity;
@@ -155,10 +155,11 @@ public class HomeActivity extends AppCompatActivity {
                     mapFragment = new MapsListFragment();
                     break;
                 case MENU_MEDIAS:
-                    skillsFragment = new SkillsListFragment();
+                    Intent mediasIntent = new Intent(HomeActivity.this, MediasActivity.class);
+                    startActivity(mediasIntent);
                     break;
                 case MENU_PROFILE:
-                    Toast.makeText(getApplicationContext(), "Profil", Toast.LENGTH_SHORT).show();
+                    skillsFragment = new SkillsListFragment();
                     break;
                 case MENU_FAVORITES:
                     favoriteFragment = new FavoriteFragment();

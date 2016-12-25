@@ -18,19 +18,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".general.ConsultActivity" />
-        <activity
-            android:name=".test.HeroesActivity"
-            android:label="@string/title_activity_heroes"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".test.HeroesFlipActivity" />
-        <activity android:name=".general.ConsultActivity" />
         <activity android:name=".heroes.HeroesFilterActivity" />
         <activity android:name=".settings.SettingsActivity" />
         <activity android:name=".settings.HelpActivity" />
-        <activity android:name=".maps.MapActivity" />
-        <activity android:name=".favorite.FavoriteActivity" />
         <activity android:name=".maps.MapsFilterActivity" />
-        <activity android:name=".settings.LanguageActivity"></activity>
+        <activity android:name=".settings.LanguageActivity" />
+        <activity android:name=".medias.MediasActivity"></activity>
     </application>
 
 </manifest>
