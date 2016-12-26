@@ -21,7 +21,7 @@
 
     <fragment
         class="com.onlywatch.fleriche.onlywatch.medias.MediasActivity$VideoListFragment"
-        android:id="@+id/list_fragment"
+        android:id="@+id/video_list_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -42,7 +42,7 @@
 
         <fragment
             class="com.onlywatch.fleriche.onlywatch.medias.MediasActivity$VideoFragment"
-            android:id="@+id/video_fragment_container"
+            android:id="@+id/video_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

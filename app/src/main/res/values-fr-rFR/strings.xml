@@ -50,6 +50,7 @@
     <string name="titleHeroesListFragment">Héros</string>
     <string name="titleMapsListFragment">Cartes</string>
     <string name="titleFavoritesListFragment">Favoris</string>
+    <string name="titleMediasFragment">Medias</string>
 
     <string name="strAssault">Assaut</string>
     <string name="strControl">Contrôle</string>

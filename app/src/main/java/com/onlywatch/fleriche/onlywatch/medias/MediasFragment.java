@@ -1,21 +1,17 @@
 package com.onlywatch.fleriche.onlywatch.medias;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
 import android.content.res.Configuration;
-import android.os.Build;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
@@ -61,11 +57,15 @@ public class MediasFragment extends Fragment implements YouTubePlayer.OnFullscre
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d("coucou", "onCreateView: ");
+
         View view = inflater.inflate(R.layout.fragment_medias2, container, false);
 
-        listFragment = (VideoListFragment) getChildFragmentManager().findFragmentById(R.id.list_fragment);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.titleMediasFragment));
+
+        listFragment = (VideoListFragment) getChildFragmentManager().findFragmentById(R.id.videoListFragment);
         videoFragment =
-                (VideoFragment) getChildFragmentManager().findFragmentById(R.id.video_fragment_container);
+                (VideoFragment) getChildFragmentManager().findFragmentById(R.id.videoFragment);
 
         videoBox = view.findViewById(R.id.video_box);
         videoBox.setVisibility(View.INVISIBLE);
@@ -101,6 +101,21 @@ public class MediasFragment extends Fragment implements YouTubePlayer.OnFullscre
         this.isFullscreen = isFullscreen;
 
         layout();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        try {
+            Fragment fragmentList = (getChildFragmentManager().findFragmentById(R.id.videoListFragment));
+            Fragment fragment = (getChildFragmentManager().findFragmentById(R.id.videoFragment));
+            FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.remove(fragmentList);
+            fragmentTransaction.remove(fragment);
+            fragmentTransaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void layout() {
@@ -167,7 +182,7 @@ public class MediasFragment extends Fragment implements YouTubePlayer.OnFullscre
             String videoId = VIDEO_LIST.get(position).videoId;
 
             MediasFragment.VideoFragment videoFragment =
-                    (MediasFragment.VideoFragment) getFragmentManager().findFragmentById(R.id.video_fragment_container);
+                    (MediasFragment.VideoFragment) getFragmentManager().findFragmentById(R.id.videoFragment);
             videoFragment.setVideoId(videoId);
 
             // The videoBox is INVISIBLE if no video was previously selected, so we need to show it now.

@@ -47,6 +47,7 @@
     <string name="titleHeroesListFragment">Heroes</string>
     <string name="titleMapsListFragment">Maps</string>
     <string name="titleFavoritesListFragment">Favorites</string>
+    <string name="titleMediasFragment">Medias</string>
 
     <string name="strRealName">Identité : &#160;</string>
     <string name="strOccupation">Profession : &#160;</string>
