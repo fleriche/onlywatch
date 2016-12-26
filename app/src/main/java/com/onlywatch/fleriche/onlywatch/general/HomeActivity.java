@@ -22,6 +22,7 @@ import com.onlywatch.fleriche.onlywatch.favorite.FavoriteFragment;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroesListFragment;
 import com.onlywatch.fleriche.onlywatch.maps.MapsListFragment;
 import com.onlywatch.fleriche.onlywatch.medias.MediasActivity;
+import com.onlywatch.fleriche.onlywatch.medias.MediasFragment;
 import com.onlywatch.fleriche.onlywatch.settings.HelpActivity;
 import com.onlywatch.fleriche.onlywatch.settings.LanguageActivity;
 import com.onlywatch.fleriche.onlywatch.settings.SettingsActivity;
@@ -143,6 +144,7 @@ public class HomeActivity extends AppCompatActivity {
             SkillsListFragment skillsFragment = null;
             GameFragment gameFragment = null;
             FavoriteFragment favoriteFragment = null;
+            MediasFragment mediasFragment = null;
 
             switch (position) {
                 case MENU_GAME:
@@ -155,8 +157,9 @@ public class HomeActivity extends AppCompatActivity {
                     mapFragment = new MapsListFragment();
                     break;
                 case MENU_MEDIAS:
-                    Intent mediasIntent = new Intent(HomeActivity.this, MediasActivity.class);
-                    startActivity(mediasIntent);
+                    //Intent mediasIntent = new Intent(HomeActivity.this, MediasActivity.class);
+                    //startActivity(mediasIntent);
+                    mediasFragment = new MediasFragment();
                     break;
                 case MENU_PROFILE:
                     skillsFragment = new SkillsListFragment();
@@ -195,6 +198,9 @@ public class HomeActivity extends AppCompatActivity {
 
             if (favoriteFragment != null)
                 fragmentTransaction.replace(R.id.frame, favoriteFragment);
+
+            if (mediasFragment != null)
+                fragmentTransaction.replace(R.id.frame, mediasFragment);
 
             //on fait passer la position pour la récupérer dans le onBackStackChange pour mettre à jour l'item selectionné dans le drawer
             fragmentTransaction.addToBackStack(Integer.toString(position));
