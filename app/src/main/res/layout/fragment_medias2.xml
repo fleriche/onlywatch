@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/container"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <fragment
-        android:name="com.onlywatch.fleriche.onlywatch.medias.MediasFragment$VideoListFragment"
+    <FrameLayout
         android:id="@+id/videoListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
@@ -18,12 +16,11 @@
         android:layout_gravity="bottom"
         android:orientation="vertical">
 
-        <fragment
-            android:name="com.onlywatch.fleriche.onlywatch.medias.MediasFragment$VideoFragment"
+        <FrameLayout
             android:id="@+id/videoFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"/>
 
     </LinearLayout>
-    
+
 </FrameLayout>
