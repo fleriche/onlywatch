@@ -51,7 +51,7 @@ public class LanguageActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case LANGUAGE_FR:
-                        Locale locale = new Locale("fr_FR");
+                        Locale locale = new Locale("fr");
                         Locale.setDefault(locale);
                         Configuration config = new Configuration();
                         config.locale = locale;

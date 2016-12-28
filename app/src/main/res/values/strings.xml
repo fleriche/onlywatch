@@ -5,15 +5,17 @@
     <string name="strSettings">Settings</string>
     <string name="strHelp">Help</string>
     <string name="strProfile">Profile</string>
+    <string name="strAbilities">Abilities</string>
+    <string name="strFavorites">Favorites</string>
     <string name="strLanguages">Languages</string>
 
     <string-array name="strArrDrawerList">
         <item>Game</item>
         <item>Heroes</item>
         <item>Maps</item>
-        <item>Medias</item>
-        <item>Profile</item>
+        <item>Abilities</item>
         <item>Favorites</item>
+        <item>Medias</item>
         <item>Settings</item>
         <item>Languages</item>
     </string-array>
@@ -22,9 +24,9 @@
         <item>@drawable/ic_game</item>
         <item>@drawable/ic_heroes</item>
         <item>@drawable/ic_map</item>
-        <item>@drawable/ic_medias</item>
-        <item>@drawable/ic_profile</item>
+        <item>@drawable/ic_abilities</item>
         <item>@drawable/ic_favorite</item>
+        <item>@drawable/ic_medias</item>
         <item>@drawable/ic_settings</item>
         <item>@drawable/ic_language</item>
     </array>
@@ -34,10 +36,10 @@
     <string name="strOpenDrawer">Open Drawer</string>
     <string name="strCloseDrawer">Close Drawer</string>
 
-    <string name="strRole">Rôle</string>
-    <string name="strDifficulty">Difficulté</string>
-    <string name="strSkills">Capacités</string>
-    <string name="strBiography">Biographie</string>
+    <string name="strRole">Role</string>
+    <string name="strDifficulty">Difficulty</string>
+    <string name="strSkills">Abilities</string>
+    <string name="strBiography">Biography</string>
 
     <string name="strAssault">Assault</string>
     <string name="strControl">Control</string>
@@ -46,15 +48,17 @@
 
     <string name="titleHeroesListFragment">Heroes</string>
     <string name="titleMapsListFragment">Maps</string>
+    <string name="titleAbilitiesListFragment">Abilities</string>
     <string name="titleFavoritesListFragment">Favorites</string>
     <string name="titleMediasFragment">Medias</string>
+    <string name="titleLanguageFragment">Language</string>
 
-    <string name="strRealName">Identité : &#160;</string>
-    <string name="strOccupation">Profession : &#160;</string>
-    <string name="strBaseOperation">Base d\'opération : &#160;</string>
+    <string name="strRealName">Identity : &#160;</string>
+    <string name="strOccupation">Occupation : &#160;</string>
+    <string name="strBaseOperation">Base of operation : &#160;</string>
     <string name="strAffiliation">Affiliation : &#160;</string>
 
-    <string name="strOffense">Attaque</string>
+    <string name="strOffense">Offense</string>
     <string name="strDefense">Defense</string>
     <string name="strTank">Tank</string>
     <string name="strSupport">Support</string>
@@ -78,6 +82,10 @@
 
     <string name="strNoFavoritesHeroes">No favorites heroes !</string>
     <string name="strNoFavoritesMaps">No favorites maps !</string>
+    <string name="strNoFavoritesAbilities">No favorites abilities !</string>
+
+    <string name="langFr">French</string>
+    <string name="langEn">English</string>
 
     <string name="gameIntro">FIGHT FOR THE FUTURE\n\n
         Soldiers. Scientists. Adventurers. Oddities.\n\n

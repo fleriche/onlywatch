@@ -5,15 +5,17 @@
     <string name="strSettings">Paramètres</string>
     <string name="strHelp">Aide</string>
     <string name="strProfile">Profil</string>
+    <string name="strAbilities">Compétences</string>
+    <string name="strFavorites">Favoris</string>
     <string name="strLanguages">Langues</string>
 
     <string-array name="strArrDrawerList">
         <item>Jeu</item>
         <item>Héros</item>
         <item>Cartes</item>
-        <item>Médias</item>
-        <item>Profil</item>
+        <item>Compétences</item>
         <item>Favoris</item>
+        <item>Médias</item>
         <item>Paramètres</item>
         <item>Langues</item>
     </string-array>
@@ -22,9 +24,9 @@
         <item>@drawable/ic_game</item>
         <item>@drawable/ic_heroes</item>
         <item>@drawable/ic_map</item>
-        <item>@drawable/ic_medias</item>
-        <item>@drawable/ic_profile</item>
+        <item>@drawable/ic_abilities</item>
         <item>@drawable/ic_favorite</item>
+        <item>@drawable/ic_medias</item>
         <item>@drawable/ic_settings</item>
         <item>@drawable/ic_language</item>
     </array>
@@ -49,8 +51,10 @@
 
     <string name="titleHeroesListFragment">Héros</string>
     <string name="titleMapsListFragment">Cartes</string>
+    <string name="titleAbilitiesListFragment">Compétences</string>
     <string name="titleFavoritesListFragment">Favoris</string>
     <string name="titleMediasFragment">Medias</string>
+    <string name="titleLanguageFragment">Langues</string>
 
     <string name="strAssault">Assaut</string>
     <string name="strControl">Contrôle</string>
@@ -76,6 +80,10 @@
 
     <string name="strNoFavoritesHeroes">Pas de héros favoris !</string>
     <string name="strNoFavoritesMaps">Pas de cartes favorites !</string>
+    <string name="strNoFavoritesAbilities">Pas de compétences favorites !</string>
+
+    <string name="langFr">Français</string>
+    <string name="langEn">Anglais</string>
 
     <string name="gameIntro">L’AVENIR N’ATTEND PAS\n\n
         Soldats. Scientifiques. Aventuriers. Marginaux.\n\n

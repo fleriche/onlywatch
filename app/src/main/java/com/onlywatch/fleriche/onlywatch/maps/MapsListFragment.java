@@ -1,5 +1,6 @@
 package com.onlywatch.fleriche.onlywatch.maps;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 
@@ -146,6 +148,14 @@ public class MapsListFragment extends Fragment implements SearchView.OnQueryText
             mra = !query.isEmpty() ? new MapRecyclerAdapter(mMapManager.getMap(query), getActivity()) : new MapRecyclerAdapter(mMapManager.getMaps(), getActivity());
         mRecyclerView.setAdapter(mra);
         mMapManager.close();
+
+        // Permet de cacher le clavier virtuel après avoir submit la query
+        View view = getActivity().getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+
         return true;
     }
 

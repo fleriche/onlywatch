@@ -166,7 +166,6 @@ public class ConsultActivity extends AppCompatActivity {
                 mapManagerFab.open();
                 mapManagerFab.updateMap(map);
                 mapManagerFab.close();
-                Log.i("After", "onClick: "+map.getIs_favorite());
             }
         });
 
@@ -182,6 +181,7 @@ public class ConsultActivity extends AppCompatActivity {
         mSkillId = intent.getIntExtra(SkillRecyclerAdapter.SKILL_ID_EXTRA, 0);
         skillManager.open();
         skill = skillManager.getSkill(mSkillId);
+        mIsFavorite = skill.isFavorite();
 
         if (getSupportActionBar() != null)
             getSupportActionBar().setTitle(skill.getNom());
@@ -195,11 +195,11 @@ public class ConsultActivity extends AppCompatActivity {
                 if(mIsFavorite) {
                     ((FloatingActionButton) v).setImageResource(R.drawable.ic_favorite_border);
                     mIsFavorite = false;
-                    //skill.setIs_favorite(0);
+                    skill.setIs_favorite(0);
                 } else {
                     ((FloatingActionButton) v).setImageResource(R.drawable.ic_favorite);
                     mIsFavorite = true;
-                    //skill.setIs_favorite(1);
+                    skill.setIs_favorite(1);
                 }
                 final SkillManager skillManagerFab = new SkillManager(getApplicationContext());
                 skillManagerFab.open();

@@ -1,5 +1,6 @@
 package com.onlywatch.fleriche.onlywatch.general;
 
+import android.content.res.Configuration;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
@@ -21,14 +22,15 @@ import com.onlywatch.fleriche.onlywatch.drawer.NavigationDrawer;
 import com.onlywatch.fleriche.onlywatch.favorite.FavoriteFragment;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroesListFragment;
 import com.onlywatch.fleriche.onlywatch.maps.MapsListFragment;
-import com.onlywatch.fleriche.onlywatch.medias.MediasActivity;
 import com.onlywatch.fleriche.onlywatch.medias.MediasFragment;
 import com.onlywatch.fleriche.onlywatch.settings.HelpActivity;
 import com.onlywatch.fleriche.onlywatch.settings.LanguageActivity;
+import com.onlywatch.fleriche.onlywatch.settings.LanguageFragment;
 import com.onlywatch.fleriche.onlywatch.settings.SettingsActivity;
 import com.onlywatch.fleriche.onlywatch.skills.SkillsListFragment;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class HomeActivity extends AppCompatActivity {
     private DrawerLayout mDrwDrawerLayout;
@@ -36,9 +38,9 @@ public class HomeActivity extends AppCompatActivity {
     private static final int MENU_GAME = 1;
     protected static final int MENU_HEROES = 2;
     protected static final int MENU_MAPS = 3;
-    private static final int MENU_MEDIAS = 4;
-    private static final int MENU_PROFILE = 6;
-    private static final int MENU_FAVORITES = 7;
+    protected static final int MENU_ABILITIES = 4;
+    private static final int MENU_FAVORITES = 6;
+    private static final int MENU_MEDIAS = 7;
     private static final int MENU_PARAMETERS = 9;
     private static final int MENU_LANGUAGES = 10;
 
@@ -61,7 +63,7 @@ public class HomeActivity extends AppCompatActivity {
 
         /*Construction du contenu du Menu Drawer*/
         for(int i = 0; i < drwMenuTitles.length; i++) {
-            if(drwMenuTitles[i].equals(getResources().getString(R.string.strProfile)) || drwMenuTitles[i].equals(getResources().getString(R.string.strSettings)))
+            if(drwMenuTitles[i].equals(getResources().getString(R.string.strFavorites)) || drwMenuTitles[i].equals(getResources().getString(R.string.strSettings)))
                 drwDrawerItems.add("separator");
             drwDrawerItems.add(new NavigationDrawer(drwMenuTitles[i], drwMenuIcons.getResourceId(i, -1)));
         }
@@ -145,6 +147,7 @@ public class HomeActivity extends AppCompatActivity {
             GameFragment gameFragment = null;
             FavoriteFragment favoriteFragment = null;
             MediasFragment mediasFragment = null;
+            LanguageFragment languageFragment = null;
 
             switch (position) {
                 case MENU_GAME:
@@ -156,16 +159,14 @@ public class HomeActivity extends AppCompatActivity {
                 case MENU_MAPS:
                     mapFragment = new MapsListFragment();
                     break;
-                case MENU_MEDIAS:
-                    //Intent mediasIntent = new Intent(HomeActivity.this, MediasActivity.class);
-                    //startActivity(mediasIntent);
-                    mediasFragment = new MediasFragment();
-                    break;
-                case MENU_PROFILE:
+                case MENU_ABILITIES:
                     skillsFragment = new SkillsListFragment();
                     break;
                 case MENU_FAVORITES:
                     favoriteFragment = new FavoriteFragment();
+                    break;
+                case MENU_MEDIAS:
+                    mediasFragment = new MediasFragment();
                     break;
                 case MENU_PARAMETERS:
                     Intent settingsIntent = new Intent(HomeActivity.this, SettingsActivity.class);
@@ -173,9 +174,7 @@ public class HomeActivity extends AppCompatActivity {
                     overridePendingTransition(R.anim.slide_up, R.anim.stay); //Animation transition slide down
                     break;
                 case MENU_LANGUAGES:
-                    Intent languageIntent = new Intent(HomeActivity.this, LanguageActivity.class);
-                    startActivity(languageIntent);
-                    overridePendingTransition(R.anim.slide_up, R.anim.stay); //Animation transition slide down
+                    languageFragment = new LanguageFragment();
                     break;
                 default:
                     break;
@@ -201,6 +200,9 @@ public class HomeActivity extends AppCompatActivity {
 
             if (mediasFragment != null)
                 fragmentTransaction.replace(R.id.frame, mediasFragment);
+
+            if (languageFragment != null)
+                fragmentTransaction.replace(R.id.frame, languageFragment, "TAG_LANGUAGE");
 
             //on fait passer la position pour la récupérer dans le onBackStackChange pour mettre à jour l'item selectionné dans le drawer
             fragmentTransaction.addToBackStack(Integer.toString(position));

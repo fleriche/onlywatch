@@ -25,7 +25,8 @@ CREATE TABLE IF NOT EXISTS skill (
 	description TEXT NOT NULL,
 	features TEXT NOT NULL,
 	id_heroes NOT NULL,
-	FOREIGN KEY(id_heroes) REFERENCES heroes(id) 
+	is_favorite INTEGER NOT NULL,
+	FOREIGN KEY(id_heroes) REFERENCES heroes(id)
 );
 
 CREATE TABLE IF NOT EXISTS map (

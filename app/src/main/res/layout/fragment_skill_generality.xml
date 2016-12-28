@@ -1,12 +1,14 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lulu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.onlywatch.fleriche.onlywatch.skills.SkillGeneralityFragment">
+    android:background="#FFFFFF"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="sdfsdf" />
 
-</FrameLayout>
+</android.support.v4.widget.NestedScrollView>

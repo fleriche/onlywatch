@@ -12,6 +12,7 @@ import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.general.ConsultActivity;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroesListFragment;
 import com.onlywatch.fleriche.onlywatch.maps.MapsListFragment;
+import com.onlywatch.fleriche.onlywatch.skills.SkillsListFragment;
 
 public class FavoriteFragment extends Fragment {
 
@@ -28,6 +29,7 @@ public class FavoriteFragment extends Fragment {
         ConsultActivity.TabLayoutAdapter tabLayoutAdapter = new ConsultActivity.TabLayoutAdapter(getChildFragmentManager()); // magie ancestral de stackoverflow pour le bug de l'ouverture seconde fois
         tabLayoutAdapter.addTab(HeroesListFragment.newInstance(true), getString(R.string.strHeroes)); //1er onglet liste héros
         tabLayoutAdapter.addTab(MapsListFragment.newInstance(true), getString(R.string.strMaps)); //2ème onglet liste cartes
+        tabLayoutAdapter.addTab(SkillsListFragment.newInstance(true), getString(R.string.strAbilities)); //3ème onglet liste compétences
         mViewPager.setAdapter(tabLayoutAdapter);
 
         if(tabLayout != null)

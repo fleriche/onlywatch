@@ -20,6 +20,7 @@ public class SkillManager {
     public static final String CANONICAL_NAME_SKILL = "canonical_name";
     public static final String DESCRIPTION_SKILL = "description";
     public static final String FEATURES_SKILL = "features";
+    public static final String IS_FAVORITE_SKILL = "is_favorite";
     public static final String KEY_ID_HEROES_SKILL = "id_heroes";
     private DatabaseHandler mDatabaseHandler;
     private SQLiteDatabase mDatabase;
@@ -42,6 +43,7 @@ public class SkillManager {
         values.put(CANONICAL_NAME_SKILL, skill.getCanonical_name());
         values.put(DESCRIPTION_SKILL, skill.getDescription());
         values.put(FEATURES_SKILL, skill.getFeatures());
+        values.put(IS_FAVORITE_SKILL, skill.getIs_favorite());
         values.put(KEY_ID_HEROES_SKILL, skill.getId_heroes());
 
         return mDatabase.insert(TABLE_NAME, null, values);
@@ -53,6 +55,7 @@ public class SkillManager {
         values.put(CANONICAL_NAME_SKILL, skill.getCanonical_name());
         values.put(DESCRIPTION_SKILL, skill.getDescription());
         values.put(FEATURES_SKILL, skill.getFeatures());
+        values.put(IS_FAVORITE_SKILL, skill.getIs_favorite());
         values.put(KEY_ID_HEROES_SKILL, skill.getId_heroes());
 
         String where = KEY_ID_SKILL+" = ?";
@@ -78,6 +81,7 @@ public class SkillManager {
             skill.setCanonical_name(cursor.getString(cursor.getColumnIndex(CANONICAL_NAME_SKILL)));
             skill.setDescription(cursor.getString(cursor.getColumnIndex(DESCRIPTION_SKILL)));
             skill.setFeatures(cursor.getString(cursor.getColumnIndex(FEATURES_SKILL)));
+            skill.setIs_favorite(cursor.getInt(cursor.getColumnIndex(IS_FAVORITE_SKILL)));
             skill.setId_heroes(cursor.getInt(cursor.getColumnIndex(KEY_ID_HEROES_SKILL)));
             skillList.add(skill);
         }
@@ -101,10 +105,26 @@ public class SkillManager {
             skill.setCanonical_name(cursor.getString(cursor.getColumnIndex(CANONICAL_NAME_SKILL)));
             skill.setDescription(cursor.getString(cursor.getColumnIndex(DESCRIPTION_SKILL)));
             skill.setFeatures(cursor.getString(cursor.getColumnIndex(FEATURES_SKILL)));
+            skill.setIs_favorite(cursor.getInt(cursor.getColumnIndex(IS_FAVORITE_SKILL)));
             skill.setId_heroes(cursor.getInt(cursor.getColumnIndex(KEY_ID_HEROES_SKILL)));
             cursor.close();
         }
 
         return skill;
+    }
+
+    public ArrayList<Skill> getSkills(String name) {
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+NOM_SKILL+" LIKE "+"'%"+name+"%'", null);
+        return getSkills(cursor);
+    }
+
+    public ArrayList<Skill> getFavoriteSkills(String name) {
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+IS_FAVORITE_SKILL+"=1 AND "+NOM_SKILL+" LIKE "+"'%"+name+"%'", null);
+        return getSkills(cursor);
+    }
+
+    public ArrayList<Skill> getFavoriteSkills() {
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+IS_FAVORITE_SKILL+"=1", null);
+        return getSkills(cursor);
     }
 }

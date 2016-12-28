@@ -11,6 +11,7 @@ public class Skill {
     private String description;
     private String features;
     private int id_heroes;
+    private Integer is_favorite;
 
     public Skill(){}
 
@@ -68,5 +69,17 @@ public class Skill {
 
     public void setCanonical_name(String canonical_name) {
         this.canonical_name = canonical_name;
+    }
+
+    public Integer getIs_favorite() {
+        return is_favorite;
+    }
+
+    public void setIs_favorite(Integer is_favorite) {
+        this.is_favorite = is_favorite;
+    }
+
+    public boolean isFavorite() {
+        return getIs_favorite() == 1;
     }
 }

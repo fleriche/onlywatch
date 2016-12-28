@@ -1,0 +1,20 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blueOverwatch"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.onlywatch.fleriche.onlywatch.settings.LanguageFragment">
+
+    <ListView
+        android:id="@+id/languagesList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:choiceMode="singleChoice"
+        android:divider="@color/greyOverwatch"
+        android:dividerHeight="1dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+</LinearLayout>

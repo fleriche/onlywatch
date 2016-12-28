@@ -23,6 +23,7 @@ import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.heroes.HeroesListFragment;
 import com.onlywatch.fleriche.onlywatch.maps.MapsListFragment;
+import com.onlywatch.fleriche.onlywatch.skills.SkillsListFragment;
 
 import java.util.HashMap;
 
@@ -50,7 +51,7 @@ public class GameFragment extends Fragment implements BaseSliderView.OnSliderCli
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.app_name));
 
-        imgMap.put(getString(R.string.strSkills), R.drawable.skill);
+        imgMap.put(getString(R.string.strAbilities), R.drawable.skill);
         imgMap.put(getString(R.string.strMaps), R.drawable.cartes);
         imgMap.put(getString(R.string.strHeroes), R.drawable.heros);
 
@@ -104,6 +105,9 @@ public class GameFragment extends Fragment implements BaseSliderView.OnSliderCli
         } else if((slider.getBundle().get("extra")+"").equals(getString(R.string.strMaps))) {
             fragment = new MapsListFragment();
             mDrwDrawerList.setItemChecked(HomeActivity.MENU_MAPS, true);
+        } else if((slider.getBundle().get("extra")+"").equals(getString(R.string.strAbilities))) {
+            fragment = new SkillsListFragment();
+            mDrwDrawerList.setItemChecked(HomeActivity.MENU_ABILITIES, true);
         } else {
             fragment = new HeroesListFragment();
             mDrwDrawerList.setItemChecked(HomeActivity.MENU_HEROES, true);
