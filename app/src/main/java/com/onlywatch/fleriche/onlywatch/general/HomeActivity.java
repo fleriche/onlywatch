@@ -166,6 +166,7 @@ public class HomeActivity extends AppCompatActivity {
             FavoriteFragment favoriteFragment = null;
             MediasFragment mediasFragment = null;
             LanguageFragment languageFragment = null;
+            SettingsFragment settingsFragment = null;
 
             switch (position) {
                 case MENU_GAME:
@@ -187,7 +188,7 @@ public class HomeActivity extends AppCompatActivity {
                     mediasFragment = new MediasFragment();
                     break;
                 case MENU_PARAMETERS:
-                    SettingsFragment settingsFragment = new SettingsFragment();
+                    settingsFragment = new SettingsFragment();
                     settingsFragment.show(getSupportFragmentManager(), "settings");
                     break;
                 case MENU_LANGUAGES:
@@ -221,9 +222,12 @@ public class HomeActivity extends AppCompatActivity {
             if (languageFragment != null)
                 fragmentTransaction.replace(R.id.frame, languageFragment, "TAG_LANGUAGE");
 
-            //on fait passer la position pour la récupérer dans le onBackStackChange pour mettre à jour l'item selectionné dans le drawer
-            fragmentTransaction.addToBackStack(Integer.toString(position));
-            fragmentTransaction.commit();
+            /*on fait passer la position pour la récupérer dans le onBackStackChange pour mettre à jour l'item selectionné dans le drawer
+              et on check si settingsFragment est null sinon pas besoin d'add au backstack car c'est une modal*/
+            if(settingsFragment == null) {
+                fragmentTransaction.addToBackStack(Integer.toString(position));
+                fragmentTransaction.commit();
+            }
 
             mDrwDrawerList.setItemChecked(position, true);
             mDrwDrawerLayout.closeDrawer(mDrwDrawerList);
