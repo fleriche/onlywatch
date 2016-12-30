@@ -85,6 +85,9 @@
     <string name="langFr">Français</string>
     <string name="langEn">Anglais</string>
 
+    <string name="strApply">Appliquer</string>
+    <string name="strCancel">Annuler</string>
+
     <string name="gameIntro">L’AVENIR N’ATTEND PAS\n\n
         Soldats. Scientifiques. Aventuriers. Marginaux.\n\n
 Dans une période de crise mondiale, des héros venus de tous les horizons ont composé une équipe d’intervention internationale pour ramener la paix dans un monde déchiré par la guerre : OVERWATCH.\n\n

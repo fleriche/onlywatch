@@ -3,6 +3,7 @@
     package="com.onlywatch.fleriche.onlywatch">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +24,6 @@
         <activity android:name=".settings.SettingsActivity" />
         <activity android:name=".settings.HelpActivity" />
         <activity android:name=".maps.MapsFilterActivity" />
-        <activity android:name=".settings.LanguageActivity" />
     </application>
 
 </manifest>

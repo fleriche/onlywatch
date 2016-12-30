@@ -34,6 +34,7 @@ import com.onlywatch.fleriche.onlywatch.maps.MapGeneralityFragment;
 import com.onlywatch.fleriche.onlywatch.maps.MapRecyclerAdapter;
 import com.onlywatch.fleriche.onlywatch.settings.HelpActivity;
 import com.onlywatch.fleriche.onlywatch.settings.SettingsActivity;
+import com.onlywatch.fleriche.onlywatch.settings.SettingsFragment;
 import com.onlywatch.fleriche.onlywatch.skills.SkillGeneralityFragment;
 import com.onlywatch.fleriche.onlywatch.skills.SkillRecyclerAdapter;
 
@@ -248,9 +249,8 @@ public class ConsultActivity extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 return true;
             case R.id.tlbSettings:
-                Intent settingsIntent = new Intent(ConsultActivity.this, SettingsActivity.class);
-                startActivity(settingsIntent);
-                overridePendingTransition(R.anim.slide_up, R.anim.stay); //Animation transition slide down
+                SettingsFragment settingsFragment = new SettingsFragment();
+                settingsFragment.show(getSupportFragmentManager(), "settings");
                 return true;
             case R.id.tlbHelp:
                 Intent helpIntent = new Intent(ConsultActivity.this, HelpActivity.class);

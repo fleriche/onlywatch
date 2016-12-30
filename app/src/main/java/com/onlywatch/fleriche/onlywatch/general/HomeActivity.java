@@ -28,9 +28,9 @@ import com.onlywatch.fleriche.onlywatch.heroes.HeroesListFragment;
 import com.onlywatch.fleriche.onlywatch.maps.MapsListFragment;
 import com.onlywatch.fleriche.onlywatch.medias.MediasFragment;
 import com.onlywatch.fleriche.onlywatch.settings.HelpActivity;
-import com.onlywatch.fleriche.onlywatch.settings.LanguageActivity;
 import com.onlywatch.fleriche.onlywatch.settings.LanguageFragment;
 import com.onlywatch.fleriche.onlywatch.settings.SettingsActivity;
+import com.onlywatch.fleriche.onlywatch.settings.SettingsFragment;
 import com.onlywatch.fleriche.onlywatch.skills.SkillsListFragment;
 
 import java.util.ArrayList;
@@ -130,9 +130,8 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.tlbSettings:
-                Intent settingsIntent = new Intent(HomeActivity.this, SettingsActivity.class);
-                startActivity(settingsIntent);
-                overridePendingTransition(R.anim.slide_up, R.anim.stay); //Animation transition slide down
+                SettingsFragment settingsFragment = new SettingsFragment();
+                settingsFragment.show(getSupportFragmentManager(), "settings");
                 return true;
             case R.id.tlbHelp:
                 Intent helpIntent = new Intent(HomeActivity.this, HelpActivity.class);
@@ -151,9 +150,6 @@ public class HomeActivity extends AppCompatActivity {
         Configuration conf = res.getConfiguration();
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
-        //Intent refresh = new Intent(this, HomeActivity.class);
-        //startActivity(refresh);
-        //this.finish();
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
@@ -192,9 +188,8 @@ public class HomeActivity extends AppCompatActivity {
                     mediasFragment = new MediasFragment();
                     break;
                 case MENU_PARAMETERS:
-                    Intent settingsIntent = new Intent(HomeActivity.this, SettingsActivity.class);
-                    startActivity(settingsIntent);
-                    overridePendingTransition(R.anim.slide_up, R.anim.stay); //Animation transition slide down
+                    SettingsFragment settingsFragment = new SettingsFragment();
+                    settingsFragment.show(getSupportFragmentManager(), "settings");
                     break;
                 case MENU_LANGUAGES:
                     languageFragment = new LanguageFragment();
