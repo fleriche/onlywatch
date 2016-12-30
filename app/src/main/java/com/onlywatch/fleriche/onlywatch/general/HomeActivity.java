@@ -29,7 +29,6 @@ import com.onlywatch.fleriche.onlywatch.maps.MapsListFragment;
 import com.onlywatch.fleriche.onlywatch.medias.MediasFragment;
 import com.onlywatch.fleriche.onlywatch.settings.HelpActivity;
 import com.onlywatch.fleriche.onlywatch.settings.LanguageFragment;
-import com.onlywatch.fleriche.onlywatch.settings.SettingsActivity;
 import com.onlywatch.fleriche.onlywatch.settings.SettingsFragment;
 import com.onlywatch.fleriche.onlywatch.skills.SkillsListFragment;
 
