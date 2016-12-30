@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".general.HomeActivity">
+        <activity android:name=".general.HomeActivity"
+            android:configChanges="locale">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +24,6 @@
         <activity android:name=".settings.HelpActivity" />
         <activity android:name=".maps.MapsFilterActivity" />
         <activity android:name=".settings.LanguageActivity" />
-        <activity android:name=".medias.MediasActivity"></activity>
     </application>
 
 </manifest>

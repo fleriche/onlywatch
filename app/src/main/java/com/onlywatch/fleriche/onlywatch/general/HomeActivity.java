@@ -1,6 +1,9 @@
 package com.onlywatch.fleriche.onlywatch.general;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
@@ -10,6 +13,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -49,6 +53,12 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        // On set la langue en récupérant dans les préférences utilisateurs sinon on garde par défaut
+        SharedPreferences settings = getSharedPreferences(LanguageFragment.MYPREFERENCES, Context.MODE_PRIVATE);
+        String language = settings.getString(LanguageFragment.LANGUAGE, "");
+        if(!language.equals(""))
+            setLocale(language);
+
         /*Déclarations*/
         Toolbar toolbar = (Toolbar)findViewById(R.id.heroToolbar);
         String[] drwMenuTitles = getResources().getStringArray(R.array.strArrDrawerList);
@@ -59,6 +69,7 @@ public class HomeActivity extends AppCompatActivity {
         GameFragment fragment = new GameFragment();
         ActionBarDrawerToggle mDrwDrawerToggle;
 
+        // On set l'ActionBar
         setSupportActionBar(toolbar);
 
         /*Construction du contenu du Menu Drawer*/
@@ -131,6 +142,18 @@ public class HomeActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(menuItem);
         }
+    }
+
+    private void setLocale(String lang) {
+        Locale myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+        //Intent refresh = new Intent(this, HomeActivity.class);
+        //startActivity(refresh);
+        //this.finish();
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
