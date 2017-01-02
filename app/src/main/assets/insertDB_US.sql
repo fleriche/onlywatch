@@ -1,7 +1,3 @@
---Langues
-INSERT INTO lang (id, locale) VALUES (1, 'fr');
-INSERT INTO lang (id, locale) VALUES (2, 'en');
-
 ------------------------------- HEROS ----------------------------------
 
 --Attaque
@@ -11,18 +7,18 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     0,
     0,
-    "Inconnue",
+    "Unknown",
     0,
     "",
-    "mercenaire",
-    "Inconnue",
-    "Inconnue",
+    "Mercenary",
+    "Unknown",
+    "Unknown",
     "",
-    "La mort est parmi vous.",
+    "Death walks among you.",
     1,
     'offense',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'Genji',
@@ -33,15 +29,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Genji Shimada",
     35,
     "",
-    "aventurier",
-    "monastère de Shambali, Népal",
-    "clan Shimada (anciennement), Overwatch (anciennement)",
+    "Adventurer",
+    "Shambali Monastery, Nepal",
+    "Shimada Clan (formerly), Overwatch (formerly)",
     "",
-    "Même si je sacrifie mon corps, je ne sacrifierai jamais mon honneur.",
+    "Even if I sacrifice my body, I will never sacrifice my honor.",
     3,
     'offense',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'McCree',
@@ -52,15 +48,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Jesse McCree",
     37,
     "",
-    "chasseur de primes",
-    "Santa Fe, Nouveau-Mexique, États-Unis",
-    "Overwatch (anciennement)",
+    "Bounty Hunter",
+    "Santa Fe, New Mexico, USA",
+    "Overwatch (formerly)",
     "",
-    "La justice ne va pas se rendre toute seule.",
+    "Justice ain't gonna dispense itself.",
     2,
     'offense',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'Pharah',
@@ -71,15 +67,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Fariha Amari",
     32,
     "",
-    "responsable de la sécurité",
-    "Gizeh, Égypte",
+    "Security Chief",
+    "Giza, Egypt",
     "Helix Security International",
     "",
-    "Je protégerai les innocents.",
+    "I will protect the innocent.",
     1,
     'offense',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'Soldat76',
@@ -87,18 +83,18 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     0,
     0,
-    "Inconnue",
+    "Unknown",
     0,
     "",
-    "justicier",
-    "inconnue",
-    "Overwatch (anciennement)",
+    "Vigilante",
+    "Unknown",
+    "Overwatch (formerly)",
     "",
-    "Nous sommes tous des soldats désormais.",
+    "We're all soldiers now.",
     1,
     'offense',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'Tracer',
@@ -109,15 +105,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Lena Oxton",
     26,
     "",
-    "aventurière",
-    "Londres, Angleterre",
-    "Overwatch (anciennement)",
+    "Adventurer",
+    "London, England",
+    "Overwatch (formerly)",
     "",
-    "Hello, mon chou ! La cavalerie est arrivée",
+    "Cheers, love! The cavalry’s here!",
     2,
     'offense',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'Sombra',
@@ -125,18 +121,18 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     0,
     0,
-    "Inconnue",
+    "Unknown",
     30,
     "",
-    "hackeuse",
-    "Dorado, Mexique",
-    "la Griffe, Los Muertos (anciennement)",
+    "Hacker",
+    "Dorado, Mexico",
+    "Talon, Los Muertos (formerly)",
     "",
-    "Rien ni personne n'est à l'abris du piratage.",
+    "Everything can be hacked… and everyone.",
     3,
     'offense',
     0,
-    1
+    2
 );
 --Defense
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
@@ -145,18 +141,18 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     0,
     0,
-    "automate de siège des Laboratoires SST E54, « Bastion »",
+    "SST Laboratories Siege Automaton E54, Bastion",
     30,
     "",
-    "automate de combat",
-    "inconnue",
-    "aucune",
+    "Battle Automaton",
+    "Unknown",
+    "None",
     "",
     "",
     1,
     'defense',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'Hanzo',
@@ -167,15 +163,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Hanzo Shimada",
     38,
     "",
-    "mercenaire, assassin",
-    "Hanamura, Japon (anciennement)",
-    "clan Shimada",
+    "Mercenary, Assassin",
+    "Hanamura, Japan (formerly)",
+    "Shimada Clan",
     "",
-    "Chaque mort est source d'honneur. L'honneur est source de rédemption.",
+    "With every death comes honor. With honor, redemption.",
     3,
     'defense',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'Chacal',
@@ -186,15 +182,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Jamison Fawkes",
     25,
     "",
-    "anarchiste, voleur, démolisseur, mercenaire, récupérateur",
-    "Junkertown, Australie (anciennement)",
-    "Junkers (anciennement)",
+    "Anarchist, Thief, Demolitionist, Mercenary, Scavenger",
+    "Junkertown, Australia (formerly)",
+    "Junkers (formerly)",
     "",
-    "Une journée idéale pour foutre le boxon !",
+    "It's a perfect day for some mayhem.",
     2,
     'defense',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'Mei',
@@ -205,15 +201,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Mei-Ling Zhou",
     31,
     "",
-    "climatologue, aventurière",
-    "Xi’an, Chine (anciennement)",
-    "Overwatch (anciennement)",
+    "Climatologist, Adventurer",
+    "Xi’an, China (formerly)",
+    "Overwatch (formerly)",
     "",
-    "Notre monde vaut la peine qu'on se batte pour lui.",
+    "Our world is worth fighting for.",
     3,
     'defense',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'Torbjörn',
@@ -224,15 +220,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Torbjörn Lindholm",
     57,
     "",
-    "fabricant d’armes",
-    "Göteborg, Suède",
-    "Overwatch (anciennement)",
+    "Weapons Designer",
+    "Gothenburg, Sweden",
+    "Overwatch (formerly)",
     "",
-    "Monter, démonter, c'est toujours travailler.",
+    "Build ‘em up, break ‘em down.”",
     2,
     'defense',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'Fatale',
@@ -243,15 +239,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Amélie Lacroix",
     33,
     "",
-    "assassin",
+    "Assassin",
     "Annecy, France",
-    "la Griffe",
+    "Talon",
     "",
-    "Un tir, un mort.",
+    "One shot, one kill.",
     2,
     'defense',
     0,
-    1
+    2
 );
 --Tank
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote, difficulty, role, is_favorite, id_locale) VALUES (
@@ -263,14 +259,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Hana Song",
     19,
     "Korean",
-    "joueuse pro (anciennement), pilote de méca",
-    "Busan, Corée du Sud", "MEKA (Mobile Exo-force, Korean Army)",
+    "Pro Gamer (formerly), Mech Pilot",
+    "Busan, South Korea",
+    "Mobile Exo-Force of the Korean Army",
     "",
-    "Je joue pour gagner.",
+    "I play to win.",
     2,
     'tank',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'Reinhardt',
@@ -281,15 +278,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Reinhardt Wilhelm",
     61,
     "",
-    "aventurier",
-    "Stuttgart, Allemagne",
-    "Overwatch (anciennement)",
+    "Adventurer",
+    "Stuttgart, Germany",
+    "Overwatch (formerly)",
     "",
-    "Justice sera rendue.",
+    "Justice will be done.",
     1,
     'tank',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'Chopper',
@@ -300,15 +297,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Mako Rutledge",
     48,
     "",
-    "tueur à gages (anciennement), garde du corps",
-    "Junkertown, Australie (anciennement)",
-    "Junkers (anciennement)",
+    "Enforcer (formerly), Bodyguard",
+    "Junkertown, Australia (formerly)",
+    "Junkers (formerly)",
     "",
-    "Le motard de l'apocalypse, c'est moi",
+    "I'm a one-man apocalypse.",
     1,
     'tank',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'Winston',
@@ -319,15 +316,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Winston",
     29,
     "",
-    "scientifique, aventurier",
-    "colonie lunaire Horizon (anciennement)",
-    "Overwatch (anciennement)",
+    "Scientist, Adventurer",
+    "Horizon Lunar Colony (formerly)",
+    "Overwatch (formerly)",
     "",
-    "L'imagination est le fondement de toutes les découvertes.",
+    "Imagination is the essence of discovery.",
     2,
     'tank',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'Zarya',
@@ -338,15 +335,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Aleksandra Zaryanova",
     28,
     "",
-    "soldat",
-    "front de Krasnoïarsk, Russie",
-    "forces de défense russes",
+    "Soldier",
+    "Krasnoyarsk Front, Russia",
+    "Russian Defense Forces",
     "",
-    "C'est l'union qui fait la force",
+    "Together we are strong.",
     3,
     'tank',
     0,
-    1
+    2
 );
 --Support
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
@@ -358,15 +355,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Ana Amari",
     60,
     "",
-    "chasseuse de primes",
-    "Le Caire, Égypte",
-    "Overwatch (anciennement)",
+    "Bounty Hunter",
+    "Cairo, Egypt",
+    "Overwatch (formerly)",
     "",
-    "Chacun doit trouver sa cause.",
+    "Everyone must find their cause.",
     3,
     'support',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'Lúcio',
@@ -377,15 +374,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Lúcio Correia dos Santos",
     26,
     "",
-    "DJ, champion de la liberté",
-    "Rio de Janeiro, Brésil",
-    "aucune",
+    "DJ, Freedom Fighter",
+    "Rio de Janeiro, Brazil",
+    "None",
     "",
-    "Allez, tous ensemble !",
+    "Come on, let’s bring it together!",
     2,
     'support',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'Ange',
@@ -396,15 +393,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Angela Ziegler",
     37,
     "",
-    "médecin urgentiste, équipe de premiers secours",
-    "Zurich, Suisse",
-    "Overwatch (anciennement)",
+    "Field Medic, First Responder",
+    "Zürich, Switzerland",
+    "Overwatch (formerly)",
     "",
-    "Les héros ne meurent jamais.",
+    "Heroes never die.",
     1,
     'support',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'Symmetra',
@@ -415,15 +412,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Satya Vaswani",
     28,
     "",
-    "architecte",
-    "Utopée, Inde",
+    "Architech",
+    "Utopaea, India",
     "Vishkar Corporation",
     "",
-    "Le véritable ennemi de l'humanité, c'est le désordre.",
+    "The true enemy of humanity is disorder.",
     2,
     'support',
     0,
-    1
+    2
 );
 INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
     'Zenyatta',
@@ -434,15 +431,15 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     "Tekhartha Zenyatta",
     20,
     "",
-    "gourou errant, aventurier",
-    "monastère shambali, Népal (anciennement)",
-    "les Shambali (anciennement)",
+    "Wandering Guru, Adventurer",
+    "Shambali Monastery, Nepal (formerly)",
+    "The Shambali (formerly)",
     "",
-    "La vacuité est forme et la forme est vacuité.",
+    "True self is without form.",
     3,
     'support',
     0,
-    1
+    2
 );
 
 ------------------------------------------ SKILLS -----------------------------------------------------------

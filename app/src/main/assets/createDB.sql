@@ -1,3 +1,8 @@
+CREATE TABLE IF NOT EXISTS lang (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    locale TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS heroes (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	name TEXT NOT NULL,
@@ -15,7 +20,9 @@ CREATE TABLE IF NOT EXISTS heroes (
 	quote TEXT,
 	difficulty INTEGER NOT NULL,
 	role TEXT NOT NULL,
-	is_favorite INTEGER NOT NULL
+	is_favorite INTEGER NOT NULL,
+	id_locale INTEGER NOT NULL,
+	FOREIGN KEY(id_locale) REFERENCES lang(id)
 );
 
 CREATE TABLE IF NOT EXISTS skill (
@@ -26,7 +33,9 @@ CREATE TABLE IF NOT EXISTS skill (
 	features TEXT NOT NULL,
 	id_heroes NOT NULL,
 	is_favorite INTEGER NOT NULL,
-	FOREIGN KEY(id_heroes) REFERENCES heroes(id)
+	id_locale INTEGER NOT NULL,
+	FOREIGN KEY(id_heroes) REFERENCES heroes(id),
+	FOREIGN KEY(id_locale) REFERENCES lang(id)
 );
 
 CREATE TABLE IF NOT EXISTS map (
@@ -39,17 +48,7 @@ CREATE TABLE IF NOT EXISTS map (
     background TEXT,
     easter_eggs TEXT,
     strategy TEXT,
-    is_favorite INTEGER NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS gamemode (
-	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	name TEXT NOT NULL,
-	summary TEXT NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS map_gamemode (
-	id_map INTEGER NOT NULL,
-	id_gamemode INTEGER NOT NULL,
-	PRIMARY KEY(id_map, id_gamemode)
+    is_favorite INTEGER NOT NULL,
+    id_locale INTEGER NOT NULL,
+    FOREIGN KEY(id_locale) REFERENCES lang(id)
 );
