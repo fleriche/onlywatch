@@ -5,7 +5,8 @@ INSERT INTO lang (id, locale) VALUES (2, 'en');
 ------------------------------- HEROS ----------------------------------
 
 --Attaque
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    1,
     'Faucheur',
     'faucheur',
     0,
@@ -24,7 +25,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    2,
     'Genji',
     'genji',
     0,
@@ -43,7 +45,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    3,
     'McCree',
     'mccree',
     0,
@@ -62,7 +65,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    4,
     'Pharah',
     'pharah',
     0,
@@ -81,7 +85,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    5,
     'Soldat76',
     'soldat76',
     0,
@@ -100,7 +105,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    6,
     'Tracer',
     'tracer',
     0,
@@ -119,7 +125,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    7,
     'Sombra',
     'sombra',
     0,
@@ -139,7 +146,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     1
 );
 --Defense
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    8,
     'Bastion',
     'bastion',
     0,
@@ -158,7 +166,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    9,
     'Hanzo',
     'hanzo',
     0,
@@ -177,7 +186,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    10,
     'Chacal',
     'chacal',
     0,
@@ -196,7 +206,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    11,
     'Mei',
     'mei',
     0,
@@ -215,7 +226,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    12,
     'Torbjörn',
     'torbjorn',
     0,
@@ -234,7 +246,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    13,
     'Fatale',
     'fatale',
     0,
@@ -254,7 +267,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     1
 );
 --Tank
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote, difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote, difficulty, role, is_favorite, id_locale) VALUES (
+    14,
     'D.Va',
     'dva',
     100,
@@ -272,7 +286,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    15,
     'Reinhardt',
     'reinhardt',
     0,
@@ -291,7 +306,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    16,
     'Chopper',
     'chopper',
     0,
@@ -310,7 +326,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    17,
     'Winston',
     'winston',
     0,
@@ -329,7 +346,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    18,
     'Zarya',
     'zarya',
     0,
@@ -349,7 +367,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     1
 );
 --Support
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    19,
     'Ana',
     'ana',
     0,
@@ -368,7 +387,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    20,
     'Lúcio',
     'lucio',
     0,
@@ -387,7 +407,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    21,
     'Ange',
     'ange',
     0,
@@ -406,7 +427,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    22,
     'Symmetra',
     'symmetra',
     0,
@@ -425,7 +447,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     1
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    23,
     'Zenyatta',
     'zenyatta',
     0,

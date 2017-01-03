@@ -26,6 +26,7 @@ public class MapManager {
     public static final String STRATEGY_MAP = "strategy";
     public static final String EASTER_EGGS_MAP = "easter_eggs";
     public static final String IS_FAVORITE_MAP = "is_favorite";
+    public static final String ID_LOCALE_MAP = "id_locale";
     private DatabaseHandler mDatabaseHandler;
     private SQLiteDatabase mDatabase;
 
@@ -52,9 +53,10 @@ public class MapManager {
         values.put(STRATEGY_MAP, map.getStrategy());
         values.put(EASTER_EGGS_MAP, map.getEaster_eggs());
         values.put(IS_FAVORITE_MAP, map.getIs_favorite());
+        values.put(ID_LOCALE_MAP, map.getId_locale());
 
-        String where = KEY_ID_MAP+" = ?";
-        String[] whereArgs = {map.getId()+""};
+        String where = KEY_ID_MAP+" = ? AND "+ID_LOCALE_MAP+" = ?";
+        String[] whereArgs = {map.getId()+"", map.getId_locale()+""};
 
         return mDatabase.update(TABLE_NAME, values, where, whereArgs);
     }
@@ -62,7 +64,7 @@ public class MapManager {
     public Map getMap(int id) {
         Map map = new Map();
 
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY_ID_MAP+"="+id, null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY_ID_MAP+"="+id+" AND "+ID_LOCALE_MAP+"=1", null);
         if (cursor.moveToFirst()) {
             map.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID_MAP)));
             map.setNom(cursor.getString(cursor.getColumnIndex(NOM_MAP)));
@@ -74,6 +76,7 @@ public class MapManager {
             map.setStrategy(cursor.getString(cursor.getColumnIndex(STRATEGY_MAP)));
             map.setEaster_eggs(cursor.getString(cursor.getColumnIndex(EASTER_EGGS_MAP)));
             map.setIs_favorite(cursor.getInt(cursor.getColumnIndex(IS_FAVORITE_MAP)));
+            map.setId_locale(cursor.getInt(cursor.getColumnIndex(ID_LOCALE_MAP)));
         }
         cursor.close();
 
@@ -95,6 +98,7 @@ public class MapManager {
             map.setStrategy(cursor.getString(cursor.getColumnIndex(STRATEGY_MAP)));
             map.setEaster_eggs(cursor.getString(cursor.getColumnIndex(EASTER_EGGS_MAP)));
             map.setIs_favorite(cursor.getInt(cursor.getColumnIndex(IS_FAVORITE_MAP)));
+            map.setId_locale(cursor.getInt(cursor.getColumnIndex(ID_LOCALE_MAP)));
             mapList.add(map);
         }
 
@@ -102,22 +106,22 @@ public class MapManager {
     }
 
     public ArrayList<Map> getMaps() {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " ORDER BY name", null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+ID_LOCALE_MAP+"=1 ORDER BY name", null);
         return getMaps(cursor);
     }
 
     public ArrayList<Map> getMap(String name) {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%'", null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+ID_LOCALE_MAP+"=1 AND (name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%')", null);
         return getMaps(cursor);
     }
 
     public ArrayList<Map> getFavoriteMap(String name) {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_MAP+"=1 AND (name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%')", null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_MAP+"=1 AND "+ID_LOCALE_MAP+"=1 AND (name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%')", null);
         return getMaps(cursor);
     }
 
     public ArrayList<Map> getFavoriteMaps() {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_MAP+"=1 ORDER BY name", null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_MAP+"=1 AND "+ID_LOCALE_MAP+"=1 ORDER BY name", null);
         return getMaps(cursor);
     }
 
@@ -144,7 +148,7 @@ public class MapManager {
             else
                 query += " WHERE "+IS_FAVORITE_MAP+"=1";
         }
-        query += " ORDER BY name";
+        query += " AND "+ID_LOCALE_MAP+"=1 ORDER BY name";
         Cursor cursor = mDatabase.rawQuery(query, null);
         return getMaps(cursor);
     }

@@ -12,6 +12,7 @@ public class Skill {
     private String features;
     private int id_heroes;
     private Integer is_favorite;
+    private Integer id_locale;
 
     public Skill(){}
 
@@ -81,5 +82,13 @@ public class Skill {
 
     public boolean isFavorite() {
         return getIs_favorite() == 1;
+    }
+
+    public Integer getId_locale() {
+        return id_locale;
+    }
+
+    public void setId_locale(Integer id_locale) {
+        this.id_locale = id_locale;
     }
 }

@@ -33,8 +33,10 @@ public class HeroesManager {
     private static final String ROLE_HEROES = "role";
     private static final String DIFFICULTY_HEROES = "difficulty";
     private static final String IS_FAVORITE_HEROES = "is_favorite";
+    private static final String ID_LOCALE = "id_locale";
     private DatabaseHandler mDatabaseHandler;
     private SQLiteDatabase mDatabase;
+    private String mLocale;
 
     public HeroesManager(Context context) {
         mDatabaseHandler = DatabaseHandler.getInstance(context);
@@ -46,28 +48,6 @@ public class HeroesManager {
 
     public void close() {
         mDatabase.close();
-    }
-
-    public long addHeroes(Heroes heroes) {
-        ContentValues values = new ContentValues();
-        values.put(NOM_HEROES, heroes.getNom());
-        values.put(CANONICAL_NAME_HEROES, heroes.getCanonical_name());
-        values.put(HEALTH_HEROES, heroes.getHealth());
-        values.put(ARMOR_HEROES, heroes.getArmor());
-        values.put(SHIELD_HEROES, heroes.getShield());
-        values.put(REAL_NAME_HEROES, heroes.getReal_name());
-        values.put(AGE_HEROES, heroes.getAge());
-        values.put(NATIONALITY_HEROES, heroes.getNationality());
-        values.put(OCCUPATION_HEROES, heroes.getOccupation());
-        values.put(BASE_OF_OPERATION_HEROES, heroes.getBase_of_operation());
-        values.put(AFFILIATION_HEROES, heroes.getAffiliation());
-        values.put(SUMMARY_HEROES, heroes.getSummary());
-        values.put(QUOTE_HEROES, heroes.getQuote());
-        values.put(ROLE_HEROES, heroes.getRole());
-        values.put(DIFFICULTY_HEROES, heroes.getDifficulty());
-        values.put(IS_FAVORITE_HEROES, heroes.getIs_favorite());
-
-        return mDatabase.insert(TABLE_NAME, null, values);
     }
 
     public int updateHeroes(Heroes heroes) {
@@ -88,24 +68,18 @@ public class HeroesManager {
         values.put(ROLE_HEROES, heroes.getRole());
         values.put(DIFFICULTY_HEROES, heroes.getDifficulty());
         values.put(IS_FAVORITE_HEROES, heroes.getIs_favorite());
+        values.put(ID_LOCALE, heroes.getId_locale());
 
-        String where = KEY_ID_HEROES+" = ?";
-        String[] whereArgs = {heroes.getId()+""};
+        String where = KEY_ID_HEROES+" = ? AND "+ID_LOCALE+" = ?";
+        String[] whereArgs = {heroes.getId()+"", heroes.getId_locale()+""};
 
         return mDatabase.update(TABLE_NAME, values, where, whereArgs);
-    }
-
-    public int deleteHeroes(Heroes heroes) {
-        String where = KEY_ID_HEROES+" = ?";
-        String[] whereArgs = {heroes.getId()+""};
-
-        return mDatabase.delete(TABLE_NAME, where, whereArgs);
     }
 
     public Heroes getHero(int id) {
         Heroes heroes = new Heroes(0, "", 0);
 
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY_ID_HEROES+"="+id, null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY_ID_HEROES+"="+id+" AND "+ID_LOCALE+"=1", null);
         if (cursor.moveToFirst()) {
             heroes.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID_HEROES)));
             heroes.setNom(cursor.getString(cursor.getColumnIndex(NOM_HEROES)));
@@ -124,6 +98,7 @@ public class HeroesManager {
             heroes.setRole(cursor.getString(cursor.getColumnIndex(ROLE_HEROES)));
             heroes.setDifficulty(cursor.getInt(cursor.getColumnIndex(DIFFICULTY_HEROES)));
             heroes.setIs_favorite(cursor.getInt(cursor.getColumnIndex(IS_FAVORITE_HEROES)));
+            heroes.setId_locale(cursor.getInt(cursor.getColumnIndex(ID_LOCALE)));
             cursor.close();
         }
 
@@ -152,6 +127,7 @@ public class HeroesManager {
             heroes.setRole(cursor.getString(cursor.getColumnIndex(ROLE_HEROES)));
             heroes.setDifficulty(cursor.getInt(cursor.getColumnIndex(DIFFICULTY_HEROES)));
             heroes.setIs_favorite(cursor.getInt(cursor.getColumnIndex(IS_FAVORITE_HEROES)));
+            heroes.setId_locale(cursor.getInt(cursor.getColumnIndex(ID_LOCALE)));
             heroesList.add(heroes);
         }
 
@@ -160,27 +136,27 @@ public class HeroesManager {
     }
 
     public ArrayList<Heroes> getHeroes() {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " ORDER BY name", null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+ID_LOCALE+"=1 ORDER BY name", null);
         return getHeroes(cursor);
     }
 
     public ArrayList<Heroes> getFavoriteHeroes() {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_HEROES+"=1 ORDER BY name", null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_HEROES+"=1"+" AND "+ID_LOCALE+"=1 ORDER BY name", null);
         return getHeroes(cursor);
     }
 
     public ArrayList<Heroes> getHeroes(String name) {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%'", null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+ID_LOCALE+"=1 AND (name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%')", null);
         return getHeroes(cursor);
     }
 
     public ArrayList<Heroes> getFavoriteHeroes(String name) {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_HEROES+"=1 AND (name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%')", null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_HEROES+"=1 AND "+ID_LOCALE+"=1 AND (name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%')", null);
         return getHeroes(cursor);
     }
 
     public ArrayList<Skill> getHeroSkills(int id_heroes) {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+SkillManager.TABLE_NAME+ " WHERE "+SkillManager.KEY_ID_HEROES_SKILL+" = "+id_heroes, null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+SkillManager.TABLE_NAME+ " WHERE "+SkillManager.KEY_ID_HEROES_SKILL+" = "+id_heroes+" AND "+ID_LOCALE+"=1", null);
         ArrayList<Skill> skillsList = new ArrayList<>();
 
         for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
@@ -195,11 +171,6 @@ public class HeroesManager {
         }
 
         return skillsList;
-    }
-
-    public ArrayList<Heroes> getHeroesByDifficulty(int difficulty) {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE difficulty = "+difficulty+" ORDER BY name", null);
-        return getHeroes(cursor);
     }
 
     public ArrayList<Heroes> getHeroesByDifficultyAndRoles(int difficulty, boolean offense, boolean tank, boolean defense, boolean support, boolean onlyFavorite) {
@@ -218,16 +189,12 @@ public class HeroesManager {
             role = " AND ( "+role+" )";
         }
 
-        query = "SELECT * FROM "+TABLE_NAME+" WHERE difficulty = "+difficulty+role;
+        query = "SELECT * FROM "+TABLE_NAME+" WHERE "+ID_LOCALE+"=1 AND difficulty = "+difficulty+role;
         if(onlyFavorite)
             query += " AND "+IS_FAVORITE_HEROES+"=1 ";
         query += " ORDER BY name";
         Cursor cursor = mDatabase.rawQuery(query, null);
         return getHeroes(cursor);
-    }
-
-    public ArrayList<Heroes> getHeroesByDifficultyAndRoles(int difficulty, boolean offense, boolean tank, boolean defense, boolean support) {
-        return getHeroesByDifficultyAndRoles(difficulty, offense, tank, defense, support, false);
     }
 
     public ArrayList<Heroes> getHeroesByRoles(boolean offense, boolean tank, boolean defense, boolean support, boolean onlyFavorite) {
@@ -247,14 +214,11 @@ public class HeroesManager {
         }
 
         query = "SELECT * FROM "+TABLE_NAME+role;
+        query += " AND "+ID_LOCALE+"=1 ";
         if(onlyFavorite)
             query += " AND "+IS_FAVORITE_HEROES+"=1 ";
         query += " ORDER BY name";
         Cursor cursor = mDatabase.rawQuery(query, null);
         return getHeroes(cursor);
-    }
-
-    public ArrayList<Heroes> getHeroesByRoles(boolean offense, boolean tank, boolean defense, boolean support) {
-        return getHeroesByRoles(offense, tank, defense, support, false);
     }
 }

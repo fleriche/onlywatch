@@ -22,6 +22,7 @@ public class Heroes {
     private String role;
     private int difficulty;
     private int is_favorite;
+    private int id_locale;
 
     public Heroes() {}
 
@@ -188,5 +189,13 @@ public class Heroes {
 
     public boolean isFavorite() {
         return getIs_favorite() == 1;
+    }
+
+    public int getId_locale() {
+        return id_locale;
+    }
+
+    public void setId_locale(int id_locale) {
+        this.id_locale = id_locale;
     }
 }

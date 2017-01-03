@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS lang (
 );
 
 CREATE TABLE IF NOT EXISTS heroes (
-	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	id INTEGER NOT NULL,
 	name TEXT NOT NULL,
 	canonical_name TEXT NOT NULL,
 	health INTEGER NOT NULL,
@@ -22,7 +22,8 @@ CREATE TABLE IF NOT EXISTS heroes (
 	role TEXT NOT NULL,
 	is_favorite INTEGER NOT NULL,
 	id_locale INTEGER NOT NULL,
-	FOREIGN KEY(id_locale) REFERENCES lang(id)
+	FOREIGN KEY(id_locale) REFERENCES lang(id),
+    PRIMARY KEY(id, id_locale)
 );
 
 CREATE TABLE IF NOT EXISTS skill (

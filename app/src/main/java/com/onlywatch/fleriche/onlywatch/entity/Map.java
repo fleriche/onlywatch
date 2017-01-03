@@ -15,6 +15,7 @@ public class Map {
     private String strategy;
     private String easter_eggs;
     private Integer is_favorite;
+    private Integer id_locale;
 
     public Map(){}
 
@@ -100,5 +101,13 @@ public class Map {
 
     public boolean isFavorite() {
         return getIs_favorite() == 1;
+    }
+
+    public Integer getId_locale() {
+        return id_locale;
+    }
+
+    public void setId_locale(Integer id_locale) {
+        this.id_locale = id_locale;
     }
 }

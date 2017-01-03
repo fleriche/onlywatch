@@ -22,6 +22,7 @@ public class SkillManager {
     public static final String FEATURES_SKILL = "features";
     public static final String IS_FAVORITE_SKILL = "is_favorite";
     public static final String KEY_ID_HEROES_SKILL = "id_heroes";
+    public static final String ID_LOCALE_SKILL = "id_locale";
     private DatabaseHandler mDatabaseHandler;
     private SQLiteDatabase mDatabase;
 
@@ -37,18 +38,6 @@ public class SkillManager {
         mDatabase.close();
     }
 
-    public long addSkill(Skill skill) {
-        ContentValues values = new ContentValues();
-        values.put(NOM_SKILL, skill.getNom());
-        values.put(CANONICAL_NAME_SKILL, skill.getCanonical_name());
-        values.put(DESCRIPTION_SKILL, skill.getDescription());
-        values.put(FEATURES_SKILL, skill.getFeatures());
-        values.put(IS_FAVORITE_SKILL, skill.getIs_favorite());
-        values.put(KEY_ID_HEROES_SKILL, skill.getId_heroes());
-
-        return mDatabase.insert(TABLE_NAME, null, values);
-    }
-
     public int updateSkill(Skill skill) {
         ContentValues values = new ContentValues();
         values.put(NOM_SKILL, skill.getNom());
@@ -57,18 +46,12 @@ public class SkillManager {
         values.put(FEATURES_SKILL, skill.getFeatures());
         values.put(IS_FAVORITE_SKILL, skill.getIs_favorite());
         values.put(KEY_ID_HEROES_SKILL, skill.getId_heroes());
+        values.put(ID_LOCALE_SKILL, skill.getId_locale());
 
-        String where = KEY_ID_SKILL+" = ?";
-        String[] whereArgs = {skill.getId()+""};
+        String where = KEY_ID_SKILL+" = ? AND "+ID_LOCALE_SKILL+" = ?";
+        String[] whereArgs = {skill.getId()+"", skill.getId_locale()+""};
 
         return mDatabase.update(TABLE_NAME, values, where, whereArgs);
-    }
-
-    public int deleteSkill(Skill skill) {
-        String where = KEY_ID_SKILL+" = ?";
-        String[] whereArgs = {skill.getId()+""};
-
-        return mDatabase.delete(TABLE_NAME, where, whereArgs);
     }
 
     private ArrayList<Skill> getSkills(Cursor cursor) {
@@ -83,6 +66,7 @@ public class SkillManager {
             skill.setFeatures(cursor.getString(cursor.getColumnIndex(FEATURES_SKILL)));
             skill.setIs_favorite(cursor.getInt(cursor.getColumnIndex(IS_FAVORITE_SKILL)));
             skill.setId_heroes(cursor.getInt(cursor.getColumnIndex(KEY_ID_HEROES_SKILL)));
+            skill.setId_locale(cursor.getInt(cursor.getColumnIndex(ID_LOCALE_SKILL)));
             skillList.add(skill);
         }
 
@@ -91,14 +75,14 @@ public class SkillManager {
     }
 
     public ArrayList<Skill> getSkills() {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " ORDER BY name", null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+ID_LOCALE_SKILL+"=1 ORDER BY name", null);
         return getSkills(cursor);
     }
 
     public Skill getSkill(int id) {
         Skill skill = new Skill();
 
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY_ID_SKILL+"="+id, null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY_ID_SKILL+"="+id+" AND "+ID_LOCALE_SKILL+"=1", null);
         if (cursor.moveToFirst()) {
             skill.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID_SKILL)));
             skill.setNom(cursor.getString(cursor.getColumnIndex(NOM_SKILL)));
@@ -107,6 +91,7 @@ public class SkillManager {
             skill.setFeatures(cursor.getString(cursor.getColumnIndex(FEATURES_SKILL)));
             skill.setIs_favorite(cursor.getInt(cursor.getColumnIndex(IS_FAVORITE_SKILL)));
             skill.setId_heroes(cursor.getInt(cursor.getColumnIndex(KEY_ID_HEROES_SKILL)));
+            skill.setId_locale(cursor.getInt(cursor.getColumnIndex(ID_LOCALE_SKILL)));
             cursor.close();
         }
 
@@ -114,17 +99,17 @@ public class SkillManager {
     }
 
     public ArrayList<Skill> getSkills(String name) {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+NOM_SKILL+" LIKE "+"'%"+name+"%'", null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+ID_LOCALE_SKILL+"=1 AND "+NOM_SKILL+" LIKE "+"'%"+name+"%'", null);
         return getSkills(cursor);
     }
 
     public ArrayList<Skill> getFavoriteSkills(String name) {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+IS_FAVORITE_SKILL+"=1 AND "+NOM_SKILL+" LIKE "+"'%"+name+"%'", null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+IS_FAVORITE_SKILL+"=1 AND "+ID_LOCALE_SKILL+"=1 AND "+NOM_SKILL+" LIKE "+"'%"+name+"%'", null);
         return getSkills(cursor);
     }
 
     public ArrayList<Skill> getFavoriteSkills() {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+IS_FAVORITE_SKILL+"=1", null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+IS_FAVORITE_SKILL+"=1 AND "+ID_LOCALE_SKILL+"=1", null);
         return getSkills(cursor);
     }
 }

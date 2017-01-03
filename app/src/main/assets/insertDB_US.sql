@@ -1,8 +1,9 @@
 ------------------------------- HEROS ----------------------------------
 
 --Attaque
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
-    'Faucheur',
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    1,
+    'Reaper',
     'faucheur',
     0,
     0,
@@ -20,7 +21,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    2,
     'Genji',
     'genji',
     0,
@@ -39,7 +41,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    3,
     'McCree',
     'mccree',
     0,
@@ -58,7 +61,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    4,
     'Pharah',
     'pharah',
     0,
@@ -77,8 +81,9 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
-    'Soldat76',
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    5,
+    'Soldier: 76',
     'soldat76',
     0,
     0,
@@ -96,7 +101,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    6,
     'Tracer',
     'tracer',
     0,
@@ -115,7 +121,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    7,
     'Sombra',
     'sombra',
     0,
@@ -135,7 +142,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     2
 );
 --Defense
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    8,
     'Bastion',
     'bastion',
     0,
@@ -154,7 +162,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    9,
     'Hanzo',
     'hanzo',
     0,
@@ -173,8 +182,9 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
-    'Chacal',
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    10,
+    'Junkrat',
     'chacal',
     0,
     0,
@@ -192,7 +202,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    11,
     'Mei',
     'mei',
     0,
@@ -211,7 +222,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    12,
     'Torbjörn',
     'torbjorn',
     0,
@@ -230,8 +242,9 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
-    'Fatale',
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    13,
+    'Widowmaker',
     'fatale',
     0,
     0,
@@ -250,7 +263,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     2
 );
 --Tank
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote, difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote, difficulty, role, is_favorite, id_locale) VALUES (
+    14,
     'D.Va',
     'dva',
     100,
@@ -269,7 +283,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    15,
     'Reinhardt',
     'reinhardt',
     0,
@@ -288,8 +303,9 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
-    'Chopper',
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    16,
+    'Roadhog',
     'chopper',
     0,
     0,
@@ -307,7 +323,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    17,
     'Winston',
     'winston',
     0,
@@ -326,7 +343,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    18,
     'Zarya',
     'zarya',
     0,
@@ -346,7 +364,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     2
 );
 --Support
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    19,
     'Ana',
     'ana',
     0,
@@ -365,7 +384,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    20,
     'Lúcio',
     'lucio',
     0,
@@ -384,8 +404,9 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
-    'Ange',
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    21,
+    'Mercy',
     'ange',
     0,
     0,
@@ -403,7 +424,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    22,
     'Symmetra',
     'symmetra',
     0,
@@ -422,7 +444,8 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
     0,
     2
 );
-INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+INSERT INTO heroes (id, name, canonical_name, health, armor, shield, real_name, age, nationality, occupation, base_of_operation, affiliation, summary, quote,  difficulty, role, is_favorite, id_locale) VALUES (
+    23,
     'Zenyatta',
     'zenyatta',
     0,
@@ -449,939 +472,939 @@ INSERT INTO heroes (name, canonical_name, health, armor, shield, real_name, age,
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
     'Shuriken',
     'shuriken',
-    'Genji lance trois shurikens mortels en succession rapide. Il peut également lancer trois shurikens en éventail.',
+    'Genji looses three deadly throwing stars in quick succession. Alternatively, he can throw three shuriken in a wider spread.',
     '',
     2,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Riposte',
+    'Deflect',
     'riposte',
-    'Avec des moulinets de son épée aussi rapides que l’éclair, Genji dévie les attaques et les renvoie vers ses adversaires.',
+    'With lightning-quick swipes of his sword, Genji reflects an oncoming projectile and sends it rebounding towards his opponent.',
     '',
     2,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Frappe du vent',
+    'Swift strike',
     'frappeduvent',
-    'Genji file en avant, tranchant l’air de son katana et traversant les ennemis sur son passage. Si Genji élimine un adversaire grâce à cette capacité, il peut s’en servir immédiatement à nouveau.',
+    'Genji darts forward, slashing with his katana and passing through foes in his path. If Genji eliminates a target, he can instantly use this ability again.',
     '',
     2,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Lame du dragon',
+    'Dragonblade',
     'lamedudragon',
-    'Genji brandit son katana pendant une courte période. Il peut délivrer des coups mortels à toutes les cibles à portée jusqu’à ce qu’il rengaine son sabre.',
+    'Genji brandishes his katana for a brief period of time. Until he sheathes his sword, Genji can deliver killing strikes to any targets within his reach.',
     '',
     2,
     0,
-    1
+    2
 );
 --McCree
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Pacificateur',
+    'Peacekeeper',
     'pacificateur',
-    'McCree tire avec son fidèle six-coups. Il peut aussi actionner directement le chien pour vider très rapidement tout son barillet.',
+    'McCree fires off a round from his trusty six-shooter. He can fan the Peacekeeper’s hammer to swiftly unload the entire cylinder.',
     '',
     3,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Roulade',
+    'Combat roll',
     'roulade',
-    'McCree plonge dans la direction de son déplacement et se redresse en ayant rechargé son revolver.',
+    'McCree dives in the direction he’s moving, effortlessly reloading his Peacekeeper in the process.',
     '',
     3,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Grenade Flash',
+    'Flashbang',
     'grenadeflash',
-    'McCree jette une grenade aveuglante qui explose peu après avoir quitté sa main. La déflagration étourdit les ennemis dans un petit rayon.',
+    'McCree heaves a blinding grenade that explodes shortly after it leaves his hand. The blast staggers enemies in a small radius.',
     '',
     3,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Implacable',
+    'Deadeye',
     'implacable',
-    'Concentration. Appréciation. Prise en main. McCree prend quelques précieux instants pour viser. Quand il se décide à tirer, il abat tous les ennemis dans son champ de vision. Plus ses cibles sont faibles, moins il aura besoin de viser pour que le tir soit mortel.',
+    'Focus. Mark. Draw. McCree takes a few precious moments to aim; when he’s ready to fire, he shoots every enemy in his line of sight. The weaker his targets are, the faster he’ll line up a killshot.',
     '',
     3,
     0,
-    1
+    2
 );
 --Pharah
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Lance-roquettes Falcon',
+    'Rocket launcher',
     'lanceroquettesfalcon',
-    'Pharah utilise son arme principale pour envoyer des roquettes qui infligent des dégâts significatifs dans une large zone de déflagration.',
+    'Pharah’s primary weapon launches rockets that deal significant damage in a wide blast radius.',
     '',
     4,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Réacteurs',
+    'Jump jet',
     'reacteurs',
-    'Propulsée par les réacteurs de son armure, Pharah peut s’élever en altitude.',
+    'Propelled by her suit’s thrusters, Pharah soars high into the air.',
     '',
     4,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Conflagration',
+    'Concussive blast',
     'conflagration',
-    'Pharah libère une roquette qui repousse violemment tous les ennemis avec lesquels elle entre en contact.',
+    'Pharah looses a wrist rocket that knocks back any enemies it strikes.',
     '',
     4,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
     'Barrage',
     'barrage',
-    'Pharah dirige une salve continue de mini-roquettes pour détruire des groupes d’ennemis.',
+    'Pharah directs a continuous salvo of mini-rockets to destroy groups of enemies.',
     '',
     4,
     0,
-    1
+    2
 );
 --Faucheur
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Pompes funèbres',
+    'Hellfire Shotguns',
     'pompesfunebres',
-    'Faucheur met ses ennemis en pièces avec ses deux fusils à pompe.',
+    'Reaper tears enemies apart with twin shotguns.',
     '',
-    1,
+    24,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Forme spectrale',
+    'Wraith form',
     'formespectrale',
-    'Faucheur devient une ombre pendant une courte période. Sous cette forme spectrale, il ne peut être blessé et il est capable de passer au travers de ses ennemis mais ne peut pas utiliser son armement ou ses autres capacités.',
+    'Reaper becomes a shadow for a short period of time. While in this form, he takes no damage and is able to pass through enemies, but cannot fire his weapons or use other abilities.',
     '',
-    1,
+    24,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Voie des ombres',
+    'Shadow step',
     'voiedesombres',
-    'Après avoir marqué une destination de son choix, Faucheur disparaît pour réapparaître à cet endroit.',
+    'After marking a destination, Reaper disappears and reappears at that location.',
     '',
-    1,
+    24,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Éclosion mortelle',
+    'Death blossom',
     'eclosionmortelle',
-    'Quasi indiscernable, Faucheur vide ses deux fusils à pompe à tombeau ouvert, infligeant de très lourds dégâts à tous les ennemis proches.',
+    'In a blur of motion, Reaper empties both Hellfire Shotguns at breakneck speed, dealing massive damage to all nearby enemies.',
     '',
-    1,
+    24,
     0,
-    1
+    2
 );
 --Soldat76
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Fusil à impulsions',
+    'Heavy pulse fire',
     'fusilaimpulsions',
-    'Le fusil à impulsions entièrement automatique du soldat : 76 reste particulièrement stable lorsque ce dernier vide son chargeur.',
+    'Soldier: 76’s rifle remains particularly steady while unloading fully-automatic pulse fire.',
     '',
     5,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Roquettes LX',
+    'Helix rockets',
     'roquetteslx',
-    'Le fusil à impulsions du soldat : 76 tire plusieurs petites roquettes à la fois. L’explosion des roquettes inflige des dégâts aux ennemis dans une petite zone.',
+    'Tiny rockets spiral out of Soldier: 76’s Pulse Rifle in a single burst. The rockets’ explosion damages enemies in a small radius.',
     '',
     5,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
     'Sprint',
     'sprint',
-    'Qu’il ait besoin de fuir les tirs ennemis ou de revenir au combat rapidement, le soldat : 76 peut foncer droit devant lui. Toute action autre qu’une course vers l’avant met fin à son Sprint.',
+    'Whether he needs to evade a firefight or get back into one, Soldier: 76 can rush ahead in a burst of speed. His sprint ends if he takes an action other than charging forward.',
     '',
     5,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Champ biotique',
+    'Biotic field',
     'champbiotique',
-    'Le soldat : 76 pose au sol un émetteur biotique. L’énergie ainsi projetée soigne 76 et ses équipiers qui se trouvent dans le champ d’action.',
+    'Soldier: 76 plants a biotic emitter on the ground. Its energy projection restores health to 76 and any of his squadmates within the field.',
     '',
     5,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Visière tactique',
+    'Tactical visor',
     'visieretactique',
-    'La visière tactique de localisation du soldat : 76 « verrouille » la menace la plus proche de son viseur. Si un ennemi quitte son champ de vision, le soldat : 76 peut rapidement changer de cible.',
+    'Soldier: 76’s pinpoint targeting visor “locks” his aim on the threat closest to his crosshairs. If an enemy leaves his line of sight, Soldier: 76 can quickly switch to another target.',
     '',
     5,
     0,
-    1
+    2
 );
 --Sombra
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Pistolet mitrailleur',
+    'Machine pistol',
     'pistoletmitrailleur',
-    'Le pistolet mitrailleur automatique de Sombra tire à courte portée.',
+    'Sombra’s fully-automatic machine pistol fires in a short-range spread.',
     '',
     7,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Piratage',
+    'Hack',
     'piratage',
-    'Sombra peut pirater ses ennemis et les priver temporairement de leurs capacités, ou corrompre les kits de soins pour empêcher ses adversaires de s’en servir.',
+    'Sombra hacks enemies to temporarily stop them from using their abilities, or hacks first aid kits to make them useless to her opponents.',
     '',
     7,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Camouflage thermoptique',
+    'Thermoptic camo',
     'camouflagethermoptique',
-    'Sombra devient invisible pour une courte période, pendant laquelle sa vitesse augmente considérablement. Le camouflage est désactivé si vous attaquez, si vous utilisez des capacités offensives ou si vous subissez des dégâts.',
+    'Sombra becomes invisible for a short period of time, during which her speed is boosted considerably. Attacking, using offensive abilities, or taking damage disables her camouflage.',
     '',
     7,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Transducteur',
+    'Translocator',
     'transducteur',
-    'Sombra lance une balise de transduction vers laquelle elle peut se téléporter instantanément tant que celle-ci est active (même si la balise se trouve encore dans les airs).',
+    'Sombra tosses out a translocator beacon. She can instantly return to the beacon’s location while it is active (including when it’s in mid-flight).',
     '',
     7,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'IEM',
+    'EMP',
     'iem',
-    'Sombra génère une large vague d’énergie électromagnétique qui désactive les boucliers ennemis et pirate tous les adversaires touchés par l’onde de choc.',
+    'Sombra discharges electromagnetic energy in a wide radius, destroying enemy barriers and shields and hacking all opponents caught in the blast.',
     '',
     7,
     0,
-    1
+    2
 );
 --Tracer
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Pulseurs',
+    'Pulse pistols',
     'pulseurs',
-    'Tracer a une cadence de tir très rapide grâce à ses pistolets.',
+    'Tracer rapid-fires both of her pistols.',
     '',
     6,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Transfert',
+    'Blink',
     'transfert',
-    'Tracer fonce droit devant elle et réapparaît quelques mètres plus loin. Elle peut cumuler jusqu’à trois charges de transfert, et en génère régulièrement à quelques secondes d’intervalle.',
+    'Tracer zips horizontally through space in the direction she’s moving, and reappears several yards away. She stores up to three charges of the blink ability and generates more every few seconds.',
     '',
     6,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Rappel',
+    'Recall',
     'rappel',
-    'Tracer bondit en arrière dans le temps et récupère les points de vie et les munitions dont elle disposait, ainsi que sa position précise sur la carte quelques secondes plus tôt.',
+    'Tracer bounds backward in time, returning her health, ammo and position on the map to precisely where they were a few seconds before.',
     '',
     6,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Bombe à impulsions',
+    'Pulse bomb',
     'bombeaimpulsions',
-    'Tracer lance une grosse charge explosive qui adhère à n’importe quelle surface, ou à l’adversaire ayant le malheur de la recevoir. Après un court délai, la bombe explose en infligeant des dégâts importants à tous les ennemis dans la zone de déflagration.',
+    'Tracer lobs a large bomb that adheres to any surface or unfortunate opponent it lands on. After a brief delay, the bomb explodes, dealing high damage to all enemies within its blast radius.',
     '',
     6,
     0,
-    1
+    2
 );
 
 --Skills Defense
 --Bastion
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Configuration : Reconnaissance',
+    'Configuration : Recon',
     'reconnaissance',
-    'En mode Reconnaissance, Bastion est parfaitement mobile et équipé d’une mitrailleuse légère qui tire des rafales régulières et est efficace à moyenne portée.',
+    'In Recon mode, Bastion is fully mobile, outfitted with a submachine gun that fires steady bursts of bullets at medium range.',
     '',
     8,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Configuration : Sentinelle',
+    'Configuration : Sentry',
     'sentinelle',
-    'En mode Sentinelle, Bastion est une centrale électrique statique, protégée par un écran frontal et équipée d’une mitrailleuse rotative capable de déchaîner une pluie de balles. L’arme peut effectuer un « balayage » dévastateur à courte ou moyenne portée.',
+    'In Sentry mode, Bastion is a stationary powerhouse equipped with a gatling gun capable of unleashing a hail of bullets. The gun''s aim can be "walked" across multiple targets, dealing devastating damage at short to medium range.',
     '',
     8,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Reconfiguration',
+    'Reconfigure',
     'reconfiguration',
-    'Bastion passe d’un mode de combat à l’autre afin de s’adapter aux conditions du champ de bataille.',
+    'Bastion transforms between its two primary combat modes to adapt to battlefield conditions.',
     '',
     8,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Autoréparation',
+    'Self-repair',
     'autoreparation',
-    'Bastion récupère ses points de vie, mais ses systèmes d’armement sont désactivés et il reste immobile jusqu’à la fin de la réparation.',
+    'Bastion restores its health; it cannot move or fire weapons while the repair process is in effect.',
     '',
     8,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
     'Configuration : Tank',
     'tank',
-    'En mode Tank, Bastion déploie des chenilles et un puissant canon à longue portée. Les tirs explosifs du canon démolissent les cibles présentes dans son large rayon d’explosion, mais Bastion ne peut conserver ce mode que pour un temps limité.',
+    'In Tank mode, Bastion extends wheeled treads and a powerful long-range cannon. The cannon’s explosive shells demolish targets in a wide blast radius, but Bastion can only remain in this mode for a limited time.',
     '',
     8,
     0,
-    1
+    2
 );
 --Hanzo
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Arc tempête',
+    'Storm bow',
     'arctempete',
-    'Hanzo encoche une flèche et la décoche sur sa cible.',
+    'Hanzo nocks and fires an arrow at his target.',
     '',
     9,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Flèche sonique',
+    'Sonic arrow',
     'flechesonique',
-    'Hanzo projette une flèche équipée d’un sonar ; celle-ci marque tous les ennemis dans son rayon de détection et les rend plus faciles à traquer pour Hanzo et ses alliés.',
+    'Hanzo launches an arrow that contains a sonar tracking device. Any enemy within its detection radius is visibly marked, making them easier for Hanzo and his allies to hunt down.',
     '',
     9,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Mille-flèches',
+    'Scatter arrow',
     'millefleches',
-    'Hanzo tire une flèche qui se fragmente en plusieurs projectiles. Ceux-ci ricochent sur les murs et les objets, et peuvent frapper plusieurs cibles.',
+    'Hanzo shoots a fragmenting arrow that ricochets off walls and objects and can strike multiple targets at once.',
     '',
     9,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Frappe du dragon',
+    'Dragonstrike',
     'frappedudragon',
-    'Hanzo invoque l’esprit d’un dragon qui fend les airs devant lui. Il traverse les murs sur son passage et dévore tous les ennemis rencontrés.',
+    'Hanzo summons a Spirit Dragon which travels through the air in a line. It passes through walls in its way, devouring any enemies it encounters.',
     '',
     9,
     0,
-    1
+    2
 );
 --Chacal
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Lance-grenades',
+    'Frag launcher',
     'lancegrenades',
-    'Le lance-grenades de Chacal projette des grenades sur une bonne distance. Elles rebondissent pour atteindre leur destination et explosent quand elles frappent un ennem',
+    'Junkrat''s Frag Launcher lobs grenades a significant distance. They bounce to reach their destination, and blow up when they strike an enemy.',
     '',
     10,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Mine incapacitante',
+    'Concussion mine',
     'mineincapacitante',
-    'Après avoir placé une de ses mines incapacitantes maison, Chacal peut la déclencher pour blesser les ennemis et les faire voler dans les airs... ou se propulser lui-même en l’air.',
+    'After placing one of his homemade Concussion Mines, Junkrat can trigger it to damage enemies and send them flying... or propel himself through the air.',
     '',
     10,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Piège d''acier',
+    'Steel trap',
     'piegedacier',
-    'Chacal balance un piège géant à mâchoire métallique. Si un ennemi s’approche trop près du piège, il se referme, l’immobilisant et le blessant.',
+    'Junkrat tosses out a giant, metal-toothed trap. Should an enemy wander too close to the trap, it clamps on, injuring and immobilizing them.',
     '',
     10,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Mauvais perdant',
+    'Total mayhem',
     'mauvaisperdant',
-    'Le sens de l''humour complètement azimuté de Chacal subsiste après sa mort : s’il est tué, il largue plusieurs grenades dégoupillées.',
+    'Junkrat''s deranged sense of humor persists past his death. If killed, he drops several live grenades.',
     '',
     10,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Pneumastic',
+    'Rip-tire',
     'pneumastic',
-    'Chacal fait vrombir une bombe-pneu motorisée qui peut grimper sur les murs et les obstacles, et l’envoie rouler sur le champ de bataille. Il peut faire détoner le pneumastic à distance pour infliger d''importants dégâts aux ennemis pris dans l’explosion, ou simplement attendre qu’il explose de lui-même.',
+    'Junkrat revs up a motorized tire bomb and sends it rolling across the battlefield, climbing over walls and obstacles. He can remotely detonate the RIP-Tire to deal serious damage to enemies caught in the blast, or just wait for it to explode on its own.',
     '',
     10,
     0,
-    1
+    2
 );
 --Mei
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Canon endothermique',
+    'Endothermic blaster',
     'canonendothermique',
-    'Le blaster de Mei libère un flux de givre concentré à courte portée qui endommage, ralentit et finit par geler sur place les ennemis. Mei peut aussi s’en servir pour tirer des glaçons à portée moyenne.',
+    'Mei’s blaster unleashes a concentrated, short-range stream of frost that damages, slows, and ultimately freezes enemies in place. Mei can also use her blaster to shoot icicle-like projectiles at medium range.',
     '',
     11,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Cryostase',
+    'Cryo-freeze',
     'cryostase',
-    'Mei s’entoure instantanément d''un épais bloc de glace. Elle se soigne et échappe aux dégâts tant qu’elle est à l’intérieur, mais elle ne peut ni se déplacer, ni utiliser de capacités.',
+    'Mei instantly surrounds herself with a block of thick ice. She heals and ignores damage while encased, but cannot move or use abilities.',
     '',
     11,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Mur de glace',
+    'Ice wall',
     'murdeglace',
-    'Mei génère un énorme mur de glace qui bouche les lignes de vue, empêche le déplacement et bloque les attaques.',
+    'Mei generates an enormous ice wall that obstructs lines of sight, stops movement, and blocks attacks.',
     '',
     11,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
     'Blizzard',
     'blizzard',
-    'Mei déploie un drone de modification du climat qui émet des bourrasques de vent et de neige dans une large zone. Les ennemis pris dans le blizzard sont ralentis et subissent des dégâts, et ceux qui s’attardent trop longtemps sont complètement gelés.',
+    'Mei deploys a weather-modification drone that emits gusts of wind and snow in a wide area. Enemies caught in the blizzard are slowed and take damage; those who linger too long are frozen solid.',
     '',
     11,
     0,
-    1
+    2
 );
 --Torbjörn
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Pistolet à rivets',
+    'Rivet gun',
     'pistoletarivets',
-    'Avec son pistolet, Torbjörn tire des rivets à longue portée ou des projectiles de métal surchauffé en petites rafales à courte portée.',
+    'Torbjörn fires rivets at long range, or ejects molten metal from his gun in a short, close-range burst.',
     '',
     12,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Marteau de forge',
+    'Forge hammer',
     'marteaudeforge',
-    'Torbjörn utilise son marteau polyvalent pour construire, améliorer et réparer des tourelles, et peut l’utiliser comme arme en cas d’urgence.',
+    'Torbjörn uses his multipurpose hammer to build, upgrade and repair turrets. In a pinch, it can also be swung as a weapon.',
     '',
     12,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Déploiement de tourelle',
+    'Build turret',
     'deploiementdetourelle',
-    'Torbjörn construit un canon automatique avec un système de suivi des ennemis. Il peut utiliser la ferraille récupérée sur les ennemis ou alliés abattus pour l’améliorer, augmentant ses points de vie et y ajoutant un second canon et un lance-roquettes.',
+    'Torbjörn constructs an enemy-tracking autocannon. He can use his Forge Hammer to repair or upgrade it, increasing its health and adding a second cannon barrel and a rocket launcher.',
     '',
     12,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Module d''armure',
+    'Armor pack',
     'moduledarmure',
-    'Torbjörn fabrique des pièces d’armure que lui-même ou ses alliés peuvent ramasser pour absorber une partie des dégâts.',
+    'Torbjörn deploys an armor upgrade; either he or his allies can pick it up to absorb some damage.',
     '',
     12,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Coeur de magma',
+    'Molten core',
     'coeurdemagma',
-    'Déclencher la surchauffe de sa forge personnelle permet à Torbjörn de gagner une quantité significative d’armure et de ferraille, mais aussi d’attaquer (et de construire ou de réparer des tourelles) bien plus rapidement qu’en temps normal.',
+    'After overheating his personal forge, Torbjörn gains a significant amount of armor and scrap. He also attacks (and builds and repairs turrets) far faster than normal.',
     '',
     12,
     0,
-    1
+    2
 );
 --Fatale
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Baiser de la veuve',
+    'Widow''s kiss',
     'baiserdelaveuve',
-    'Fatale est équipée d’un fusil polyvalent idéal pour abattre à la lunette les cibles les plus lointaines. Il peut aussi être utilisé en mode automatique sur les cibles à moyenne portée.',
+    'Widowmaker’s versatile sniper rifle is ideal for scope-aimed shots at distant targets. Should targets close to medium range, the rifle can also be fired in fully-automatic mode.',
     '',
     13,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Grappin',
+    'Grappling hook',
     'grappin',
-    'Fatale peut envoyer un grappin vers la position qu’elle vise. Une fois le grappin arrimé, elle est rapidement attirée le long de son câble, ce qui lui permet d’améliorer sa visibilité du champ de bataille et d’esquiver ou de contourner des cibles.',
+    'Widowmaker launches a grappling hook towards the location she’s aiming at – when the hook connects with a scalable surface, she’s quickly drawn towards it, allowing her to expand her view of the battlefield and evade or flank targets.',
     '',
     13,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Mine venimeuse',
+    'Venom mine',
     'minevenimeuse',
-    'Fatale applique des mines venimeuses à armement rapide qui adhèrent à quasiment n’importe quelle surface. Lorsqu’une cible s’aventure à portée du détecteur de mouvement intégré à la mine, cette dernière explose en dégageant un gaz empoisonné qui affecte tous les ennemis à proximité.',
+    'Widowmaker adheres a swiftly-arming venom mine to nearly any surface. When a target wanders within range of the mine’s motion trigger, it explodes, delivering poison gas to any enemies in the vicinity.',
     '',
     13,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Infravision',
+    'Infra-sight',
     'infravision',
-    'La visière de reconnaissance de Fatale lui permet de voir la signature thermique de ses cibles, même au travers des murs ou autres obstacles pendant un certain temps. Cette perception améliorée est partagée avec ses alliés.',
+    'Widowmaker’s recon visor allows her to see the heat signatures of her targets through walls and objects for a moderate amount of time. This enhanced vision is shared with her allies.',
     '',
     13,
     0,
-    1
+    2
 );
 
 --Skills Tank
 --D.va
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Fusio-canons',
+    'Fusion cannons',
     'fusiocanons',
-    'Le méca de D.VA est équipé de canons rotatifs jumelés à courte portée. Activés, ils infligent d’importants dégâts continus sans avoir besoin d’être rechargés, mais ils ralentissent les déplacements de D.Va.',
+    'D.Va''s mech is equipped with twin short-range rotating cannons. They lay down continuous, high-damage fire without needing to reload, but slow D.Va’s movement while they’re active.',
     'N/A',
     14,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Pistolaser',
+    'Light gun',
     'pistolaser',
-    'Lorsqu’elle est hors de son méca, D.Va peut continuer le combat avec une arme automatique à moyenne portée.',
+    'While outside of her mech, D.Va can continue the fight with a mid-range automatic blaster.',
     'N/A',
     14,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Turboréacteurs',
+    'Boosters',
     'turboreacteurs',
-    'Le méca se projette dans les airs et D.Va est propulsée en avant par l’inertie. Elle peut tourner et changer de direction ou foncer sur ses ennemis, les projetant en arrière.',
+    'D.Va’s mech launches into the air, her momentum carrying her forward. She can turn and change directions or barrel through her enemies, knocking them back.',
     'N/A',
     14,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Matrice défensive',
+    'Defense matrix',
     'matricedefensive',
-    'D.Va peut activer son système de ciblage avant pour abattre en l’air les projectiles qui se dirigent vers elle.',
+    'D.Va can activate this forward-facing targeting array to shoot incoming projectiles out of the air.',
     'N/A',
     14,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Autodestruction',
+    'Self-destruct',
     'autodestruction',
-    'D.Va s’éjecte de son méca et fait sauter son réacteur. L’explosion inflige des dégâts considérables aux adversaires proches.',
+    'D.Va ejects from her mech and sets its reactor to explode, dealing massive damage to nearby opponents.',
     'N/A',
     14,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Appel du Méca',
+    'Call mech',
     'appeldumeca',
-    'Si son armure de combat blindée est détruite, D.Va peut appeler un nouveau méca et reprendre le combat.',
+    'If her armored battle suit is destroyed, D.Va can call down a fresh mech and return to the fray.',
     'N/A',
     14,
     0,
-    1
+    2
 );
 --Reinhardt
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Marteau à réaction',
+    'Rocket hammer',
     'marteauareaction',
-    'Le marteau à réaction de Reinhardt est une arme de combat rapproché exemplaire, capable d’infliger des dégâts brutaux sur un large arc à chaque coup.',
+    'Reinhardt’s Rocket Hammer is an exemplary melee weapon, able to deal punishing damage in a wide arc with every swing.',
     '',
     15,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Écran',
+    'Barrier field',
     'ecran',
-    'Reinhardt déploie devant lui un large écran énergétique qui peut absorber une grande quantité de dégâts avant de disparaître. Reinhardt peut se protéger ainsi que ses compagnons qui se trouvent derrière l’écran, mais il ne peut pas attaquer pendant qu’il le maintient en place.',
+    'Reinhardt projects a broad, forward-facing energy barrier, which can absorb substantial damage before it is destroyed. Though Reinhardt can protect himself and his companions behind the barrier, he cannot attack while sustaining it.',
     '',
     15,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
     'Charge',
     'charge',
-    'Reinhardt charge droit devant lui et saisit le premier ennemi qui se trouve sur son chemin. S’il entre en collision avec un mur, les adversaires qu’il porte sont écrasés et subissent des dégâts extrêmes.',
+    'Reinhardt charges forth in a straight line, pinning the first enemy in his path and knocking others aside. If he collides with a wall, the foe he’s carrying suffers extreme damage.',
     '',
     15,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Frappe de feu',
+    'Fire strike',
     'frappedefeu',
-    'En faisant tournoyer son marteau devant lui, Reinhardt envoie un projectile enflammé qui transperce et inflige des dégâts à tous les ennemis qu’il touche.',
+    'By whipping his Rocket Hammer forward, Reinhardt slings a flaming projectile which pierces and damages any enemies it touches.',
     '',
     15,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Choc sismique',
+    'Earthshatter',
     'chocsismique',
-    'Reinhardt abat son marteau à réaction sur le sol, ce qui blesse et renverse tous les ennemis devant lui',
+    'Reinhardt forcefully slams his Rocket Hammer into the ground, knocking down and damaging all enemies in front of him.',
     '',
     15,
     0,
-    1
+    2
 );
 --Chopper
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Déferrailleur',
+    'Scrap gun',
     'deferailleur',
-    'Le déferrailleur de Chopper lance du shrapnel à courte portée mais sur une large zone. Sinon il peut lancer une boule de shrapnels qui détone plus loin, éparpillant les fragments métalliques depuis le point d’impact.',
+    'Roadhog''s Scrap Gun fires short-range blasts of shrapnel with a wide spread. Alternatively, it can launch a shrapnel ball that detonates farther away, scattering metal fragments from the point of impact.',
     '',
     16,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Inhalateur',
+    'Take a breather',
     'inhalateur',
-    'Chopper récupère une partie de ses points de vie sur une courte période.',
+    'Roadhog restores a chunk of his health over a brief period of time.',
     '',
     16,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Traquelard',
+    'Chain hook',
     'traquelard',
-    'Chopper lance sa chaîne vers une cible ; s’il l’attrape, il l’attire à lui, à courte portée.',
+    'Roadhog hurls his chain at a target; if it catches, he yanks them into close range.',
     '',
     16,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Équarisseur',
+    'Whole hog',
     'equarisseur',
-    'Après avoir ajouté un chargeur supplémentaire au-dessus de son déferrailleur, Chopper le bourre de munitions. Pendant une courte période, il mitraille une large zone devant lui avec des shrapnels qui repoussent les ennemis.',
+    'After cramming a top-loader onto his Scrap Gun, Roadhog pours in ammo. For a short time, he can crank out a stream of shrapnel that knocks back enemies.',
     '',
     16,
     0,
-    1
+    2
 );
 --Winston
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Canon Tesla',
+    'Tesla cannon',
     'canontesla',
-    'Tant que Winston garde le doigt sur la gâchette, son arme envoie un flot de décharges électriques à courte portée.',
+    'Winston’s weapon fires a short-range electric barrage for as long as he holds down the trigger.',
     '',
     17,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Propulseurs',
+    'Jump pack',
     'propulseurs',
-    'Winston bondit dans les airs avec l’aide de sa réserve d’énergie dorsale et retombe en infligeant des dégâts significatifs et en étourdissant les ennemis proches.',
+    'Assisted by his energy pack, Winston lunges through the air, dealing significant damage and staggering nearby enemies when he lands.',
     '',
     17,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Générateur d''écran',
+    'Barrier projector',
     'generateurdecran',
-    'Le générateur d’écran de Winston projette un champ de force en forme de bulle qui absorbe les dégâts jusqu’à sa destruction. Les alliés à l’intérieur sont protégés et peuvent tirer.',
+    'Winston’s barrier projector extends a bubble-shaped field that absorbs damage until it''s destroyed. Allies protected by the barrier can return fire from within it.',
     '',
     17,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Rage primordiale',
+    'Primal rage',
     'rageprimordiale',
-    'Winston embrasse sa nature animale, augmentant notablement ses points de vie et le rendant très difficile à tuer, renforçant ses attaques en mêlée et lui permettant d’utiliser ses propulseurs plus souvent. Quand il est enragé, Winston ne peut utiliser que les propulseurs et les attaques au corps à corps.',
+    'Winston embraces his animal nature, significantly boosting his health and making him very difficult to kill, strengthening his melee attack, and allowing him to use his Jump Pack ability more frequently. While raging, Winston can only make melee and Jump Pack attacks.',
     '',
     17,
     0,
-    1
+    2
 );
 --Zarya
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Canon à particules',
+    'Particle cannon',
     'canonaparticules',
-    'Le puissant canon à particules de Zarya déchaîne un rayon d’énergie destructrice à courte portée. Zarya peut également s’en servir pour projeter une charge explosive capable de blesser plusieurs adversaires.',
+    'Zarya’s mighty Particle Cannon unleashes a short-range beam of destructive energy. Alternatively, Zarya can lob an explosive charge to strike multiple opponents.',
     '',
     18,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Écran de particules',
+    'Particle barrier',
     'ecrandeparticules',
-    'Le canon à particules peut émettre une barrière individuelle qui protège Zarya contre les attaques la ciblant, absorbant leur énergie pour augmenter les dégâts et la largeur du rayon de son arme.',
+    'The Particle Cannon can emit a personal barrier that shields Zarya against incoming attacks, redirecting their energy to enhance her weapon’s damage and the width of its beam.',
     '',
     18,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Écran généré',
+    'Projected barrier',
     'ecrangenere',
-    'Zarya englobe l’un de ses coéquipiers dans une barrière d’énergie qui absorbe les coups et renforce la puissance de son canon à particules.',
+    'Zarya surrounds one of her teammates with an energy barrier that simultaneously absorbs fire and boosts the power of her Particle Cannon.',
     '',
     18,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Orbe à gravitons',
+    'graviton surge',
     'orbeagravitons',
-    'Zarya lance une bombe gravitationnelle qui attire les combattants ennemis et les blesse tant qu’ils restent piégés.',
+    'Zarya launches a gravity bomb that draws in enemy combatants and deals damage while they’re trapped.',
     '',
     18,
     0,
-    1
+    2
 );
 
 --Skills Support
 --Ana
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Fusil biotique',
+    'Biotic rifle',
     'fusilbiotique',
-    'Le fusil d’Ana projette des fléchettes qui régénèrent les points de vie de ses alliés ou infligent des dégâts continus à ses ennemis. La lunette de son fusil lui permet de zoomer sur ses cibles pour des tirs d’une extrême précision.',
+    'Ana’s rifle shoots darts that can restore health to her allies or deal ongoing damage to her enemies. She can use the rifle’s scope to zoom in on targets and make highly accurate shots.',
     '',
     19,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Fléchette hypodermique',
+    'Sleep dart',
     'flechettehypodermique',
-    'Ana tire une fléchette avec son arme de poing, provoquant l’évanouissement d’un ennemi (qui se réveille s’il subit des dégâts)',
+    'Ana fires a dart from her sidearm, rendering an enemy unconscious (though any damage will rouse them).',
     '',
     19,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Grenade biotique',
+    'Biotic grenade',
     'grenadebiotique',
-    'Ana lance une bombe biotique qui inflige des dégâts aux ennemis et soigne les alliés dans une zone de taille réduite. Pendant un court moment, les alliés affectés reçoivent plus de soins de toutes les sources, tandis que les ennemis pris dans l’explosion ne peuvent temporairement plus être soignés.',
+    'Ana tosses a biotic bomb that deals damage to enemies and heals allies in a small area of effect. Affected allies briefly receive increased healing from all sources, while enemies caught in the blast cannot be healed for a few moments.',
     '',
     19,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Nanoboost',
+    'Nano boost',
     'nanoboost',
-    'Lorsqu’ils reçoivent un bonus de combat de la part d’Ana, ses alliés se déplacent temporairement plus vite, infligent plus de dégâts et résistent mieux aux attaques ennemies.',
+    'After Ana hits one of her allies with a combat boost, they temporarily move faster, deal more damage, and take less damage from enemies’ attacks.',
     '',
     19,
     0,
-    1
+    2
 );
 --Lúcio
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Ampli',
+    'Sonic amplifier',
     'ampli',
-    'Lúcio peut frapper ses ennemis à l’aide de projectiles soniques ou les repousser avec une onde de choc sonore.',
+    'Lúcio can hit his enemies with sonic projectiles or knock them back with a blast of sound.',
     '',
     20,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
     'Crossfade',
     'crossfade',
-    'Lúcio se stimule constamment, ainsi que ses équipiers proches, grâce à la musique. Il peut alterner entre deux chansons : l’une augmente la vitesse de déplacement, la seconde rend des points de vie.',
+    'Lúcio continuously energizes himself—and nearby teammates—with music. He can switch between two songs: one amplifies movement speed, while the other regenerates health.',
     '',
     20,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Volume max.',
+    'Amp it up',
     'volumemax',
-    'Lúcio augmente le volume de ses enceintes, ce qui améliore l’effet de ses chansons.',
+    'Lúcio increases the volume on his speakers, boosting the effects of his songs.',
     '',
     20,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Mur de son',
+    'Sound barrier',
     'murdeson',
-    'Des vagues protectrices irradient de l’ampli de Lúcio et lui procurent ainsi qu’à ses alliés proches des boucliers personnels.',
+    'Protective waves radiate out from Lúcio’s Sonic Amplifier, briefly providing him and nearby allies with personal shields.',
     '',
     20,
     0,
-    1
+    2
 );
 --Ange
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Caducée',
+    'Caduceus',
     'caducee',
-    'Ange projette un des deux rayons sur un allié. En maintenant les rayons, elle peut soigner l’allié ciblé ou augmenter les dégâts qu’il inflige.',
+    'Mercy engages one of two beams that connect to an ally. By maintaining the beams, she can either restore that ally’s health or increase the amount of damage they deal.',
     '',
     21,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Miséricorde',
+    'Caduceus blaster',
     'misericorde',
-    'Ange peut tirer avec cette arme de poing, qu’il vaut mieux conserver pour sa protection personnelle.',
+    'Mercy shoots a round from her sidearm. It''s best reserved for emergency personal defense.',
     '',
     21,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Ange gardien',
+    'Guardian angel',
     'angegardien',
-    'Ange vole vers un allié ciblé. Elle peut ainsi rejoindre rapidement ses coéquipiers pour mieux les assister dans les moments cruciaux.',
+    'Mercy flies towards a targeted ally, allowing her to reach them quickly and provide assistance in crucial moments.',
     '',
     21,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Saut de l''ange',
+    'Angelic descent',
     'sautdelange',
-    'Grâce aux propulseurs de son armure Valkyrie, Ange peut ralentir sa vitesse de chute et descendre de n’importe quelle hauteur.',
+    'Propelled by her Valkyrie suit, Mercy slows the speed of her descent from great heights.',
     '',
     21,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Résurrection',
+    'Resurrect',
     'resurrection',
-    'Ange irradie de puissance restauratrice et ranime les alliés morts autour d’elle avec la totalité de leurs points de vie.',
+    'Mercy radiates restorative power, bringing nearby dead allies back into the fight with full health.',
     '',
     21,
     0,
-    1
+    2
 );
 --Symmetra
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Projecteur à photons',
+    'Photon projector',
     'projecteuraphotons',
-    'L’arme de Symmetra émet un rayon à courte portée qui se focalise sur un ennemi proche, lui infligeant des dégâts continus qui augmentent sur la durée. Le projecteur peut aussi envoyer une boule d’énergie surchargée qui inflige des dégâts importants.',
+    'Symmetra’s weapon emits a short-range beam that homes in on a nearby enemy, dealing continuous damage that increases the longer it is connected. The projector can also release a charged energy ball that deals high damage.',
     '',
     22,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Tourelle sentinelle',
+    'Sentry turret',
     'tourellesentinelle',
-    'Symmetra installe une petite tourelle qui projette automatiquement des décharges réduisant la vitesse de l’ennemi le plus proche à sa portée. Plusieurs tourelles peuvent être déployées simultanément sur le champ de bataille.',
+    'Symmetra sets up a small turret that automatically fires speed-reducing blasts at the nearest enemy within range. Several turrets can be built on the battlefield at once.',
     '',
     22,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Bouclier à photons',
+    'Photon barrier',
     'bouclieraphotons',
-    'Symmetra enveloppe un allié dans un bouclier photoformé qui absorbe les dégâts et subsiste aussi longtemps que l’allié reste en vie.',
+    'Symmetra projects a moving barrier that absorbs damage as it travels forward.',
     '',
     22,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Téléporteur',
+    'Teleporter',
     'teleporteur',
-    'Symmetra place un socle d’arrivée à sa position actuelle et le connecte à celui placé au point de départ de son équipe. Les alliés peuvent voyager instantanément d’un socle à l’autre, ce qui leur permet de retourner rapidement au combat après avoir été abattus.',
+    'Symmetra places a teleporter exit pad at her current location, and connects it to a teleporter entry pad at her team’s starting point. Allies can travel through the entry pad to the exit pad instantly, enabling them to return to the fight swiftly after being defeated.',
     '',
     22,
     0,
-    1
+    2
 );
 --Zenyatta
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Orbe de destruction',
+    'Orb of destruction',
     'orbededestruction',
-    'Zenyatta lance ses orbes d’énergie destructrice soit individuellement, soit en rafale après avoir passé quelques secondes à rassembler de l’énergie.',
+    'Zenyatta projects his destructive energy orbs either individually, or in a rapid-fire volley after a few seconds spent gathering power.',
     '',
     23,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Orbe d''harmonie',
+    'Orb of harmony',
     'orbedharmonie',
-    'Zenyatta lance un orbe au-dessus d’un allié ciblé. Tant que Zenyatta reste en vie, l’orbe restaure lentement les points de vie de cet allié. Ne peut être utilisé que sur un allié à la fois.',
+    'Zenyatta casts an orb over the shoulder of a targeted ally. So long as Zenyatta maintains line of sight, the orb slowly restores health to his ally. Only one ally can receive the orb''s benefit at a time.',
     '',
     23,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Orbe de discorde',
+    'Orb of discord',
     'orbedediscorde',
-    'Lancer un orbe de discorde sur un ennemi amplifie la quantité de dégâts que celui-ci reçoit tant que Zenyatta est en vie. Ne peut être utilisé que sur un adversaire à la fois.',
+    'Attaching the orb of discord to an opponent amplifies the amount of damage they receive for as long as Zenyatta maintains line of sight. Only one opponent can suffer the orb''s effects at a time.',
     '',
     23,
     0,
-    1
+    2
 );
 INSERT INTO skill (name, canonical_name, description, features, id_heroes, is_favorite, id_locale) VALUES (
-    'Transcendance',
+    'Transcendence',
     'transcendance',
-    'Zenyatta parvient à accéder à un stade d’existence supérieur pendant un court moment. Tant qu’il se transcende, Zenyatta ne peut pas utiliser ses capacités ou ses armes, mais il est immunisé aux dégâts et restaure automatiquement ses points de vie et ceux des alliés proches.',
+    'Zenyatta enters a state of heightened existence for a short period of time. While transcendent, Zenyatta cannot use abilities or weapons, but is immune to damage and automatically restores his health and that of nearby allies.',
     '',
     23,
     0,
-    1
+    2
 );
 
 ----------------------------------- MAPS ------------------------------------------------
@@ -1397,7 +1420,7 @@ INSERT INTO map (name, canonical_name, location, gamemode, description, backgrou
     '<ul><li>In the market, there is a piñata that resembles Diablo from the franchise of the same name.</li></br><li>To the left of the second attackers'' spawn, there is Los Muertos graffiti identical to the graffiti in Hollywood.</li></br><li>In front of the town hall, there is a statue of Guillermo Portero, with a plaque that says "Presidente Guillermo Portero - Protector de México".</li></br><li>Near the final defenders'' spawn, there is a table with three folders on it, all marked "Clasificado". One is marked "Jack Morrison", another says "Soldado: 76", and the last says "Sombra".</li></br><li>In the final defenders'' spawn, there is a map of Mexico marked "Estado de Red Eléctrica". Several towns are marked, including Dorado.</li></br></ul>',
     '',
     0,
-    1
+    2
 );
 INSERT INTO map (name, canonical_name, location, gamemode, description, background, easter_eggs, strategy, is_favorite, id_locale) VALUES (
     'Gibraltar',
@@ -1409,7 +1432,7 @@ INSERT INTO map (name, canonical_name, location, gamemode, description, backgrou
     '<ul><li>In Winston''s lab, there is a blackboard that says "Winston''s to-do list! - Step 1: Move satellite drone to launch platform! - Step 2: Launch drone into synchronous orbit - Step 3: Triangulate global "Recall" signal - Step 4: Call Overwatch agents back to active duty!!! - Order more peanut butter..."</li></br><li>Before the March 8, 2016 patch, a few monitors displayed messages from Athena trying to contact Winston. After the patch, they now display Athena''s logo. The patch also added a large hole in the window within Winston''s lab. This was made to match with the animated short, Recall.</li></br><li>Winston''s lab has a chart depicting the map and the route the payload takes.</li></br><li>Within the crew quarters are a set of lockers, each with a name stenciled along their bottom: Bowden, Sparks, Pinto, Rogers, Klevstav, Klimas, and Eulaers. Some of these are direct nods to the environment team for Overwatch: Helder Pinto, Dion Rogers, Philip Klevestav, Andrew Klimas, and Bram Eulaers. Lee Sparks is the Senior Game Producer.</li></br><li>A poster of Genji is above one of the beds.</li></br><li>The shuttle in the hangar is marked "Lt. Maria Estrada" and "Aurora OSS-7".</li></br></ul>',
     '',
     0,
-    1
+    2
 );
 INSERT INTO map (name, canonical_name, location, gamemode, description, background, easter_eggs, strategy, is_favorite, id_locale) VALUES (
     'Hollywood',
@@ -1421,7 +1444,7 @@ INSERT INTO map (name, canonical_name, location, gamemode, description, backgrou
     '<ul><li>Around the first attacking spawn point there are several movie posters for They Came From Beyond The Moon, Six Gun Killer, Some Like It Bot, and Hero Of My Storm.</li></br><li>Two billboards advertising Lúcio can be seen between the first attacker spawn and the control point.</li></br><li>The Walk of Fame features the names of several actors, including Maifie Adams, Baleog Fierce, Olivia Rai, Olaf Stout, Samuel Drest, Erik Swift, Robert Greenways, Sakura Cheong, and Thespion 4.0.</li></br><li>Baleog the Fierce, Olaf the Stout and Erik the Swift are the main characters from the game ''The Lost Vikings''.</li></br><li>Despite Hollywood being in the United States, the Babylon Hotel''s cash register has a pound sign (£) on it.</li></br><li>Down the road to the left of the attackers'' spawn, there is Los Muertos graffiti identical to the graffiti in Dorado.</li></br><li>In the security room by the first point, a monitor can be seen with a game of Hearthstone open.</li></br><li>At the final point, there is a Tyrael-brand trailer.</li></br><li>Hal-Fred Glitchbot''s voice line "Jesse Mccree? That''s a terrible name for a cowboy." is a reference to the 2000 film Shanghai Noon.</li></br></ul>',
     '',
     0,
-    1
+    2
 );
 INSERT INTO map (name, canonical_name, location, gamemode, description, background, easter_eggs, strategy, is_favorite, id_locale) VALUES (
     'King''s Row',
@@ -1433,7 +1456,7 @@ INSERT INTO map (name, canonical_name, location, gamemode, description, backgrou
     '<ul><li>In the first attackers'' spawn, there are a few tablets with Hearthstone on them, as well as several Kofi Aromo cups.</li></br><li>In the first defenders'' spawn, there is a poster for Lúcio''s concerts.</li></br><li>In front of The Meridian, there is a photo of Tekhartha Mondatta with several candles around it.</li></br><li>The clock tower at the control point, presumably a rendition of the Elizabeth Tower, shows that the in-game time is 4:00 AM.</li></br></ul>',
     '',
     0,
-    1
+    2
 );
 INSERT INTO map (name, canonical_name, location, gamemode, description, background, easter_eggs, strategy, is_favorite, id_locale) VALUES (
     'Numbani',
@@ -1445,7 +1468,7 @@ INSERT INTO map (name, canonical_name, location, gamemode, description, backgrou
     '<ul><li>In the Adawe International Airport, there are posters for Hanamura, Temple of Anubis, King''s Row, and Russia (with a picture of Volskaya Industries). The same posters can be seen in Numbani Tours International.</li></br><li>The Arrivals screen in the Adawe International Airport has the following cities: Seoul, Moscow, Cork, Hong Kong, Buenos Aires, Rome, Madrid, Paris, Hanamura, Delhi, Shanghai, Frankfurt, Singapore, Austin, Dorado, New York, San Francisco, Taipei, Johannesburg, Sydney, King''s Row, Versailles, Los Angeles, and Irvine.</li></br><li>Several posters for Lúcio''s concerts can be seen around the city.</li></br><li>Throughout the map, there is a poster for a beverage called Old Glenwales. It says "Relax and Unwind - The Legendary Organic Oil - 2030". On it is an omnic holding a glass of the drink.</li></br><li>The Axiom building has an Atlas News ticker and a stock market ticker:</li></br><ul><li>"LumériCo reports breach at Dorado power plant, latest attack in global hacking spree"</li></br><li>"Volskaya Ind. increases production following Siberian Omnium attacks"</li></br><li>SST 0.39 ↓ -0.21 · IZU 9.74 ↓ -0.38 · AXOM 364.40 ↑ +29.15 · VLSK 26.85 ↓ -2.69 · VISH 61.41 ↑ +4.56</li></br></ul></ul>',
     '',
     0,
-    1
+    2
 );
 INSERT INTO map (name, canonical_name, location, gamemode, description, background, easter_eggs, strategy, is_favorite, id_locale) VALUES (
     'Route 66',
@@ -1457,7 +1480,7 @@ INSERT INTO map (name, canonical_name, location, gamemode, description, backgrou
     '<ul><li>The Panorama Diner is filled with references to Blizzard''s other games:</li></br><li><ul><li>A check signed by Deckard Cain is hung on the wall.</li></br><li>Several "Craft from the Stars" comics are lying on tables.</li></br><li>The second attackers'' spawn is a tourist trap called the Cave of Mystery, using Hal-Fred Glitchbot''s movie They Came From Beyond The Moon as a theme.</li></br></ul></li></br><li>In The High Side, there are several Hearthstone playing cards.</li></br><li>The first defenders'' spawn is Deadlock Propane and Propane Accessories, references the Texas-based animated show King of the Hill and propane enthusiast main character Hank Hill''s job.</li></br><li>In the cave, there are crates marked with the logos of various companies, including Lumérico, Kofi Aromo, Adams Instant Chicken and Rice, Lucheng Interstellar, Rikimaru, and Salt-Flavored Potato Chips.</li></br><li>In the final defenders'' spawn, there is a computer with Hearthstone open.</li></br></ul>',
     '',
     0,
-    1
+    2
 );
 INSERT INTO map (name, canonical_name, location, gamemode, description, background, easter_eggs, strategy, is_favorite, id_locale) VALUES (
     'Hanamura',
@@ -1469,7 +1492,7 @@ INSERT INTO map (name, canonical_name, location, gamemode, description, backgrou
     '<ul><li>Above Rikimaru there is a statue of a murloc in a spaceship, eating noodles. If the murloc is shot, it makes the familiar aggro sound from World of Warcraft.</li></br><li>In the arcade, there is a large poster of D.Va on the wall.</li></br><li>The arcade has several games :</li></br><ul><li>Claw games whose glass can be destroyed, freeing the squeaky toys within</li></br><li>Fighters of the Storm: clearly an homage to Heroes of the Storm and 2D fighting games such as Street Fighter. This game shows Tychus and Tyrael facing each other in combat.</li></br><li>Fighters of the Storm 2: along the same vein, this one has Garrosh Hellscream and Kerrigan squaring off. As of the Overwatch beta, Garrosh had not been introduced into Heroes of the Storm.</li></br><li>Vivi''s Adventure: this game features a small cavegirl similar to Pebbles on the Flintstones; this could be a reference to Li Li, an adventurous pandaren within World of Warcraft.</li></br><li>The Lost Vikings VI: A futuristic homage to Blizzard''s The Lost Vikings. It appears to be a top down scrolling shoot ''em up in the same vein as Galaga. It also features a Viking unit used in StarCraft II.</li></br><li>Super Siege Mode 3: a game that pays homage to the Metal Slug series. It appears to have Raynor and Sergeant Hammer as characters. A Vulture unit from StarCraft can also be seen driving across the screen periodically.</li></br><li>Holobloks: A 3D version of Breakout that can support two players.</li></br><li>Soulstone: Demon-Slayer: potentially a reference to soulstones used by warlocks in World of Warcraft; also possibly a reference to soulstones in Diablo III: Reaper of Souls, or the Soul Calibur series. The game resembles Capcom''s Dungeons & Dragons arcade series.</li></br></ul><li>The mural above the last point currently depicts two dragons, one green and one blue, circling each other, referencing the story in the animated short, Dragons. It used to depict a dragon, an archer dressed in blue, and a swordsman dressed in green.</li></br></ul>',
     '',
     0,
-    1
+    2
 );
 INSERT INTO map (name, canonical_name, location, gamemode, description, background, easter_eggs, strategy, is_favorite, id_locale) VALUES (
     'Temple d''Anubis',
@@ -1481,7 +1504,7 @@ INSERT INTO map (name, canonical_name, location, gamemode, description, backgrou
     '<ul><li>In the attackers'' first spawn, there is a tablet with Hearthstone open propped up in front of a folder with a photograph of Ana''s Shrike skin.</li></br><li>A Zerg hydralisk skull is mounted on the wall of the vehicle in which attackers spawn at the beginning of the match.</li></br><li>The attackers'' spawn vehicle has a murloc spraypainted on the side.</li></br><li>If a player hits the murloc''s eye, it will make a noise.</li></br><li>Many hieroglyphs have the symbol of the Horde mixed in with them.</li></br></ul>',
     '',
     0,
-    1
+    2
 );
 INSERT INTO map (name, canonical_name, location, gamemode, description, background, easter_eggs, strategy, is_favorite, id_locale) VALUES (
     'Usine Volskaya',
@@ -1493,7 +1516,7 @@ INSERT INTO map (name, canonical_name, location, gamemode, description, backgrou
     '<ul><li>The mechs in the background will occasionally dance.</li></br><li>Near the first point, there is a large mural of Zarya on a wall.</li></br></ul>',
     '',
     0,
-    1
+    2
 );
 INSERT INTO map (name, canonical_name, location, gamemode, description, background, easter_eggs, strategy, is_favorite, id_locale) VALUES (
     'Ilios',
@@ -1505,7 +1528,7 @@ INSERT INTO map (name, canonical_name, location, gamemode, description, backgrou
     '<ul><li>In the Kofi Aromo by the Lighthouse, there is a tablet with Hearthstone open.</li></br><li>In the fishing shop by the Lighthouse, there are boxes of Murk Bait for sale.</li></br><li>In two houses, one on each side of the Well, there are TVs with the brand label Samwise, a shout-out to Samwise Didier, WoW''s Art Director.</li></br><li>The Well is similar to the Pit of Death in the movie ''300'' that is also set in Greece.</li></br></ul>',
     '',
     0,
-    1
+    2
 );
 INSERT INTO map (name, canonical_name, location, gamemode, description, background, easter_eggs, strategy, is_favorite, id_locale) VALUES (
     'Népal',
@@ -1517,7 +1540,7 @@ INSERT INTO map (name, canonical_name, location, gamemode, description, backgrou
     '<ul><li>The three stages are arranged like a staircase, with Village at the bottom, Shrine in the middle, and Sanctum at the top.</li></br><li>Between the cliff and the capture point on Village, on second floor, there is a room that is implied to be Genji''s. It contains a Shimada haori, a smaller version of the large painting from Hanamura''s last point (in Beta version), a katana stand, and a photo of young Hanzo and young Genji standing side by side.</li></br><li>One of the shops is named "Ravenwood''s Kitchen", a shoutout to Indiana Jones movies where a character named Marion Ravenwood has a tavern in Nepal.</li></br></ul>',
     '',
     0,
-    1
+    2
 );
 INSERT INTO map (name, canonical_name, location, gamemode, description, background, easter_eggs, strategy, is_favorite, id_locale) VALUES (
     'Tour de Lijiang',
@@ -1529,5 +1552,5 @@ INSERT INTO map (name, canonical_name, location, gamemode, description, backgrou
     '<ul><li>The map is arranged like a staircase, with Night Market at the bottom, Garden in the middle, and Control Center at the top.</li></br><li>In the Night Market, there is an electric billboard in front of the pagoda, showing the news in simplified Chinese:</li></br><ul><li>据报道:侠盗"士兵76"在墨西哥多拉多现身</li></br><li>署名的气候学家周美灵重返喜马拉雅</li></br><li>“星际旅程”空间站突发紧急故障</li></br><li>“猎空”和温斯顿再次现身，守望先鋒回来了？</li></br><li>古希腊雕像在伊利奥斯重现天日</li></br></ul><li>Posters for the Horizon Lunar Colony can be seen in rooms around the Control Center.</li></br><li>In the Control Center, there are spacesuits on display; one is red with no flag, one is blue with the USA''s flag, and one is green with Numbani''s flag.The red spacesuit is marked with the name "宏宇" and has the phrase "英雄不朽" on the wall behind it. This is in honor of Hongyu Wu (吴宏宇), an avid fan of Overwatch who died trying to pursue a motorcycle thief.</li></br><li>At a desk in the Control Center, there is a photo of Dr. Harold Winston and young Winston.</li></br></ul>',
     '',
     0,
-    1
+    2
 );
