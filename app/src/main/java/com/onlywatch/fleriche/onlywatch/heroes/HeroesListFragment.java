@@ -8,9 +8,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,10 +22,14 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
 import com.onlywatch.fleriche.onlywatch.entity.Heroes;
+import com.onlywatch.fleriche.onlywatch.tools.RecyclerClickListener;
+import com.onlywatch.fleriche.onlywatch.tools.RecyclerTouchListener;
+import com.onlywatch.fleriche.onlywatch.tools.ToolbarActionModeCallback;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -34,6 +40,11 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
     private boolean mIsFavoriteList = false;
     private HeroesManager mHeroesManager;
     private RecyclerView mRecyclerView;
+    private HeroesRecyclerAdapter mHra;
+    private List<Heroes> mHeroesList;
+
+    //Action mode
+    private ActionMode mActionMode;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,8 +55,6 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
         mHeroesManager = new HeroesManager(getActivity());
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fabHeroesList);
         TextView noFavorites = (TextView) view.findViewById(R.id.tvNoFavoritesHeroes);
-        HeroesRecyclerAdapter hra;
-        List<Heroes> heroesList;
 
         if(mIsFavoriteList)
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.titleFavoritesListFragment));
@@ -62,14 +71,14 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
         // Liste contenant tous les héros
         mHeroesManager.open();
         if(!mIsFavoriteList)
-            heroesList = mHeroesManager.getHeroes();
+            mHeroesList = mHeroesManager.getHeroes();
         else
-            heroesList = mHeroesManager.getFavoriteHeroes();
-        hra = new HeroesRecyclerAdapter(heroesList, getActivity());
-        mRecyclerView.setAdapter(hra);
+            mHeroesList = mHeroesManager.getFavoriteHeroes();
+        mHra = new HeroesRecyclerAdapter(mHeroesList, getActivity());
+        mRecyclerView.setAdapter(mHra);
         mHeroesManager.close();
 
-        if(heroesList.isEmpty() && mIsFavoriteList)
+        if(mHeroesList.isEmpty() && mIsFavoriteList)
             noFavorites.setVisibility(View.VISIBLE);
 
         // Floating Action Button
@@ -81,6 +90,8 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
             }
         });
 
+        mHra.notifyDataSetChanged();
+        implementRecyclerViewClickListeners();
         return view;
     }
 
@@ -177,5 +188,70 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
+    }
+
+    //Implement item click and long click over recycler view
+    private void implementRecyclerViewClickListeners() {
+        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new RecyclerClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                //If ActionMode not null select item
+                if (mActionMode != null)
+                    onListItemSelect(position);
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+                //Select item on long click
+                onListItemSelect(position);
+            }
+        }));
+    }
+
+    private void onListItemSelect(int position) {
+        mHra.toggleSelection(position);//Toggle the selection
+
+        boolean hasCheckedItems = mHra.getSelectedCount() > 0;//Check if any items are already selected or not
+
+        if (hasCheckedItems && mActionMode == null)
+            // there are some selected items, start the actionMode
+            mActionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(new ToolbarActionModeCallback(getActivity(), mHra));
+        else if (!hasCheckedItems && mActionMode != null)
+            // there no selected items, finish the actionMode
+            mActionMode.finish();
+        if (mActionMode != null)
+            //set action mode title on item selection
+            mActionMode.setTitle(String.valueOf(mHra.getSelectedCount()) + " selected");
+    }
+
+    /**
+     * Set action mode null quand on a fini de l'utiliser
+     */
+    public void setNullToActionMode() {
+        if (mActionMode != null)
+            mActionMode = null;
+    }
+
+    public void deleteRows() {
+        SparseBooleanArray selected = mHra.getSelectedIds();
+
+        //Loop all selected ids
+        for (int i = (selected.size() - 1); i >= 0; i--) {
+            if (selected.valueAt(i)) {
+                //If current id is selected remove the item via key
+                mHeroesList.remove(selected.keyAt(i));
+                mHra.notifyDataSetChanged();//notify adapter
+            }
+        }
+        Toast.makeText(getActivity(), "Coucou la Petite Chieuse !", Toast.LENGTH_SHORT).show();
+        mActionMode.finish();
+
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if(mActionMode != null)
+            mActionMode.finish();
     }
 }

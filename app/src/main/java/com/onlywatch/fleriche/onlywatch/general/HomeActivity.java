@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
@@ -151,6 +152,10 @@ public class HomeActivity extends AppCompatActivity {
         res.updateConfiguration(conf, dm);
     }
 
+    public Fragment getFragmentByTag(String tag) {
+        return getSupportFragmentManager().findFragmentByTag(tag);
+    }
+
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
 
         @Override
@@ -202,7 +207,7 @@ public class HomeActivity extends AppCompatActivity {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
             if (fragment != null)
-                fragmentTransaction.replace(R.id.frame, fragment);
+                fragmentTransaction.replace(R.id.frame, fragment, "TAG_HEROES");
 
             if (gameFragment != null)
                 fragmentTransaction.replace(R.id.frame, gameFragment);
@@ -227,6 +232,7 @@ public class HomeActivity extends AppCompatActivity {
             if(settingsFragment == null) {
                 fragmentTransaction.addToBackStack(Integer.toString(position));
                 fragmentTransaction.commit();
+                fragmentManager.executePendingTransactions();
             }
 
             mDrwDrawerList.setItemChecked(position, true);

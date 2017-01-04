@@ -12,6 +12,9 @@
         <item name="android:textColorPrimary">@color/greyOverwatch</item>
         <item name="android:actionMenuTextColor">@android:color/black</item>
         <item name="android:autoCompleteTextViewStyle">@style/cursorColor</item>
+
+        <!--  Pour que action mode overlay la toolbar -->
+        <item name="windowActionModeOverlay">true</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

@@ -113,9 +113,10 @@ public class GameFragment extends Fragment implements BaseSliderView.OnSliderCli
             mDrwDrawerList.setItemChecked(HomeActivity.MENU_HEROES, true);
         }
 
-        fragmentTransaction.replace(R.id.frame, fragment);
+        fragmentTransaction.replace(R.id.frame, fragment, "TAG_HEROES");
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+        fragmentManager.executePendingTransactions();
     }
 
     @Override
