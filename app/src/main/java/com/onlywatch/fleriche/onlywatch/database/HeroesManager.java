@@ -11,9 +11,9 @@ import com.onlywatch.fleriche.onlywatch.entity.Skill;
 import java.util.ArrayList;
 
 /**
- * Created by florian on 28/09/16
+ * Classe permettant de se connecter à la table heroes et de gérer l'accès aux données.
+ * Contient toutes les méthodes permettant d'effectuer des requêtes sql sur la table heroes.
  */
-
 public class HeroesManager {
     private static final String TABLE_NAME = "heroes";
     private static final String KEY_ID_HEROES = "id";
@@ -38,18 +38,33 @@ public class HeroesManager {
     private SQLiteDatabase mDatabase;
     private String mLocale;
 
+    /**
+     * Constructeur
+     * @param context Context courrant.
+     */
     public HeroesManager(Context context) {
         mDatabaseHandler = DatabaseHandler.getInstance(context);
     }
 
+    /**
+     * Permet d'ouvrir la table en lecture/écriture.
+     */
     public void open() {
         mDatabase = mDatabaseHandler.getWritableDatabase();
     }
 
+    /**
+     * Ferme la connexion avec la base de données.
+     */
     public void close() {
         mDatabase.close();
     }
 
+    /**
+     * Permet de modifier un héros.
+     * @param heroes Le héros que l'on souhaite modifier.
+     * @return Le nombre de tuples affectés.
+     */
     public int updateHeroes(Heroes heroes) {
         ContentValues values = new ContentValues();
         values.put(NOM_HEROES, heroes.getNom());
@@ -76,6 +91,11 @@ public class HeroesManager {
         return mDatabase.update(TABLE_NAME, values, where, whereArgs);
     }
 
+    /**
+     * Permet d'interroger la table heroes afin de récupérer un héros particulier.
+     * @param id L'id du héros que l'on souhaite récupérer.
+     * @return Le héros que l'on souhaite récupérer.
+     */
     public Heroes getHero(int id) {
         Heroes heroes = new Heroes(0, "", 0);
 
@@ -105,6 +125,11 @@ public class HeroesManager {
         return heroes;
     }
 
+    /**
+     * Permet d'interroger la table heroes afin de récupérer plusieurs héross.
+     * @param cursor Curseur contenant la requête à effectuer.
+     * @return ArrayList Une liste de héross.
+     */
     private ArrayList<Heroes> getHeroes(Cursor cursor) {
         ArrayList<Heroes> heroesList = new ArrayList<>();
 
@@ -135,26 +160,49 @@ public class HeroesManager {
         return heroesList;
     }
 
+    /**
+     * Permet de récupérer tous les héross.
+     * @return La liste de tous les héross.
+     */
     public ArrayList<Heroes> getHeroes() {
         Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+ID_LOCALE+"=1 ORDER BY name", null);
         return getHeroes(cursor);
     }
 
+    /**
+     * Permet de récupérer tous les héross favoris.
+     * @return La liste de tous les héross favoris.
+     */
     public ArrayList<Heroes> getFavoriteHeroes() {
         Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_HEROES+"=1"+" AND "+ID_LOCALE+"=1 ORDER BY name", null);
         return getHeroes(cursor);
     }
 
+    /**
+     * Permet d'interroger la table heroes afin de récupérer une liste de héross.
+     * @param name Le nom que l'on souhaite rechercher.
+     * @return Une liste de héross dont le nom est ou contient le paramètre name.
+     */
     public ArrayList<Heroes> getHeroes(String name) {
         Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+ID_LOCALE+"=1 AND (name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%')", null);
         return getHeroes(cursor);
     }
 
+    /**
+     * Permet d'interroger la table heroes afin de récupérer une liste de héross favoris.
+     * @param name Le nom que l'on souhaite rechercher.
+     * @return Une liste de héross favoris dont le nom est ou contient le paramètre name.
+     */
     public ArrayList<Heroes> getFavoriteHeroes(String name) {
         Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_HEROES+"=1 AND "+ID_LOCALE+"=1 AND (name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%')", null);
         return getHeroes(cursor);
     }
 
+    /**
+     * Permet de récupérer les skills d'un héros particulier.
+     * @param id_heroes Id du héros.
+     * @return Liste des skills du héros.
+     */
     public ArrayList<Skill> getHeroSkills(int id_heroes) {
         Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+SkillManager.TABLE_NAME+ " WHERE "+SkillManager.KEY_ID_HEROES_SKILL+" = "+id_heroes+" AND "+ID_LOCALE+"=1", null);
         ArrayList<Skill> skillsList = new ArrayList<>();
@@ -173,6 +221,16 @@ public class HeroesManager {
         return skillsList;
     }
 
+    /**
+     * Permet de rechercher des héros par difficultés, rôles et favoris.
+     * @param difficulty Difficulté d'utilisation des héros recherchés (1, 2 ou 3).
+     * @param offense Rechercher des héros de type attaque.
+     * @param tank Rechercher des héros de type tank
+     * @param defense Rechercher des héros de type defense.
+     * @param support Rechercher des héros de type support.
+     * @param onlyFavorite Rechercher seulement parmis les héros favoris.
+     * @return Une liste contenant les héros satisfaisant les critères.
+     */
     public ArrayList<Heroes> getHeroesByDifficultyAndRoles(int difficulty, boolean offense, boolean tank, boolean defense, boolean support, boolean onlyFavorite) {
         String role = "";
         String query;
@@ -197,6 +255,15 @@ public class HeroesManager {
         return getHeroes(cursor);
     }
 
+    /**
+     * Permet de rechercher des héros par rôles.
+     * @param offense Rechercher des héros de type attaque.
+     * @param tank Rechercher des héros de type tank
+     * @param defense Rechercher des héros de type defense.
+     * @param support Rechercher des héros de type support.
+     * @param onlyFavorite Rechercher seulement parmis les héros favoris.
+     * @return Une liste contenant les héros satisfaisant les critères.
+     */
     public ArrayList<Heroes> getHeroesByRoles(boolean offense, boolean tank, boolean defense, boolean support, boolean onlyFavorite) {
         String role = "";
         String query;
