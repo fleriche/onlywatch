@@ -11,9 +11,8 @@ import com.onlywatch.fleriche.onlywatch.entity.Map;
 import java.util.ArrayList;
 
 /**
- * Created by florian on 29/11/16
+ * Kaki
  */
-
 public class MapManager {
     public static final String TABLE_NAME = "map";
     public static final String KEY_ID_MAP = "id";
@@ -30,18 +29,33 @@ public class MapManager {
     private DatabaseHandler mDatabaseHandler;
     private SQLiteDatabase mDatabase;
 
+    /**
+     * Constructor
+     * @param context
+     */
     public MapManager(Context context) {
         mDatabaseHandler = DatabaseHandler.getInstance(context);
     }
 
+    /**
+     * Create and/or open a database that will be used for reading and writing
+     */
     public void open() {
         mDatabase = mDatabaseHandler.getWritableDatabase();
     }
 
+    /**
+     * Close any open database object
+     */
     public void close() {
         mDatabase.close();
     }
 
+    /**
+     * Method for updating a map in the database
+     * @param map The map you want to update.
+     * @return Number of row(s) affected.
+     */
     public int updateMap(Map map) {
         ContentValues values = new ContentValues();
         values.put(NOM_MAP, map.getNom());
@@ -61,6 +75,11 @@ public class MapManager {
         return mDatabase.update(TABLE_NAME, values, where, whereArgs);
     }
 
+    /**
+     * Method for getting a Map by id
+     * @param id The id of the map
+     * @return The map requested
+     */
     public Map getMap(int id) {
         Map map = new Map();
 
@@ -83,6 +102,11 @@ public class MapManager {
         return map;
     }
 
+    /**
+     * Method for getting maps
+     * @param cursor which contains the request
+     * @return ArrayList of @see "Map"
+     */
     private ArrayList<Map> getMaps(Cursor cursor) {
         ArrayList<Map> mapList = new ArrayList<>();
 
@@ -105,26 +129,54 @@ public class MapManager {
         return mapList;
     }
 
+    /**
+     * Method for getting all the maps
+     * @return ArrayList containing the maps requested
+     *
+     */
     public ArrayList<Map> getMaps() {
         Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+ID_LOCALE_MAP+"=1 ORDER BY name", null);
         return getMaps(cursor);
     }
 
+    /**
+     * Method for getting map by name
+     * @param name The name of the map
+     * @return ArrayList containing the maps requested
+     */
     public ArrayList<Map> getMap(String name) {
         Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+ID_LOCALE_MAP+"=1 AND (name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%')", null);
         return getMaps(cursor);
     }
 
+    /**
+     * Method for getting favorites maps by name
+     * @param name The name of the map
+     * @return ArrayList containing the maps requested
+     */
     public ArrayList<Map> getFavoriteMap(String name) {
         Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_MAP+"=1 AND "+ID_LOCALE_MAP+"=1 AND (name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%')", null);
         return getMaps(cursor);
     }
 
+    /**
+     * Method for getting all the favorites maps
+     * @return ArrayList containing the maps requested
+     */
     public ArrayList<Map> getFavoriteMaps() {
         Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_MAP+"=1 AND "+ID_LOCALE_MAP+"=1 ORDER BY name", null);
         return getMaps(cursor);
     }
 
+    /**
+     * Method for getting the maps by gamemode
+     * @param assault Look for map with gamemode Assault
+     * @param control Look for map with gamemode Control
+     * @param escort Look for map with gamemode Escort
+     * @param hybrid Look for map with gamemode Hybrid
+     * @param onlyFavorite Look only for favorites maps
+     * @return ArrayList containing the maps requested
+     */
     public ArrayList<Map> getMapsByGamemode(boolean assault, boolean control, boolean escort, boolean hybrid, boolean onlyFavorite) {
         String gamemode = "";
         String query;
