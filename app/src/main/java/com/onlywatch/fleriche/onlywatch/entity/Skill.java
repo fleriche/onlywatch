@@ -1,9 +1,9 @@
 package com.onlywatch.fleriche.onlywatch.entity;
 
 /**
- * Created by florian on 08/11/16
+ * This entity represent a skill and will be persisted into the corresponding 'skill' table in database.
+ * It is simple POJO containing get/set methods to store data retrieved using DAO class.
  */
-
 public class Skill {
     private int id;
     private String nom;
