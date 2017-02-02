@@ -24,7 +24,6 @@ import android.widget.TextView;
 import com.onlywatch.fleriche.onlywatch.R;
 import com.onlywatch.fleriche.onlywatch.database.SkillManager;
 import com.onlywatch.fleriche.onlywatch.entity.Skill;
-import com.onlywatch.fleriche.onlywatch.heroes.HeroesListFragment;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -35,13 +34,13 @@ public class SkillsListFragment extends Fragment implements SearchView.OnQueryTe
     private boolean mIsFavoriteList = false;
     private SkillManager mSkillManager;
     private RecyclerView mRecyclerView;
+    private GridLayoutManager mGridLayoutManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_skills_list, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.skillsCardList);
-        GridLayoutManager gridLayoutManager;
         mSkillManager = new SkillManager(getActivity());
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fabSkillsList);
         TextView noFavorites = (TextView) view.findViewById(R.id.tvNoFavoritesSkills);
@@ -53,9 +52,9 @@ public class SkillsListFragment extends Fragment implements SearchView.OnQueryTe
         else
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.titleAbilitiesListFragment));
 
-        gridLayoutManager = getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT ? new GridLayoutManager(getActivity(), 2): new GridLayoutManager(getActivity(), 3);
+        mGridLayoutManager = getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT ? new GridLayoutManager(getActivity(), 2): new GridLayoutManager(getActivity(), 3);
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(gridLayoutManager);
+        mRecyclerView.setLayoutManager(mGridLayoutManager);
 
 
         mSkillManager.open();
@@ -153,5 +152,12 @@ public class SkillsListFragment extends Fragment implements SearchView.OnQueryTe
 
             }*/
         }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mGridLayoutManager = new GridLayoutManager(getActivity(), newConfig.orientation == Configuration.ORIENTATION_PORTRAIT ? 2 : 3);
+        mRecyclerView.setLayoutManager(mGridLayoutManager);
     }
 }

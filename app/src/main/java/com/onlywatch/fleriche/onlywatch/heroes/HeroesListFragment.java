@@ -42,6 +42,7 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
     private RecyclerView mRecyclerView;
     private HeroesRecyclerAdapter mHra;
     private List<Heroes> mHeroesList;
+    private GridLayoutManager mGridLayoutManager;
 
     //Action mode
     private ActionMode mActionMode;
@@ -51,7 +52,6 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_heroes_list, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.cardList);
-        GridLayoutManager gridLayoutManager;
         mHeroesManager = new HeroesManager(getActivity());
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fabHeroesList);
         TextView noFavorites = (TextView) view.findViewById(R.id.tvNoFavoritesHeroes);
@@ -64,9 +64,9 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
         setHasOptionsMenu(true);
 
         // 2 colones de Cardviews si mode portrait ou 3 si mode paysage
-        gridLayoutManager = getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT ? new GridLayoutManager(getActivity(), 2): new GridLayoutManager(getActivity(), 3);
+        mGridLayoutManager = getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT ? new GridLayoutManager(getActivity(), 2): new GridLayoutManager(getActivity(), 3);
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(gridLayoutManager);
+        mRecyclerView.setLayoutManager(mGridLayoutManager);
 
         // Liste contenant tous les héros
         mHeroesManager.open();
@@ -253,5 +253,12 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
         super.onDestroyView();
         if(mActionMode != null)
             mActionMode.finish();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mGridLayoutManager = new GridLayoutManager(getActivity(), newConfig.orientation == Configuration.ORIENTATION_PORTRAIT ? 2 : 3);
+        mRecyclerView.setLayoutManager(mGridLayoutManager);
     }
 }

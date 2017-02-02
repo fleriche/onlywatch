@@ -388,7 +388,7 @@ public class MediasFragment extends Fragment implements YouTubePlayer.OnFullscre
         @Override
         public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean restored) {
             this.player = player;
-            player.setFullscreenControlFlags(0); //magie du flag
+            player.setFullscreenControlFlags(0);
             player.setOnFullscreenListener((MediasFragment) getParentFragment()); //appelle layout et set le boolean à true
             if (!restored && videoId != null) {
                 player.cueVideo(videoId);

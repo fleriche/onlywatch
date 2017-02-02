@@ -34,6 +34,7 @@ public class MapsListFragment extends Fragment implements SearchView.OnQueryText
     private boolean mIsFavoriteList = false;
     private MapManager mMapManager;
     private RecyclerView mRecyclerView;
+    private GridLayoutManager mGridLayoutManager;
 
     public MapsListFragment() {}
 
@@ -59,7 +60,6 @@ public class MapsListFragment extends Fragment implements SearchView.OnQueryText
         View view = inflater.inflate(R.layout.fragment_maps_list, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.mapCardList);
         TextView noFavorites = (TextView) view.findViewById(R.id.tvNoFavoritesMaps);
-        GridLayoutManager gridLayoutManager;
         mMapManager = new MapManager(getActivity());
         MapRecyclerAdapter mapRecyclerAdapter;
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fabMapsList);
@@ -72,9 +72,9 @@ public class MapsListFragment extends Fragment implements SearchView.OnQueryText
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.titleMapsListFragment));
 
         // 2 colones de Cardviews si mode portrait ou 3 si mode paysage
-        gridLayoutManager = getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT ? new GridLayoutManager(getActivity(), 2): new GridLayoutManager(getActivity(), 3);
+        mGridLayoutManager = getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT ? new GridLayoutManager(getActivity(), 2): new GridLayoutManager(getActivity(), 3);
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(gridLayoutManager);
+        mRecyclerView.setLayoutManager(mGridLayoutManager);
 
         mMapManager.open();
         if(!mIsFavoriteList)
@@ -167,5 +167,12 @@ public class MapsListFragment extends Fragment implements SearchView.OnQueryText
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mGridLayoutManager = new GridLayoutManager(getActivity(), newConfig.orientation == Configuration.ORIENTATION_PORTRAIT ? 2 : 3);
+        mRecyclerView.setLayoutManager(mGridLayoutManager);
     }
 }

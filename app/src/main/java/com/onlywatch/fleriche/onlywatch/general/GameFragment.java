@@ -30,9 +30,9 @@ import java.util.HashMap;
 public class GameFragment extends Fragment implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     private SliderLayout mSliderLayout;
     private ListView mDrwDrawerList;
+    private HashMap<String, Integer> mImgMap = new HashMap<>();
 
-    public GameFragment() {
-    }
+    public GameFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,31 +44,17 @@ public class GameFragment extends Fragment implements BaseSliderView.OnSliderCli
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_game, container, false);
-        HashMap<String, Integer> imgMap = new HashMap<>();
         Button btnBuy = (Button) view.findViewById(R.id.btnBuy);
         mDrwDrawerList = (ListView) getActivity().findViewById(R.id.drwLvDrawerList);
         mSliderLayout = (SliderLayout)view.findViewById(R.id.slider);
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.app_name));
 
-        imgMap.put(getString(R.string.strAbilities), R.drawable.skill);
-        imgMap.put(getString(R.string.strMaps), R.drawable.cartes);
-        imgMap.put(getString(R.string.strHeroes), R.drawable.heros);
+        mImgMap.put(getString(R.string.strAbilities), R.drawable.skill);
+        mImgMap.put(getString(R.string.strMaps), R.drawable.cartes);
+        mImgMap.put(getString(R.string.strHeroes), R.drawable.heros);
 
-        for(String name : imgMap.keySet()){
-            TextSliderView textSliderView = new TextSliderView(getActivity());
-            textSliderView
-                    .description(name)
-                    .image(imgMap.get(name))
-                    .setScaleType(BaseSliderView.ScaleType.Fit)
-                    .setOnSliderClickListener(this)
-            ;
-
-            textSliderView.bundle(new Bundle());
-            textSliderView.getBundle().putString("extra", name);
-            mSliderLayout.addSlider(textSliderView);
-        }
-
+        populateSlider();
         mSliderLayout.setPresetTransformer(SliderLayout.Transformer.DepthPage); //Animation lorsqu'on passe d'une image à l'autre
         mSliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom); //Le label qui apparaît sur l'image
         mSliderLayout.setCustomAnimation(new DescriptionAnimation()); //Animation du label qui s'affiche avec l'image, new DescriptionAnimation() par défaut
@@ -91,6 +77,23 @@ public class GameFragment extends Fragment implements BaseSliderView.OnSliderCli
         }
 
         return view;
+    }
+
+    private void populateSlider() {
+        mSliderLayout.removeAllSliders();
+        for(String name : mImgMap.keySet()){
+            TextSliderView textSliderView = new TextSliderView(getActivity());
+            textSliderView
+                    .description(name)
+                    .image(mImgMap.get(name))
+                    .setScaleType(BaseSliderView.ScaleType.Fit)
+                    .setOnSliderClickListener(this)
+            ;
+
+            textSliderView.bundle(new Bundle());
+            textSliderView.getBundle().putString("extra", name);
+            mSliderLayout.addSlider(textSliderView);
+        }
     }
 
     @Override
@@ -133,4 +136,20 @@ public class GameFragment extends Fragment implements BaseSliderView.OnSliderCli
 
     @Override
     public void onPageScrollStateChanged(int state) {}
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        //ViewGroup viewGroup = ((ViewGroup) getView());
+        //viewGroup.removeAllViewsInLayout();
+        //LayoutInflater inflater = LayoutInflater.from(getActivity());
+        //View view = inflater.inflate(R.layout.fragment_game, viewGroup);
+
+        FragmentManager fragmentManager = this.getActivity().getSupportFragmentManager();
+        Fragment currentFragment = fragmentManager.findFragmentByTag("TAG_GAME");
+        FragmentTransaction fragTransaction = fragmentManager.beginTransaction();
+        fragTransaction.detach(currentFragment);
+        fragTransaction.attach(currentFragment);
+        fragTransaction.commit();
+    }
 }

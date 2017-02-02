@@ -98,7 +98,7 @@ public class HomeActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         if (savedInstanceState == null) {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.frame, fragment);
+            fragmentTransaction.replace(R.id.frame, fragment, "TAG_GAME");
             fragmentTransaction.commit();
             mDrwDrawerList.setItemChecked(MENU_GAME, true);
         }
@@ -210,7 +210,7 @@ public class HomeActivity extends AppCompatActivity {
                 fragmentTransaction.replace(R.id.frame, fragment, "TAG_HEROES");
 
             if (gameFragment != null)
-                fragmentTransaction.replace(R.id.frame, gameFragment);
+                fragmentTransaction.replace(R.id.frame, gameFragment, "TAG_GAME");
 
             if (mapFragment != null)
                 fragmentTransaction.replace(R.id.frame, mapFragment);
