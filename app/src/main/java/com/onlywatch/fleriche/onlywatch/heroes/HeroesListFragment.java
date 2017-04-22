@@ -54,42 +54,19 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
 
     private ActionMode mActionMode; //Action mode
 
+    private FloatingActionButton mFab;
+
+    private TextView mNoFavorites;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_heroes_list, container, false);
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.cardList);
-        mHeroesManager = new HeroesManager(getActivity());
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fabHeroesList);
-        TextView noFavorites = (TextView) view.findViewById(R.id.tvNoFavoritesHeroes);
-
-        if(mIsFavoriteList)
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.titleFavoritesListFragment));
-        else
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.titleHeroesListFragment));
-
-        setHasOptionsMenu(true);
-
-        // 2 colones de Cardviews si mode portrait ou 3 si mode paysage
-        mGridLayoutManager = getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT ? new GridLayoutManager(getActivity(), 2): new GridLayoutManager(getActivity(), 3);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(mGridLayoutManager);
-
-        // Liste contenant tous les héros
-        mHeroesManager.open();
-        if(!mIsFavoriteList)
-            mHeroesList = mHeroesManager.getHeroes();
-        else
-            mHeroesList = mHeroesManager.getFavoriteHeroes();
-        mHra = new HeroesRecyclerAdapter(mHeroesList, getActivity());
-        mRecyclerView.setAdapter(mHra);
-        mHeroesManager.close();
-
-        if(mHeroesList.isEmpty() && mIsFavoriteList)
-            noFavorites.setVisibility(View.VISIBLE);
+        initView(view);
+        buildList();
 
         // Floating Action Button
-        fab.setOnClickListener(new View.OnClickListener() {
+        mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), HeroesFilterActivity.class);
@@ -97,17 +74,8 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
             }
         });
 
-        mHra.notifyDataSetChanged();
         implementRecyclerViewClickListeners();
         return view;
-    }
-
-    public static HeroesListFragment newInstance(boolean onlyFavoriteHeroes) {
-        HeroesListFragment fragment = new HeroesListFragment();
-        Bundle args = new Bundle();
-        args.putBoolean(ONLY_FAVORITE, onlyFavoriteHeroes);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -129,21 +97,13 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
                 int tank = data.getIntExtra(HeroesFilterActivity.TANK_FILTER, 0);
                 int defense = data.getIntExtra(HeroesFilterActivity.DEFENSE_FILTER, 0);
                 int support = data.getIntExtra(HeroesFilterActivity.SUPPORT_FILTER, 0);
-                HeroesManager heroesManager = new HeroesManager(getActivity());
-                heroesManager.open();
-                HeroesRecyclerAdapter hra;
 
-                if (progress >= 0 && progress < 10) {
-                    hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByRoles(offense == 1, tank == 1, defense == 1, support == 1, mIsFavoriteList), getActivity());
-                } else if(progress >= 10 && progress < 30) {
-                    hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByDifficultyAndRoles(1, offense == 1, tank == 1, defense == 1, support == 1, mIsFavoriteList), getActivity());
-                } else if(progress >= 30 && progress < 50) {
-                    hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByDifficultyAndRoles(2, offense == 1, tank == 1, defense == 1, support == 1, mIsFavoriteList), getActivity());
-                } else {
-                    hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByDifficultyAndRoles(3, offense == 1, tank == 1, defense == 1, support == 1, mIsFavoriteList), getActivity());
-                }
-                mRecyclerView.setAdapter(hra);
-                heroesManager.close();
+                mRecyclerView.setAdapter(createRecyclerAdapter(progress,
+                        offense,
+                        tank,
+                        defense,
+                        support)
+                );
             }
         }
     }
@@ -155,7 +115,8 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
             SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
 
             // Customiser le curseur
-            AutoCompleteTextView searchTextView = (AutoCompleteTextView) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+            AutoCompleteTextView searchTextView = (AutoCompleteTextView) searchView.findViewById(
+                    android.support.v7.appcompat.R.id.search_src_text);
             Field cursorDrawableRes = TextView.class.getDeclaredField("mCursorDrawableRes");
             cursorDrawableRes.setAccessible(true);
             cursorDrawableRes.set(searchTextView, R.drawable.cursor);
@@ -168,20 +129,25 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
     }
 
     @Override
-    public boolean onQueryTextSubmit(String query) {
+    public boolean onQueryTextSubmit(String q) {
         mHeroesManager.open();
         HeroesRecyclerAdapter hra;
         if(mIsFavoriteList)
-            hra = !query.isEmpty() ? new HeroesRecyclerAdapter(mHeroesManager.getFavoriteHeroes(query), getActivity()) : new HeroesRecyclerAdapter(mHeroesManager.getFavoriteHeroes(), getActivity());
+            hra = !q.isEmpty() ?
+                    new HeroesRecyclerAdapter(mHeroesManager.getFavoriteHeroes(q), getActivity()) :
+                    new HeroesRecyclerAdapter(mHeroesManager.getFavoriteHeroes(), getActivity());
         else
-            hra = !query.isEmpty() ? new HeroesRecyclerAdapter(mHeroesManager.getHeroes(query), getActivity()) : new HeroesRecyclerAdapter(mHeroesManager.getHeroes(), getActivity());
+            hra = !q.isEmpty() ?
+                    new HeroesRecyclerAdapter(mHeroesManager.getHeroes(q), getActivity()) :
+                    new HeroesRecyclerAdapter(mHeroesManager.getHeroes(), getActivity());
         mRecyclerView.setAdapter(hra);
         mHeroesManager.close();
 
         // Permet de cacher le clavier virtuel après avoir submit la query
         View view = getActivity().getCurrentFocus();
         if (view != null) {
-            InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager)getActivity()
+                    .getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
         return true;
@@ -197,38 +163,27 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
         return super.onOptionsItemSelected(item);
     }
 
-    //Implement item click and long click over recycler view
-    private void implementRecyclerViewClickListeners() {
-        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new RecyclerClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                //If ActionMode not null select item
-                if (mActionMode != null)
-                    onListItemSelect(position);
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-                //Select item on long click
-                onListItemSelect(position);
-            }
-        }));
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if(mActionMode != null)
+            mActionMode.finish();
     }
 
-    private void onListItemSelect(int position) {
-        mHra.toggleSelection(position);//Toggle the selection
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mGridLayoutManager = new GridLayoutManager(getActivity(),
+                newConfig.orientation == Configuration.ORIENTATION_PORTRAIT ? 2 : 3);
+        mRecyclerView.setLayoutManager(mGridLayoutManager);
+    }
 
-        boolean hasCheckedItems = mHra.getSelectedCount() > 0;//Check if any items are already selected or not
-
-        if (hasCheckedItems && mActionMode == null)
-            // there are some selected items, start the actionMode
-            mActionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(new ToolbarActionModeCallback(getActivity(), mHra));
-        else if (!hasCheckedItems && mActionMode != null)
-            // there no selected items, finish the actionMode
-            mActionMode.finish();
-        if (mActionMode != null)
-            //set action mode title on item selection
-            mActionMode.setTitle(String.valueOf(mHra.getSelectedCount()) + " selected");
+    public static HeroesListFragment newInstance(boolean onlyFavoriteHeroes) {
+        HeroesListFragment fragment = new HeroesListFragment();
+        Bundle args = new Bundle();
+        args.putBoolean(ONLY_FAVORITE, onlyFavoriteHeroes);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     /**
@@ -255,17 +210,109 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
 
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        if(mActionMode != null)
-            mActionMode.finish();
+    private void initView(View view) {
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.cardList);
+        mFab = (FloatingActionButton) view.findViewById(R.id.fabHeroesList);
+        mNoFavorites = (TextView) view.findViewById(R.id.tvNoFavoritesHeroes);
+
+        ((AppCompatActivity) getActivity())
+                .getSupportActionBar()
+                .setTitle(mIsFavoriteList ? getString(R.string.titleFavoritesListFragment)
+                        : getString(R.string.titleHeroesListFragment));
+
+        setHasOptionsMenu(true);
+
+        // 2 colones de Cardviews si mode portrait ou 3 si mode paysage
+        mGridLayoutManager = getResources()
+                .getConfiguration()
+                .orientation == Configuration.ORIENTATION_PORTRAIT ?
+                new GridLayoutManager(getActivity(), 2) :
+                new GridLayoutManager(getActivity(), 3);
+
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(mGridLayoutManager);
     }
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        mGridLayoutManager = new GridLayoutManager(getActivity(), newConfig.orientation == Configuration.ORIENTATION_PORTRAIT ? 2 : 3);
-        mRecyclerView.setLayoutManager(mGridLayoutManager);
+    // Liste contenant tous les héros
+    private void buildList() {
+        mHeroesManager = new HeroesManager(getActivity());
+
+        mHeroesManager.open();
+        if(!mIsFavoriteList)
+            mHeroesList = mHeroesManager.getHeroes();
+        else
+            mHeroesList = mHeroesManager.getFavoriteHeroes();
+        mHra = new HeroesRecyclerAdapter(mHeroesList, getActivity());
+        mRecyclerView.setAdapter(mHra);
+        mHeroesManager.close();
+
+        if(mHeroesList.isEmpty() && mIsFavoriteList)
+            mNoFavorites.setVisibility(View.VISIBLE);
+
+        mHra.notifyDataSetChanged();
+    }
+
+    private HeroesRecyclerAdapter createRecyclerAdapter(int progress, int offense, int tank,
+                                                        int defense, int support) {
+        HeroesManager heroesManager = new HeroesManager(getActivity());
+        HeroesRecyclerAdapter hra;
+        heroesManager.open();
+
+        if (progress >= 0 && progress < 10) {
+            hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByRoles(offense == 1, tank == 1,
+                    defense == 1, support == 1, mIsFavoriteList), getActivity());
+        } else if(progress >= 10 && progress < 30) {
+            hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByDifficultyAndRoles(1,
+                    offense == 1, tank == 1, defense == 1, support == 1, mIsFavoriteList),
+                    getActivity());
+        } else if(progress >= 30 && progress < 50) {
+            hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByDifficultyAndRoles(2,
+                    offense == 1, tank == 1, defense == 1, support == 1, mIsFavoriteList),
+                    getActivity());
+        } else {
+            hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByDifficultyAndRoles(3,
+                    offense == 1, tank == 1, defense == 1, support == 1, mIsFavoriteList),
+                    getActivity());
+        }
+
+        heroesManager.close();
+        return hra;
+    }
+
+    //Implement item click and long click over recycler view
+    private void implementRecyclerViewClickListeners() {
+        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(),
+                mRecyclerView, new RecyclerClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                //If ActionMode not null select item
+                if (mActionMode != null)
+                    onListItemSelect(position);
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+                //Select item on long click
+                onListItemSelect(position);
+            }
+        }));
+    }
+
+    private void onListItemSelect(int position) {
+        mHra.toggleSelection(position); //Toggle the selection
+
+        //Check if any items are already selected or not
+        boolean hasCheckedItems = mHra.getSelectedCount() > 0;
+
+        if (hasCheckedItems && mActionMode == null)
+            // there are some selected items, start the actionMode
+            mActionMode = ((AppCompatActivity) getActivity())
+                    .startSupportActionMode(new ToolbarActionModeCallback(getActivity(), mHra));
+        else if (!hasCheckedItems && mActionMode != null)
+            // there no selected items, finish the actionMode
+            mActionMode.finish();
+        if (mActionMode != null)
+            //set action mode title on item selection
+            mActionMode.setTitle(String.valueOf(mHra.getSelectedCount()) + " selected");
     }
 }
