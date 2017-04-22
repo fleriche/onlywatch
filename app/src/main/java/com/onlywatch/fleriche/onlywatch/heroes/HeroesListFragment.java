@@ -87,11 +87,11 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data)  {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == REQUEST_CODE_HEROES_FILTER) {
-            if(resultCode == HeroesFilterActivity.RESULT_HEROES_FILTER_OK) {
+        if (requestCode == REQUEST_CODE_HEROES_FILTER) {
+            if (resultCode == HeroesFilterActivity.RESULT_HEROES_FILTER_OK) {
                 int progress = data.getIntExtra(HeroesFilterActivity.DIFFICULTY_FILTER, 0);
                 int offense = data.getIntExtra(HeroesFilterActivity.OFFENSE_FILTER, 0);
                 int tank = data.getIntExtra(HeroesFilterActivity.TANK_FILTER, 0);
@@ -132,7 +132,7 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
     public boolean onQueryTextSubmit(String q) {
         mHeroesManager.open();
         HeroesRecyclerAdapter hra;
-        if(mIsFavoriteList)
+        if (mIsFavoriteList)
             hra = !q.isEmpty() ?
                     new HeroesRecyclerAdapter(mHeroesManager.getFavoriteHeroes(q), getActivity()) :
                     new HeroesRecyclerAdapter(mHeroesManager.getFavoriteHeroes(), getActivity());
@@ -146,7 +146,7 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
         // Permet de cacher le clavier virtuel après avoir submit la query
         View view = getActivity().getCurrentFocus();
         if (view != null) {
-            InputMethodManager imm = (InputMethodManager)getActivity()
+            InputMethodManager imm = (InputMethodManager) getActivity()
                     .getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
@@ -166,7 +166,7 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if(mActionMode != null)
+        if (mActionMode != null)
             mActionMode.finish();
     }
 
@@ -238,7 +238,7 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
         mHeroesManager = new HeroesManager(getActivity());
 
         mHeroesManager.open();
-        if(!mIsFavoriteList)
+        if (!mIsFavoriteList)
             mHeroesList = mHeroesManager.getHeroes();
         else
             mHeroesList = mHeroesManager.getFavoriteHeroes();
@@ -246,7 +246,7 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
         mRecyclerView.setAdapter(mHra);
         mHeroesManager.close();
 
-        if(mHeroesList.isEmpty() && mIsFavoriteList)
+        if (mHeroesList.isEmpty() && mIsFavoriteList)
             mNoFavorites.setVisibility(View.VISIBLE);
 
         mHra.notifyDataSetChanged();
@@ -261,11 +261,11 @@ public class HeroesListFragment extends Fragment implements SearchView.OnQueryTe
         if (progress >= 0 && progress < 10) {
             hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByRoles(offense == 1, tank == 1,
                     defense == 1, support == 1, mIsFavoriteList), getActivity());
-        } else if(progress >= 10 && progress < 30) {
+        } else if (progress >= 10 && progress < 30) {
             hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByDifficultyAndRoles(1,
                     offense == 1, tank == 1, defense == 1, support == 1, mIsFavoriteList),
                     getActivity());
-        } else if(progress >= 30 && progress < 50) {
+        } else if (progress >= 30 && progress < 50) {
             hra = new HeroesRecyclerAdapter(heroesManager.getHeroesByDifficultyAndRoles(2,
                     offense == 1, tank == 1, defense == 1, support == 1, mIsFavoriteList),
                     getActivity());
