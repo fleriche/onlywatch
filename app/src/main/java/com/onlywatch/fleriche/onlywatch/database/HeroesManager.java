@@ -11,59 +11,81 @@ import com.onlywatch.fleriche.onlywatch.entity.Skill;
 import java.util.ArrayList;
 
 /**
- * Classe permettant de se connecter à la table heroes et de gérer l'accès aux données.
- * Contient toutes les méthodes permettant d'effectuer des requêtes sql sur la table heroes.
+ * Class allowing the connection to the database.
+ * Contains all methods for managing heroes table data.
  */
 public class HeroesManager {
+
     private static final String TABLE_NAME = "heroes";
+
     private static final String KEY_ID_HEROES = "id";
+
     private static final String NOM_HEROES = "name";
+
     private static final String CANONICAL_NAME_HEROES = "canonical_name";
+
     private static final String HEALTH_HEROES = "health";
+
     private static final String ARMOR_HEROES = "armor";
+
     private static final String SHIELD_HEROES = "shield";
+
     private static final String REAL_NAME_HEROES = "real_name";
+
     private static final String AGE_HEROES = "age";
+
     private static final String NATIONALITY_HEROES = "nationality";
+
     private static final String OCCUPATION_HEROES = "occupation";
+
     private static final String BASE_OF_OPERATION_HEROES = "base_of_operation";
+
     private static final String AFFILIATION_HEROES = "affiliation";
+
     private static final String SUMMARY_HEROES = "summary";
+
     private static final String QUOTE_HEROES = "quote";
+
     private static final String ROLE_HEROES = "role";
+
     private static final String DIFFICULTY_HEROES = "difficulty";
+
     private static final String IS_FAVORITE_HEROES = "is_favorite";
+
     private static final String ID_LOCALE = "id_locale";
+
     private DatabaseHandler mDatabaseHandler;
+
     private SQLiteDatabase mDatabase;
-    private String mLocale;
 
     /**
      * Constructeur
-     * @param context Context courrant.
+     *
+     * @param context Current context.
      */
     public HeroesManager(Context context) {
         mDatabaseHandler = DatabaseHandler.getInstance(context);
     }
 
     /**
-     * Permet d'ouvrir la table en lecture/écriture.
+     * Create and/or open a database that will be used for reading and writing.
      */
     public void open() {
         mDatabase = mDatabaseHandler.getWritableDatabase();
     }
 
     /**
-     * Ferme la connexion avec la base de données.
+     * Close any open database object.
      */
     public void close() {
         mDatabase.close();
     }
 
     /**
-     * Permet de modifier un héros.
-     * @param heroes Le héros que l'on souhaite modifier.
-     * @return Le nombre de tuples affectés.
+     * Method for updating an hero in the database.
+     *
+     * @param heroes The hero you want to update.
+     * @return Number of row(s) affected.
      */
     public int updateHeroes(Heroes heroes) {
         ContentValues values = new ContentValues();
@@ -85,21 +107,23 @@ public class HeroesManager {
         values.put(IS_FAVORITE_HEROES, heroes.getIs_favorite());
         values.put(ID_LOCALE, heroes.getId_locale());
 
-        String where = KEY_ID_HEROES+" = ? AND "+ID_LOCALE+" = ?";
-        String[] whereArgs = {heroes.getId()+"", heroes.getId_locale()+""};
+        String where = KEY_ID_HEROES + " = ? AND " + ID_LOCALE + " = ?";
+        String[] whereArgs = {heroes.getId() + "", heroes.getId_locale() + ""};
 
         return mDatabase.update(TABLE_NAME, values, where, whereArgs);
     }
 
     /**
-     * Permet d'interroger la table heroes afin de récupérer un héros particulier.
-     * @param id L'id du héros que l'on souhaite récupérer.
-     * @return Le héros que l'on souhaite récupérer.
+     * Method for getting an hero by id.
+     *
+     * @param id The id of the hero.
+     * @return The hero requested.
      */
     public Heroes getHero(int id) {
         Heroes heroes = new Heroes(0, "", 0);
 
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY_ID_HEROES+"="+id+" AND "+ID_LOCALE+"=1", null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_ID_HEROES
+                + "=" + id + " AND " + ID_LOCALE + "=1", null);
         if (cursor.moveToFirst()) {
             heroes.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID_HEROES)));
             heroes.setNom(cursor.getString(cursor.getColumnIndex(NOM_HEROES)));
@@ -126,14 +150,15 @@ public class HeroesManager {
     }
 
     /**
-     * Permet d'interroger la table heroes afin de récupérer plusieurs héross.
-     * @param cursor Curseur contenant la requête à effectuer.
-     * @return ArrayList Une liste de héross.
+     * Method for getting maps.
+     *
+     * @param cursor which contains the request.
+     * @return ArrayList of @see "Heroes".
      */
     private ArrayList<Heroes> getHeroes(Cursor cursor) {
         ArrayList<Heroes> heroesList = new ArrayList<>();
 
-        for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             Heroes heroes = new Heroes(0, "", 0);
             heroes.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID_HEROES)));
             heroes.setNom(cursor.getString(cursor.getColumnIndex(NOM_HEROES)));
@@ -161,53 +186,64 @@ public class HeroesManager {
     }
 
     /**
-     * Permet de récupérer tous les héross.
-     * @return La liste de tous les héross.
+     * Method for getting all the heroes.
+     *
+     * @return ArrayList containing the heroes requested.
      */
     public ArrayList<Heroes> getHeroes() {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+ID_LOCALE+"=1 ORDER BY name", null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " +
+                ID_LOCALE + "=1 ORDER BY name", null);
         return getHeroes(cursor);
     }
 
     /**
-     * Permet de récupérer tous les héross favoris.
-     * @return La liste de tous les héross favoris.
+     * Method for getting all the favorites heroes.
+     *
+     * @return ArrayList containing the heroes requested.
      */
     public ArrayList<Heroes> getFavoriteHeroes() {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_HEROES+"=1"+" AND "+ID_LOCALE+"=1 ORDER BY name", null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " +
+                IS_FAVORITE_HEROES + "=1" + " AND " + ID_LOCALE + "=1 ORDER BY name", null);
         return getHeroes(cursor);
     }
 
     /**
-     * Permet d'interroger la table heroes afin de récupérer une liste de héross.
-     * @param name Le nom que l'on souhaite rechercher.
-     * @return Une liste de héross dont le nom est ou contient le paramètre name.
+     * Method for getting an hero by name.
+     *
+     * @param name The name of the hero.
+     * @return ArrayList containing the heroes requested.
      */
     public ArrayList<Heroes> getHeroes(String name) {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+ID_LOCALE+"=1 AND (name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%')", null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + ID_LOCALE +
+                "=1 AND (name LIKE '%" + name + "%' OR canonical_name LIKE '%" + name + "%')", null);
         return getHeroes(cursor);
     }
 
     /**
-     * Permet d'interroger la table heroes afin de récupérer une liste de héross favoris.
-     * @param name Le nom que l'on souhaite rechercher.
-     * @return Une liste de héross favoris dont le nom est ou contient le paramètre name.
+     * Method for getting a favorite hero by name.
+     *
+     * @param name The name of the favorite hero.
+     * @return ArrayList containing the favorite heroes requested.
      */
     public ArrayList<Heroes> getFavoriteHeroes(String name) {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE "+IS_FAVORITE_HEROES+"=1 AND "+ID_LOCALE+"=1 AND (name LIKE '%"+name+"%' OR canonical_name LIKE '%"+name+"%')", null);
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " +
+                IS_FAVORITE_HEROES + "=1 AND " + ID_LOCALE + "=1 AND (name LIKE '%" + name +
+                "%' OR canonical_name LIKE '%" + name + "%')", null);
         return getHeroes(cursor);
     }
 
     /**
-     * Permet de récupérer les skills d'un héros particulier.
-     * @param id_heroes Id du héros.
-     * @return Liste des skills du héros.
+     * Method for getting hero's skills.
+     *
+     * @param id The id of the hero.
+     * @return ArrayList containing the hero's skills requested.
      */
-    public ArrayList<Skill> getHeroSkills(int id_heroes) {
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM "+SkillManager.TABLE_NAME+ " WHERE "+SkillManager.KEY_ID_HEROES_SKILL+" = "+id_heroes+" AND "+ID_LOCALE+"=1", null);
+    public ArrayList<Skill> getHeroSkills(int id) {
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM " + SkillManager.TABLE_NAME + " WHERE " +
+                SkillManager.KEY_ID_HEROES_SKILL + " = " + id + " AND " + ID_LOCALE + "=1", null);
         ArrayList<Skill> skillsList = new ArrayList<>();
 
-        for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             Skill skill = new Skill();
             skill.setId(cursor.getInt(cursor.getColumnIndex(SkillManager.KEY_ID_SKILL)));
             skill.setNom(cursor.getString(cursor.getColumnIndex(SkillManager.NOM_SKILL)));
@@ -218,20 +254,24 @@ public class HeroesManager {
             skillsList.add(skill);
         }
 
+        cursor.close();
         return skillsList;
     }
 
     /**
-     * Permet de rechercher des héros par difficultés, rôles et favoris.
-     * @param difficulty Difficulté d'utilisation des héros recherchés (1, 2 ou 3).
-     * @param offense Rechercher des héros de type attaque.
-     * @param tank Rechercher des héros de type tank
-     * @param defense Rechercher des héros de type defense.
-     * @param support Rechercher des héros de type support.
-     * @param onlyFavorite Rechercher seulement parmis les héros favoris.
-     * @return Une liste contenant les héros satisfaisant les critères.
+     * Get hero by difficulty and role.
+     *
+     * @param difficulty   Difficulty (1, 2 ou 3).
+     * @param offense      Look for offense heroes.
+     * @param tank         Look for tank heroes.
+     * @param defense      Look for defense heroes.
+     * @param support      Look for support heroes.
+     * @param onlyFavorite Only favorites heroes.
+     * @return An heroes list.
      */
-    public ArrayList<Heroes> getHeroesByDifficultyAndRoles(int difficulty, boolean offense, boolean tank, boolean defense, boolean support, boolean onlyFavorite) {
+    public ArrayList<Heroes> getHeroesByDifficultyAndRoles(int difficulty, boolean offense,
+                                                           boolean tank, boolean defense,
+                                                           boolean support, boolean onlyFavorite) {
         String role = "";
         String query;
         if (offense)
@@ -242,29 +282,32 @@ public class HeroesManager {
             role += "role = 'defense' OR ";
         if (support)
             role += "role = 'support' OR ";
-        if(role.length() != 0) {
-            role = role.substring(0, role.length()-4);
-            role = " AND ( "+role+" )";
+        if (role.length() != 0) {
+            role = role.substring(0, role.length() - 4);
+            role = " AND ( " + role + " )";
         }
 
-        query = "SELECT * FROM "+TABLE_NAME+" WHERE "+ID_LOCALE+"=1 AND difficulty = "+difficulty+role;
-        if(onlyFavorite)
-            query += " AND "+IS_FAVORITE_HEROES+"=1 ";
+        query = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID_LOCALE + "=1 AND difficulty = " +
+                difficulty + role;
+        if (onlyFavorite)
+            query += " AND " + IS_FAVORITE_HEROES + "=1 ";
         query += " ORDER BY name";
         Cursor cursor = mDatabase.rawQuery(query, null);
         return getHeroes(cursor);
     }
 
     /**
-     * Permet de rechercher des héros par rôles.
-     * @param offense Rechercher des héros de type attaque.
-     * @param tank Rechercher des héros de type tank
-     * @param defense Rechercher des héros de type defense.
-     * @param support Rechercher des héros de type support.
-     * @param onlyFavorite Rechercher seulement parmis les héros favoris.
-     * @return Une liste contenant les héros satisfaisant les critères.
+     * Get hero by role.
+     *
+     * @param offense      Look for offense heroes.
+     * @param tank         Look for tank heroes.
+     * @param defense      Look for defense heroes.
+     * @param support      Look for support heroes.
+     * @param onlyFavorite Only favorites heroes.
+     * @return An heroes list.
      */
-    public ArrayList<Heroes> getHeroesByRoles(boolean offense, boolean tank, boolean defense, boolean support, boolean onlyFavorite) {
+    public ArrayList<Heroes> getHeroesByRoles(boolean offense, boolean tank, boolean defense,
+                                              boolean support, boolean onlyFavorite) {
         String role = "";
         String query;
         if (offense)
@@ -275,15 +318,15 @@ public class HeroesManager {
             role += "role = 'defense' OR ";
         if (support)
             role += "role = 'support' OR ";
-        if(role.length() != 0) {
-            role = role.substring(0, role.length()-4);
-            role = " WHERE "+role;
+        if (role.length() != 0) {
+            role = role.substring(0, role.length() - 4);
+            role = " WHERE " + role;
         }
 
-        query = "SELECT * FROM "+TABLE_NAME+role;
-        query += " AND "+ID_LOCALE+"=1 ";
-        if(onlyFavorite)
-            query += " AND "+IS_FAVORITE_HEROES+"=1 ";
+        query = "SELECT * FROM " + TABLE_NAME + role;
+        query += " AND " + ID_LOCALE + "=1 ";
+        if (onlyFavorite)
+            query += " AND " + IS_FAVORITE_HEROES + "=1 ";
         query += " ORDER BY name";
         Cursor cursor = mDatabase.rawQuery(query, null);
         return getHeroes(cursor);

@@ -13,36 +13,74 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * Created by florian on 28/09/16
+ * Database handler.
  */
+class DatabaseHandler extends SQLiteOpenHelper {
 
-public class DatabaseHandler extends SQLiteOpenHelper {
-    private final Context mContext;
     private static final String DATABASE_NAME = "onlywatch.db";
-    private static final int DATABASE_VERSION = 1;
-    private static DatabaseHandler sInstance;
-    private String DATABASE_PATH;
 
-    public DatabaseHandler(Context context) {
+    private static final int DATABASE_VERSION = 1;
+
+    private String mDatabasePath;
+
+    private final Context mContext;
+
+    private static DatabaseHandler mInstance;
+
+    private DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.mContext = context;
         String filesDir = context.getFilesDir().getPath(); // /data/data/com.onlywatch.fleriche.onlywatch/files/
-        DATABASE_PATH = filesDir.substring(0, filesDir.lastIndexOf("/")) + "/databases/"; // /data/data/com.onlywatch.fleriche.onlywatch/databases/
+        mDatabasePath = filesDir.substring(0, filesDir.lastIndexOf("/")) + "/databases/"; // /data/data/com.onlywatch.fleriche.onlywatch/databases/
 
         // Si la db n'existe pas dans le dossier de l'app
         if (!checkDatabaseExist()) {
-            // copie db de 'assets' vers DATABASE_PATH
+            // copie db de 'assets' vers mDatabasePath
             copyDatabase();
         }
     }
 
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        if (oldVersion < newVersion) {
+            //Log.d("debug", "onUpgrade() : oldVersion=" + oldVersion + ",newVersion=" + newVersion);
+            mContext.deleteDatabase(DATABASE_NAME);
+            copyDatabase();
+        }
+    }
+
+    /**
+     * Create an instance of database handler.
+     *
+     * @param context Application context.
+     * @return An instance of database handler.
+     */
+    static synchronized DatabaseHandler getInstance(Context context) {
+        if (mInstance == null) {
+            mInstance = new DatabaseHandler(context);
+        }
+        return mInstance;
+    }
+
+    /**
+     * Check if the database already exists.
+     *
+     * @return True if the database exist, false otherwise.
+     */
     private boolean checkDatabaseExist() {
-        File dbfile = new File(DATABASE_PATH + DATABASE_NAME);
+        File dbfile = new File(mDatabasePath + DATABASE_NAME);
         return dbfile.exists();
     }
 
+    /**
+     * Copy the database in the device.
+     */
     private void copyDatabase() {
-        final String outFileName = DATABASE_PATH + DATABASE_NAME;
+        final String outFileName = mDatabasePath + DATABASE_NAME;
 
         InputStream myInput;
         try {
@@ -50,10 +88,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             myInput = mContext.getAssets().open(DATABASE_NAME);
 
             // Dossier de destination
-            File pathFile = new File(DATABASE_PATH);
-            if(!pathFile.exists()) {
-                if(!pathFile.mkdirs()) {
-                    Toast.makeText(mContext, "Erreur : copyDatabase(), pathFile.mkdirs()", Toast.LENGTH_SHORT).show();
+            File pathFile = new File(mDatabasePath);
+            if (!pathFile.exists()) {
+                if (!pathFile.mkdirs()) {
+                    Toast.makeText(mContext, "Erreur : copyDatabase(), pathFile.mkdirs()",
+                            Toast.LENGTH_SHORT).show();
                     return;
                 }
             }
@@ -72,39 +111,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             myOutput.flush();
             myOutput.close();
             myInput.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             Toast.makeText(mContext, "Erreur : copydatabase()", Toast.LENGTH_SHORT).show();
         }
 
         // on greffe le numéro de version
-        try{
-            SQLiteDatabase checkdb = SQLiteDatabase.openDatabase(DATABASE_PATH + DATABASE_NAME, null, SQLiteDatabase.OPEN_READWRITE);
+        try {
+            SQLiteDatabase checkdb = SQLiteDatabase.openDatabase(mDatabasePath + DATABASE_NAME,
+                    null, SQLiteDatabase.OPEN_READWRITE);
             checkdb.setVersion(DATABASE_VERSION);
-        }
-        catch(SQLiteException e) {
+        } catch (SQLiteException e) {
             // bdd n'existe pas
-        }
-
-    }
-
-    public static synchronized DatabaseHandler getInstance(Context context) {
-        if (sInstance == null) {
-            sInstance = new DatabaseHandler(context);
-        }
-        return sInstance;
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {}
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if (oldVersion < newVersion){
-            //Log.d("debug", "onUpgrade() : oldVersion=" + oldVersion + ",newVersion=" + newVersion);
-            mContext.deleteDatabase(DATABASE_NAME);
-            copyDatabase();
         }
     }
 }
