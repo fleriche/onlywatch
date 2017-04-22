@@ -14,12 +14,24 @@ import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
 
 public class HeroHistoryFragment extends Fragment {
 
+    private WebView mWebViewHistory;
+
+    private TextView mTvRealName;
+
+    private TextView mTvOccupation;
+
+    private TextView mTvBaseOperation;
+
+    private TextView mTvAffiliation;
+
+    private TextView mTvQuote;
+
     public HeroHistoryFragment() {}
 
-    public static HeroHistoryFragment newInstance(int heroesid) {
+    public static HeroHistoryFragment newInstance(int heroesId) {
         HeroHistoryFragment fragment = new HeroHistoryFragment();
         Bundle args = new Bundle();
-        args.putInt("heroesId", heroesid);
+        args.putInt("heroesId", heroesId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -33,25 +45,32 @@ public class HeroHistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_hero_history, container, false);
-        WebView webViewHistory = (WebView)view.findViewById(R.id.webViewHistory);
-        TextView tvRealName = (TextView) view.findViewById(R.id.strRealName);
-        TextView tvOccupation = (TextView) view.findViewById(R.id.strOccupation);
-        TextView tvBaseOperation = (TextView) view.findViewById(R.id.strBaseOperation);
-        TextView tvAffiliation = (TextView) view.findViewById(R.id.strAffiliation);
-        TextView tvQuote = (TextView) view.findViewById(R.id.quote);
+        initView(view);
+
         int heroesId = getArguments().getInt("heroesId");
         HeroesManager hm = new HeroesManager(getActivity());
-        Heroes hero;
 
         hm.open();
-        hero = hm.getHero(heroesId);
-        webViewHistory.loadUrl("file:///android_asset/"+hero.getCanonical_name()+".html");
-        tvRealName.setText(hero.getReal_name());
-        tvOccupation.setText(hero.getOccupation());
-        tvBaseOperation.setText(hero.getBase_of_operation());
-        tvAffiliation.setText(hero.getAffiliation());
-        tvQuote.setText("« "+hero.getQuote()+" »");
+        updateView(hm.getHero(heroesId));
         hm.close();
         return view;
+    }
+
+    private void initView(View view) {
+        mWebViewHistory = (WebView) view.findViewById(R.id.webViewHistory);
+        mTvRealName = (TextView) view.findViewById(R.id.strRealName);
+        mTvOccupation = (TextView) view.findViewById(R.id.strOccupation);
+        mTvBaseOperation = (TextView) view.findViewById(R.id.strBaseOperation);
+        mTvAffiliation = (TextView) view.findViewById(R.id.strAffiliation);
+        mTvQuote = (TextView) view.findViewById(R.id.quote);
+    }
+
+    private void updateView(Heroes hero) {
+        mWebViewHistory.loadUrl("file:///android_asset/"+hero.getCanonical_name()+".html");
+        mTvRealName.setText(hero.getReal_name());
+        mTvOccupation.setText(hero.getOccupation());
+        mTvBaseOperation.setText(hero.getBase_of_operation());
+        mTvAffiliation.setText(hero.getAffiliation());
+        mTvQuote.setText("« "+hero.getQuote()+" »");
     }
 }

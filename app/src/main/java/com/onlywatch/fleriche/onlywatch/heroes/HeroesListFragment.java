@@ -35,17 +35,24 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 public class HeroesListFragment extends Fragment implements SearchView.OnQueryTextListener {
+
     private static final int REQUEST_CODE_HEROES_FILTER = 1;
+
     private static final String ONLY_FAVORITE = "only_favorite";
+
     private boolean mIsFavoriteList = false;
+
     private HeroesManager mHeroesManager;
+
     private RecyclerView mRecyclerView;
+
     private HeroesRecyclerAdapter mHra;
+
     private List<Heroes> mHeroesList;
+
     private GridLayoutManager mGridLayoutManager;
 
-    //Action mode
-    private ActionMode mActionMode;
+    private ActionMode mActionMode; //Action mode
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

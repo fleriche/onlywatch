@@ -1,7 +1,6 @@
 package com.onlywatch.fleriche.onlywatch.heroes;
 
 
-import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -21,16 +20,25 @@ import com.onlywatch.fleriche.onlywatch.database.HeroesManager;
 
 import java.util.ArrayList;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class HeroGeneralityFragment extends android.support.v4.app.Fragment {
+
     private static final int EASY = 1;
+
     private static final int MEDIUM = 2;
+
     private static final String HERO_ID_ARG = "hero_id";
-    private LinearLayout skillsLayout;
+
+    private LinearLayout mSkillsLayout;
+
     private int mHeroesId;
+
+    private TextView mTvRole;
+
+    private ViewFlipper mViewFlipperDifficulty2;
+
+    private ViewFlipper mViewFlipperDifficulty3;
+
+    private TextView mTvHeroSummary;
 
     public HeroGeneralityFragment() {}
 
@@ -54,47 +62,46 @@ public class HeroGeneralityFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_generality_hero, container, false);
+        initView(view);
+        updateView();
+        return view;
+    }
 
-        // Déclaration
-        TextView tvRole = (TextView) view.findViewById(R.id.role);
-        ViewFlipper viewFlipperDifficulty2 = (ViewFlipper) view.findViewById(R.id.viewFlipperDifficulty2);
-        ViewFlipper viewFlipperDifficulty3 = (ViewFlipper) view.findViewById(R.id.viewFlipperDifficulty3);
-        TextView tvHeroSummary = (TextView) view.findViewById(R.id.heroSummary);
+    private void initView(View view) {
+        mTvRole = (TextView) view.findViewById(R.id.role);
+        mViewFlipperDifficulty2 = (ViewFlipper) view.findViewById(R.id.viewFlipperDifficulty2);
+        mViewFlipperDifficulty3 = (ViewFlipper) view.findViewById(R.id.viewFlipperDifficulty3);
+        mTvHeroSummary = (TextView) view.findViewById(R.id.heroSummary);
+        mSkillsLayout = (LinearLayout) view.findViewById(R.id.skillsRelativeLayout);
+    }
+
+    private void updateView() {
         HeroesManager hm = new HeroesManager(getActivity());
-        Heroes hero;
-        String heroRole;
-
         hm.open();
-        hero = hm.getHero(mHeroesId); // on récup le héro souhaité
-        heroRole = "str" + hero.getRole().substring(0, 1).toUpperCase() + hero.getRole().substring(1);
-        tvRole.setText(getString(getStringIdentifier(getActivity(), heroRole)).toUpperCase());
-        tvHeroSummary.setText(getStringIdentifier(getActivity(), hero.getCanonical_name()+"_summary"));
+        Heroes hero = hm.getHero(mHeroesId);
+        String heroRole = "str" + hero.getRole().substring(0, 1).toUpperCase() + hero.getRole().substring(1);
 
-        // Affichage du nombre d'étoile en fonction de la difficulté
+        mTvRole.setText(getString(getStringIdentifier(getActivity(), heroRole)).toUpperCase());
+        mTvHeroSummary.setText(getStringIdentifier(getActivity(), hero.getCanonical_name()+"_summary"));
+
         switch (hero.getDifficulty()) {
             case EASY:
-                viewFlipperDifficulty2.showNext();
-                viewFlipperDifficulty3.showNext();
+                mViewFlipperDifficulty2.showNext();
+                mViewFlipperDifficulty3.showNext();
                 break;
             case MEDIUM:
-                viewFlipperDifficulty3.showNext();
+                mViewFlipperDifficulty3.showNext();
                 break;
             default:
                 break;
         }
 
-        skillsLayout = (LinearLayout) view.findViewById(R.id.skillsRelativeLayout);
-        buildSkills(hm.getHeroSkills(hero.getId()), hero);
-
+        buildSkills(hm.getHeroSkills(hero.getId()));
         hm.close();
-
-        return view;
     }
 
-    private void buildSkills(ArrayList<Skill> skillsList, Heroes hero) {
-        int skillsCounter = 0;
+    private void buildSkills(ArrayList<Skill> skillsList) {
         for (Skill skill : skillsList) {
-            skillsCounter++;
 
             // Linear parent Barre + Summary
             LinearLayout parentLayout = new LinearLayout(getActivity());
@@ -141,9 +148,9 @@ public class HeroGeneralityFragment extends android.support.v4.app.Fragment {
             //parentLayout.setLayoutParams(rlp);
             parentLayout.addView(viewSkill);
             parentLayout.addView(tvSummarySkill);
-            skillsLayout.addView(tvSkill);
-            skillsLayout.addView(ivSkill);
-            skillsLayout.addView(parentLayout);
+            mSkillsLayout.addView(tvSkill);
+            mSkillsLayout.addView(ivSkill);
+            mSkillsLayout.addView(parentLayout);
         }
     }
 
@@ -156,8 +163,7 @@ public class HeroGeneralityFragment extends android.support.v4.app.Fragment {
     }
 
     private int dpsToPixels(int dps) {
-        final float SCALE = getContext().getResources().getDisplayMetrics().density;
-        return (int)(dps * SCALE + 0.5f);
+        return (int)(dps * getContext().getResources().getDisplayMetrics().density + 0.5f);
     }
 }
 

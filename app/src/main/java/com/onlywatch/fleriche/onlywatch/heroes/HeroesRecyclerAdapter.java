@@ -18,15 +18,18 @@ import com.onlywatch.fleriche.onlywatch.R;
 import java.util.List;
 
 public class HeroesRecyclerAdapter extends RecyclerView.Adapter<HeroesRecyclerAdapter.HeroesViewHolder> {
+
     public static final String HEROES_ID_EXTRA = "id";
-    public static final String TYPE_ACTIVITY_EXTRA = "type";
+
+    private static final String TYPE_ACTIVITY_EXTRA = "type";
+
     private List<Heroes> mHeroesList;
+
     private Context mContext;
 
-    //Action mode
-    private SparseBooleanArray mSelectedItemsIds;
+    private SparseBooleanArray mSelectedItemsIds; //Action mode
 
-    public HeroesRecyclerAdapter(List<Heroes> heroesList, Context context) {
+    HeroesRecyclerAdapter(List<Heroes> heroesList, Context context) {
         this.mHeroesList = heroesList;
         this.mContext = context;
         mSelectedItemsIds = new SparseBooleanArray();
@@ -70,21 +73,29 @@ public class HeroesRecyclerAdapter extends RecyclerView.Adapter<HeroesRecyclerAd
      * Methods required for do selections, remove selections, etc.
      */
 
-    //Toggle selection methods
-    public void toggleSelection(int position) {
-        selectView(position, !mSelectedItemsIds.get(position));
-    }
-
-
     //Remove selected selections
     public void removeSelection() {
         mSelectedItemsIds = new SparseBooleanArray();
         notifyDataSetChanged();
     }
 
+    //Toggle selection methods
+    void toggleSelection(int position) {
+        selectView(position, !mSelectedItemsIds.get(position));
+    }
+
+    //Get total selected count
+    int getSelectedCount() {
+        return mSelectedItemsIds.size();
+    }
+
+    //Return all selected ids
+    SparseBooleanArray getSelectedIds() {
+        return mSelectedItemsIds;
+    }
 
     //Put or delete selected position into SparseBooleanArray
-    public void selectView(int position, boolean value) {
+    private void selectView(int position, boolean value) {
         if (value)
             mSelectedItemsIds.put(position, value);
         else
@@ -93,23 +104,17 @@ public class HeroesRecyclerAdapter extends RecyclerView.Adapter<HeroesRecyclerAd
         notifyDataSetChanged();
     }
 
-    //Get total selected count
-    public int getSelectedCount() {
-        return mSelectedItemsIds.size();
-    }
+    static class HeroesViewHolder extends RecyclerView.ViewHolder {
+        private TextView mTextView;
+        private ImageView mImageView;
+        private CardView mCardView;
 
-    //Return all selected ids
-    public SparseBooleanArray getSelectedIds() {
-        return mSelectedItemsIds;
-    }
-
-    public static class HeroesViewHolder extends RecyclerView.ViewHolder {
-        protected TextView mTextView;
-        protected ImageView mImageView;
-        protected CardView mCardView;
-
-        public HeroesViewHolder(View view) {
+        HeroesViewHolder(View view) {
             super(view);
+            initView(view);
+        }
+
+        private void initView(View view) {
             mTextView = (TextView) view.findViewById(R.id.title);
             mImageView = (ImageView) view.findViewById(R.id.imgHeroe);
             mCardView = (CardView) view.findViewById(R.id.cardLyFront);
